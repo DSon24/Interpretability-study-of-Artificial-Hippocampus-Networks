@@ -177,3 +177,8 @@ output/
 wandb/
 swanlog/
 generated_predictions.jsonl
+.venv/
+__pycache__/
+*.pyc
+merged_ckpt/
+.ipynb_checkpoints/
