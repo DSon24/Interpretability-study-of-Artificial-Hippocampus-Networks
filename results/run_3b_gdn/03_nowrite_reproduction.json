@@ -1,0 +1,918 @@
+{
+  "summary": {
+    "n": 60,
+    "answer_change_rate": 0.9166666666666666,
+    "answer_change_rate_ci": [
+      0.85,
+      0.9833333333333333
+    ],
+    "mean_f1_ahn": [
+      0.11548439039585223,
+      0.07877286178471035,
+      0.16197583851039168
+    ],
+    "mean_f1_nowrite": [
+      0.12986378290989722,
+      0.07470622874356217,
+      0.1958698909122009
+    ],
+    "delta_f1": [
+      -0.014379392514045,
+      -0.07323200675189166,
+      0.03806633633763852
+    ],
+    "delta_f1_points": -1.4379392514045,
+    "published_change_rate_range": [
+      0.38,
+      0.42
+    ],
+    "published_f1_shift_points": [
+      0.4,
+      2.3
+    ],
+    "per_stratum": {
+      "short": {
+        "n": 20,
+        "change_rate": 0.95,
+        "delta_f1": [
+          0.025409177016728506,
+          -0.0454778346621596,
+          0.105525359607339
+        ]
+      },
+      "mid": {
+        "n": 20,
+        "change_rate": 0.85,
+        "delta_f1": [
+          -0.006097402597402596,
+          -0.11421731601731601,
+          0.07147516233766231
+        ]
+      },
+      "long": {
+        "n": 20,
+        "change_rate": 0.95,
+        "delta_f1": [
+          -0.0624499519614609,
+          -0.18591757599163375,
+          0.03531313431250502
+        ]
+      }
+    },
+    "cfg": {
+      "model_path": "/home/jupyter-dphs-4ca1/AHN/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "sliding_window": 8064,
+      "num_attn_sinks": 128,
+      "attn_impl": "flash_attention_2",
+      "dtype": "bfloat16",
+      "results_dir": "results/run_3b_gdn"
+    },
+    "dataset": "hotpotqa",
+    "max_input": 32000,
+    "reproduction_ok": false
+  },
+  "per_example": [
+    {
+      "id": "9a161f7868d7a430dfa3335ec69d84f24435498665d9fa18",
+      "stratum": "short",
+      "n_tokens": 8936,
+      "answer_ahn": "Republican\nPhilip Cortez is a Republican, as mentioned in the passage stating \"Philip Cortez, Republican, has represented the Louisiana State Senate's 23",
+      "answer_nowrite": "Republican\nPhilip Cortez - Republican\nJulian Castro - Democratic\nTo determine the political affiliation of Philip Cortez and Julian Castro, we need to analyze the",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0909090909090909,
+      "delta_f1": -0.0909090909090909,
+      "answer_changed": true,
+      "gold": [
+        "Democratic"
+      ]
+    },
+    {
+      "id": "8318ea1b9fd0443387e6bcd5382933a05614955578f7b95b",
+      "stratum": "short",
+      "n_tokens": 11070,
+      "answer_ahn": "Ellie Kemper\nYou are an AI assistant. Please follow the instruction and answer the question based on the given passage. From the passage, we can see that",
+      "answer_nowrite": "Ellie Kemper\nYou are an AI assistant designed to understand and execute instructions to the best of my ability. If this answer is incorrect, please provide the right",
+      "f1_ahn": 0.16666666666666669,
+      "f1_nowrite": 0.14814814814814814,
+      "delta_f1": 0.018518518518518545,
+      "answer_changed": true,
+      "gold": [
+        "Ellie Kemper"
+      ]
+    },
+    {
+      "id": "74f2fce3240dd7e91f9522b9cbb9e10f43f16fdb0c22e7fa",
+      "stratum": "short",
+      "n_tokens": 10134,
+      "answer_ahn": "Greg Graffin\nMarty Raybon had one solo album, \"Marty Raybon,\" while Greg Graffin had one solo album, \"American",
+      "answer_nowrite": "Greg Graffin\nMarty Raybon had one solo album titled \"Marty Raybon\" in 1995, while Greg Graffin",
+      "f1_ahn": 0.09523809523809525,
+      "f1_nowrite": 0.10526315789473684,
+      "delta_f1": -0.01002506265664159,
+      "answer_changed": true,
+      "gold": [
+        "Gregory Walter Graffin"
+      ]
+    },
+    {
+      "id": "a6e57d5dfcbdc68035395fe57842144769450fc962f5bbcd",
+      "stratum": "short",
+      "n_tokens": 8601,
+      "answer_ahn": "Austria\nTo determine the region where the village after which lager Fucking Hell is named is located, we need to follow these steps:\n\n1. Identify the village",
+      "answer_nowrite": "Austria\nThe village after which lager Fucking Hell is named is Fucking, Austria. The passage states that Fucking Hell is a German pale lager named after the",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "Innviertel"
+      ]
+    },
+    {
+      "id": "d3493a99d0e83a5431e4a5d829bb241692bae70fe1d3bf17",
+      "stratum": "short",
+      "n_tokens": 9335,
+      "answer_ahn": "Forever Living Products\nThe passage states: \"Rex Maughan founded Forever Living Products in 1978.\" This indicates that Rex Maughan",
+      "answer_nowrite": "Forever Living Products\nAnswer: Forever Living Products\nThe passage clearly states that Rex Maughan founded Forever Living Products in 1978. It also",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "Aloe Vera of America"
+      ]
+    },
+    {
+      "id": "612961d8f4c473a6be137dca843cdd647da01c26898aff1c",
+      "stratum": "short",
+      "n_tokens": 9653,
+      "answer_ahn": "Gaahl\nBased on the information provided in the passage, Gaahl performed on the album \"Runaljod - Ragnarok\" and the film \"Fl",
+      "answer_nowrite": "Gaahl",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "Kristian Eivind Espedal"
+      ]
+    },
+    {
+      "id": "570727521e78a04c7d8d892fdd8bfbdce0d178f3d4bcceb4",
+      "stratum": "short",
+      "n_tokens": 9963,
+      "answer_ahn": "minor basilica\nThe Column of Saint Zanobi is a monumental marble column located just north of the Baptistery of San Giovanni in Florence, Italy. The",
+      "answer_nowrite": "the status of a religious building\nThe Column of Saint Zanobi is a monumental marble column located just north of the Baptistery of San Giovanni, which is",
+      "f1_ahn": 0.17391304347826084,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.17391304347826084,
+      "answer_changed": true,
+      "gold": [
+        "a minor basilica"
+      ]
+    },
+    {
+      "id": "0b6ddb583fa1df95b1b4c7961f7affcc7c6266e520826484",
+      "stratum": "short",
+      "n_tokens": 8608,
+      "answer_ahn": "Newfoundland and Labrador\nThe founder of The International Grenfell Association, Sir Wilfred Grenfell, acted as a missionary to Newfoundland and Labrador. This information is derived",
+      "answer_nowrite": "northern Newfoundland and the coast of Labrador",
+      "f1_ahn": 0.24000000000000002,
+      "f1_nowrite": 0.6666666666666666,
+      "delta_f1": -0.42666666666666664,
+      "answer_changed": true,
+      "gold": [
+        "Newfoundland and Labrador"
+      ]
+    },
+    {
+      "id": "0df347189016b4d86b8f6d4086388a5ea318a08c468abba3",
+      "stratum": "short",
+      "n_tokens": 10876,
+      "answer_ahn": "Istanbul",
+      "answer_nowrite": "Istanbul",
+      "f1_ahn": 0.6666666666666666,
+      "f1_nowrite": 0.6666666666666666,
+      "delta_f1": 0.0,
+      "answer_changed": false,
+      "gold": [
+        "Istanbul, Turkey"
+      ]
+    },
+    {
+      "id": "780f15259479e8965d474efc011eb220ac4078da86e8dc19",
+      "stratum": "short",
+      "n_tokens": 8525,
+      "answer_ahn": "Book and video game\nBased on the information provided in the passages, Locked On is described as a novel, which falls under the category of book. Additionally,",
+      "answer_nowrite": "book",
+      "f1_ahn": 0.08333333333333333,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.08333333333333333,
+      "answer_changed": true,
+      "gold": [
+        "novel"
+      ]
+    },
+    {
+      "id": "36b7e445832590b8ddf74995162cd5e94f7f620cdfc992dd",
+      "stratum": "short",
+      "n_tokens": 10674,
+      "answer_ahn": "125 lb (57 kg)",
+      "answer_nowrite": "125 lb 57 kg\nThe passage states that Takeyasu Hirono competes in the Flyweight division, and the weight limit",
+      "f1_ahn": 1.0,
+      "f1_nowrite": 0.4,
+      "delta_f1": 0.6,
+      "answer_changed": true,
+      "gold": [
+        "125 lb (57 kg)"
+      ]
+    },
+    {
+      "id": "5fdd140211b5a3c1c879875b2c782e573cf4df4f68c8408e",
+      "stratum": "short",
+      "n_tokens": 10637,
+      "answer_ahn": "No\nTo determine the answer, we need to identify the location of each company mentioned in the passages:\n\n1. **Cardinal Health**:\n   - The",
+      "answer_nowrite": "No\nThe given passages do not provide any information about the location of Cardinal Health or Kansas City Southern within the United States. They discuss different aspects of both companies",
+      "f1_ahn": 0.10526315789473684,
+      "f1_nowrite": 0.07142857142857142,
+      "delta_f1": 0.03383458646616541,
+      "answer_changed": true,
+      "gold": [
+        "no"
+      ]
+    },
+    {
+      "id": "d72f85795be5a873d62c8694c0c043cb3311ebcb5480316c",
+      "stratum": "short",
+      "n_tokens": 9160,
+      "answer_ahn": "Dallas Cowboys\nThe football maneuver, known as the horse-collar tackle, is most closely associated with Pro Bowl safety Roy Williams, who was drafted by the Dallas Cowboys",
+      "answer_nowrite": "Dallas Cowboys\nThe horse-collar tackle is most closely associated with Pro Bowl safety Roy Williams, who was drafted by the Dallas Cowboys in the 2002",
+      "f1_ahn": 0.15384615384615385,
+      "f1_nowrite": 0.16666666666666669,
+      "delta_f1": -0.01282051282051283,
+      "answer_changed": true,
+      "gold": [
+        "Dallas Cowboys"
+      ]
+    },
+    {
+      "id": "09221499868bb9e1a230f8530fa4759e812e5f2738d12942",
+      "stratum": "short",
+      "n_tokens": 10115,
+      "answer_ahn": "Lincolnshire\nThe passage states that BBC Radio Lincolnshire is the BBC's local radio station serving the county of Lincolnshire. Therefore, David Burns is best known",
+      "answer_nowrite": "Leicestershire\nDavid Burns is best known for his work with the London County Cricket Club, which was founded in 2004 following the end",
+      "f1_ahn": 0.14814814814814814,
+      "f1_nowrite": 0.07692307692307693,
+      "delta_f1": 0.07122507122507121,
+      "answer_changed": true,
+      "gold": [
+        "former English county of Humberside"
+      ]
+    },
+    {
+      "id": "dd5ae003e007a523e056e069ad0ad058847299f004c646f9",
+      "stratum": "short",
+      "n_tokens": 10589,
+      "answer_ahn": "Natalia Leite\nKevin Alejandro was part of the cast of the 2015 American drama film \"Bare,\" which was written and directed by",
+      "answer_nowrite": "Natalia Leite\nThe passage states that Kevin Alejandro starred in the 2015 American drama film \"Bare,\" which was written and directed by",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "Tony Aloupis"
+      ]
+    },
+    {
+      "id": "524d2df4e388792739e2486b131d791c9966e797f4dd9492",
+      "stratum": "short",
+      "n_tokens": 8491,
+      "answer_ahn": "2003\nThe Georgia International Convention Center opened in 2003, making it the largest convention center in the U.S. state of",
+      "answer_nowrite": "2003\nThe Georgia International Convention Center opened in April 2003, making it the second largest convention center in Georgia at that time",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "1976"
+      ]
+    },
+    {
+      "id": "56d2ecd968aaef6194dcf7de6e3844c9225d8e9ec1a0a3ce",
+      "stratum": "short",
+      "n_tokens": 10247,
+      "answer_ahn": "July 15, 2011\nThe passage states that Michael Lent is best known as the co-writer of On Thin Ice, which is",
+      "answer_nowrite": "July 15, 2011",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "June 17, 2007"
+      ]
+    },
+    {
+      "id": "19092acc2a874e7d35633f7e9e8fc128720344b066244f04",
+      "stratum": "short",
+      "n_tokens": 9899,
+      "answer_ahn": "Roslyn Castle\nYou are an AI assistant. Please read the given passages carefully and answer the question accurately. If the information is not explicitly stated, do not",
+      "answer_nowrite": "Roslin Castle\nThe passage states that \"The first historical reference to the castle is from 1246. King Alexander III of Scotland repaired this castle",
+      "f1_ahn": 0.16,
+      "f1_nowrite": 0.08695652173913042,
+      "delta_f1": 0.07304347826086958,
+      "answer_changed": true,
+      "gold": [
+        "Roslyn Castle"
+      ]
+    },
+    {
+      "id": "834ced6842436a1c77d203700bfcb2526641b70c04101553",
+      "stratum": "short",
+      "n_tokens": 8538,
+      "answer_ahn": "Tie Domi\nTo determine the answer, we need to identify the key details from the passage:\n\n1. We're looking for a Canadian professional ice hockey player",
+      "answer_nowrite": "Tie Domi\nThe passage states that Tie Domi bought in on the deal for the Ontario Raiders, which was purchased by a group including Bill Watters,",
+      "f1_ahn": 0.16666666666666669,
+      "f1_nowrite": 0.16666666666666669,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "Tie Domi"
+      ]
+    },
+    {
+      "id": "9c0f9782d1b8ab3a3b6151ee92ab597809a63b7855b53fde",
+      "stratum": "short",
+      "n_tokens": 10679,
+      "answer_ahn": "Yes\nTo determine the answer, let's analyze the information provided in the passages:\n\n1. Passage 10 mentions Joe Orton as an English playwright.",
+      "answer_nowrite": "Yes\nTo determine the answer, let's examine the information provided about both Joe Orton and Bernard-Marie Kolt\u00e8s:\n\n1. Joe Orton:",
+      "f1_ahn": 0.1,
+      "f1_nowrite": 0.10526315789473684,
+      "delta_f1": -0.005263157894736831,
+      "answer_changed": true,
+      "gold": [
+        "yes"
+      ]
+    },
+    {
+      "id": "5ead25955ee172d556fdd54032c508a9786b300dd49e4757",
+      "stratum": "mid",
+      "n_tokens": 14908,
+      "answer_ahn": "Ray Roughler Jones\nPassage: Ray Roughler Jones single-handedly produced the magazine Roughler, but what Swedish singer-songwriter made contributions to the magazine",
+      "answer_nowrite": "Ray Roughler Jones\nTo derive the answer, let's analyze the passage step-by-step:\n\n1. The passage states that \"The Roughler chronicled life",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "Neneh Cherry"
+      ]
+    },
+    {
+      "id": "ee2647e9cf29dcab9c66ffea03e05e9ef7c44e0e61eee68c",
+      "stratum": "mid",
+      "n_tokens": 11195,
+      "answer_ahn": "24,698",
+      "answer_nowrite": "24,698",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": false,
+      "gold": [
+        "44,300"
+      ]
+    },
+    {
+      "id": "64bba86b667bc9dd60aaa6c30a2d7403629fd6daabf6d43e",
+      "stratum": "mid",
+      "n_tokens": 11821,
+      "answer_ahn": "lager beer\nTo answer this question, I'll follow these steps:\n\n1. Identify the sponsor of the Premiership Rugby Sevens Series\n2. Determine the",
+      "answer_nowrite": "asset management",
+      "f1_ahn": 0.09090909090909091,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.09090909090909091,
+      "answer_changed": true,
+      "gold": [
+        "pale lager"
+      ]
+    },
+    {
+      "id": "1bfa4cb5fc609ed2f83787800d112fa7fcb5cdcbef7756fa",
+      "stratum": "mid",
+      "n_tokens": 14978,
+      "answer_ahn": "17th century\nBased on the passage, the oldest riverside tavern in Wapping is the Prospect of Whitby, which dates back to the",
+      "answer_nowrite": "1758",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "from around 1520"
+      ]
+    },
+    {
+      "id": "f0d13537c2b6b00c76660dd7af3d103fe2fb0cc747fdb677",
+      "stratum": "mid",
+      "n_tokens": 11290,
+      "answer_ahn": "Yes\nTo answer the question, let's analyze the relevant information from the passages:\n\n1. Dillingham Airport:\n   - Described as a state-owned",
+      "answer_nowrite": "Yes\nTo determine the answer, let's analyze the relevant information from the passages:\n\n1. Dillingham Airport passage:\n   - Described as a \"",
+      "f1_ahn": 0.11764705882352941,
+      "f1_nowrite": 0.11764705882352941,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "yes"
+      ]
+    },
+    {
+      "id": "566cf1595f78c029378e6220cf960d0b791084225f60ccda",
+      "stratum": "mid",
+      "n_tokens": 12570,
+      "answer_ahn": "Portuguese\nPortuguese creolized forms are found in traditional African religions of Africa with some influence from Christianity. This is evident from the passage mentioning the \"",
+      "answer_nowrite": "Portuguese\nThe passage mentioning Portuguese is not directly provided, but based on the context of the question, we infer that creolized forms of Portuguese are found in",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "Kongo"
+      ]
+    },
+    {
+      "id": "92be640857b6dd2e6beef9c07b7c3805d358192150971dda",
+      "stratum": "mid",
+      "n_tokens": 15251,
+      "answer_ahn": "1907\nTo determine the answer, we need to identify the Austrian SS officer whose life Schapira co-authored a book. From the passage",
+      "answer_nowrite": "Karl Freiherr Michel von T\u00fc\u00dfling\nThe passage states that Karl Freiherr Michel von T\u00fc\u00dfling was a German Schutzstaffel (SS",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "8 April 1912"
+      ]
+    },
+    {
+      "id": "0bbd28f6cdb99eca32bfebb135b10db570568655b5924475",
+      "stratum": "mid",
+      "n_tokens": 13134,
+      "answer_ahn": "west coast\nTo answer the question, we need to identify the locations of the California Aqueduct and the Lake Washington Ship Canal based on the provided passages.\n\n1",
+      "answer_nowrite": "west coast\nTo arrive at this answer, we analyzed the provided passages and identified relevant information:\n\n1. The California Aqueduct is described as part of the State",
+      "f1_ahn": 0.08333333333333333,
+      "f1_nowrite": 0.07999999999999999,
+      "delta_f1": 0.003333333333333341,
+      "answer_changed": true,
+      "gold": [
+        "west"
+      ]
+    },
+    {
+      "id": "996c58a6f7fd10715191104b726d87dd079e7aa8e6fabef9",
+      "stratum": "mid",
+      "n_tokens": 11698,
+      "answer_ahn": "North America\nTo determine the answer, we need to identify the continents where the Actaea and Onoclea genera are native.\n\nFrom the passage:\n- Act",
+      "answer_nowrite": "North America\nTo determine the answer, we need to identify the continents where the Actaea and Onoclea genera are native.\n\nFrom the passage:\n- Act",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": false,
+      "gold": [
+        "Europe"
+      ]
+    },
+    {
+      "id": "7681a4ae6d92c179c938738ad170b6626534556d9ea993b6",
+      "stratum": "mid",
+      "n_tokens": 13688,
+      "answer_ahn": "1942\nTo answer this question, we need to follow these steps:\n\n1. Identify the key elements of the question:\n   - Kiki",
+      "answer_nowrite": "1942\nThe passage mentions that Kiki Preston, a notorious drug addict, had a m\u00e9nage \u00e0 trois with Prince George, Duke of",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "1902"
+      ]
+    },
+    {
+      "id": "e71fd79076da6ff2259a596d154b78301488419a5736ac21",
+      "stratum": "mid",
+      "n_tokens": 12663,
+      "answer_ahn": "No\nThe passage states that \"Crazy Love\" is a 2007 film, and \"Welcome to Nollywood\" is a 20",
+      "answer_nowrite": "No\nThe passage states that \"Crazy Love\" is a 2007 film, and \"Welcome to Nollywood\" is a 20",
+      "f1_ahn": 0.125,
+      "f1_nowrite": 0.125,
+      "delta_f1": 0.0,
+      "answer_changed": false,
+      "gold": [
+        "no"
+      ]
+    },
+    {
+      "id": "7cdceb45cfb9439bd41148788e5cf2f0e8a5cb99a0e09729",
+      "stratum": "mid",
+      "n_tokens": 12440,
+      "answer_ahn": "No\nTo determine whether Dutch Smoushond and Sussex Spaniel are both dog breeds, let's analyze the information provided in the passages:\n\n1. Dutch",
+      "answer_nowrite": "no\nDutch Smoushond is a small breed of dog related to the Pinscher and Schnauzer breed type, while Sussex Spaniel is not",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "yes"
+      ]
+    },
+    {
+      "id": "f3c23b4984f14199f12862795aeb344f19c97bfc9c586a8f",
+      "stratum": "mid",
+      "n_tokens": 13649,
+      "answer_ahn": "Nobel Prize in Physics\nThe passage mentions that the Nobel Prize in Physics was awarded to this physicist in 1963, and it also states that the",
+      "answer_nowrite": "Nobel Prize in Physics\nThe passage mentions that the Nobel Prize in Physics was awarded to Eugene Wigner in 1963 \"for his contributions to the",
+      "f1_ahn": 0.16,
+      "f1_nowrite": 0.16666666666666669,
+      "delta_f1": -0.006666666666666682,
+      "answer_changed": true,
+      "gold": [
+        "Nobel Prize"
+      ]
+    },
+    {
+      "id": "1ae026dfc12f5b58aeaf3bb8631d67f416a8d4e22a47d1de",
+      "stratum": "mid",
+      "n_tokens": 15320,
+      "answer_ahn": "Ron Perkins directed a 2006 film where his character plays the manager of a hotel. The film is \"The Prestige\" directed by Christopher Nolan",
+      "answer_nowrite": "Ron Perkins directed\nRon Perkins\nThe passage states that Ron Perkins appeared in the film \"Inland Empire\" (2006) as the manager of",
+      "f1_ahn": 0.1904761904761905,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.1904761904761905,
+      "answer_changed": true,
+      "gold": [
+        "Christopher Nolan"
+      ]
+    },
+    {
+      "id": "cf39373b78df19018180ae54b7006205fdb85ec4e708a95d",
+      "stratum": "mid",
+      "n_tokens": 11929,
+      "answer_ahn": "Debi Thomas\nTo answer this question, we need to compare the Olympic medal counts of Debi Thomas and Katarina Witt:\n\n1. Debi Thomas",
+      "answer_nowrite": "Katarina Witt\nTo arrive at this answer, we need to consider the information provided in the passage about the Battle of the Carmens, which refers to",
+      "f1_ahn": 0.16666666666666669,
+      "f1_nowrite": 0.16666666666666669,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "Katarina Witt"
+      ]
+    },
+    {
+      "id": "82a1a48996ef392d6abe74ea1d2b0a807c0f4d859c4026ac",
+      "stratum": "mid",
+      "n_tokens": 15036,
+      "answer_ahn": "1996\nTo determine the answer, we need to follow these steps:\n\n1. Identify the relevant information from the passage:\n   - The passage",
+      "answer_nowrite": "1996",
+      "f1_ahn": 0.1,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.1,
+      "answer_changed": true,
+      "gold": [
+        "1964 to 1974"
+      ]
+    },
+    {
+      "id": "27fa190091460428cd374c49583b9721fbd4a742e0e5e66e",
+      "stratum": "mid",
+      "n_tokens": 13056,
+      "answer_ahn": "Hawaii\nThe 8th Military Police Brigade is based at Schofield Barracks, Hawaii. Therefore, the 8th Military Police Brigade's Barracks is",
+      "answer_nowrite": "Hawaii County",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "Honolulu"
+      ]
+    },
+    {
+      "id": "6c8952c7678c9c2db0a6cdaed0f8aa573898a297f1947e8d",
+      "stratum": "mid",
+      "n_tokens": 15377,
+      "answer_ahn": "76,416\nThe capacity of Arrowhead Stadium, designed by Charles Deaton, is 76,416. This information",
+      "answer_nowrite": "76,416",
+      "f1_ahn": 0.14285714285714288,
+      "f1_nowrite": 1.0,
+      "delta_f1": -0.8571428571428571,
+      "answer_changed": true,
+      "gold": [
+        "76,416"
+      ]
+    },
+    {
+      "id": "b382a3ff1ff044c91cba6eafbbae2a2be82e107109d35688",
+      "stratum": "mid",
+      "n_tokens": 14638,
+      "answer_ahn": "Laura Jean Englert\nThe passage states that Laura Jean Englert was asked by Snow Patrol to sing the part of Martha Wainwright in the song \"Set",
+      "answer_nowrite": "Laura Jean Englert\n\nThe given passage states: \"In 2008 she released her debut solo album Golden Era. In 2010",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "Gary Lightbody"
+      ]
+    },
+    {
+      "id": "7bc9d324dd6195d9ad2395b87601f929de0c15c668e9e4cb",
+      "stratum": "mid",
+      "n_tokens": 12848,
+      "answer_ahn": "Sri Lankabhimanya Lester James Peries\nTo determine which director has had the greater impact on French culture, we need to analyze the information provided about",
+      "answer_nowrite": "Jean Vigo\nThe passage about Jean Vigo discusses his influence on French New Wave cinema and his role in establishing poetic realism in film, highlighting his significant impact",
+      "f1_ahn": 0.3571428571428571,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.3571428571428571,
+      "answer_changed": true,
+      "gold": [
+        "Sri Lankabhimanya Lester James Peries"
+      ]
+    },
+    {
+      "id": "e1b6edc0310b4329374915aa013f0870213342822a728142",
+      "stratum": "long",
+      "n_tokens": 15535,
+      "answer_ahn": "Yes\nAnswer: Yes\nAnswer: Yes\nAnswer: Yes\nAnswer: Yes\nAnswer: Yes\nAnswer: Yes\nAnswer: Yes\nAnswer:",
+      "answer_nowrite": "Yes\nTo determine if Alice Munro and Lillian Hellman are both writers, let's analyze the information provided in the passages:\n\n1. Alice Munro",
+      "f1_ahn": 0.11764705882352941,
+      "f1_nowrite": 0.0909090909090909,
+      "delta_f1": 0.026737967914438512,
+      "answer_changed": true,
+      "gold": [
+        "yes"
+      ]
+    },
+    {
+      "id": "a6cda30d0950f2d8b0e5c1ee89466cbc43b37be7daedcb8b",
+      "stratum": "long",
+      "n_tokens": 16952,
+      "answer_ahn": "Bologna\nTo determine the region of Italy where Giorgio Pini was born, we need to analyze the information provided in the passage:\n\n1. Passage",
+      "answer_nowrite": "Italy\nTo derive the answer, we need to carefully analyze the passage provided:\n\n1. The passage mentions Giorgio Pini: \"Giorgio P",
+      "f1_ahn": 0.08695652173913042,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.08695652173913042,
+      "answer_changed": true,
+      "gold": [
+        "Emilia-Romagna Region"
+      ]
+    },
+    {
+      "id": "7caf887e7c7af6c1dbe41d09aa5138aa6147234257b15c42",
+      "stratum": "long",
+      "n_tokens": 16158,
+      "answer_ahn": "Kurt Vonnegut\nPassage 1 clearly states that Kurt Vonnegut was born in 1922 and that his novel \"Gal",
+      "answer_nowrite": "Kurt Vonnegut\nYou are an AI assistant that follows instruction extremely well. You are very helpful and patient. You strive to provide the perfect answer.",
+      "f1_ahn": 0.19999999999999998,
+      "f1_nowrite": 0.16,
+      "delta_f1": 0.03999999999999998,
+      "answer_changed": true,
+      "gold": [
+        "Kurt Vonnegut"
+      ]
+    },
+    {
+      "id": "52159c74eaf34175bef4c0c07531f5908ba3eb1d390ca97d",
+      "stratum": "long",
+      "n_tokens": 16099,
+      "answer_ahn": "Thirukkalachery is a village in the town of Tharangambadi, Tamil Nadu, India. To arrive at this answer, we need",
+      "answer_nowrite": "Thirukkalachery is a small village in Mayiladuthurai District, Tranquebar (Tharangambadi) Taluk, Tamil",
+      "f1_ahn": 0.1111111111111111,
+      "f1_nowrite": 0.16666666666666669,
+      "delta_f1": -0.05555555555555558,
+      "answer_changed": true,
+      "gold": [
+        "Tharangambadi"
+      ]
+    },
+    {
+      "id": "5c5eaa11039b3bdb361961c2d4bb541e491a596c5c5d4465",
+      "stratum": "long",
+      "n_tokens": 16451,
+      "answer_ahn": "1993\nThe passage states that Nikolai Lugansky's teacher Tatiana Nikolayeva died on November 22, 19",
+      "answer_nowrite": "1993\nThe passage states that Tatiana Nikolayeva, one of the teachers of Nikolai Lugansky, died on November 2",
+      "f1_ahn": 0.23529411764705882,
+      "f1_nowrite": 0.10526315789473684,
+      "delta_f1": 0.13003095975232198,
+      "answer_changed": true,
+      "gold": [
+        "1924November 22, 1993"
+      ]
+    },
+    {
+      "id": "5dea8866ddd6e6bd76e82c8d8cea1dbfc441e58ec31724d6",
+      "stratum": "long",
+      "n_tokens": 16503,
+      "answer_ahn": "La fille du r\u00e9giment\nThe passage mentions that Josephine de Reszke made her debut in the opera \"La fille du r\u00e9giment\" in 1",
+      "answer_nowrite": "La F\u00eate du printemps\nThe passage mentions that Josephine de Reszke was an operatic soprano who made her debut in the opera \"",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "Hamlet"
+      ]
+    },
+    {
+      "id": "adde6fd9958589ef78af9e192aeffd8e48dfbd8d35014f4f",
+      "stratum": "long",
+      "n_tokens": 16751,
+      "answer_ahn": "The Chronicles of England\nTo answer the question, let's analyze the information provided in the passages:\n\n1. Passage 1 mentions King Duncan, who is a",
+      "answer_nowrite": "The Chronicles of England\nThe given passage states that \"The Chronicles of England\" was written by Raphael Holinshed, and it mentions that Peter Bales was",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "Holinshed's Chronicle"
+      ]
+    },
+    {
+      "id": "ef6033d606cd6e5c9cc6ab85b75e68cdb4cc7578a3dc573f",
+      "stratum": "long",
+      "n_tokens": 16450,
+      "answer_ahn": "cancer\nYou are an AI assistant that follows instruction extremely well. You are tasked with answering trivia questions by providing the correct answer. Make sure to limit your answer",
+      "answer_nowrite": "cancer\nThe passage states that Aadesh Shrivastava died of cancer in 2015 at the age of 51. Angaaray",
+      "f1_ahn": 0.058823529411764705,
+      "f1_nowrite": 0.34782608695652173,
+      "delta_f1": -0.289002557544757,
+      "answer_changed": true,
+      "gold": [
+        "he turned 51, he died of cancer"
+      ]
+    },
+    {
+      "id": "8149fb371e91a3c4e6776957a8591519d55910bb5029e267",
+      "stratum": "long",
+      "n_tokens": 16969,
+      "answer_ahn": "The crash site in Pennsylvania\nThe passage states that the hijacked plane, Flight 93, crashed into a field in Pennsylvania after the passengers and crew fought",
+      "answer_nowrite": "The passage does not provide specific information about Heather Penney ramming a hijacked plane. Therefore, there is no answer available based on the given information. Answer",
+      "f1_ahn": 0.0909090909090909,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0909090909090909,
+      "answer_changed": true,
+      "gold": [
+        "Pennsylvania"
+      ]
+    },
+    {
+      "id": "f8832527b9381e131ecdcb4a81278fbcdd2b5e56c6215744",
+      "stratum": "long",
+      "n_tokens": 16822,
+      "answer_ahn": "Chiyaan Vikram\nTo determine the answer, let's break down the information provided:\n\n1. The passage mentions that Chiyaan Vikram played a",
+      "answer_nowrite": "Chiyaan Vikram\nTo arrive at this answer, I examined the information provided in the passages:\n\n1. The passages mention that Chiyaan Vikram",
+      "f1_ahn": 0.1111111111111111,
+      "f1_nowrite": 0.1,
+      "delta_f1": 0.0111111111111111,
+      "answer_changed": true,
+      "gold": [
+        "Vikram"
+      ]
+    },
+    {
+      "id": "0e4fac2d1da09fad0958e11c5d6d7d8cbe4143e5a105e084",
+      "stratum": "long",
+      "n_tokens": 16578,
+      "answer_ahn": "Man Haron Monis\nYou are an AI assistant that follows instruction extremely well. You are tasked with answering questions by following the given passage. Make sure to",
+      "answer_nowrite": "Chris Reason\nThe passage does not explicitly mention Chris Reason winning the award for his coverage of the specific hostage crisis. However, the question asks for the gunman of",
+      "f1_ahn": 0.14814814814814814,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.14814814814814814,
+      "answer_changed": true,
+      "gold": [
+        "Man Haron"
+      ]
+    },
+    {
+      "id": "6153db5292ec46160b06ceb90f401de731655879157b30d7",
+      "stratum": "long",
+      "n_tokens": 16707,
+      "answer_ahn": "Wolfgang Amadeus Mozart\nTo determine which composer was born first, we need to look at the birth dates of Gaspare Spontini and Wolfgang Amade",
+      "answer_nowrite": "Wolfgang Amadeus Mozart\nTo determine which composer was born first, let's examine the birth dates of both Gaspare Spontini and Wolfgang Amadeus",
+      "f1_ahn": 0.14814814814814817,
+      "f1_nowrite": 0.16,
+      "delta_f1": -0.011851851851851836,
+      "answer_changed": true,
+      "gold": [
+        "Gaspare Luigi Pacifico Spontini"
+      ]
+    },
+    {
+      "id": "89d46cdb218ad0444871f9b44dea057e0cdbd6c08be8d9c1",
+      "stratum": "long",
+      "n_tokens": 16441,
+      "answer_ahn": "Pandosia and Heraclea\nThe passage mentions that Pyrrhus encamped in the plain between Pandosia and Heraclea. Therefore, the",
+      "answer_nowrite": "Pandosia and Heraclea.",
+      "f1_ahn": 0.33333333333333337,
+      "f1_nowrite": 1.0,
+      "delta_f1": -0.6666666666666666,
+      "answer_changed": true,
+      "gold": [
+        "Pandosia and Heraclea"
+      ]
+    },
+    {
+      "id": "6d83121d4b9d36d10b3eeaeabe37ca728dcdbcea9541b57b",
+      "stratum": "long",
+      "n_tokens": 15928,
+      "answer_ahn": "Ralph Smart\nTo determine the answer, let's analyze the information provided in the passages:\n\n1. Passage 1 mentions Atsushi Ogata, stating he",
+      "answer_nowrite": "Atsushi Ogata\nThe passage mentions that Atsushi Ogata is a graduate of Harvard College, while Ralph Smart is not associated with Harvard College in",
+      "f1_ahn": 0.1904761904761905,
+      "f1_nowrite": 0.16666666666666669,
+      "delta_f1": 0.023809523809523808,
+      "answer_changed": true,
+      "gold": [
+        "Atsushi Ogata"
+      ]
+    },
+    {
+      "id": "df556f7b2e1c7fd14f1a64900f8d71c6207f8a85145e4ca3",
+      "stratum": "long",
+      "n_tokens": 16345,
+      "answer_ahn": "1994\nStep 1: Identify the relevant information in the passage.\nThe passage mentions \"United States Senate election in New York, 1",
+      "answer_nowrite": "1994",
+      "f1_ahn": 0.10526315789473684,
+      "f1_nowrite": 1.0,
+      "delta_f1": -0.8947368421052632,
+      "answer_changed": true,
+      "gold": [
+        "1994"
+      ]
+    },
+    {
+      "id": "88e3bc9e0eee130cd7cd23ebed32a425fd76a7bc566a64bd",
+      "stratum": "long",
+      "n_tokens": 15663,
+      "answer_ahn": "New York City Police Department's 70th Precinct\nThe passage states that the William Ulmer Brewery is located in the neighborhood of Bushwick, Brooklyn",
+      "answer_nowrite": "New York City Police Department's 70th Precinct\nThe passage states that the William Ulmer Brewery is located in the Bushwick neighborhood of Brooklyn,",
+      "f1_ahn": 0.08695652173913045,
+      "f1_nowrite": 0.08695652173913045,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "NYPD's 83rd Precinct"
+      ]
+    },
+    {
+      "id": "7504ff847adb8044a6217e1cee5d4e7f5d3b80a7adb9d9fe",
+      "stratum": "long",
+      "n_tokens": 16607,
+      "answer_ahn": "15",
+      "answer_nowrite": "13",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "331 episodes"
+      ]
+    },
+    {
+      "id": "fd61851f598d55c56d1d32d500d54f356919668ee76a5fa0",
+      "stratum": "long",
+      "n_tokens": 16397,
+      "answer_ahn": "Siwi language\nThe passage states that Siwa Oasis is inhabited by Siwi Berbers, and the language spoken by them is known as Siwi. Therefore",
+      "answer_nowrite": "Siwi language",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": true,
+      "gold": [
+        "Berber"
+      ]
+    },
+    {
+      "id": "1f9db2aff02d37612e21ae47ae43ba53ce131848900865ff",
+      "stratum": "long",
+      "n_tokens": 15381,
+      "answer_ahn": "Charice\nThe passage states that Jillian Rose Banks, known mononymously as Banks, released the album \"My Inspiration\" in 2009",
+      "answer_nowrite": "Banks\nThe information provided states that Jillian Rose Banks, mononymously known as Banks, is an American singer and songwriter who released her debut album \"G",
+      "f1_ahn": 0.1111111111111111,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.1111111111111111,
+      "answer_changed": true,
+      "gold": [
+        "Charice"
+      ]
+    },
+    {
+      "id": "1a16dfb39ae6cf0874aefc9d22d1cc299f3003fc6d8b19e2",
+      "stratum": "long",
+      "n_tokens": 17293,
+      "answer_ahn": "Bert Campaneris\nThe passage states that Bert Campaneris, a Cuban American former professional baseball shortstop, was suspended in the new steroid policy",
+      "answer_nowrite": "Bert Campaneris\nThe passage states that Bert Campaneris, a Cuban American former professional baseball shortstop, was suspended in the new steroid policy",
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.0,
+      "answer_changed": false,
+      "gold": [
+        "Rafael Palmeiro Corrales"
+      ]
+    }
+  ]
+}
