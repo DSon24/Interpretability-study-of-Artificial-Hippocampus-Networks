@@ -186,6 +186,7 @@ merged_ckpt/
 # ---- AHN interpretability study (Kim & Nguyen) ----
 merged_ckpt/
 *.pt
+*.ckpt
 artifacts/deprecated/
 results/**/*.png
 !results/pilot_2026-08-18/*.png

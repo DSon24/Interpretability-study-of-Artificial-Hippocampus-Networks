@@ -55,11 +55,12 @@ Sequencing follows Gautam's instruction after the last meeting:
 | Hooks fire on the AHN module, NOWRITE zeroes the capture | **done** | `notebooks/pilot/` |
 | Hook output verified to be the memory's residual-stream contribution | **done** — Gate A passes: `resid(AHN) − resid(NOWRITE) = o_proj(ahn_raw)` | `results/run_3b_gdn/01_instrumentation_gates.json` |
 | Reproduce the published NOWRITE result (38–42% changed answers) | **done, with a metric correction** — 33.3% changed (first-line), ΔF1 **+6.1 pts** | `results/run_3b_gdn/03_nowrite_reproduction.json` |
-| J-lens fitted for Qwen2.5-3B | **done, not validated** — 500 contexts, layers 9/18/27, **1.92 GPU-h**; Table 3 checks 2 and 3 fail | `results/run_3b_gdn/jlens_qwen25_3b.pt` |
+| J-lens fitted for Qwen2.5-3B | **done, map converged** — 500 contexts, layers 9/18/27, 1.92 GPU-h; **Table 3 check 4 (map stability) now passes** (top-10 overlap 0.91/0.87/0.89 across a disjoint second corpus); checks 2 and 3 still fail | `results/run_3b_gdn/02_table3_jlens_validation.json` |
 | NIAH retention with pre-eviction / NOWRITE controls | **done — control battery fails.** C4 passes, **C1, C2, C3 all fail**; readout is at chance | `results/run_3b_gdn/04_table4_controls.json` |
 | Retention curves (Table 6) | **run, not usable** — exponential fit inadequate at all three layers (R² < 0); nonparametric half-distance ≈ 11 tokens everywhere | `results/run_3b_gdn/05_table6_retention_summary.json` |
 | RQ1 on LongBench-E HotpotQA (Table 5) | **done** — pooled first-line ΔF1 +6.11 pts, but **95% CI [−1.85, +14.42] spans zero** | `results/run_3b_gdn/05_table5_rq1.json` |
-| 3 cells at 3B → retention curves | **blocked** — GPU_PLAN says do not proceed past a C1/C4 failure until GDN's instrument is fixed | `configs/run_3b_dn.json`, `run_3b_m2.json` (unrun) |
+| RQ3 join (`04b`) | **built and run by Sơn** — no significant correlation between memory rank and ΔF1 at any of layers 9/18/27, before or after Holm correction; **result is provisional**, inherits the same C1 chance-level readout | `results/run_3b_gdn/04b_joined_retention_task.json` |
+| 3 cells at 3B → retention curves | **blocked** — GPU_PLAN says do not proceed past a C1 failure until GDN's instrument is fixed; map-stability passing narrows but does not resolve the diagnosis | `configs/run_3b_dn.json`, `run_3b_m2.json` (unrun) |
 | 7B checkpoints, RQ3 correlation | not started (correct) | |
 
 ### Progress log
@@ -97,6 +98,19 @@ fields, and trimmed the eviction-distance sweep from 240 to 210 configs. Ran
 do not), the retention curves don't support an exponential fit at any of the three layers,
 and a bootstrap on RQ1's first-line ΔF1 shows the +6.11-point effect does not survive its
 own confidence interval at n=60. Detail below.
+
+**20 Aug 2026 (later) — Hannah + Sơn.** Ran Table 3 check 4 (map stability): fit a second
+J-lens on a disjoint 500-context corpus, compared top-10 overlap against the first map.
+**Passes at all three layers** (0.91 / 0.87 / 0.89, all ≥ the 0.80 bar). This rules out an
+undersampled/unconverged fit as the explanation for the C1 control failure — the lens is
+stable, so whatever is producing the chance-level readout on the full NIAH sweep is not a
+fitting artifact. Separately, Sơn built and ran `04b` (the RQ3 join, `notebooks/0.4b.ipynb`):
+joined the 60 LongBench-E examples from notebook 03 to a memory-readout pass, correlated
+gold-answer-token rank against ΔF1. No significant correlation at any layer (Spearman
+ρ = +0.257 / −0.100 / +0.020 at layers 9/18/27, none surviving Holm correction across the
+three layers). A 1000-context refit of the J-lens was also kicked off, in progress as of
+this writing, as a further robustness check beyond the 500-context stability pass. Detail
+below.
 
 ## Findings from the 19–20 Aug run
 
@@ -214,8 +228,52 @@ this cohort size.
 
 **4. Per Gautam's own instruction, this blocks the next two steps.** His sequencing said
 scale to three cells only "if that works." It didn't. `configs/run_3b_dn.json` and
-`run_3b_m2.json` exist but are correctly unrun, and the RQ3 join (`04b`) is still unbuilt.
-Both stay paused until the C1/C3 disagreement above is resolved one way or the other.
+`run_3b_m2.json` exist but are correctly unrun, pending the diagnosis below.
+
+## Findings from the map-stability check and the RQ3 join
+
+**1. Map stability passes — undersampling is ruled out.** A second J-lens fitted on a
+disjoint 500-context corpus agrees with the first at top-10 overlap 0.91 / 0.87 / 0.89
+across layers 9/18/27, all above the 0.80 bar
+(`results/run_3b_gdn/02_table3_jlens_validation.json`). This was the cheapest of the three
+candidate explanations for the C1/isolated-fact disagreement, and it's now closed: the lens
+converged. A weak or chance-level signal downstream is therefore **not a fitting artifact**
+— it's either a genuine property of what AHN retains, or a mismatch between the NIAH
+sweep's construction and the known-fact test's, per the two remaining candidates below.
+Table 3 overall still reads `TABLE_3_PASSED: false` (checks 2 and 3 still fail on their
+original criteria), which is expected and unrelated to this result.
+
+**2. The RQ3 join runs, and finds no correlation — but the result is provisional.** `04b`
+(`notebooks/0.4b.ipynb`) joins the 60 LongBench-E HotpotQA examples from notebook 03 to a
+fresh memory readout: gold-answer first-token rank at layers 9/18/27, correlated against
+`delta_f1` via Spearman.
+
+| layer | ρ | raw p | Holm p | 95% CI |
+|---|---|---|---|---|
+| 9 | +0.257 | 0.047 | 0.141 | [−0.015, 0.487] |
+| 18 | −0.100 | 0.448 | 0.897 | crosses zero |
+| 27 | +0.020 | 0.880 | 0.897 | crosses zero |
+
+None survive correction; the layer-9 near-hit doesn't survive its own bootstrap CI either.
+Robust to metric choice — repeating against the uncorrected full-generation ΔF1 gives the
+same null. Statistically this is careful work (bootstrap CIs, Holm correction across
+layers, a sensitivity check), but the result is **downstream of the same open question as
+C1**: individual ranks in the join are mostly in the bottom few percent of the 151,936-token
+vocabulary (e.g. 150,768; 148,143; 151,375), the same chance-level signature C1 already
+flagged. A null correlation here is ambiguous between "content retention genuinely doesn't
+predict task benefit" and "the readout isn't measuring retention, so of course it doesn't
+correlate with anything" — can't distinguish the two until the C1 diagnosis resolves. Two
+added design limitations: `04b` uses only the gold answer's first token as target (reduces
+to single letters for most multi-word entities — low-information), and `delta_f1` is
+exactly 0 for ~80% of the 60 examples, a heavily tied outcome that limits Spearman's power
+regardless of the readout question.
+
+**3. Remaining candidates for the C1 diagnosis, now narrowed to two.** (a) undersampling —
+**ruled out** by Finding 1 above. (b) NIAH sweep construction differs from the known-fact
+test's conditions (needle placement, padding, prompt format). (c) C3's result is real — AHN
+behaves closer to a recency mechanism than a content store. Both remaining candidates need
+a comparison the stability check can't provide on its own; this is the open question to
+bring to Gautam now that the cheap explanation is closed off.
 
 ## Findings from the 18 Aug pilot
 
@@ -281,6 +339,7 @@ notebooks/
   03_nowrite_reproduction.ipynb      Week-6 milestone: 38–42% changed answers
   04_niah_retention.ipynb            retention curves + controls C1–C4 (Tables 4, 6)
   05_analysis_and_figures.ipynb      CPU only — Tables 5–9, Figures 3–8
+  0.4b.ipynb                         RQ3 join — Sơn's build; see Findings
   pilot/                             Sơn's 18 Aug notebooks, kept for provenance
 docs/
   UPSTREAM_README.md                 ByteDance's original README
@@ -290,11 +349,13 @@ results/
   run_3b_gdn/                        the run of record — GDN 3B, window 8064, sinks 128
     00_config_audit.json               checkpoint config as loaded
     01_instrumentation_gates.json      Gates A/B/C — all pass
-    02_table3_jlens_validation.json    Table 3 checks (2 and 3 fail; see Findings)
-    jlens_qwen25_3b.pt                 fitted J-lens, layers 9/18/27, 1.92 GPU-h
+    02_table3_jlens_validation.json    Table 3 checks — 4 (map stability) now passes, 2/3 fail
+    jlens_qwen25_3b.pt                 fitted J-lens, layers 9/18/27, 1.92 GPU-h (gitignored)
+    jlens_qwen25_3b_corpusB.pt         second fit for the stability check, 1.25 GPU-h (gitignored)
     03_nowrite_reproduction.json       60 examples, per-example rows + both metrics
     04_retention_rows.json             NIAH sweep, 210 configs, per-row ranks
     04_table4_controls.json            C1–C4 battery — C4 passes, C1/C2/C3 fail
+    04b_joined_retention_task.json     RQ3 join — no significant rank/ΔF1 correlation
     05_table5_rq1.json                 RQ1 by stratum, with bootstrap CIs
     05_table6_retention_summary.json   per-layer half-life fit — inadequate, see Findings
   pilot_2026-08-18/                  superseded — see Findings above
@@ -302,6 +363,15 @@ src/ahn/                       upstream AHN implementation (unmodified)
 eval/, examples/               upstream harnesses (unmodified)
 artifacts/deprecated/          J18 fitted from one prompt; kept, not used
 ```
+
+**Housekeeping — fixed 20 Aug.** `results/run_3b_gdn/jlens_corpusB.ckpt` (~50 MB) had been
+committed to git twice — `.pt` was gitignored but `.ckpt` wasn't, so this checkpoint was
+bloating repo history the same way the `.pt` rule was meant to prevent. `*.ckpt` is now in
+`.gitignore` and the file is untracked (`git rm --cached`, kept on disk). `notebooks/
+02-duplicate.ipynb` is **not** a stray duplicate — it's a teammate's in-progress 1000-context
+corpus fit through notebook 02, kept intentionally. Neither `.pt` file (corpus A or B) is in
+git — they only exist on the GPU box right now; back them up to Hugging Face Hub before that
+box's storage is reclaimed, nothing currently guarantees they survive past this session.
 
 ## Running an experiment
 
@@ -370,31 +440,27 @@ resolved.
 1. ~~Run `01_instrumentation_gate.ipynb`~~ — **done**, all gates pass.
 2. ~~Run `03_nowrite_reproduction.ipynb`~~ — **done**; see Findings item 5.
 3. ~~Run `02_jlens_fit_and_validate.ipynb` with a real corpus~~ — **done** in 1.92 GPU-h;
-   Table 3 checks 2 and 3 fail, diagnosed in Findings items 3 and 4. Check 4 (map stability
-   across disjoint corpora) is **still unrun** — it needs a second ~1.9 GPU-h fit on
-   `corpus_b`, and it is the one remaining Table 3 row that would say whether the fit has
-   converged. Now more urgent than before: if the maps agree ≥80%, "structural continuation
-   tokens crowd the top slots" is a property of the method rather than an unconverged fit,
-   which bears directly on the C1 failure below.
+   Table 3 checks 2 and 3 fail, diagnosed in Findings items 3 and 4. ~~Check 4 (map
+   stability across disjoint corpora)~~ — **done**, passes at all three layers (0.91 / 0.87
+   / 0.89). This rules out an unconverged fit as the explanation for the C1 failure below —
+   see "Findings from the map-stability check and the RQ3 join."
 4. ~~Run `04_niah_retention.ipynb` on GDN 3B~~ — **done**; see "Findings from the 20 Aug
    NIAH retention run" above. **C1, C2 and C3 all fail** — the readout does not find the
    needle above chance in the full NIAH sweep, despite beating the logit lens by 8–204× on
-   isolated known-fact prompts (19–20 Aug Finding 4). That disagreement, not top-1 accuracy,
-   is now the open question. Bootstrap on RQ1's first-line ΔF1 also shows the +6.11-point
-   effect's 95% CI spans zero at n=60.
-5. **Diagnose the C1/isolated-fact disagreement before doing anything else.** Candidates,
-   cheapest first: (a) map stability (step 3) — an unconverged fit would explain both the
-   isolated-prompt success and the sweep-level failure; (b) the NIAH prompt template itself
-   — check whether the needle position/padding in the sweep matches the conditions the
-   known-fact test used; (c) the possibility that C3's result (shuffled beats ordered) is
-   real and AHN is closer to a recency mechanism than content memory, which the GPU plan
-   flags as potentially the most publishable result in the project if it survives (a) and
-   (b). Message Gautam with all three framings — this is exactly the kind of call the plan
-   says is his, not ours.
-6. **Build `04b` — the RQ3 join** — blocked on 5. Right now retention is measured on
-   synthetic NIAH prompts and ΔF1 on LongBench-E, so there is no per-example key linking
-   them, and Table 8 cannot be computed at all. A join built on a broken readout isn't
-   informative, so this waits for the C1 diagnosis rather than running in parallel with it.
+   isolated known-fact prompts (19–20 Aug Finding 4). Bootstrap on RQ1's first-line ΔF1 also
+   shows the +6.11-point effect's 95% CI spans zero at n=60.
+5. **Diagnose the C1/isolated-fact disagreement — now down to two candidates.** (a)
+   undersampling — **ruled out**, map stability passes. Remaining: (b) the NIAH prompt
+   template — check whether the needle position/padding in the sweep matches the
+   known-fact test's conditions; (c) C3's result (shuffled beats ordered) is real and AHN is
+   closer to a recency mechanism than content memory, which the GPU plan flags as
+   potentially the most publishable result in the project if it survives (b). Message
+   Gautam with both framings plus the now-closed (a) — this is exactly the kind of call the
+   plan says is his, not ours.
+6. ~~Build `04b` — the RQ3 join~~ — **done, by Sơn.** No significant correlation between
+   memory rank and ΔF1 at any of the three layers, before or after Holm correction. Result
+   is provisional, not a green light to proceed — see Finding 2 in the section above for
+   why it inherits the same open question as C1.
 7. **Add the boundary-JS column.** Notebook 01's Gate B already computes JS between the
    AHN and NOWRITE next-token distributions. Log it per example in notebook 03 and Table 8
    row 2 — the pre-registered comparison against prior work — comes for free rather than
@@ -412,16 +478,18 @@ resolved.
   `o_t` isolates cleanly. Confirmed empirically by Gate A, not just by reading the source.
 - **Open Question 6**: he uses 8,064 on LongBench-E himself, which makes our 8064 window
   easy to defend. Confirm it in writing so it goes in Methods as a stated parameter.
-- **The J-lens decision has new evidence, and it complicates the picture rather than
-  resolving it.** The lens beats the logit lens by up to 204× on eight isolated known-fact
-  prompts, but notebook 04's full control battery shows the readout at chance (C1 fails,
-  mean rank 87,675 vs a chance rank of 75,968) with no needle/distractor separation (C2
-  fails) and shuffled context scoring *better* than ordered context (C3 fails). Those two
-  results disagree, and reconciling them — not the top-1 criterion in check 3 — is now the
-  actual open question. Ask whether to prioritize (a) the map-stability re-fit (Table 3
-  check 4, ~1.9 GPU-h) to rule out an unconverged fit, or (b) a direct comparison of the
-  NIAH sweep's prompt construction against the known-fact test's, since those are the two
-  cheapest ways to find out whether the instrument or the phenomenon is what's failing.
+- **The J-lens decision has new evidence, and the cheapest explanation is now closed off.**
+  The lens beats the logit lens by up to 204× on eight isolated known-fact prompts, but
+  notebook 04's full control battery shows the readout at chance (C1 fails, mean rank
+  87,675 vs a chance rank of 75,968) with no needle/distractor separation (C2 fails) and
+  shuffled context scoring *better* than ordered context (C3 fails). The map-stability
+  re-fit (Table 3 check 4) has now run and **passes** at all three layers (0.91/0.87/0.89
+  top-10 overlap) — the lens is converged, so this isn't an unconverged fit. `04b` (the RQ3
+  join) also ran and finds no significant rank/ΔF1 correlation at any layer, but that
+  result inherits the same open question rather than resolving it. What's left: (a) a
+  direct comparison of the NIAH sweep's prompt construction against the known-fact test's,
+  or (b) accepting C3's result as real — AHN behaving closer to a recency mechanism than a
+  content store. Both are his call, not a compute problem anymore.
 - **RQ1's effect does not survive its own confidence interval.** Bootstrapped first-line
   ΔF1 is +6.11 pts but the 95% CI is [−1.85, +14.42] at n=60 — it spans zero, and so does
   every per-stratum interval. His published +0.4 to +2.3 pts sits entirely inside that
