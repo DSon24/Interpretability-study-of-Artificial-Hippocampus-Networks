@@ -18,16 +18,16 @@
     "n_tokens": 9252,
     "ahn_active": true,
     "nowrite_o_t_is_zero": true,
-    "ahn_raw_norm": 0.6891927719116211,
-    "o_t_norm": 0.8482084274291992,
-    "residual_norm": 62.30802536010742,
-    "relative_error": 0.137745373061498,
-    "cosine": 0.9905948042869568,
+    "ahn_raw_norm": 0.6935104131698608,
+    "o_t_norm": 0.8532447814941406,
+    "residual_norm": 62.44887161254883,
+    "relative_error": 0.18740204380390124,
+    "cosine": 0.9829652309417725,
     "passed": false
   },
   "gate_b_behavioural": {
-    "kl_ahn_vs_nowrite": 0.1433320939540863,
-    "js_ahn_vs_nowrite": 0.033533886075019836,
+    "kl_ahn_vs_nowrite": 0.16034048795700073,
+    "js_ahn_vs_nowrite": 0.036773987114429474,
     "top1_ahn": " The",
     "top1_nowrite": " The",
     "top1_changed": false,
@@ -37,7 +37,7 @@
   "gate_c_task": {
     "needle": "Paris",
     "eviction_distance": 1043,
-    "answer_ahn": "The special word in this text appears to be \"Here we",
+    "answer_ahn": "The special word in this text is \"Here we go.\"",
     "answer_nowrite": "It seems like you're referring to a pattern or rhyme that",
     "ahn_correct": false,
     "nowrite_correct": false
