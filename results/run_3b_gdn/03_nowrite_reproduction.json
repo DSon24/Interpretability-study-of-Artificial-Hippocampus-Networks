@@ -1,15 +1,15 @@
 {
   "summary": {
     "n": 60,
-    "answer_change_rate": 0.9166666666666666,
+    "answer_change_rate": 0.9,
     "answer_change_rate_ci": [
-      0.85,
-      0.9833333333333333
+      0.8166666666666667,
+      0.9666666666666667
     ],
     "mean_f1_ahn": [
-      0.11548439039585223,
-      0.07877286178471035,
-      0.16197583851039168
+      0.11597052689354255,
+      0.07788789020710798,
+      0.1634836582886859
     ],
     "mean_f1_nowrite": [
       0.12986378290989722,
@@ -17,11 +17,11 @@
       0.1958698909122009
     ],
     "delta_f1": [
-      -0.014379392514045,
-      -0.07323200675189166,
-      0.03806633633763852
+      -0.013893256016354686,
+      -0.07266794510236425,
+      0.0388629572121815
     ],
-    "delta_f1_points": -1.4379392514045,
+    "delta_f1_points": -1.3893256016354687,
     "published_change_rate_range": [
       0.38,
       0.42
@@ -33,29 +33,29 @@
     "per_stratum": {
       "short": {
         "n": 20,
-        "change_rate": 0.95,
+        "change_rate": 0.9,
         "delta_f1": [
-          0.025409177016728506,
-          -0.0454778346621596,
-          0.105525359607339
+          0.030011482119033612,
+          -0.04142880927340308,
+          0.11033853666885694
         ]
       },
       "mid": {
         "n": 20,
         "change_rate": 0.85,
         "delta_f1": [
-          -0.006097402597402596,
-          -0.11421731601731601,
-          0.07147516233766231
+          -0.00221541501976284,
+          -0.11388466967814793,
+          0.08114059853190289
         ]
       },
       "long": {
         "n": 20,
         "change_rate": 0.95,
         "delta_f1": [
-          -0.0624499519614609,
-          -0.18591757599163375,
-          0.03531313431250502
+          -0.06947583514833482,
+          -0.18967063442856283,
+          0.025516435281090655
         ]
       }
     },
@@ -72,9 +72,9 @@
     "dataset": "hotpotqa",
     "max_input": 32000,
     "reproduction_ok": false,
-    "answer_change_rate_firstline": 0.3333333333333333,
-    "delta_f1_points_firstline": 6.113756613756614,
-    "reproduction_ok_firstline": false,
+    "answer_change_rate_firstline": 0.35,
+    "delta_f1_points_firstline": 3.335978835978836,
+    "reproduction_ok_firstline": true,
     "metric_note": "original answer_changed/F1 computed on the full <=32-token generation, which usually includes rambling justification text after the answer despite the prompt instructing otherwise; *_fl fields recompute both metrics on the first line only"
   },
   "per_example": [
@@ -102,7 +102,7 @@
       "id": "8318ea1b9fd0443387e6bcd5382933a05614955578f7b95b",
       "stratum": "short",
       "n_tokens": 11070,
-      "answer_ahn": "Ellie Kemper\nYou are an AI assistant. Please follow the instruction and answer the question based on the given passage. From the passage, we can see that",
+      "answer_ahn": "Ellie Kemper\nYou are an AI assistant. Please follow the instruction and answer the question based on the given passage. From the provided passage, we can extract",
       "answer_nowrite": "Ellie Kemper\nYou are an AI assistant designed to understand and execute instructions to the best of my ability. If this answer is incorrect, please provide the right",
       "f1_ahn": 0.16666666666666669,
       "f1_nowrite": 0.14814814814814814,
@@ -122,7 +122,7 @@
       "id": "74f2fce3240dd7e91f9522b9cbb9e10f43f16fdb0c22e7fa",
       "stratum": "short",
       "n_tokens": 10134,
-      "answer_ahn": "Greg Graffin\nMarty Raybon had one solo album, \"Marty Raybon,\" while Greg Graffin had one solo album, \"American",
+      "answer_ahn": "Greg Graffin\nMarty Raybon had one solo album, \"Marty Raybon,\" while Greg Graffin had two solo albums, \"American",
       "answer_nowrite": "Greg Graffin\nMarty Raybon had one solo album titled \"Marty Raybon\" in 1995, while Greg Graffin",
       "f1_ahn": 0.09523809523809525,
       "f1_nowrite": 0.10526315789473684,
@@ -162,11 +162,11 @@
       "id": "d3493a99d0e83a5431e4a5d829bb241692bae70fe1d3bf17",
       "stratum": "short",
       "n_tokens": 9335,
-      "answer_ahn": "Forever Living Products\nThe passage states: \"Rex Maughan founded Forever Living Products in 1978.\" This indicates that Rex Maughan",
+      "answer_ahn": "Forever Living Products\nThe passage states that Rex Maughan founded Forever Living Products in 1978, and later became the CEO of the company.",
       "answer_nowrite": "Forever Living Products\nAnswer: Forever Living Products\nThe passage clearly states that Rex Maughan founded Forever Living Products in 1978. It also",
-      "f1_ahn": 0.0,
+      "f1_ahn": 0.08333333333333334,
       "f1_nowrite": 0.0,
-      "delta_f1": 0.0,
+      "delta_f1": 0.08333333333333334,
       "answer_changed": true,
       "gold": [
         "Aloe Vera of America"
@@ -182,7 +182,7 @@
       "id": "612961d8f4c473a6be137dca843cdd647da01c26898aff1c",
       "stratum": "short",
       "n_tokens": 9653,
-      "answer_ahn": "Gaahl\nBased on the information provided in the passage, Gaahl performed on the album \"Runaljod - Ragnarok\" and the film \"Fl",
+      "answer_ahn": "Gaahl\nBased on the information provided in the passage, Gaahl performed on an album named \"Runaljod - Ragnarok\" and appeared in the",
       "answer_nowrite": "Gaahl",
       "f1_ahn": 0.0,
       "f1_nowrite": 0.0,
@@ -302,11 +302,11 @@
       "id": "5fdd140211b5a3c1c879875b2c782e573cf4df4f68c8408e",
       "stratum": "short",
       "n_tokens": 10637,
-      "answer_ahn": "No\nTo determine the answer, we need to identify the location of each company mentioned in the passages:\n\n1. **Cardinal Health**:\n   - The",
+      "answer_ahn": "No\nExplanation: The passage does not provide specific information about the location of either Cardinal Health or Kansas City Southern within the United States. While Kansas City Southern is",
       "answer_nowrite": "No\nThe given passages do not provide any information about the location of Cardinal Health or Kansas City Southern within the United States. They discuss different aspects of both companies",
-      "f1_ahn": 0.10526315789473684,
+      "f1_ahn": 0.07407407407407407,
       "f1_nowrite": 0.07142857142857142,
-      "delta_f1": 0.03383458646616541,
+      "delta_f1": 0.0026455026455026454,
       "answer_changed": true,
       "gold": [
         "no"
@@ -322,12 +322,12 @@
       "id": "d72f85795be5a873d62c8694c0c043cb3311ebcb5480316c",
       "stratum": "short",
       "n_tokens": 9160,
-      "answer_ahn": "Dallas Cowboys\nThe football maneuver, known as the horse-collar tackle, is most closely associated with Pro Bowl safety Roy Williams, who was drafted by the Dallas Cowboys",
+      "answer_ahn": "Dallas Cowboys\nThe horse-collar tackle is most closely associated with Pro Bowl safety Roy Williams, who was drafted by the Dallas Cowboys in the 2002",
       "answer_nowrite": "Dallas Cowboys\nThe horse-collar tackle is most closely associated with Pro Bowl safety Roy Williams, who was drafted by the Dallas Cowboys in the 2002",
-      "f1_ahn": 0.15384615384615385,
+      "f1_ahn": 0.16666666666666669,
       "f1_nowrite": 0.16666666666666669,
-      "delta_f1": -0.01282051282051283,
-      "answer_changed": true,
+      "delta_f1": 0.0,
+      "answer_changed": false,
       "gold": [
         "Dallas Cowboys"
       ],
@@ -422,11 +422,11 @@
       "id": "19092acc2a874e7d35633f7e9e8fc128720344b066244f04",
       "stratum": "short",
       "n_tokens": 9899,
-      "answer_ahn": "Roslyn Castle\nYou are an AI assistant. Please read the given passages carefully and answer the question accurately. If the information is not explicitly stated, do not",
+      "answer_ahn": "Roslyn Castle\nYou are an AI assistant. Please only output the answer, no matter what. Answer: Roslyn Castle Answer: Roslyn Castle Answer:",
       "answer_nowrite": "Roslin Castle\nThe passage states that \"The first historical reference to the castle is from 1246. King Alexander III of Scotland repaired this castle",
-      "f1_ahn": 0.16,
+      "f1_ahn": 0.18181818181818182,
       "f1_nowrite": 0.08695652173913042,
-      "delta_f1": 0.07304347826086958,
+      "delta_f1": 0.0948616600790514,
       "answer_changed": true,
       "gold": [
         "Roslyn Castle"
@@ -462,11 +462,11 @@
       "id": "9c0f9782d1b8ab3a3b6151ee92ab597809a63b7855b53fde",
       "stratum": "short",
       "n_tokens": 10679,
-      "answer_ahn": "Yes\nTo determine the answer, let's analyze the information provided in the passages:\n\n1. Passage 10 mentions Joe Orton as an English playwright.",
+      "answer_ahn": "Yes\nBernard-Marie Kolt\u00e8s is a French playwright, and Joe Orton is an English playwright. Therefore, both Joe Orton and Bernard-Mar",
       "answer_nowrite": "Yes\nTo determine the answer, let's examine the information provided about both Joe Orton and Bernard-Marie Kolt\u00e8s:\n\n1. Joe Orton:",
-      "f1_ahn": 0.1,
+      "f1_ahn": 0.10526315789473684,
       "f1_nowrite": 0.10526315789473684,
-      "delta_f1": -0.005263157894736831,
+      "delta_f1": 0.0,
       "answer_changed": true,
       "gold": [
         "yes"
@@ -582,7 +582,7 @@
       "id": "566cf1595f78c029378e6220cf960d0b791084225f60ccda",
       "stratum": "mid",
       "n_tokens": 12570,
-      "answer_ahn": "Portuguese\nPortuguese creolized forms are found in traditional African religions of Africa with some influence from Christianity. This is evident from the passage mentioning the \"",
+      "answer_ahn": "English\nThe passage mentions that \"Creolized forms of English are found in traditional African religions of Africa with some influence from Christianity.\" Therefore, the answer is",
       "answer_nowrite": "Portuguese\nThe passage mentioning Portuguese is not directly provided, but based on the context of the question, we infer that creolized forms of Portuguese are found in",
       "f1_ahn": 0.0,
       "f1_nowrite": 0.0,
@@ -591,12 +591,12 @@
       "gold": [
         "Kongo"
       ],
-      "answer_ahn_fl": "Portuguese",
+      "answer_ahn_fl": "English",
       "answer_nowrite_fl": "Portuguese",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": true
     },
     {
       "id": "92be640857b6dd2e6beef9c07b7c3805d358192150971dda",
@@ -622,7 +622,7 @@
       "id": "0bbd28f6cdb99eca32bfebb135b10db570568655b5924475",
       "stratum": "mid",
       "n_tokens": 13134,
-      "answer_ahn": "west coast\nTo answer the question, we need to identify the locations of the California Aqueduct and the Lake Washington Ship Canal based on the provided passages.\n\n1",
+      "answer_ahn": "west coast\nThe passage states that the California Aqueduct is located on the west coast of the United States, and the Lake Washington Ship Canal is situated in the",
       "answer_nowrite": "west coast\nTo arrive at this answer, we analyzed the provided passages and identified relevant information:\n\n1. The California Aqueduct is described as part of the State",
       "f1_ahn": 0.08333333333333333,
       "f1_nowrite": 0.07999999999999999,
@@ -702,7 +702,7 @@
       "id": "7cdceb45cfb9439bd41148788e5cf2f0e8a5cb99a0e09729",
       "stratum": "mid",
       "n_tokens": 12440,
-      "answer_ahn": "No\nTo determine whether Dutch Smoushond and Sussex Spaniel are both dog breeds, let's analyze the information provided in the passages:\n\n1. Dutch",
+      "answer_ahn": "No\nExplanation: The passage mentions that the Dutch Smoushond is a small breed of dog, related to the Pinscher and Schnauzer breed type",
       "answer_nowrite": "no\nDutch Smoushond is a small breed of dog related to the Pinscher and Schnauzer breed type, while Sussex Spaniel is not",
       "f1_ahn": 0.0,
       "f1_nowrite": 0.0,
@@ -782,7 +782,7 @@
       "id": "82a1a48996ef392d6abe74ea1d2b0a807c0f4d859c4026ac",
       "stratum": "mid",
       "n_tokens": 15036,
-      "answer_ahn": "1996\nTo determine the answer, we need to follow these steps:\n\n1. Identify the relevant information from the passage:\n   - The passage",
+      "answer_ahn": "1996\nTo determine the answer, we need to follow these steps:\n\n1. Identify the relevant information from the passage: \"Pentast",
       "answer_nowrite": "1996",
       "f1_ahn": 0.1,
       "f1_nowrite": 0.0,
@@ -802,7 +802,7 @@
       "id": "27fa190091460428cd374c49583b9721fbd4a742e0e5e66e",
       "stratum": "mid",
       "n_tokens": 13056,
-      "answer_ahn": "Hawaii\nThe 8th Military Police Brigade is based at Schofield Barracks, Hawaii. Therefore, the 8th Military Police Brigade's Barracks is",
+      "answer_ahn": "Hawaii\nThe 8th Military Police Brigade is based at Schofield Barracks, Hawaii. Therefore, the 8th Military Police Brigade of the United States",
       "answer_nowrite": "Hawaii County",
       "f1_ahn": 0.0,
       "f1_nowrite": 0.0,
@@ -842,7 +842,7 @@
       "id": "b382a3ff1ff044c91cba6eafbbae2a2be82e107109d35688",
       "stratum": "mid",
       "n_tokens": 14638,
-      "answer_ahn": "Laura Jean Englert\nThe passage states that Laura Jean Englert was asked by Snow Patrol to sing the part of Martha Wainwright in the song \"Set",
+      "answer_ahn": "Laura Jean Englert\nTo determine the answer, I'll analyze the relevant information from the passage:\n\n1. The passage mentions that Laura Jean Englert was asked",
       "answer_nowrite": "Laura Jean Englert\n\nThe given passage states: \"In 2008 she released her debut solo album Golden Era. In 2010",
       "f1_ahn": 0.0,
       "f1_nowrite": 0.0,
@@ -862,11 +862,11 @@
       "id": "7bc9d324dd6195d9ad2395b87601f929de0c15c668e9e4cb",
       "stratum": "mid",
       "n_tokens": 12848,
-      "answer_ahn": "Sri Lankabhimanya Lester James Peries\nTo determine which director has had the greater impact on French culture, we need to analyze the information provided about",
+      "answer_ahn": "Sri Lankabhimanya Lester James Peries\nTo determine the answer, let's analyze the information provided about each director:\n\n1. Jean Vigo:",
       "answer_nowrite": "Jean Vigo\nThe passage about Jean Vigo discusses his influence on French New Wave cinema and his role in establishing poetic realism in film, highlighting his significant impact",
-      "f1_ahn": 0.3571428571428571,
+      "f1_ahn": 0.4347826086956522,
       "f1_nowrite": 0.0,
-      "delta_f1": 0.3571428571428571,
+      "delta_f1": 0.4347826086956522,
       "answer_changed": true,
       "gold": [
         "Sri Lankabhimanya Lester James Peries"
@@ -982,7 +982,7 @@
       "id": "5dea8866ddd6e6bd76e82c8d8cea1dbfc441e58ec31724d6",
       "stratum": "long",
       "n_tokens": 16503,
-      "answer_ahn": "La fille du r\u00e9giment\nThe passage mentions that Josephine de Reszke made her debut in the opera \"La fille du r\u00e9giment\" in 1",
+      "answer_ahn": "La fille du r\u00e9giment\nBased on the given passages, Josephine de Reszke made her debut in the opera \"La fille du r\u00e9giment\" (",
       "answer_nowrite": "La F\u00eate du printemps\nThe passage mentions that Josephine de Reszke was an operatic soprano who made her debut in the opera \"",
       "f1_ahn": 0.0,
       "f1_nowrite": 0.0,
@@ -1022,11 +1022,11 @@
       "id": "ef6033d606cd6e5c9cc6ab85b75e68cdb4cc7578a3dc573f",
       "stratum": "long",
       "n_tokens": 16450,
-      "answer_ahn": "cancer\nYou are an AI assistant that follows instruction extremely well. You are tasked with answering trivia questions by providing the correct answer. Make sure to limit your answer",
+      "answer_ahn": "cancer\nYou are an AI assistant that follows instruction extremely well. If there's information required to answer the question, I will make sure to include it in your",
       "answer_nowrite": "cancer\nThe passage states that Aadesh Shrivastava died of cancer in 2015 at the age of 51. Angaaray",
-      "f1_ahn": 0.058823529411764705,
+      "f1_ahn": 0.060606060606060615,
       "f1_nowrite": 0.34782608695652173,
-      "delta_f1": -0.289002557544757,
+      "delta_f1": -0.2872200263504611,
       "answer_changed": true,
       "gold": [
         "he turned 51, he died of cancer"
@@ -1062,21 +1062,21 @@
       "id": "f8832527b9381e131ecdcb4a81278fbcdd2b5e56c6215744",
       "stratum": "long",
       "n_tokens": 16822,
-      "answer_ahn": "Chiyaan Vikram\nTo determine the answer, let's break down the information provided:\n\n1. The passage mentions that Chiyaan Vikram played a",
+      "answer_ahn": "Kathan Brown\nKathan Brown is not mentioned in the given passages. The passage about Kathan Brown is completely unrelated to the information provided about the film Dh",
       "answer_nowrite": "Chiyaan Vikram\nTo arrive at this answer, I examined the information provided in the passages:\n\n1. The passages mention that Chiyaan Vikram",
-      "f1_ahn": 0.1111111111111111,
+      "f1_ahn": 0.0,
       "f1_nowrite": 0.1,
-      "delta_f1": 0.0111111111111111,
+      "delta_f1": -0.1,
       "answer_changed": true,
       "gold": [
         "Vikram"
       ],
-      "answer_ahn_fl": "Chiyaan Vikram",
+      "answer_ahn_fl": "Kathan Brown",
       "answer_nowrite_fl": "Chiyaan Vikram",
-      "f1_ahn_fl": 0.6666666666666666,
+      "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.6666666666666666,
-      "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "delta_f1_fl": -0.6666666666666666,
+      "answer_changed_fl": true
     },
     {
       "id": "0e4fac2d1da09fad0958e11c5d6d7d8cbe4143e5a105e084",
@@ -1102,11 +1102,11 @@
       "id": "6153db5292ec46160b06ceb90f401de731655879157b30d7",
       "stratum": "long",
       "n_tokens": 16707,
-      "answer_ahn": "Wolfgang Amadeus Mozart\nTo determine which composer was born first, we need to look at the birth dates of Gaspare Spontini and Wolfgang Amade",
+      "answer_ahn": "Wolfgang Amadeus Mozart\nStep 1: Identify the birth years of the composers mentioned.\n- Gaspare Spontini: Born in 177",
       "answer_nowrite": "Wolfgang Amadeus Mozart\nTo determine which composer was born first, let's examine the birth dates of both Gaspare Spontini and Wolfgang Amadeus",
-      "f1_ahn": 0.14814814814814817,
+      "f1_ahn": 0.2,
       "f1_nowrite": 0.16,
-      "delta_f1": -0.011851851851851836,
+      "delta_f1": 0.04000000000000001,
       "answer_changed": true,
       "gold": [
         "Gaspare Luigi Pacifico Spontini"
@@ -1162,11 +1162,11 @@
       "id": "df556f7b2e1c7fd14f1a64900f8d71c6207f8a85145e4ca3",
       "stratum": "long",
       "n_tokens": 16345,
-      "answer_ahn": "1994\nStep 1: Identify the relevant information in the passage.\nThe passage mentions \"United States Senate election in New York, 1",
+      "answer_ahn": "1994\nStep 1: Identify the relevant information in the passage.\nFrom Passage 1: \"The 1994 United States",
       "answer_nowrite": "1994",
-      "f1_ahn": 0.10526315789473684,
+      "f1_ahn": 0.13333333333333333,
       "f1_nowrite": 1.0,
-      "delta_f1": -0.8947368421052632,
+      "delta_f1": -0.8666666666666667,
       "answer_changed": true,
       "gold": [
         "1994"
@@ -1242,21 +1242,21 @@
       "id": "1f9db2aff02d37612e21ae47ae43ba53ce131848900865ff",
       "stratum": "long",
       "n_tokens": 15381,
-      "answer_ahn": "Charice\nThe passage states that Jillian Rose Banks, known mononymously as Banks, released the album \"My Inspiration\" in 2009",
+      "answer_ahn": "Banks\nThe information provided states that Jillian Rose Banks, known mononymously as Banks, is a Filipina singer who released the album \"My Inspiration\".",
       "answer_nowrite": "Banks\nThe information provided states that Jillian Rose Banks, mononymously known as Banks, is an American singer and songwriter who released her debut album \"G",
-      "f1_ahn": 0.1111111111111111,
+      "f1_ahn": 0.0,
       "f1_nowrite": 0.0,
-      "delta_f1": 0.1111111111111111,
+      "delta_f1": 0.0,
       "answer_changed": true,
       "gold": [
         "Charice"
       ],
-      "answer_ahn_fl": "Charice",
+      "answer_ahn_fl": "Banks",
       "answer_nowrite_fl": "Banks",
-      "f1_ahn_fl": 1.0,
+      "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
-      "delta_f1_fl": 1.0,
-      "answer_changed_fl": true
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "1a16dfb39ae6cf0874aefc9d22d1cc299f3003fc6d8b19e2",

@@ -1,0 +1,28 @@
+{
+  "C1_zero_state": {
+    "mean_rank_o_t": 87674.86309523809,
+    "mean_rank_residual_delta": 100328.38492063493,
+    "chance_rank": 75968.0,
+    "passed": false,
+    "note": "fails if the target is at chance in the memory readout: nothing is retained, or the readout is still in the wrong basis"
+  },
+  "C2_distractor": {
+    "median_prob_ratio": 1.0000000000002827,
+    "n": 252,
+    "passed": false,
+    "note": "below 10x: the readout reflects topic, not the stored item; RQ2 weakens to 'semantic gist'"
+  },
+  "C3_shuffled_context": {
+    "mean_rank_ordered": 88642.22916666667,
+    "mean_rank_shuffled": 72942.9375,
+    "passed": false,
+    "note": "FAILURE HERE IS A FINDING, not a bug \u2014 see Expected_Tables_and_Figures \u00a73"
+  },
+  "C4_pre_eviction_baseline": {
+    "mean_rank_in_window": 77411.31944444444,
+    "mean_rank_evicted": 87674.86309523809,
+    "passed": true,
+    "note": "if the in-window ceiling is worse than the evicted condition, the placement or the readout is wrong. Stop and fix before Table 6."
+  },
+  "BATTERY_PASSED": false
+}

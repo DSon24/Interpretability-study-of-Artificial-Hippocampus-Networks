@@ -1,0 +1,41 @@
+[
+  {
+    "scale": "3B",
+    "cell": "GatedDeltaNet",
+    "stratum": "short",
+    "n": 20,
+    "mean_f1": 0.16758940169924147,
+    "delta_f1_vs_nowrite": [
+      0.030011482119033612,
+      -0.04142880927340308,
+      0.11033853666885694
+    ],
+    "answer_change_rate": 0.9
+  },
+  {
+    "scale": "3B",
+    "cell": "GatedDeltaNet",
+    "stratum": "mid",
+    "n": 20,
+    "mean_f1": 0.0805836045880803,
+    "delta_f1_vs_nowrite": [
+      -0.00221541501976284,
+      -0.11388466967814793,
+      0.08114059853190289
+    ],
+    "answer_change_rate": 0.85
+  },
+  {
+    "scale": "3B",
+    "cell": "GatedDeltaNet",
+    "stratum": "long",
+    "n": 20,
+    "mean_f1": 0.09973857439330584,
+    "delta_f1_vs_nowrite": [
+      -0.06947583514833482,
+      -0.18967063442856283,
+      0.025516435281090655
+    ],
+    "answer_change_rate": 0.95
+  }
+]

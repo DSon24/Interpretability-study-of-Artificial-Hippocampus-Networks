@@ -1,0 +1,41 @@
+[
+  {
+    "scale": "3B",
+    "cell": "GatedDeltaNet",
+    "layer": 9,
+    "half_life_tok": null,
+    "half_life_ci": null,
+    "nonparametric_half_distance": 11.0,
+    "fit_r2": -0.016310913894614032,
+    "fit_adequate": false,
+    "rank_at_8k": 92193.33333333333,
+    "rank_at_32k": null,
+    "n_points": 24
+  },
+  {
+    "scale": "3B",
+    "cell": "GatedDeltaNet",
+    "layer": 18,
+    "half_life_tok": null,
+    "half_life_ci": null,
+    "nonparametric_half_distance": 11.0,
+    "fit_r2": -0.08901110532145973,
+    "fit_adequate": false,
+    "rank_at_8k": 81305.75,
+    "rank_at_32k": null,
+    "n_points": 24
+  },
+  {
+    "scale": "3B",
+    "cell": "GatedDeltaNet",
+    "layer": 27,
+    "half_life_tok": null,
+    "half_life_ci": null,
+    "nonparametric_half_distance": 11.0,
+    "fit_r2": -0.042500128141246485,
+    "fit_adequate": false,
+    "rank_at_8k": 79964.375,
+    "rank_at_32k": null,
+    "n_points": 24
+  }
+]
