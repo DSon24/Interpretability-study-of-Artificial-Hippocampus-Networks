@@ -389,8 +389,20 @@ class AHNProbe:
 
         def make_resid(idx):
             def hook(module, inp, out):
-                t = out[0] if isinstance(out, tuple) else out
-                cap._resid[idx] = t.detach().clone()
+                # `module` here is `post_attention_layernorm`, hooked for its INPUT, not
+                # its output. Qwen2's decoder layer runs:
+                #   hidden_states = residual + o_proj(attn_output [+ ahn_attn_output])
+                #   residual = hidden_states
+                #   hidden_states = post_attention_layernorm(hidden_states)  <- inp[0] here
+                #   hidden_states = residual + mlp(hidden_states)
+                # inp[0] is exactly the post-attention, pre-MLP residual-stream value --
+                # the point where AHN's contribution has been added but the (nonlinear)
+                # MLP has not yet run. An earlier version hooked the WHOLE decoder layer's
+                # OUTPUT instead, which is captured after the MLP -- comparing that against
+                # o_t = o_proj(ahn_raw) then includes a nonlinear MLP(h_AHN) - MLP(h_NOWRITE)
+                # term that has nothing to do with AHN, so Gate A could never pass even
+                # with perfectly correct instrumentation.
+                cap._resid[idx] = inp[0].detach().clone()
             return hook
 
         for i in target:
@@ -403,7 +415,7 @@ class AHNProbe:
                 handles.append(layer.ahn.register_forward_hook(make_zero(i)))
             handles.append(layer.ahn.register_forward_hook(make_capture(i)))
             if capture_residual:
-                handles.append(layer.register_forward_hook(make_resid(i)))
+                handles.append(layer.post_attention_layernorm.register_forward_hook(make_resid(i)))
 
         try:
             out = self.model(**inputs, use_cache=True)
