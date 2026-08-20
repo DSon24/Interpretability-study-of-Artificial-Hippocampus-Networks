@@ -182,3 +182,12 @@ __pycache__/
 *.pyc
 merged_ckpt/
 .ipynb_checkpoints/
+
+# ---- AHN interpretability study (Kim & Nguyen) ----
+merged_ckpt/
+*.pt
+artifacts/deprecated/
+results/**/*.png
+!results/pilot_2026-08-18/*.png
+.ipynb_checkpoints/
+_to_delete/

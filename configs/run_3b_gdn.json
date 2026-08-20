@@ -1,0 +1,13 @@
+{
+  "run_name": "run_3b_gdn",
+  "model_path": "/home/jupyter-dphs-4ca1/AHN/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
+  "cell": "GatedDeltaNet",
+  "scale": "3B",
+  "sliding_window": 8064,
+  "num_attn_sinks": 128,
+  "attn_impl": "flash_attention_2",
+  "dtype": "bfloat16",
+  "layers": [9, 18, 27],
+  "seed": 20260820,
+  "notes": "Proposal settings of record. 8064 matches the window Gautam uses on LongBench-E."
+}
