@@ -63,5 +63,14 @@
     "dim_batch": 8,
     "out_path": "results/run_3b_gdn/jlens_qwen25_3b.pt"
   },
-  "_status": "INCOMPLETE -- map_stability (check 4) has not run yet. Run the patched notebooks/02_jlens_fit_and_validate.ipynb cell 13, then cell 14, which will merge into this file and compute TABLE_3_PASSED."
+  "_status": "INCOMPLETE -- map_stability (check 4) has not run yet. Run the patched notebooks/02_jlens_fit_and_validate.ipynb cell 13, then cell 14, which will merge into this file and compute TABLE_3_PASSED.",
+  "map_stability": {
+    "9": 0.9099999999999999,
+    "18": 0.8733333333333332,
+    "27": 0.8933333333333333,
+    "passed": true,
+    "fit_b_gpu_hours": 1.2472385472721523,
+    "checkpoint_path": "results/run_3b_gdn/jlens_corpusB.ckpt"
+  },
+  "TABLE_3_PASSED": false
 }
