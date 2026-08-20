@@ -1,0 +1,67 @@
+{
+  "known_fact_recall": {
+    "rows": [
+      {
+        "layer": 9,
+        "rank_Paris": 805,
+        "top5": [
+          " $",
+          " :\n",
+          " *",
+          " .\n",
+          " [*"
+        ]
+      },
+      {
+        "layer": 18,
+        "rank_Paris": 59,
+        "top5": [
+          ".[",
+          "?\\",
+          "![",
+          "?[",
+          ").["
+        ]
+      },
+      {
+        "layer": 27,
+        "rank_Paris": 8,
+        "top5": [
+          "____",
+          "________",
+          ":**",
+          "____________",
+          " ____"
+        ]
+      }
+    ],
+    "passed": false,
+    "note": "recovered from notebooks/02_jlens_fit_and_validate.ipynb cell 10's saved output (exec_count=7) -- that run completed successfully, only the save cell (14) never ran before the notebook was interrupted at cell 13 (map stability)."
+  },
+  "logit_lens_agreement": {
+    "9": 0.0,
+    "18": 0.0,
+    "27": 0.05,
+    "passed": false,
+    "note": "recovered from cell 11's saved output (exec_count=8), same run as above."
+  },
+  "final_layer_identity": {
+    "skipped": true,
+    "note": "layer 35 not in source_layers [9, 18, 27]; add it to JCFG to run this check. Not in the TABLE_3_PASSED required set, so this doesn't block anything."
+  },
+  "map_cost_gpu_hours": 1.92,
+  "config": {
+    "backbone": "Qwen/Qwen2.5-3B-Instruct",
+    "source_layers": [
+      9,
+      18,
+      27
+    ],
+    "n_prompts": 500,
+    "max_seq_len": 256,
+    "skip_first": 4,
+    "dim_batch": 8,
+    "out_path": "results/run_3b_gdn/jlens_qwen25_3b.pt"
+  },
+  "_status": "INCOMPLETE -- map_stability (check 4) has not run yet. Run the patched notebooks/02_jlens_fit_and_validate.ipynb cell 13, then cell 14, which will merge into this file and compute TABLE_3_PASSED."
+}
