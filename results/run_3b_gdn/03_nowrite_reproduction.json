@@ -71,7 +71,11 @@
     },
     "dataset": "hotpotqa",
     "max_input": 32000,
-    "reproduction_ok": false
+    "reproduction_ok": false,
+    "answer_change_rate_firstline": 0.3333333333333333,
+    "delta_f1_points_firstline": 6.113756613756614,
+    "reproduction_ok_firstline": false,
+    "metric_note": "original answer_changed/F1 computed on the full <=32-token generation, which usually includes rambling justification text after the answer despite the prompt instructing otherwise; *_fl fields recompute both metrics on the first line only"
   },
   "per_example": [
     {
@@ -86,7 +90,13 @@
       "answer_changed": true,
       "gold": [
         "Democratic"
-      ]
+      ],
+      "answer_ahn_fl": "Republican",
+      "answer_nowrite_fl": "Republican",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "8318ea1b9fd0443387e6bcd5382933a05614955578f7b95b",
@@ -100,7 +110,13 @@
       "answer_changed": true,
       "gold": [
         "Ellie Kemper"
-      ]
+      ],
+      "answer_ahn_fl": "Ellie Kemper",
+      "answer_nowrite_fl": "Ellie Kemper",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 1.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "74f2fce3240dd7e91f9522b9cbb9e10f43f16fdb0c22e7fa",
@@ -114,7 +130,13 @@
       "answer_changed": true,
       "gold": [
         "Gregory Walter Graffin"
-      ]
+      ],
+      "answer_ahn_fl": "Greg Graffin",
+      "answer_nowrite_fl": "Greg Graffin",
+      "f1_ahn_fl": 0.4,
+      "f1_nowrite_fl": 0.4,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "a6e57d5dfcbdc68035395fe57842144769450fc962f5bbcd",
@@ -128,7 +150,13 @@
       "answer_changed": true,
       "gold": [
         "Innviertel"
-      ]
+      ],
+      "answer_ahn_fl": "Austria",
+      "answer_nowrite_fl": "Austria",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "d3493a99d0e83a5431e4a5d829bb241692bae70fe1d3bf17",
@@ -142,7 +170,13 @@
       "answer_changed": true,
       "gold": [
         "Aloe Vera of America"
-      ]
+      ],
+      "answer_ahn_fl": "Forever Living Products",
+      "answer_nowrite_fl": "Forever Living Products",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "612961d8f4c473a6be137dca843cdd647da01c26898aff1c",
@@ -156,7 +190,13 @@
       "answer_changed": true,
       "gold": [
         "Kristian Eivind Espedal"
-      ]
+      ],
+      "answer_ahn_fl": "Gaahl",
+      "answer_nowrite_fl": "Gaahl",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "570727521e78a04c7d8d892fdd8bfbdce0d178f3d4bcceb4",
@@ -170,7 +210,13 @@
       "answer_changed": true,
       "gold": [
         "a minor basilica"
-      ]
+      ],
+      "answer_ahn_fl": "minor basilica",
+      "answer_nowrite_fl": "the status of a religious building",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 1.0,
+      "answer_changed_fl": true
     },
     {
       "id": "0b6ddb583fa1df95b1b4c7961f7affcc7c6266e520826484",
@@ -184,7 +230,13 @@
       "answer_changed": true,
       "gold": [
         "Newfoundland and Labrador"
-      ]
+      ],
+      "answer_ahn_fl": "Newfoundland and Labrador",
+      "answer_nowrite_fl": "northern Newfoundland and the coast of Labrador",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 0.6666666666666666,
+      "delta_f1_fl": 0.33333333333333337,
+      "answer_changed_fl": true
     },
     {
       "id": "0df347189016b4d86b8f6d4086388a5ea318a08c468abba3",
@@ -198,7 +250,13 @@
       "answer_changed": false,
       "gold": [
         "Istanbul, Turkey"
-      ]
+      ],
+      "answer_ahn_fl": "Istanbul",
+      "answer_nowrite_fl": "Istanbul",
+      "f1_ahn_fl": 0.6666666666666666,
+      "f1_nowrite_fl": 0.6666666666666666,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "780f15259479e8965d474efc011eb220ac4078da86e8dc19",
@@ -212,7 +270,13 @@
       "answer_changed": true,
       "gold": [
         "novel"
-      ]
+      ],
+      "answer_ahn_fl": "Book and video game",
+      "answer_nowrite_fl": "book",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": true
     },
     {
       "id": "36b7e445832590b8ddf74995162cd5e94f7f620cdfc992dd",
@@ -226,7 +290,13 @@
       "answer_changed": true,
       "gold": [
         "125 lb (57 kg)"
-      ]
+      ],
+      "answer_ahn_fl": "125 lb (57 kg)",
+      "answer_nowrite_fl": "125 lb 57 kg",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 1.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "5fdd140211b5a3c1c879875b2c782e573cf4df4f68c8408e",
@@ -240,7 +310,13 @@
       "answer_changed": true,
       "gold": [
         "no"
-      ]
+      ],
+      "answer_ahn_fl": "No",
+      "answer_nowrite_fl": "No",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 1.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "d72f85795be5a873d62c8694c0c043cb3311ebcb5480316c",
@@ -254,7 +330,13 @@
       "answer_changed": true,
       "gold": [
         "Dallas Cowboys"
-      ]
+      ],
+      "answer_ahn_fl": "Dallas Cowboys",
+      "answer_nowrite_fl": "Dallas Cowboys",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 1.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "09221499868bb9e1a230f8530fa4759e812e5f2738d12942",
@@ -268,7 +350,13 @@
       "answer_changed": true,
       "gold": [
         "former English county of Humberside"
-      ]
+      ],
+      "answer_ahn_fl": "Lincolnshire",
+      "answer_nowrite_fl": "Leicestershire",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": true
     },
     {
       "id": "dd5ae003e007a523e056e069ad0ad058847299f004c646f9",
@@ -282,7 +370,13 @@
       "answer_changed": true,
       "gold": [
         "Tony Aloupis"
-      ]
+      ],
+      "answer_ahn_fl": "Natalia Leite",
+      "answer_nowrite_fl": "Natalia Leite",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "524d2df4e388792739e2486b131d791c9966e797f4dd9492",
@@ -296,7 +390,13 @@
       "answer_changed": true,
       "gold": [
         "1976"
-      ]
+      ],
+      "answer_ahn_fl": "2003",
+      "answer_nowrite_fl": "2003",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "56d2ecd968aaef6194dcf7de6e3844c9225d8e9ec1a0a3ce",
@@ -310,7 +410,13 @@
       "answer_changed": true,
       "gold": [
         "June 17, 2007"
-      ]
+      ],
+      "answer_ahn_fl": "July 15, 2011",
+      "answer_nowrite_fl": "July 15, 2011",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "19092acc2a874e7d35633f7e9e8fc128720344b066244f04",
@@ -324,7 +430,13 @@
       "answer_changed": true,
       "gold": [
         "Roslyn Castle"
-      ]
+      ],
+      "answer_ahn_fl": "Roslyn Castle",
+      "answer_nowrite_fl": "Roslin Castle",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 0.5,
+      "delta_f1_fl": 0.5,
+      "answer_changed_fl": true
     },
     {
       "id": "834ced6842436a1c77d203700bfcb2526641b70c04101553",
@@ -338,7 +450,13 @@
       "answer_changed": true,
       "gold": [
         "Tie Domi"
-      ]
+      ],
+      "answer_ahn_fl": "Tie Domi",
+      "answer_nowrite_fl": "Tie Domi",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 1.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "9c0f9782d1b8ab3a3b6151ee92ab597809a63b7855b53fde",
@@ -352,7 +470,13 @@
       "answer_changed": true,
       "gold": [
         "yes"
-      ]
+      ],
+      "answer_ahn_fl": "Yes",
+      "answer_nowrite_fl": "Yes",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 1.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "5ead25955ee172d556fdd54032c508a9786b300dd49e4757",
@@ -366,7 +490,13 @@
       "answer_changed": true,
       "gold": [
         "Neneh Cherry"
-      ]
+      ],
+      "answer_ahn_fl": "Ray Roughler Jones",
+      "answer_nowrite_fl": "Ray Roughler Jones",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "ee2647e9cf29dcab9c66ffea03e05e9ef7c44e0e61eee68c",
@@ -380,7 +510,13 @@
       "answer_changed": false,
       "gold": [
         "44,300"
-      ]
+      ],
+      "answer_ahn_fl": "24,698",
+      "answer_nowrite_fl": "24,698",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "64bba86b667bc9dd60aaa6c30a2d7403629fd6daabf6d43e",
@@ -394,7 +530,13 @@
       "answer_changed": true,
       "gold": [
         "pale lager"
-      ]
+      ],
+      "answer_ahn_fl": "lager beer",
+      "answer_nowrite_fl": "asset management",
+      "f1_ahn_fl": 0.5,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.5,
+      "answer_changed_fl": true
     },
     {
       "id": "1bfa4cb5fc609ed2f83787800d112fa7fcb5cdcbef7756fa",
@@ -408,7 +550,13 @@
       "answer_changed": true,
       "gold": [
         "from around 1520"
-      ]
+      ],
+      "answer_ahn_fl": "17th century",
+      "answer_nowrite_fl": "1758",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": true
     },
     {
       "id": "f0d13537c2b6b00c76660dd7af3d103fe2fb0cc747fdb677",
@@ -422,7 +570,13 @@
       "answer_changed": true,
       "gold": [
         "yes"
-      ]
+      ],
+      "answer_ahn_fl": "Yes",
+      "answer_nowrite_fl": "Yes",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 1.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "566cf1595f78c029378e6220cf960d0b791084225f60ccda",
@@ -436,7 +590,13 @@
       "answer_changed": true,
       "gold": [
         "Kongo"
-      ]
+      ],
+      "answer_ahn_fl": "Portuguese",
+      "answer_nowrite_fl": "Portuguese",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "92be640857b6dd2e6beef9c07b7c3805d358192150971dda",
@@ -450,7 +610,13 @@
       "answer_changed": true,
       "gold": [
         "8 April 1912"
-      ]
+      ],
+      "answer_ahn_fl": "1907",
+      "answer_nowrite_fl": "Karl Freiherr Michel von T\u00fc\u00dfling",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": true
     },
     {
       "id": "0bbd28f6cdb99eca32bfebb135b10db570568655b5924475",
@@ -464,7 +630,13 @@
       "answer_changed": true,
       "gold": [
         "west"
-      ]
+      ],
+      "answer_ahn_fl": "west coast",
+      "answer_nowrite_fl": "west coast",
+      "f1_ahn_fl": 0.6666666666666666,
+      "f1_nowrite_fl": 0.6666666666666666,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "996c58a6f7fd10715191104b726d87dd079e7aa8e6fabef9",
@@ -478,7 +650,13 @@
       "answer_changed": false,
       "gold": [
         "Europe"
-      ]
+      ],
+      "answer_ahn_fl": "North America",
+      "answer_nowrite_fl": "North America",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "7681a4ae6d92c179c938738ad170b6626534556d9ea993b6",
@@ -492,7 +670,13 @@
       "answer_changed": true,
       "gold": [
         "1902"
-      ]
+      ],
+      "answer_ahn_fl": "1942",
+      "answer_nowrite_fl": "1942",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "e71fd79076da6ff2259a596d154b78301488419a5736ac21",
@@ -506,7 +690,13 @@
       "answer_changed": false,
       "gold": [
         "no"
-      ]
+      ],
+      "answer_ahn_fl": "No",
+      "answer_nowrite_fl": "No",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 1.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "7cdceb45cfb9439bd41148788e5cf2f0e8a5cb99a0e09729",
@@ -520,7 +710,13 @@
       "answer_changed": true,
       "gold": [
         "yes"
-      ]
+      ],
+      "answer_ahn_fl": "No",
+      "answer_nowrite_fl": "no",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "f3c23b4984f14199f12862795aeb344f19c97bfc9c586a8f",
@@ -534,7 +730,13 @@
       "answer_changed": true,
       "gold": [
         "Nobel Prize"
-      ]
+      ],
+      "answer_ahn_fl": "Nobel Prize in Physics",
+      "answer_nowrite_fl": "Nobel Prize in Physics",
+      "f1_ahn_fl": 0.6666666666666666,
+      "f1_nowrite_fl": 0.6666666666666666,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "1ae026dfc12f5b58aeaf3bb8631d67f416a8d4e22a47d1de",
@@ -548,7 +750,13 @@
       "answer_changed": true,
       "gold": [
         "Christopher Nolan"
-      ]
+      ],
+      "answer_ahn_fl": "Ron Perkins directed a 2006 film where his character plays the manager of a hotel. The film is \"The Prestige\" directed by Christopher Nolan",
+      "answer_nowrite_fl": "Ron Perkins directed",
+      "f1_ahn_fl": 0.1904761904761905,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.1904761904761905,
+      "answer_changed_fl": true
     },
     {
       "id": "cf39373b78df19018180ae54b7006205fdb85ec4e708a95d",
@@ -562,7 +770,13 @@
       "answer_changed": true,
       "gold": [
         "Katarina Witt"
-      ]
+      ],
+      "answer_ahn_fl": "Debi Thomas",
+      "answer_nowrite_fl": "Katarina Witt",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 1.0,
+      "delta_f1_fl": -1.0,
+      "answer_changed_fl": true
     },
     {
       "id": "82a1a48996ef392d6abe74ea1d2b0a807c0f4d859c4026ac",
@@ -576,7 +790,13 @@
       "answer_changed": true,
       "gold": [
         "1964 to 1974"
-      ]
+      ],
+      "answer_ahn_fl": "1996",
+      "answer_nowrite_fl": "1996",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "27fa190091460428cd374c49583b9721fbd4a742e0e5e66e",
@@ -590,7 +810,13 @@
       "answer_changed": true,
       "gold": [
         "Honolulu"
-      ]
+      ],
+      "answer_ahn_fl": "Hawaii",
+      "answer_nowrite_fl": "Hawaii County",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": true
     },
     {
       "id": "6c8952c7678c9c2db0a6cdaed0f8aa573898a297f1947e8d",
@@ -604,7 +830,13 @@
       "answer_changed": true,
       "gold": [
         "76,416"
-      ]
+      ],
+      "answer_ahn_fl": "76,416",
+      "answer_nowrite_fl": "76,416",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 1.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "b382a3ff1ff044c91cba6eafbbae2a2be82e107109d35688",
@@ -618,7 +850,13 @@
       "answer_changed": true,
       "gold": [
         "Gary Lightbody"
-      ]
+      ],
+      "answer_ahn_fl": "Laura Jean Englert",
+      "answer_nowrite_fl": "Laura Jean Englert",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "7bc9d324dd6195d9ad2395b87601f929de0c15c668e9e4cb",
@@ -632,7 +870,13 @@
       "answer_changed": true,
       "gold": [
         "Sri Lankabhimanya Lester James Peries"
-      ]
+      ],
+      "answer_ahn_fl": "Sri Lankabhimanya Lester James Peries",
+      "answer_nowrite_fl": "Jean Vigo",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 1.0,
+      "answer_changed_fl": true
     },
     {
       "id": "e1b6edc0310b4329374915aa013f0870213342822a728142",
@@ -646,7 +890,13 @@
       "answer_changed": true,
       "gold": [
         "yes"
-      ]
+      ],
+      "answer_ahn_fl": "Yes",
+      "answer_nowrite_fl": "Yes",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 1.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "a6cda30d0950f2d8b0e5c1ee89466cbc43b37be7daedcb8b",
@@ -660,7 +910,13 @@
       "answer_changed": true,
       "gold": [
         "Emilia-Romagna Region"
-      ]
+      ],
+      "answer_ahn_fl": "Bologna",
+      "answer_nowrite_fl": "Italy",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": true
     },
     {
       "id": "7caf887e7c7af6c1dbe41d09aa5138aa6147234257b15c42",
@@ -674,7 +930,13 @@
       "answer_changed": true,
       "gold": [
         "Kurt Vonnegut"
-      ]
+      ],
+      "answer_ahn_fl": "Kurt Vonnegut",
+      "answer_nowrite_fl": "Kurt Vonnegut",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 1.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "52159c74eaf34175bef4c0c07531f5908ba3eb1d390ca97d",
@@ -688,7 +950,13 @@
       "answer_changed": true,
       "gold": [
         "Tharangambadi"
-      ]
+      ],
+      "answer_ahn_fl": "Thirukkalachery is a village in the town of Tharangambadi, Tamil Nadu, India. To arrive at this answer, we need",
+      "answer_nowrite_fl": "Thirukkalachery is a small village in Mayiladuthurai District, Tranquebar (Tharangambadi) Taluk, Tamil",
+      "f1_ahn_fl": 0.1111111111111111,
+      "f1_nowrite_fl": 0.16666666666666669,
+      "delta_f1_fl": -0.05555555555555558,
+      "answer_changed_fl": true
     },
     {
       "id": "5c5eaa11039b3bdb361961c2d4bb541e491a596c5c5d4465",
@@ -702,7 +970,13 @@
       "answer_changed": true,
       "gold": [
         "1924November 22, 1993"
-      ]
+      ],
+      "answer_ahn_fl": "1993",
+      "answer_nowrite_fl": "1993",
+      "f1_ahn_fl": 0.5,
+      "f1_nowrite_fl": 0.5,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "5dea8866ddd6e6bd76e82c8d8cea1dbfc441e58ec31724d6",
@@ -716,7 +990,13 @@
       "answer_changed": true,
       "gold": [
         "Hamlet"
-      ]
+      ],
+      "answer_ahn_fl": "La fille du r\u00e9giment",
+      "answer_nowrite_fl": "La F\u00eate du printemps",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": true
     },
     {
       "id": "adde6fd9958589ef78af9e192aeffd8e48dfbd8d35014f4f",
@@ -730,7 +1010,13 @@
       "answer_changed": true,
       "gold": [
         "Holinshed's Chronicle"
-      ]
+      ],
+      "answer_ahn_fl": "The Chronicles of England",
+      "answer_nowrite_fl": "The Chronicles of England",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "ef6033d606cd6e5c9cc6ab85b75e68cdb4cc7578a3dc573f",
@@ -744,7 +1030,13 @@
       "answer_changed": true,
       "gold": [
         "he turned 51, he died of cancer"
-      ]
+      ],
+      "answer_ahn_fl": "cancer",
+      "answer_nowrite_fl": "cancer",
+      "f1_ahn_fl": 0.25,
+      "f1_nowrite_fl": 0.25,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "8149fb371e91a3c4e6776957a8591519d55910bb5029e267",
@@ -758,7 +1050,13 @@
       "answer_changed": true,
       "gold": [
         "Pennsylvania"
-      ]
+      ],
+      "answer_ahn_fl": "The crash site in Pennsylvania",
+      "answer_nowrite_fl": "The passage does not provide specific information about Heather Penney ramming a hijacked plane. Therefore, there is no answer available based on the given information. Answer",
+      "f1_ahn_fl": 0.4,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.4,
+      "answer_changed_fl": true
     },
     {
       "id": "f8832527b9381e131ecdcb4a81278fbcdd2b5e56c6215744",
@@ -772,7 +1070,13 @@
       "answer_changed": true,
       "gold": [
         "Vikram"
-      ]
+      ],
+      "answer_ahn_fl": "Chiyaan Vikram",
+      "answer_nowrite_fl": "Chiyaan Vikram",
+      "f1_ahn_fl": 0.6666666666666666,
+      "f1_nowrite_fl": 0.6666666666666666,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "0e4fac2d1da09fad0958e11c5d6d7d8cbe4143e5a105e084",
@@ -786,7 +1090,13 @@
       "answer_changed": true,
       "gold": [
         "Man Haron"
-      ]
+      ],
+      "answer_ahn_fl": "Man Haron Monis",
+      "answer_nowrite_fl": "Chris Reason",
+      "f1_ahn_fl": 0.8,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.8,
+      "answer_changed_fl": true
     },
     {
       "id": "6153db5292ec46160b06ceb90f401de731655879157b30d7",
@@ -800,7 +1110,13 @@
       "answer_changed": true,
       "gold": [
         "Gaspare Luigi Pacifico Spontini"
-      ]
+      ],
+      "answer_ahn_fl": "Wolfgang Amadeus Mozart",
+      "answer_nowrite_fl": "Wolfgang Amadeus Mozart",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "89d46cdb218ad0444871f9b44dea057e0cdbd6c08be8d9c1",
@@ -814,7 +1130,13 @@
       "answer_changed": true,
       "gold": [
         "Pandosia and Heraclea"
-      ]
+      ],
+      "answer_ahn_fl": "Pandosia and Heraclea",
+      "answer_nowrite_fl": "Pandosia and Heraclea.",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 1.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "6d83121d4b9d36d10b3eeaeabe37ca728dcdbcea9541b57b",
@@ -828,7 +1150,13 @@
       "answer_changed": true,
       "gold": [
         "Atsushi Ogata"
-      ]
+      ],
+      "answer_ahn_fl": "Ralph Smart",
+      "answer_nowrite_fl": "Atsushi Ogata",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 1.0,
+      "delta_f1_fl": -1.0,
+      "answer_changed_fl": true
     },
     {
       "id": "df556f7b2e1c7fd14f1a64900f8d71c6207f8a85145e4ca3",
@@ -842,7 +1170,13 @@
       "answer_changed": true,
       "gold": [
         "1994"
-      ]
+      ],
+      "answer_ahn_fl": "1994",
+      "answer_nowrite_fl": "1994",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 1.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "88e3bc9e0eee130cd7cd23ebed32a425fd76a7bc566a64bd",
@@ -856,7 +1190,13 @@
       "answer_changed": true,
       "gold": [
         "NYPD's 83rd Precinct"
-      ]
+      ],
+      "answer_ahn_fl": "New York City Police Department's 70th Precinct",
+      "answer_nowrite_fl": "New York City Police Department's 70th Precinct",
+      "f1_ahn_fl": 0.2,
+      "f1_nowrite_fl": 0.2,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "7504ff847adb8044a6217e1cee5d4e7f5d3b80a7adb9d9fe",
@@ -870,7 +1210,13 @@
       "answer_changed": true,
       "gold": [
         "331 episodes"
-      ]
+      ],
+      "answer_ahn_fl": "15",
+      "answer_nowrite_fl": "13",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": true
     },
     {
       "id": "fd61851f598d55c56d1d32d500d54f356919668ee76a5fa0",
@@ -884,7 +1230,13 @@
       "answer_changed": true,
       "gold": [
         "Berber"
-      ]
+      ],
+      "answer_ahn_fl": "Siwi language",
+      "answer_nowrite_fl": "Siwi language",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     },
     {
       "id": "1f9db2aff02d37612e21ae47ae43ba53ce131848900865ff",
@@ -898,7 +1250,13 @@
       "answer_changed": true,
       "gold": [
         "Charice"
-      ]
+      ],
+      "answer_ahn_fl": "Charice",
+      "answer_nowrite_fl": "Banks",
+      "f1_ahn_fl": 1.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 1.0,
+      "answer_changed_fl": true
     },
     {
       "id": "1a16dfb39ae6cf0874aefc9d22d1cc299f3003fc6d8b19e2",
@@ -912,7 +1270,13 @@
       "answer_changed": false,
       "gold": [
         "Rafael Palmeiro Corrales"
-      ]
+      ],
+      "answer_ahn_fl": "Bert Campaneris",
+      "answer_nowrite_fl": "Bert Campaneris",
+      "f1_ahn_fl": 0.0,
+      "f1_nowrite_fl": 0.0,
+      "delta_f1_fl": 0.0,
+      "answer_changed_fl": false
     }
   ]
 }
