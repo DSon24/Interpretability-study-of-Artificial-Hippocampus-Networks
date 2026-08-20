@@ -1,0 +1,33 @@
+{
+  "model_path": "/home/jupyter-dphs-4ca1/AHN/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
+  "ahn_implementation": "GatedDeltaNet",
+  "n_layers": 36,
+  "n_ahn_layers": 36,
+  "hidden": 2048,
+  "vocab": 151936,
+  "num_heads": 16,
+  "head_dim": 128,
+  "heads_x_head_dim": 2048,
+  "sliding_window": 8064,
+  "use_sliding_window": true,
+  "num_attn_sinks": 128,
+  "use_ahn_router": false,
+  "use_q_proj": false,
+  "use_normalized_l2": true,
+  "o_proj_has_bias": false,
+  "lm_head_tied": true,
+  "dtype": "torch.bfloat16",
+  "warnings": [
+    "num_attn_sinks=128: the first 128 tokens are never compressed and stay losslessly visible to attention. Any needle placed inside that prefix is NOT evicted, whatever the sliding window is. Place needles after it (build_niah_prompt does this)."
+  ],
+  "cfg": {
+    "model_path": "/home/jupyter-dphs-4ca1/AHN/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
+    "cell": "GatedDeltaNet",
+    "scale": "3B",
+    "sliding_window": 8064,
+    "num_attn_sinks": 128,
+    "attn_impl": "flash_attention_2",
+    "dtype": "bfloat16",
+    "results_dir": "results/run_3b_gdn"
+  }
+}
