@@ -191,3 +191,6 @@ results/**/*.png
 !results/pilot_2026-08-18/*.png
 .ipynb_checkpoints/
 _to_delete/
+
+# macOS
+.DS_Store

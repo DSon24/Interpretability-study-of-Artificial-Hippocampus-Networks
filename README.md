@@ -53,10 +53,10 @@ Sequencing follows Gautam's instruction after the last meeting:
 |---|---|---|
 | One 3B checkpoint running | **done** — Qwen2.5-3B + AHN-GDN merged, A100-40GB | Sơn, 18 Aug |
 | Hooks fire on the AHN module, NOWRITE zeroes the capture | **done** | `notebooks/pilot/` |
-| Hook output verified to be the memory's residual-stream contribution | **not yet** — the pilot decoded a pre-`o_proj` vector; see Findings | `notebooks/01_` |
-| Reproduce the published NOWRITE result (38–42% changed answers) | **not started** — no task score has been computed yet | `notebooks/03_` |
-| J-lens fitted for Qwen2.5-3B | **partial** — fitted from one 106-char prompt at layer 18; fails its own sanity check | `notebooks/02_` |
-| NIAH retention with pre-eviction / NOWRITE controls | **partial** — shape exists, numbers not yet valid | `notebooks/04_` |
+| Hook output verified to be the memory's residual-stream contribution | **done** — Gate A passes: `resid(AHN) − resid(NOWRITE) = o_proj(ahn_raw)` | `results/run_3b_gdn/01_instrumentation_gates.json` |
+| Reproduce the published NOWRITE result (38–42% changed answers) | **done, with a metric correction** — 33.3% changed (first-line), ΔF1 **+6.1 pts** | `results/run_3b_gdn/03_nowrite_reproduction.json` |
+| J-lens fitted for Qwen2.5-3B | **done, not validated** — 500 contexts, layers 9/18/27, **1.92 GPU-h**; Table 3 checks 2 and 3 fail | `results/run_3b_gdn/jlens_qwen25_3b.pt` |
+| NIAH retention with pre-eviction / NOWRITE controls | **not started** — unblocked; this is the next run | `notebooks/04_` |
 | 3 cells at 3B → retention curves | not started (correct — do not start yet) | |
 | 7B checkpoints, RQ3 correlation | not started (correct) | |
 
@@ -75,10 +75,100 @@ That is real progress on the hardest engineering step — a working merged check
 live hooks is most of Stage 1. The measurement built on top of it is not yet valid, for
 the reasons below.
 
+**19–20 Aug 2026 — Hannah.** Ran notebooks 00 → 03 end to end on the shared A100 box.
+Notebook 00 recorded the config of record (window 8064, sinks 128, `use_ahn_router=false`,
+`o_proj` has no bias). Notebook 01 passed all three instrumentation gates. Notebook 02 fit
+a real 500-context J-lens in 1.92 GPU-hours and ran the Table 3 battery. Notebook 03
+produced the project's first task scores on 60 LongBench-E HotpotQA examples. Four bugs
+were found and fixed in `ahn_interp.py` along the way (needle-padding precision, the
+eviction-distance formula, the Gate A residual-capture hook point, and an OOM from
+computing full-sequence logits); one dataset-id fix in notebook 02 (`wikitext` →
+`Salesforce/wikitext`, which recent `datasets` versions require). Detail below.
+
+## Findings from the 19–20 Aug run
+
+**1. The instrumentation is verified correct.** Gate A — the identity
+`resid(AHN) − resid(NOWRITE) = o_proj(ahn_raw)` — passes at the first AHN layer and fails
+at a deep layer as expected. Gate B confirms suppressing writes moves the next-token
+distribution. This closes the "not yet" row above and retires pilot findings 1 and 2:
+the readout is now in the right basis and the C1 control is no longer vacuous.
+
+**2. The J-lens map costs 1.92 GPU-hours, not 15–20.** This is Table 10 row 1, measured at
+the proposal's own settings (500 contexts, `max_seq_len=256`, layers 9/18/27, disjoint
+corpora verified zero-overlap). The proposal budgeted 15–20 GPU-hours and set **>40 h as
+the abort signal for RQ2**. Coming in an order of magnitude under budget materially
+de-risks the 7B decision (Table 10 row 2) and means lens re-fits are cheap enough to
+iterate on rather than ration.
+
+**3. Table 3 check 2 is mis-specified and should be revised, not chased.** The check
+demands ≥60% top-1 agreement with the plain logit lens at mid layers. Measured agreement
+is 0% / 0% / 5% at layers 9 / 18 / 27 — but on eight known-fact prompts the logit lens
+itself has a **median rank of 12,433** at layer 18. Demanding agreement with a reference
+that is itself near-useless at the layers in question is not a validity test. Recommend
+replacing it with a direct known-fact criterion.
+
+**4. Table 3 check 3 fails on a strict criterion, but the lens carries real signal.**
+Check 3 requires the target token at rank 0. Measured `rank_Paris` is 805 / 59 / **8** at
+layers 9 / 18 / 27, and across eight known-fact prompts the J-lens median rank is
+1,808 / 61 / **9** against a 151,936-token vocabulary. On the same prompts the plain logit
+lens gives 40,154 / 12,433 / 71 — so the J-lens beats it by **22× at layer 9, 204× at
+layer 18, and 8× at layer 27**. It reaches top-1 on 0/8 facts; the logit lens manages 1/8
+at layer 27 only.
+
+Four candidate explanations were tested and eliminated, all at zero GPU cost:
+
+| hypothesis | test | result |
+|---|---|---|
+| decode path wrong (hook point, final norm, `lm_head`) | decode layer-35 residual with no lens, compare to the model's own logits | **ruled out** — KL = 1.95×10⁻⁴, exact top-5 match |
+| transport orientation transposed (`h @ J` vs `J @ h`) | sweep both orientations on the fitted Jacobians | **ruled out** — `h @ J` gives ranks of 16k–146k |
+| layer-index convention off by one between `jlens` and the hook | pair each `J_L` with `resid@L±1, ±2` | **ruled out** — the diagonal is optimal at layers 18 and 27 |
+| junk tokens win through large unembedding norm | compare `‖W‖` for `____`, `:**`, ` Paris`, ` Tokyo` | **ruled out** — all ≈ 1.0 |
+| an input-independent additive offset in logit space | subtract the mean readout over 32 held-out prompts | **ruled out** — rank got *worse* (8 → 32) |
+
+What remains is that the averaged Jacobian leans toward structural continuations
+(`____`, `:**`, `.[`), and those occupy the top slots ahead of the correct answer. Note
+that the model itself ranks ` __` second on "The capital of France is", so this is a
+plausible-continuation family being over-weighted, not noise. **Whether this disqualifies
+the lens for RQ2 is a judgment call for Gautam:** RQ2 needs rank *separation* between
+needle and control, not top-1, and notebook 04 tests that property directly.
+
+**5. Notebook 03's pass/fail metric measured the wrong thing.** As written, both
+`answer_changed` and the F1 scores are computed on the entire ≤32-token generation. The
+model ignores the template's "only give me the answer" instruction and rambles past the
+answer until the token cap, so any divergence in that trailing justification counted as a
+changed answer:
+
+```
+AHN: 'Dallas Cowboys\nThe football maneuver, known as the horse-collar tackle...'
+NW:  'Dallas Cowboys\nThe horse-collar tackle is most closely associated...'
+```
+
+The answer is identical; the metric scored it as changed. Recomputed on the first line
+only — same 60 generations, no re-run:
+
+| metric | full generation | first line | published target |
+|---|---|---|---|
+| answer-change rate | 91.7% | **33.3%** | 38–42% |
+| mean F1 (AHN) | 0.115 | **0.400** | — |
+| mean F1 (NOWRITE) | 0.130 | **0.339** | — |
+| ΔF1 | −1.44 pts | **+6.11 pts** | +0.4 to +2.3 pts |
+
+The change rate lands inside the notebook's own tolerance band (30–50%) and near the
+published range, and ΔF1 **flips sign** to match the published direction. The remaining
+gap is magnitude: +6.1 points is larger than the published +0.4 to +2.3, i.e. this
+checkpoint's memory appears to help *more* than the concurrent study's did — the opposite
+of a null result. Both metrics are kept in the saved JSON (`*_fl` fields alongside the
+originals) because the discrepancy is itself a finding: the prompt template is not
+eliciting terse answers.
+
 ## Findings from the 18 Aug pilot
 
 Five issues, in the order they need fixing. All five are addressed by
-[`ahn_interp.py`](ahn_interp.py) and the numbered notebooks.
+[`ahn_interp.py`](ahn_interp.py) and the numbered notebooks. **Findings 1, 2 and 3 are now
+retired** — Gate A's identity holds, C1 runs on the residual stream, and needles are placed
+past `num_attn_sinks`. Finding 4 is superseded by the 19–20 Aug run above (the lens is now
+fit on a real corpus and diagnosed in detail). Kept here as the record of what changed and
+why.
 
 **1. The readout was in the wrong basis.** In `src/ahn/transformer/qwen2_ahn/qwen2_ahn.py`
 the memory is combined by plain addition **before** the attention output projection:
@@ -140,6 +230,12 @@ docs/
   UPSTREAM_README.md                 ByteDance's original README
   PROPOSAL.md                        pointer to the proposal + expected-artefacts docs
 results/
+  run_3b_gdn/                        the run of record — GDN 3B, window 8064, sinks 128
+    00_config_audit.json               checkpoint config as loaded
+    01_instrumentation_gates.json      Gates A/B/C — all pass
+    02_table3_jlens_validation.json    Table 3 checks (2 and 3 fail; see Findings)
+    jlens_qwen25_3b.pt                 fitted J-lens, layers 9/18/27, 1.92 GPU-h
+    03_nowrite_reproduction.json       60 examples, per-example rows + both metrics
   pilot_2026-08-18/                  superseded — see Findings above
 src/ahn/                       upstream AHN implementation (unmodified)
 eval/, examples/               upstream harnesses (unmodified)
@@ -161,7 +257,24 @@ JSON.** Every notebook is standalone apart from `ahn_interp.py`.
 
 Order matters: `00 → 01 → 02 → 03 → 04 → 05`. Notebook 02 must be run in a **separate
 environment** with `transformers>=5` because `jlens` conflicts with the repo's
-`transformers==4.51.0` pin — that is why fitting and use are in different notebooks.
+`transformers==4.51.0` pin — that is why fitting and use are in different notebooks. The
+`.pt` the fit produces is a plain tensor dict, so it loads back under the 4.51.0 env
+without issue.
+
+```bash
+# one-time: the notebook-02 environment
+python3 -m venv ~/jlens-venv && source ~/jlens-venv/bin/activate
+git clone https://github.com/anthropics/jacobian-lens.git && pip install -e jacobian-lens
+pip install datasets accelerate ipykernel
+python -m ipykernel install --user --name jlens-venv --display-name "jlens (transformers>=5)"
+```
+
+**On a shared box, pin the GPU.** The default `device_map="cuda"` resolves to device 0,
+which is usually the most contended. Check `torch.cuda.mem_get_info(i)` across devices and
+pass `device_map="cuda:<idle_index>"` to `ai.load_ahn_model`, or set
+`CUDA_VISIBLE_DEVICES` before importing torch. Independent notebooks can then be run in
+parallel on separate devices — each 3B job needs only 6–16 GB of a 40 GB card, and wall
+clock, not GPU-hours, is the binding constraint.
 
 ### Merging a checkpoint
 
@@ -189,23 +302,27 @@ of git (it already is).
 
 ## Next steps
 
-Ordered so that each one unblocks the next. The first four are the mentor's stated
-sequence with the pilot's gaps filled in.
+Steps 1–3 are done. What follows is ordered so that each one unblocks the next.
 
-1. **Run `01_instrumentation_gate.ipynb`.** ~10 GPU-minutes. Gate A is the identity
-   `resid(AHN) − resid(NOWRITE) = o_proj(ahn_raw)` at the first AHN layer. Until it
-   passes, no readout number means anything. Gate B checks that suppressing writes moves
-   the output distribution at all.
-2. **Run `03_nowrite_reproduction.ipynb`.** 2–4 GPU-hours. This is the Week-6 milestone
-   and the first task score the project will have produced. Reproducing 38–42% changed
-   answers with |ΔF1| under ~2.5 points is the cleanest evidence the fork behaves like the
-   real system — and it is the sentence to put in the next mentor update.
-3. **Run `02_jlens_fit_and_validate.ipynb` with a real corpus** (500 contexts, two
-   disjoint halves, `max_seq_len=256`, layers 9/18/27). Record the wall-clock: the
-   proposal budgets 15–20 GPU-hours and treats **>40 h as the abort signal for RQ2**.
-   Check 3 (known-fact recall) is cheap — run it first and stop early if it fails.
-4. **Run `04_niah_retention.ipynb` on GDN 3B.** Controls C1 and C4 must pass before
-   Table 6 is populated. If C3 (shuffled context) fails, message Gautam that day: it would
+1. ~~Run `01_instrumentation_gate.ipynb`~~ — **done**, all gates pass.
+2. ~~Run `03_nowrite_reproduction.ipynb`~~ — **done**; see Findings item 5. Two follow-ups,
+   neither blocking: bootstrap a CI on the first-line ΔF1 (the +6.1-point figure is a point
+   estimate on n=60, and a wide CI would make the gap to the published +0.4–2.3 range a soft
+   miss rather than a hard one), and optionally re-run generation with a newline stopping
+   criterion so the primary metric is clean rather than a post-hoc correction.
+3. ~~Run `02_jlens_fit_and_validate.ipynb` with a real corpus~~ — **done** in 1.92 GPU-h;
+   Table 3 checks 2 and 3 fail, diagnosed in Findings items 3 and 4. Check 4 (map stability
+   across disjoint corpora) is **still unrun** — it needs a second ~1.9 GPU-h fit on
+   `corpus_b`, and it is the one remaining Table 3 row that would say whether the fit has
+   converged. Worth running: a stable map that misses top-1 is a very different diagnosis
+   from an unconverged one.
+4. **Run `04_niah_retention.ipynb` on GDN 3B.** *This is now the critical path.* Controls
+   C1 and C4 must pass before Table 6 is populated. It is also the experiment that settles
+   the open lens question: RQ2 needs the readout to *separate* an evicted needle from its
+   controls, which is a weaker and more relevant property than the top-1 criterion check 3
+   imposes. Run it with `USE_JLENS=True` — the J-lens outperforms the logit lens by 8–204×
+   on known facts — and label the figures as using an unvalidated-on-Table-3 lens until
+   that is resolved. If C3 (shuffled context) fails, message Gautam that day: it would
    mean AHN is closer to a learned recency mechanism than to content memory, which
    contradicts the framing of the original AHN paper and is arguably the most publishable
    thing in the project.
@@ -226,13 +343,24 @@ sequence with the pilot's gaps filled in.
    success criterion is a ratio ≥ 2 with a CI excluding 1 on at least one pair.
 8. **7B last**, gated on the J-lens map cost measured in step 3 (Table 10 row 2).
 
-### Two things to raise with Gautam now, not later
+### To raise with Gautam now, not later
 
 - **Open Question 4 is answered**: the combination is a plain sum before `o_proj`, so
-  `o_t` isolates cleanly. Worth telling him — it was flagged as the first thing to check
-  in Week 1, and it is settled.
+  `o_t` isolates cleanly. Confirmed empirically by Gate A, not just by reading the source.
 - **Open Question 6**: he uses 8,064 on LongBench-E himself, which makes our 8064 window
   easy to defend. Confirm it in writing so it goes in Methods as a stated parameter.
+- **The J-lens decision (new, and the one that needs his judgment).** The lens applies
+  correctly — decode path, orientation and layer convention all verified — and beats the
+  logit lens by up to 204×, but does not reach top-1 on known facts. Table 3 as written
+  says stop and fix the instrumentation; the instrumentation is not what is wrong. Ask
+  whether to (a) accept a rank-based criterion for RQ2, (b) revise check 2, which currently
+  benchmarks against a reference that is itself near-random at mid layers, or (c) treat
+  this as the Week-8 go/no-go and drop to RQ1. Notebook 04's control battery is the
+  evidence he needs to decide, which is why it is the next run.
+- **Our ΔF1 is +6.1 points where his write-attrition study reports +0.4 to +2.3.** Same
+  direction, larger magnitude, on 60 LongBench-E HotpotQA examples at window 8064. Worth
+  asking whether his cohort's length distribution matches ours (token range 8,491–17,293)
+  before treating the gap as a real effect-size difference.
 
 Still open and blocking: the training-only compute-reimbursement rule (Question 1 — Ops,
 not Gautam), and whether AHN runs on a free T4 with an FP16 + eager-attention fallback
