@@ -650,6 +650,36 @@ def single_token_needles(tokenizer, candidates: Sequence[str]) -> Dict[str, int]
     return keep
 
 
+def _pad_to_length(tokenizer, filler: str, target_tokens: int, filler_toks: int) -> str:
+    """Build `filler` repeated so the FULL tokenized string lands near `target_tokens`.
+
+    A single `ceil(target/filler_toks)` repeat count is not reliable: `filler * k`
+    is tokenized as ONE string, and BPE merges across every one of the k-1 internal
+    repeat boundaries (the period/space/capital-letter junction between consecutive
+    copies). That makes long, heavily-repeated padding compress well below what
+    `k * filler_toks` predicts — at a few hundred repeats the shortfall can be large
+    enough to erase most of a requested eviction distance. Iterate instead of trusting
+    the one-shot estimate.
+    """
+    if target_tokens <= 0:
+        return ""
+    k = max(1, math.ceil(target_tokens / max(filler_toks, 1)))
+    text = filler * k
+    n = len(tokenizer(text, add_special_tokens=False)["input_ids"])
+    tol = max(4, target_tokens // 200)
+    guard = 0
+    while abs(n - target_tokens) > tol and guard < 25:
+        ratio = target_tokens / max(n, 1)
+        new_k = max(1, math.ceil(k * ratio))
+        if new_k == k:
+            new_k = k + (1 if n < target_tokens else -1)
+        k = max(1, new_k)
+        text = filler * k
+        n = len(tokenizer(text, add_special_tokens=False)["input_ids"])
+        guard += 1
+    return text
+
+
 def build_niah_prompt(
     tokenizer,
     needle: str,
@@ -670,6 +700,12 @@ def build_niah_prompt(
     against). In the pilot this baseline came out WORSE than the evicted condition
     (Paris rank 110712 vs ~95000), which is a sign the placement was wrong, not that
     eviction helps.
+
+    Padding is length-corrected (see `_pad_to_length`): naively repeating a filler
+    string `ceil(n / filler_toks)` times can undershoot the target by a large fraction
+    once BPE merges across the repeat boundaries at scale. `actual_eviction_distance`
+    is still measured post-hoc from the real tokenization either way — trust that
+    field, not `eviction_distance`, but it should now sit close to what you asked for.
     """
     sinks = bundle.num_attn_sinks
     window = bundle.sliding_window or 0
@@ -677,9 +713,7 @@ def build_niah_prompt(
     filler_toks = len(tokenizer.encode(filler, add_special_tokens=False))
 
     def pad(n_tokens: int) -> str:
-        if n_tokens <= 0:
-            return ""
-        return filler * max(1, math.ceil(n_tokens / max(filler_toks, 1)))
+        return _pad_to_length(tokenizer, filler, n_tokens, filler_toks)
 
     # prefix long enough to push the needle clear of the attention-sink region
     prefix = pad(sinks + 16)
