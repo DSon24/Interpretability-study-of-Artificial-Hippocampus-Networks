@@ -56,8 +56,10 @@ Sequencing follows Gautam's instruction after the last meeting:
 | Hook output verified to be the memory's residual-stream contribution | **done** — Gate A passes: `resid(AHN) − resid(NOWRITE) = o_proj(ahn_raw)` | `results/run_3b_gdn/01_instrumentation_gates.json` |
 | Reproduce the published NOWRITE result (38–42% changed answers) | **done, with a metric correction** — 33.3% changed (first-line), ΔF1 **+6.1 pts** | `results/run_3b_gdn/03_nowrite_reproduction.json` |
 | J-lens fitted for Qwen2.5-3B | **done, not validated** — 500 contexts, layers 9/18/27, **1.92 GPU-h**; Table 3 checks 2 and 3 fail | `results/run_3b_gdn/jlens_qwen25_3b.pt` |
-| NIAH retention with pre-eviction / NOWRITE controls | **not started** — unblocked; this is the next run | `notebooks/04_` |
-| 3 cells at 3B → retention curves | not started (correct — do not start yet) | |
+| NIAH retention with pre-eviction / NOWRITE controls | **done — control battery fails.** C4 passes, **C1, C2, C3 all fail**; readout is at chance | `results/run_3b_gdn/04_table4_controls.json` |
+| Retention curves (Table 6) | **run, not usable** — exponential fit inadequate at all three layers (R² < 0); nonparametric half-distance ≈ 11 tokens everywhere | `results/run_3b_gdn/05_table6_retention_summary.json` |
+| RQ1 on LongBench-E HotpotQA (Table 5) | **done** — pooled first-line ΔF1 +6.11 pts, but **95% CI [−1.85, +14.42] spans zero** | `results/run_3b_gdn/05_table5_rq1.json` |
+| 3 cells at 3B → retention curves | **blocked** — GPU_PLAN says do not proceed past a C1/C4 failure until GDN's instrument is fixed | `configs/run_3b_dn.json`, `run_3b_m2.json` (unrun) |
 | 7B checkpoints, RQ3 correlation | not started (correct) | |
 
 ### Progress log
@@ -84,6 +86,17 @@ were found and fixed in `ahn_interp.py` along the way (needle-padding precision,
 eviction-distance formula, the Gate A residual-capture hook point, and an OOM from
 computing full-sequence logits); one dataset-id fix in notebook 02 (`wikitext` →
 `Salesforce/wikitext`, which recent `datasets` versions require). Detail below.
+
+**20 Aug 2026 — Hannah.** Audited the repo against the proposal and Gautam's instruction
+(`docs/GPU_PLAN_2026-08-20.md`) — no scope drift, everything is on his stated path in his
+stated order. Fixed the blocker that would have crashed `04` on startup (a stray
+`AssertionError` when Table 3 fails, now downgraded to a warning that stamps
+`lens_validated=False` onto every row), switched `05`'s Table 5 to the first-line metric
+fields, and trimmed the eviction-distance sweep from 240 to 210 configs. Ran
+`04_niah_retention.ipynb` on GDN 3B: the control battery **fails** (C4 passes; C1, C2, C3
+do not), the retention curves don't support an exponential fit at any of the three layers,
+and a bootstrap on RQ1's first-line ΔF1 shows the +6.11-point effect does not survive its
+own confidence interval at n=60. Detail below.
 
 ## Findings from the 19–20 Aug run
 
@@ -161,6 +174,49 @@ of a null result. Both metrics are kept in the saved JSON (`*_fl` fields alongsi
 originals) because the discrepancy is itself a finding: the prompt template is not
 eliciting terse answers.
 
+## Findings from the 20 Aug NIAH retention run
+
+Full detail and the reasoning behind every patch is in
+[`docs/GPU_PLAN_2026-08-20.md`](docs/GPU_PLAN_2026-08-20.md); this is the summary.
+
+**1. The control battery fails on three of four checks.** Run with `USE_JLENS=True`,
+GDN 3B, the same window/sinks as the config of record:
+
+| control | result | passed |
+|---|---|---|
+| C1 zero-state | mean rank 87,675 vs chance rank 75,968 — indistinguishable from chance | **fail** |
+| C2 distractor | median probability ratio 1.00 (need ≥10×) — no needle/distractor separation | **fail** |
+| C3 shuffled context | ordered rank 88,642 vs shuffled rank 72,943 — shuffling context makes the rank *better* | **fail** |
+| C4 pre-eviction ceiling | in-window rank 77,411 beats evicted rank 87,675, as required | pass |
+
+C1 failing is the load-bearing result: it means the readout is not finding the needle
+above chance in a 151,936-token vocabulary, full stop. That sits in tension with Finding 4
+from the 19–20 Aug run, where the same J-lens beat the logit lens by 8–204× on eight
+isolated known-fact prompts. The isolated-fact test and the full NIAH sweep disagree, and
+that disagreement — not top-1 accuracy — is now the open question for Gautam.
+
+**2. The retention curves don't support the model the proposal assumes.** Table 6's
+exponential fit gives negative R² at all three layers (9, 18, 27), i.e. worse than fitting
+a flat line. The nonparametric half-distance fallback lands at ~11 tokens uniformly across
+layers — too short relative to the 64–8192-token eviction sweep to read as a real decay
+curve rather than noise. Given Finding 1, this is consistent with the readout not tracking
+the needle at all, rather than a curve-fitting problem.
+
+**3. RQ1's effect does not survive its own confidence interval.** Bootstrapping the
+first-line ΔF1 from notebook 03 (10,000 resamples) gives **+6.11 pts, 95% CI [−1.85,
++14.42]** pooled, and every per-stratum interval also spans zero (short +9.17 [0.00,
++21.67], mid +3.45 [−11.55, +18.45], long +5.72 [−10.56, +22.00]). Two consequences: the
+honest RQ1 reading at n=60 is *no significant behavioural effect*, which the proposal
+already treats as the expected setup for RQ3 rather than a bad outcome; and Gautam's
+published +0.4 to +2.3 pts sits comfortably inside our interval, so the earlier "our ΔF1 is
+3× his" gap (Finding 5, 19–20 Aug) is not a real effect-size discrepancy — it's noise at
+this cohort size.
+
+**4. Per Gautam's own instruction, this blocks the next two steps.** His sequencing said
+scale to three cells only "if that works." It didn't. `configs/run_3b_dn.json` and
+`run_3b_m2.json` exist but are correctly unrun, and the RQ3 join (`04b`) is still unbuilt.
+Both stay paused until the C1/C3 disagreement above is resolved one way or the other.
+
 ## Findings from the 18 Aug pilot
 
 Five issues, in the order they need fixing. All five are addressed by
@@ -229,6 +285,7 @@ notebooks/
 docs/
   UPSTREAM_README.md                 ByteDance's original README
   PROPOSAL.md                        pointer to the proposal + expected-artefacts docs
+  GPU_PLAN_2026-08-20.md             direction audit + 10 GPU-h plan; source for the 20 Aug findings
 results/
   run_3b_gdn/                        the run of record — GDN 3B, window 8064, sinks 128
     00_config_audit.json               checkpoint config as loaded
@@ -236,6 +293,10 @@ results/
     02_table3_jlens_validation.json    Table 3 checks (2 and 3 fail; see Findings)
     jlens_qwen25_3b.pt                 fitted J-lens, layers 9/18/27, 1.92 GPU-h
     03_nowrite_reproduction.json       60 examples, per-example rows + both metrics
+    04_retention_rows.json             NIAH sweep, 210 configs, per-row ranks
+    04_table4_controls.json            C1–C4 battery — C4 passes, C1/C2/C3 fail
+    05_table5_rq1.json                 RQ1 by stratum, with bootstrap CIs
+    05_table6_retention_summary.json   per-layer half-life fit — inadequate, see Findings
   pilot_2026-08-18/                  superseded — see Findings above
 src/ahn/                       upstream AHN implementation (unmodified)
 eval/, examples/               upstream harnesses (unmodified)
@@ -302,46 +363,48 @@ of git (it already is).
 
 ## Next steps
 
-Steps 1–3 are done. What follows is ordered so that each one unblocks the next.
+Steps 1–4 are done. Gautam's own instruction says not to scale past a failed control
+battery, so steps 5–7 are **paused**, not skipped, until the C1/C3 disagreement below is
+resolved.
 
 1. ~~Run `01_instrumentation_gate.ipynb`~~ — **done**, all gates pass.
-2. ~~Run `03_nowrite_reproduction.ipynb`~~ — **done**; see Findings item 5. Two follow-ups,
-   neither blocking: bootstrap a CI on the first-line ΔF1 (the +6.1-point figure is a point
-   estimate on n=60, and a wide CI would make the gap to the published +0.4–2.3 range a soft
-   miss rather than a hard one), and optionally re-run generation with a newline stopping
-   criterion so the primary metric is clean rather than a post-hoc correction.
+2. ~~Run `03_nowrite_reproduction.ipynb`~~ — **done**; see Findings item 5.
 3. ~~Run `02_jlens_fit_and_validate.ipynb` with a real corpus~~ — **done** in 1.92 GPU-h;
    Table 3 checks 2 and 3 fail, diagnosed in Findings items 3 and 4. Check 4 (map stability
    across disjoint corpora) is **still unrun** — it needs a second ~1.9 GPU-h fit on
    `corpus_b`, and it is the one remaining Table 3 row that would say whether the fit has
-   converged. Worth running: a stable map that misses top-1 is a very different diagnosis
-   from an unconverged one.
-4. **Run `04_niah_retention.ipynb` on GDN 3B.** *This is now the critical path.* Controls
-   C1 and C4 must pass before Table 6 is populated. It is also the experiment that settles
-   the open lens question: RQ2 needs the readout to *separate* an evicted needle from its
-   controls, which is a weaker and more relevant property than the top-1 criterion check 3
-   imposes. Run it with `USE_JLENS=True` — the J-lens outperforms the logit lens by 8–204×
-   on known facts — and label the figures as using an unvalidated-on-Table-3 lens until
-   that is resolved. If C3 (shuffled context) fails, message Gautam that day: it would
-   mean AHN is closer to a learned recency mechanism than to content memory, which
-   contradicts the framing of the original AHN paper and is arguably the most publishable
-   thing in the project.
-5. **Build `04b` — the RQ3 join.** *This is the most important missing piece of
-   engineering and nothing else substitutes for it.* Right now retention is measured on
+   converged. Now more urgent than before: if the maps agree ≥80%, "structural continuation
+   tokens crowd the top slots" is a property of the method rather than an unconverged fit,
+   which bears directly on the C1 failure below.
+4. ~~Run `04_niah_retention.ipynb` on GDN 3B~~ — **done**; see "Findings from the 20 Aug
+   NIAH retention run" above. **C1, C2 and C3 all fail** — the readout does not find the
+   needle above chance in the full NIAH sweep, despite beating the logit lens by 8–204× on
+   isolated known-fact prompts (19–20 Aug Finding 4). That disagreement, not top-1 accuracy,
+   is now the open question. Bootstrap on RQ1's first-line ΔF1 also shows the +6.11-point
+   effect's 95% CI spans zero at n=60.
+5. **Diagnose the C1/isolated-fact disagreement before doing anything else.** Candidates,
+   cheapest first: (a) map stability (step 3) — an unconverged fit would explain both the
+   isolated-prompt success and the sweep-level failure; (b) the NIAH prompt template itself
+   — check whether the needle position/padding in the sweep matches the conditions the
+   known-fact test used; (c) the possibility that C3's result (shuffled beats ordered) is
+   real and AHN is closer to a recency mechanism than content memory, which the GPU plan
+   flags as potentially the most publishable result in the project if it survives (a) and
+   (b). Message Gautam with all three framings — this is exactly the kind of call the plan
+   says is his, not ours.
+6. **Build `04b` — the RQ3 join** — blocked on 5. Right now retention is measured on
    synthetic NIAH prompts and ΔF1 on LongBench-E, so there is no per-example key linking
-   them, and Table 8 cannot be computed at all. Extend notebook 04 to read out on the
-   **same** LongBench-E examples as notebook 03, using the first token of the gold answer
-   as the target. That single change turns RQ3 from aspiration into a computation, and
-   `05` already has the cell written and waiting for the file.
-6. **Add the boundary-JS column.** Notebook 01's Gate B already computes JS between the
+   them, and Table 8 cannot be computed at all. A join built on a broken readout isn't
+   informative, so this waits for the C1 diagnosis rather than running in parallel with it.
+7. **Add the boundary-JS column.** Notebook 01's Gate B already computes JS between the
    AHN and NOWRITE next-token distributions. Log it per example in notebook 03 and Table 8
    row 2 — the pre-registered comparison against prior work — comes for free rather than
-   needing Gautam's numbers. Worth asking him anyway (his Question 2) whether to use his
-   values directly or recompute on our cohort so the two columns are strictly paired.
-7. **Only then, the second and third cells at 3B.** Same notebook, change `CFG`. Table 7
-   (pairwise half-life ratios with their own CIs) needs two cells minimum; the proposal's
-   success criterion is a ratio ≥ 2 with a CI excluding 1 on at least one pair.
-8. **7B last**, gated on the J-lens map cost measured in step 3 (Table 10 row 2).
+   needing Gautam's numbers. Not blocked by 5; safe to do any time.
+8. **The second and third cells at 3B — paused, not skipped.** `configs/run_3b_dn.json`
+   and `run_3b_m2.json` exist and are correctly unrun. GPU_PLAN is explicit: a second and
+   third cell measured with a broken instrument is nine wasted GPU-hours, so this waits for
+   5.
+9. **7B last**, gated on the J-lens map cost measured in step 3 (Table 10 row 2) and on the
+   C1 diagnosis above.
 
 ### To raise with Gautam now, not later
 
@@ -349,18 +412,22 @@ Steps 1–3 are done. What follows is ordered so that each one unblocks the next
   `o_t` isolates cleanly. Confirmed empirically by Gate A, not just by reading the source.
 - **Open Question 6**: he uses 8,064 on LongBench-E himself, which makes our 8064 window
   easy to defend. Confirm it in writing so it goes in Methods as a stated parameter.
-- **The J-lens decision (new, and the one that needs his judgment).** The lens applies
-  correctly — decode path, orientation and layer convention all verified — and beats the
-  logit lens by up to 204×, but does not reach top-1 on known facts. Table 3 as written
-  says stop and fix the instrumentation; the instrumentation is not what is wrong. Ask
-  whether to (a) accept a rank-based criterion for RQ2, (b) revise check 2, which currently
-  benchmarks against a reference that is itself near-random at mid layers, or (c) treat
-  this as the Week-8 go/no-go and drop to RQ1. Notebook 04's control battery is the
-  evidence he needs to decide, which is why it is the next run.
-- **Our ΔF1 is +6.1 points where his write-attrition study reports +0.4 to +2.3.** Same
-  direction, larger magnitude, on 60 LongBench-E HotpotQA examples at window 8064. Worth
-  asking whether his cohort's length distribution matches ours (token range 8,491–17,293)
-  before treating the gap as a real effect-size difference.
+- **The J-lens decision has new evidence, and it complicates the picture rather than
+  resolving it.** The lens beats the logit lens by up to 204× on eight isolated known-fact
+  prompts, but notebook 04's full control battery shows the readout at chance (C1 fails,
+  mean rank 87,675 vs a chance rank of 75,968) with no needle/distractor separation (C2
+  fails) and shuffled context scoring *better* than ordered context (C3 fails). Those two
+  results disagree, and reconciling them — not the top-1 criterion in check 3 — is now the
+  actual open question. Ask whether to prioritize (a) the map-stability re-fit (Table 3
+  check 4, ~1.9 GPU-h) to rule out an unconverged fit, or (b) a direct comparison of the
+  NIAH sweep's prompt construction against the known-fact test's, since those are the two
+  cheapest ways to find out whether the instrument or the phenomenon is what's failing.
+- **RQ1's effect does not survive its own confidence interval.** Bootstrapped first-line
+  ΔF1 is +6.11 pts but the 95% CI is [−1.85, +14.42] at n=60 — it spans zero, and so does
+  every per-stratum interval. His published +0.4 to +2.3 pts sits entirely inside that
+  interval, so the earlier "our effect is 3× his" framing was a cohort-size artifact, not a
+  real effect-size gap — worth telling him in those terms rather than asking about cohort
+  length distributions.
 
 Still open and blocking: the training-only compute-reimbursement rule (Question 1 — Ops,
 not Gautam), and whether AHN runs on a free T4 with an FP16 + eager-attention fallback
