@@ -1,0 +1,67 @@
+{
+  "gate_a_isolation": {
+    "layer": 0,
+    "is_first_ahn_layer": true,
+    "n_tokens": 9252,
+    "ahn_active": true,
+    "nowrite_o_t_is_zero": true,
+    "ahn_raw_norm": 0.5769657492637634,
+    "o_t_norm": 0.6288129687309265,
+    "residual_norm": 10.402517318725586,
+    "relative_error": 0.042794932994026105,
+    "cosine": 0.999083936214447,
+    "passed": true
+  },
+  "gate_a_deep_layer_contrast": {
+    "layer": 18,
+    "is_first_ahn_layer": false,
+    "n_tokens": 9252,
+    "ahn_active": true,
+    "nowrite_o_t_is_zero": true,
+    "ahn_raw_norm": 0.6891927719116211,
+    "o_t_norm": 0.8482084274291992,
+    "residual_norm": 62.30802536010742,
+    "relative_error": 0.137745373061498,
+    "cosine": 0.9905948042869568,
+    "passed": false
+  },
+  "gate_b_behavioural": {
+    "kl_ahn_vs_nowrite": 0.1433320939540863,
+    "js_ahn_vs_nowrite": 0.033533886075019836,
+    "top1_ahn": " The",
+    "top1_nowrite": " The",
+    "top1_changed": false,
+    "n_tokens": 9252,
+    "passed": true
+  },
+  "gate_c_task": {
+    "needle": "Paris",
+    "eviction_distance": 1043,
+    "answer_ahn": "The special word in this text appears to be \"Here we",
+    "answer_nowrite": "It seems like you're referring to a pattern or rhyme that",
+    "ahn_correct": false,
+    "nowrite_correct": false
+  },
+  "prompt_spec": {
+    "needle": "Paris",
+    "n_tokens": 9252,
+    "needle_pos": 145,
+    "compression_boundary": 1188,
+    "actual_eviction_distance": 1043,
+    "needle_is_evicted": true,
+    "needle_in_sink_region": false,
+    "ahn_will_activate": true,
+    "in_window": false,
+    "filler_idx": 0
+  },
+  "cfg": {
+    "model_path": "/home/jupyter-dphs-4ca1/AHN/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
+    "cell": "GatedDeltaNet",
+    "scale": "3B",
+    "sliding_window": 8064,
+    "num_attn_sinks": 128,
+    "attn_impl": "flash_attention_2",
+    "dtype": "bfloat16",
+    "results_dir": "results/run_3b_gdn"
+  }
+}
