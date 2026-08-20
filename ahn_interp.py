@@ -418,7 +418,15 @@ class AHNProbe:
                 handles.append(layer.post_attention_layernorm.register_forward_hook(make_resid(i)))
 
         try:
-            out = self.model(**inputs, use_cache=True)
+            # Only the last-position logits are ever consumed downstream (Gate B reads
+            # on.logits[0, -1] / off.logits[0, -1]). Without num_logits_to_keep, HF's
+            # lm_head projects EVERY position to vocab size, i.e.
+            #   seq_len * vocab_size * 4 bytes (fp32)
+            # which for an ~8.7k-token NIAH prompt is ~5.2 GiB and was the direct cause
+            # of the Gate B OutOfMemoryError. Restricting to the last token makes this
+            # call cheap regardless of prompt length, and is safe because no call site
+            # (Gate A/B/C, notebooks 01-05) ever reads anything but position -1.
+            out = self.model(**inputs, use_cache=True, num_logits_to_keep=1)
             if keep_logits:
                 cap.logits = out.logits.detach().float()
         finally:
