@@ -735,15 +735,21 @@ def build_niah_prompt(
                          add_special_tokens=True)["input_ids"]
     needle_pos = len(head_ids)
 
-    boundary = n - window - sinks  # tokens at index < boundary are compressed
+    # `window_start` is the index where the lossless local window begins -- tokens at
+    # index < window_start are candidates for compression (once past the sink prefix).
+    # An earlier version of this function subtracted `sinks` a second time here
+    # (`n - window - sinks`), which is actually the COUNT of compressed tokens, not an
+    # index -- using it as the index threshold silently shrank every reported eviction
+    # distance by exactly `num_attn_sinks` tokens. Fixed: no second subtraction.
+    window_start = n - window
     return {
         "prompt": prompt,
         "needle": needle,
         "n_tokens": n,
         "needle_pos": needle_pos,
-        "compression_boundary": boundary,
-        "actual_eviction_distance": boundary - needle_pos,
-        "needle_is_evicted": bool(sinks <= needle_pos < boundary),
+        "compression_boundary": window_start,
+        "actual_eviction_distance": window_start - needle_pos,
+        "needle_is_evicted": bool(sinks <= needle_pos < window_start),
         "needle_in_sink_region": bool(needle_pos < sinks),
         "ahn_will_activate": bool(n > window + sinks),
         "in_window": in_window,
