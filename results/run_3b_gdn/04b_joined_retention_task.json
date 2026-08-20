@@ -1,0 +1,2228 @@
+{
+  "n": 60,
+  "cell": "GatedDeltaNet",
+  "scale": "3B",
+  "summary_layer": 18,
+  "rows": [
+    {
+      "id": "36b7e445832590b8ddf74995162cd5e94f7f620cdfc992dd",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 10674,
+      "gold": "125 lb (57 kg)",
+      "target_token_id": 16,
+      "target_token_text": "1",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.6,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 1.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 3656,
+          "p_mem": 5.576213106399622e-18,
+          "entropy": 0.265993595123291
+        },
+        "18": {
+          "rank": 150768,
+          "p_mem": 5.776824919022922e-17,
+          "entropy": 2.0539402961730957
+        },
+        "27": {
+          "rank": 61675,
+          "p_mem": 2.0088927499273268e-07,
+          "entropy": 8.001644134521484
+        }
+      },
+      "rank_at_prompt_end": 150768,
+      "p_mem_at_prompt_end": 5.776824919022922e-17,
+      "entropy_at_prompt_end": 2.0539402961730957
+    },
+    {
+      "id": "0df347189016b4d86b8f6d4086388a5ea318a08c468abba3",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 10876,
+      "gold": "Istanbul, Turkey",
+      "target_token_id": 40,
+      "target_token_text": "I",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.6666666666666666,
+      "f1_nowrite": 0.6666666666666666,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 12306,
+          "p_mem": 2.769112170229878e-16,
+          "entropy": 1.769824743270874
+        },
+        "18": {
+          "rank": 139374,
+          "p_mem": 1.0432084205811917e-13,
+          "entropy": 2.2186591625213623
+        },
+        "27": {
+          "rank": 120444,
+          "p_mem": 8.71354615128439e-08,
+          "entropy": 9.191030502319336
+        }
+      },
+      "rank_at_prompt_end": 139374,
+      "p_mem_at_prompt_end": 1.0432084205811917e-13,
+      "entropy_at_prompt_end": 2.2186591625213623
+    },
+    {
+      "id": "5fdd140211b5a3c1c879875b2c782e573cf4df4f68c8408e",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 10637,
+      "gold": "no",
+      "target_token_id": 2152,
+      "target_token_text": "no",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0026455026455026454,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 1.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 15800,
+          "p_mem": 1.2657833095894965e-18,
+          "entropy": 0.9371601939201355
+        },
+        "18": {
+          "rank": 77645,
+          "p_mem": 5.433425931400393e-11,
+          "entropy": 2.741887331008911
+        },
+        "27": {
+          "rank": 45304,
+          "p_mem": 6.864625561320281e-07,
+          "entropy": 8.515634536743164
+        }
+      },
+      "rank_at_prompt_end": 77645,
+      "p_mem_at_prompt_end": 5.433425931400393e-11,
+      "entropy_at_prompt_end": 2.741887331008911
+    },
+    {
+      "id": "f0d13537c2b6b00c76660dd7af3d103fe2fb0cc747fdb677",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 11290,
+      "gold": "yes",
+      "target_token_id": 9693,
+      "target_token_text": "yes",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 1.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 24396,
+          "p_mem": 6.221503981441629e-17,
+          "entropy": 1.004759430885315
+        },
+        "18": {
+          "rank": 49483,
+          "p_mem": 1.06915578612643e-08,
+          "entropy": 3.387763261795044
+        },
+        "27": {
+          "rank": 127435,
+          "p_mem": 1.3396507014817871e-08,
+          "entropy": 8.197552680969238
+        }
+      },
+      "rank_at_prompt_end": 49483,
+      "p_mem_at_prompt_end": 1.06915578612643e-08,
+      "entropy_at_prompt_end": 3.387763261795044
+    },
+    {
+      "id": "d72f85795be5a873d62c8694c0c043cb3311ebcb5480316c",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 9160,
+      "gold": "Dallas Cowboys",
+      "target_token_id": 86514,
+      "target_token_text": "Dallas",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 1.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 58312,
+          "p_mem": 2.1185468736546847e-21,
+          "entropy": 0.37798404693603516
+        },
+        "18": {
+          "rank": 65054,
+          "p_mem": 6.611537706202597e-12,
+          "entropy": 2.112790584564209
+        },
+        "27": {
+          "rank": 34234,
+          "p_mem": 3.184467232131283e-07,
+          "entropy": 5.89305305480957
+        }
+      },
+      "rank_at_prompt_end": 65054,
+      "p_mem_at_prompt_end": 6.611537706202597e-12,
+      "entropy_at_prompt_end": 2.112790584564209
+    },
+    {
+      "id": "64bba86b667bc9dd60aaa6c30a2d7403629fd6daabf6d43e",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 11821,
+      "gold": "pale lager",
+      "target_token_id": 79,
+      "target_token_text": "p",
+      "delta_f1": 0.5,
+      "delta_f1_full_generation": 0.09090909090909091,
+      "f1_ahn": 0.5,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 4724,
+          "p_mem": 7.125917084595083e-15,
+          "entropy": 0.5692771673202515
+        },
+        "18": {
+          "rank": 115118,
+          "p_mem": 1.6373915027664832e-12,
+          "entropy": 2.8560523986816406
+        },
+        "27": {
+          "rank": 77971,
+          "p_mem": 1.7551460018694343e-07,
+          "entropy": 8.420165061950684
+        }
+      },
+      "rank_at_prompt_end": 115118,
+      "p_mem_at_prompt_end": 1.6373915027664832e-12,
+      "entropy_at_prompt_end": 2.8560523986816406
+    },
+    {
+      "id": "d3493a99d0e83a5431e4a5d829bb241692bae70fe1d3bf17",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 9335,
+      "gold": "Aloe Vera of America",
+      "target_token_id": 32,
+      "target_token_text": "A",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.08333333333333334,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 38296,
+          "p_mem": 2.696168801864374e-22,
+          "entropy": 0.8582490682601929
+        },
+        "18": {
+          "rank": 96618,
+          "p_mem": 2.3940938120858846e-10,
+          "entropy": 3.2355098724365234
+        },
+        "27": {
+          "rank": 33890,
+          "p_mem": 1.4094709968048846e-06,
+          "entropy": 8.259452819824219
+        }
+      },
+      "rank_at_prompt_end": 96618,
+      "p_mem_at_prompt_end": 2.3940938120858846e-10,
+      "entropy_at_prompt_end": 3.2355098724365234
+    },
+    {
+      "id": "56d2ecd968aaef6194dcf7de6e3844c9225d8e9ec1a0a3ce",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 10247,
+      "gold": "June 17, 2007",
+      "target_token_id": 27160,
+      "target_token_text": "June",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 21184,
+          "p_mem": 7.610928624167387e-19,
+          "entropy": 1.7085198163986206
+        },
+        "18": {
+          "rank": 124900,
+          "p_mem": 2.9189531244562875e-14,
+          "entropy": 2.0470693111419678
+        },
+        "27": {
+          "rank": 78186,
+          "p_mem": 4.2024225876957644e-07,
+          "entropy": 9.36428451538086
+        }
+      },
+      "rank_at_prompt_end": 124900,
+      "p_mem_at_prompt_end": 2.9189531244562875e-14,
+      "entropy_at_prompt_end": 2.0470693111419678
+    },
+    {
+      "id": "524d2df4e388792739e2486b131d791c9966e797f4dd9492",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 8491,
+      "gold": "1976",
+      "target_token_id": 16,
+      "target_token_text": "1",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 5052,
+          "p_mem": 4.667124139013404e-19,
+          "entropy": 1.4908441305160522
+        },
+        "18": {
+          "rank": 141553,
+          "p_mem": 8.375129745535198e-14,
+          "entropy": 2.642026662826538
+        },
+        "27": {
+          "rank": 74616,
+          "p_mem": 3.6506290257420915e-07,
+          "entropy": 8.919666290283203
+        }
+      },
+      "rank_at_prompt_end": 141553,
+      "p_mem_at_prompt_end": 8.375129745535198e-14,
+      "entropy_at_prompt_end": 2.642026662826538
+    },
+    {
+      "id": "0b6ddb583fa1df95b1b4c7961f7affcc7c6266e520826484",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 8608,
+      "gold": "Newfoundland and Labrador",
+      "target_token_id": 3564,
+      "target_token_text": "New",
+      "delta_f1": 0.33333333333333337,
+      "delta_f1_full_generation": -0.42666666666666664,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 0.6666666666666666,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 18668,
+          "p_mem": 2.7338489850878904e-19,
+          "entropy": 0.0837283506989479
+        },
+        "18": {
+          "rank": 126632,
+          "p_mem": 8.53348221621121e-14,
+          "entropy": 2.3254499435424805
+        },
+        "27": {
+          "rank": 110780,
+          "p_mem": 2.1352535384266957e-07,
+          "entropy": 9.520029067993164
+        }
+      },
+      "rank_at_prompt_end": 126632,
+      "p_mem_at_prompt_end": 8.53348221621121e-14,
+      "entropy_at_prompt_end": 2.3254499435424805
+    },
+    {
+      "id": "9a161f7868d7a430dfa3335ec69d84f24435498665d9fa18",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 8936,
+      "gold": "Democratic",
+      "target_token_id": 89899,
+      "target_token_text": "Democratic",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": -0.0909090909090909,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 40519,
+          "p_mem": 5.445657205086907e-17,
+          "entropy": 0.08001594245433807
+        },
+        "18": {
+          "rank": 105768,
+          "p_mem": 2.9241629191829877e-13,
+          "entropy": 2.220186233520508
+        },
+        "27": {
+          "rank": 140382,
+          "p_mem": 9.950859691798541e-09,
+          "entropy": 8.413862228393555
+        }
+      },
+      "rank_at_prompt_end": 105768,
+      "p_mem_at_prompt_end": 2.9241629191829877e-13,
+      "entropy_at_prompt_end": 2.220186233520508
+    },
+    {
+      "id": "834ced6842436a1c77d203700bfcb2526641b70c04101553",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 8538,
+      "gold": "Tie Domi",
+      "target_token_id": 51,
+      "target_token_text": "T",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 1.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 42472,
+          "p_mem": 4.074278107129938e-18,
+          "entropy": 1.4866327047348022
+        },
+        "18": {
+          "rank": 139066,
+          "p_mem": 9.13200613218701e-13,
+          "entropy": 2.8146064281463623
+        },
+        "27": {
+          "rank": 26647,
+          "p_mem": 1.6575023664699984e-06,
+          "entropy": 8.00959300994873
+        }
+      },
+      "rank_at_prompt_end": 139066,
+      "p_mem_at_prompt_end": 9.13200613218701e-13,
+      "entropy_at_prompt_end": 2.8146064281463623
+    },
+    {
+      "id": "780f15259479e8965d474efc011eb220ac4078da86e8dc19",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 8525,
+      "gold": "novel",
+      "target_token_id": 38042,
+      "target_token_text": "nov",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.08333333333333333,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 23621,
+          "p_mem": 1.2257479954165984e-16,
+          "entropy": 1.4935085773468018
+        },
+        "18": {
+          "rank": 121115,
+          "p_mem": 2.1611404332766426e-10,
+          "entropy": 2.909721612930298
+        },
+        "27": {
+          "rank": 79289,
+          "p_mem": 4.2562533053569496e-07,
+          "entropy": 9.465609550476074
+        }
+      },
+      "rank_at_prompt_end": 121115,
+      "p_mem_at_prompt_end": 2.1611404332766426e-10,
+      "entropy_at_prompt_end": 2.909721612930298
+    },
+    {
+      "id": "8318ea1b9fd0443387e6bcd5382933a05614955578f7b95b",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 11070,
+      "gold": "Ellie Kemper",
+      "target_token_id": 42710,
+      "target_token_text": "Ell",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.018518518518518545,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 1.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 35576,
+          "p_mem": 3.6263614597936984e-18,
+          "entropy": 1.6787443161010742
+        },
+        "18": {
+          "rank": 49314,
+          "p_mem": 2.4412258672890097e-11,
+          "entropy": 2.616694450378418
+        },
+        "27": {
+          "rank": 73009,
+          "p_mem": 6.698496690660249e-07,
+          "entropy": 9.51535415649414
+        }
+      },
+      "rank_at_prompt_end": 49314,
+      "p_mem_at_prompt_end": 2.4412258672890097e-11,
+      "entropy_at_prompt_end": 2.616694450378418
+    },
+    {
+      "id": "74f2fce3240dd7e91f9522b9cbb9e10f43f16fdb0c22e7fa",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 10134,
+      "gold": "Gregory Walter Graffin",
+      "target_token_id": 43512,
+      "target_token_text": "Greg",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": -0.01002506265664159,
+      "f1_ahn": 0.4,
+      "f1_nowrite": 0.4,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 45290,
+          "p_mem": 9.79331387245419e-19,
+          "entropy": 1.1092870235443115
+        },
+        "18": {
+          "rank": 31434,
+          "p_mem": 2.3755782763146271e-07,
+          "entropy": 5.036714553833008
+        },
+        "27": {
+          "rank": 47240,
+          "p_mem": 9.610465667719836e-07,
+          "entropy": 9.07501220703125
+        }
+      },
+      "rank_at_prompt_end": 31434,
+      "p_mem_at_prompt_end": 2.3755782763146271e-07,
+      "entropy_at_prompt_end": 5.036714553833008
+    },
+    {
+      "id": "612961d8f4c473a6be137dca843cdd647da01c26898aff1c",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 9653,
+      "gold": "Kristian Eivind Espedal",
+      "target_token_id": 75843,
+      "target_token_text": "Krist",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 137362,
+          "p_mem": 1.4779541299966153e-22,
+          "entropy": 0.1066378653049469
+        },
+        "18": {
+          "rank": 137862,
+          "p_mem": 3.105174754478024e-12,
+          "entropy": 3.071659803390503
+        },
+        "27": {
+          "rank": 22178,
+          "p_mem": 3.7858721952943597e-06,
+          "entropy": 8.738770484924316
+        }
+      },
+      "rank_at_prompt_end": 137862,
+      "p_mem_at_prompt_end": 3.105174754478024e-12,
+      "entropy_at_prompt_end": 3.071659803390503
+    },
+    {
+      "id": "a6e57d5dfcbdc68035395fe57842144769450fc962f5bbcd",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 8601,
+      "gold": "Innviertel",
+      "target_token_id": 641,
+      "target_token_text": "In",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 8760,
+          "p_mem": 8.788220937647542e-17,
+          "entropy": 0.040885210037231445
+        },
+        "18": {
+          "rank": 140453,
+          "p_mem": 1.357189350561659e-15,
+          "entropy": 2.1955199241638184
+        },
+        "27": {
+          "rank": 65783,
+          "p_mem": 5.423949005489703e-07,
+          "entropy": 8.734341621398926
+        }
+      },
+      "rank_at_prompt_end": 140453,
+      "p_mem_at_prompt_end": 1.357189350561659e-15,
+      "entropy_at_prompt_end": 2.1955199241638184
+    },
+    {
+      "id": "9c0f9782d1b8ab3a3b6151ee92ab597809a63b7855b53fde",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 10679,
+      "gold": "yes",
+      "target_token_id": 9693,
+      "target_token_text": "yes",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 1.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 22477,
+          "p_mem": 2.9919035405770325e-15,
+          "entropy": 1.1094214916229248
+        },
+        "18": {
+          "rank": 26938,
+          "p_mem": 1.9775857396098218e-08,
+          "entropy": 3.0298357009887695
+        },
+        "27": {
+          "rank": 121340,
+          "p_mem": 6.149566189606048e-08,
+          "entropy": 8.955299377441406
+        }
+      },
+      "rank_at_prompt_end": 26938,
+      "p_mem_at_prompt_end": 1.9775857396098218e-08,
+      "entropy_at_prompt_end": 3.0298357009887695
+    },
+    {
+      "id": "996c58a6f7fd10715191104b726d87dd079e7aa8e6fabef9",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 11698,
+      "gold": "Europe",
+      "target_token_id": 30780,
+      "target_token_text": "Europe",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 10808,
+          "p_mem": 5.982499516393389e-14,
+          "entropy": 1.683043122291565
+        },
+        "18": {
+          "rank": 111715,
+          "p_mem": 2.6494164934859343e-12,
+          "entropy": 2.388489007949829
+        },
+        "27": {
+          "rank": 20739,
+          "p_mem": 3.3647281725279754e-06,
+          "entropy": 8.480015754699707
+        }
+      },
+      "rank_at_prompt_end": 111715,
+      "p_mem_at_prompt_end": 2.6494164934859343e-12,
+      "entropy_at_prompt_end": 2.388489007949829
+    },
+    {
+      "id": "09221499868bb9e1a230f8530fa4759e812e5f2738d12942",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 10115,
+      "gold": "former English county of Humberside",
+      "target_token_id": 34527,
+      "target_token_text": "former",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.07122507122507121,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 25108,
+          "p_mem": 3.391675528908297e-22,
+          "entropy": 0.10491672158241272
+        },
+        "18": {
+          "rank": 48723,
+          "p_mem": 7.907664865795805e-13,
+          "entropy": 2.4688990116119385
+        },
+        "27": {
+          "rank": 85132,
+          "p_mem": 3.1159169111560914e-07,
+          "entropy": 9.385090827941895
+        }
+      },
+      "rank_at_prompt_end": 48723,
+      "p_mem_at_prompt_end": 7.907664865795805e-13,
+      "entropy_at_prompt_end": 2.4688990116119385
+    },
+    {
+      "id": "19092acc2a874e7d35633f7e9e8fc128720344b066244f04",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 9899,
+      "gold": "Roslyn Castle",
+      "target_token_id": 74020,
+      "target_token_text": "Ros",
+      "delta_f1": 0.5,
+      "delta_f1_full_generation": 0.0948616600790514,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 0.5,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 27839,
+          "p_mem": 4.2003179435101154e-19,
+          "entropy": 1.0477150678634644
+        },
+        "18": {
+          "rank": 85536,
+          "p_mem": 9.362151054403967e-10,
+          "entropy": 2.7032947540283203
+        },
+        "27": {
+          "rank": 31021,
+          "p_mem": 2.213373363701976e-06,
+          "entropy": 8.73635482788086
+        }
+      },
+      "rank_at_prompt_end": 85536,
+      "p_mem_at_prompt_end": 9.362151054403967e-10,
+      "entropy_at_prompt_end": 2.7032947540283203
+    },
+    {
+      "id": "570727521e78a04c7d8d892fdd8bfbdce0d178f3d4bcceb4",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 9963,
+      "gold": "a minor basilica",
+      "target_token_id": 64,
+      "target_token_text": "a",
+      "delta_f1": 1.0,
+      "delta_f1_full_generation": 0.17391304347826084,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 36697,
+          "p_mem": 2.5327810355802655e-23,
+          "entropy": 0.38854822516441345
+        },
+        "18": {
+          "rank": 148845,
+          "p_mem": 4.8564083459409595e-15,
+          "entropy": 2.818798065185547
+        },
+        "27": {
+          "rank": 53746,
+          "p_mem": 1.3876018556402414e-06,
+          "entropy": 9.765766143798828
+        }
+      },
+      "rank_at_prompt_end": 148845,
+      "p_mem_at_prompt_end": 4.8564083459409595e-15,
+      "entropy_at_prompt_end": 2.818798065185547
+    },
+    {
+      "id": "dd5ae003e007a523e056e069ad0ad058847299f004c646f9",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "short",
+      "n_tokens": 10589,
+      "gold": "Tony Aloupis",
+      "target_token_id": 57734,
+      "target_token_text": "Tony",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 21235,
+          "p_mem": 2.6337603894629154e-19,
+          "entropy": 1.6251994371414185
+        },
+        "18": {
+          "rank": 39509,
+          "p_mem": 8.827015229861956e-10,
+          "entropy": 3.101085901260376
+        },
+        "27": {
+          "rank": 10776,
+          "p_mem": 1.5160193242991227e-06,
+          "entropy": 5.626977920532227
+        }
+      },
+      "rank_at_prompt_end": 39509,
+      "p_mem_at_prompt_end": 8.827015229861956e-10,
+      "entropy_at_prompt_end": 3.101085901260376
+    },
+    {
+      "id": "ee2647e9cf29dcab9c66ffea03e05e9ef7c44e0e61eee68c",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 11195,
+      "gold": "44,300",
+      "target_token_id": 19,
+      "target_token_text": "4",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 22721,
+          "p_mem": 6.709886056189779e-18,
+          "entropy": 0.19999225437641144
+        },
+        "18": {
+          "rank": 146431,
+          "p_mem": 4.089070346413652e-16,
+          "entropy": 2.409074306488037
+        },
+        "27": {
+          "rank": 39089,
+          "p_mem": 1.7425384157832013e-06,
+          "entropy": 9.13110637664795
+        }
+      },
+      "rank_at_prompt_end": 146431,
+      "p_mem_at_prompt_end": 4.089070346413652e-16,
+      "entropy_at_prompt_end": 2.409074306488037
+    },
+    {
+      "id": "7504ff847adb8044a6217e1cee5d4e7f5d3b80a7adb9d9fe",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 16607,
+      "gold": "331 episodes",
+      "target_token_id": 18,
+      "target_token_text": "3",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 64591,
+          "p_mem": 2.318976445331994e-13,
+          "entropy": 1.2229995727539062
+        },
+        "18": {
+          "rank": 151199,
+          "p_mem": 2.147145803228396e-16,
+          "entropy": 2.3931727409362793
+        },
+        "27": {
+          "rank": 37335,
+          "p_mem": 2.4633993689349154e-07,
+          "entropy": 6.284111976623535
+        }
+      },
+      "rank_at_prompt_end": 151199,
+      "p_mem_at_prompt_end": 2.147145803228396e-16,
+      "entropy_at_prompt_end": 2.3931727409362793
+    },
+    {
+      "id": "5ead25955ee172d556fdd54032c508a9786b300dd49e4757",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 14908,
+      "gold": "Neneh Cherry",
+      "target_token_id": 45,
+      "target_token_text": "N",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 24348,
+          "p_mem": 1.0540949953870763e-19,
+          "entropy": 0.5410703420639038
+        },
+        "18": {
+          "rank": 143185,
+          "p_mem": 1.4674899750238835e-12,
+          "entropy": 3.214658737182617
+        },
+        "27": {
+          "rank": 27641,
+          "p_mem": 3.2577534057054436e-06,
+          "entropy": 9.329439163208008
+        }
+      },
+      "rank_at_prompt_end": 143185,
+      "p_mem_at_prompt_end": 1.4674899750238835e-12,
+      "entropy_at_prompt_end": 3.214658737182617
+    },
+    {
+      "id": "5c5eaa11039b3bdb361961c2d4bb541e491a596c5c5d4465",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 16451,
+      "gold": "1924November 22, 1993",
+      "target_token_id": 16,
+      "target_token_text": "1",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.13003095975232198,
+      "f1_ahn": 0.5,
+      "f1_nowrite": 0.5,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 12516,
+          "p_mem": 5.3239819303401985e-20,
+          "entropy": 0.22130367159843445
+        },
+        "18": {
+          "rank": 150684,
+          "p_mem": 3.940719209321411e-17,
+          "entropy": 2.144913911819458
+        },
+        "27": {
+          "rank": 66835,
+          "p_mem": 8.735166261431004e-07,
+          "entropy": 9.739571571350098
+        }
+      },
+      "rank_at_prompt_end": 150684,
+      "p_mem_at_prompt_end": 3.940719209321411e-17,
+      "entropy_at_prompt_end": 2.144913911819458
+    },
+    {
+      "id": "7cdceb45cfb9439bd41148788e5cf2f0e8a5cb99a0e09729",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 12440,
+      "gold": "yes",
+      "target_token_id": 9693,
+      "target_token_text": "yes",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 9399,
+          "p_mem": 9.734720275270055e-20,
+          "entropy": 0.7128708362579346
+        },
+        "18": {
+          "rank": 46269,
+          "p_mem": 1.282438565064492e-12,
+          "entropy": 1.9285626411437988
+        },
+        "27": {
+          "rank": 138187,
+          "p_mem": 7.645164501468571e-10,
+          "entropy": 7.220696449279785
+        }
+      },
+      "rank_at_prompt_end": 46269,
+      "p_mem_at_prompt_end": 1.282438565064492e-12,
+      "entropy_at_prompt_end": 1.9285626411437988
+    },
+    {
+      "id": "6c8952c7678c9c2db0a6cdaed0f8aa573898a297f1947e8d",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 15377,
+      "gold": "76,416",
+      "target_token_id": 22,
+      "target_token_text": "7",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": -0.8571428571428571,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 1.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 11038,
+          "p_mem": 1.8971835680795693e-17,
+          "entropy": 2.089984893798828
+        },
+        "18": {
+          "rank": 151010,
+          "p_mem": 4.799181275365154e-14,
+          "entropy": 3.1878037452697754
+        },
+        "27": {
+          "rank": 13638,
+          "p_mem": 9.873303497442976e-06,
+          "entropy": 9.345033645629883
+        }
+      },
+      "rank_at_prompt_end": 151010,
+      "p_mem_at_prompt_end": 4.799181275365154e-14,
+      "entropy_at_prompt_end": 3.1878037452697754
+    },
+    {
+      "id": "82a1a48996ef392d6abe74ea1d2b0a807c0f4d859c4026ac",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 15036,
+      "gold": "1964 to 1974",
+      "target_token_id": 16,
+      "target_token_text": "1",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.1,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 2231,
+          "p_mem": 3.5316916491973105e-12,
+          "entropy": 1.699129343032837
+        },
+        "18": {
+          "rank": 148143,
+          "p_mem": 7.225595498311496e-16,
+          "entropy": 2.2165768146514893
+        },
+        "27": {
+          "rank": 109529,
+          "p_mem": 7.811796542966931e-09,
+          "entropy": 7.160458087921143
+        }
+      },
+      "rank_at_prompt_end": 148143,
+      "p_mem_at_prompt_end": 7.225595498311496e-16,
+      "entropy_at_prompt_end": 2.2165768146514893
+    },
+    {
+      "id": "0bbd28f6cdb99eca32bfebb135b10db570568655b5924475",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 13134,
+      "gold": "west",
+      "target_token_id": 11039,
+      "target_token_text": "west",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.003333333333333341,
+      "f1_ahn": 0.6666666666666666,
+      "f1_nowrite": 0.6666666666666666,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 107409,
+          "p_mem": 2.829026764512503e-18,
+          "entropy": 1.191999912261963
+        },
+        "18": {
+          "rank": 38982,
+          "p_mem": 3.4827845902390964e-12,
+          "entropy": 2.222221612930298
+        },
+        "27": {
+          "rank": 8127,
+          "p_mem": 1.5650193745386787e-05,
+          "entropy": 8.778949737548828
+        }
+      },
+      "rank_at_prompt_end": 38982,
+      "p_mem_at_prompt_end": 3.4827845902390964e-12,
+      "entropy_at_prompt_end": 2.222221612930298
+    },
+    {
+      "id": "fd61851f598d55c56d1d32d500d54f356919668ee76a5fa0",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 16397,
+      "gold": "Berber",
+      "target_token_id": 38279,
+      "target_token_text": "Ber",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 16150,
+          "p_mem": 5.383897253575738e-17,
+          "entropy": 0.38457971811294556
+        },
+        "18": {
+          "rank": 67902,
+          "p_mem": 1.1538763722285239e-08,
+          "entropy": 3.961416482925415
+        },
+        "27": {
+          "rank": 56843,
+          "p_mem": 3.785924320709455e-07,
+          "entropy": 8.149429321289062
+        }
+      },
+      "rank_at_prompt_end": 67902,
+      "p_mem_at_prompt_end": 1.1538763722285239e-08,
+      "entropy_at_prompt_end": 3.961416482925415
+    },
+    {
+      "id": "f8832527b9381e131ecdcb4a81278fbcdd2b5e56c6215744",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 16822,
+      "gold": "Vikram",
+      "target_token_id": 53,
+      "target_token_text": "V",
+      "delta_f1": -0.6666666666666666,
+      "delta_f1_full_generation": -0.1,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.6666666666666666,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 6062,
+          "p_mem": 1.8716236057260892e-20,
+          "entropy": 0.02461627498269081
+        },
+        "18": {
+          "rank": 148506,
+          "p_mem": 4.283750275075465e-13,
+          "entropy": 2.645059108734131
+        },
+        "27": {
+          "rank": 43429,
+          "p_mem": 7.90961280472402e-07,
+          "entropy": 8.212377548217773
+        }
+      },
+      "rank_at_prompt_end": 148506,
+      "p_mem_at_prompt_end": 4.283750275075465e-13,
+      "entropy_at_prompt_end": 2.645059108734131
+    },
+    {
+      "id": "92be640857b6dd2e6beef9c07b7c3805d358192150971dda",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 15251,
+      "gold": "8 April 1912",
+      "target_token_id": 23,
+      "target_token_text": "8",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 49902,
+          "p_mem": 1.7202294104884998e-18,
+          "entropy": 0.11762513220310211
+        },
+        "18": {
+          "rank": 148017,
+          "p_mem": 5.853438969692735e-15,
+          "entropy": 2.2124109268188477
+        },
+        "27": {
+          "rank": 29911,
+          "p_mem": 2.841816012733034e-06,
+          "entropy": 9.171899795532227
+        }
+      },
+      "rank_at_prompt_end": 148017,
+      "p_mem_at_prompt_end": 5.853438969692735e-15,
+      "entropy_at_prompt_end": 2.2124109268188477
+    },
+    {
+      "id": "cf39373b78df19018180ae54b7006205fdb85ec4e708a95d",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 11929,
+      "gold": "Katarina Witt",
+      "target_token_id": 42,
+      "target_token_text": "K",
+      "delta_f1": -1.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 1.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 32924,
+          "p_mem": 2.381405323719717e-21,
+          "entropy": 0.5317379832267761
+        },
+        "18": {
+          "rank": 119005,
+          "p_mem": 1.220259109686525e-13,
+          "entropy": 2.421468496322632
+        },
+        "27": {
+          "rank": 28089,
+          "p_mem": 2.3691682144999504e-06,
+          "entropy": 8.491562843322754
+        }
+      },
+      "rank_at_prompt_end": 119005,
+      "p_mem_at_prompt_end": 1.220259109686525e-13,
+      "entropy_at_prompt_end": 2.421468496322632
+    },
+    {
+      "id": "df556f7b2e1c7fd14f1a64900f8d71c6207f8a85145e4ca3",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 16345,
+      "gold": "1994",
+      "target_token_id": 16,
+      "target_token_text": "1",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": -0.8666666666666667,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 1.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 37265,
+          "p_mem": 3.259460225819398e-19,
+          "entropy": 0.26419126987457275
+        },
+        "18": {
+          "rank": 151375,
+          "p_mem": 1.4539672587688768e-16,
+          "entropy": 2.727142810821533
+        },
+        "27": {
+          "rank": 60993,
+          "p_mem": 8.375665174753522e-07,
+          "entropy": 9.536497116088867
+        }
+      },
+      "rank_at_prompt_end": 151375,
+      "p_mem_at_prompt_end": 1.4539672587688768e-16,
+      "entropy_at_prompt_end": 2.727142810821533
+    },
+    {
+      "id": "7bc9d324dd6195d9ad2395b87601f929de0c15c668e9e4cb",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 12848,
+      "gold": "Sri Lankabhimanya Lester James Peries",
+      "target_token_id": 50,
+      "target_token_text": "S",
+      "delta_f1": 1.0,
+      "delta_f1_full_generation": 0.4347826086956522,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 95618,
+          "p_mem": 2.8201663399718023e-15,
+          "entropy": 1.3636174201965332
+        },
+        "18": {
+          "rank": 130308,
+          "p_mem": 1.433159102504078e-08,
+          "entropy": 7.838369369506836
+        },
+        "27": {
+          "rank": 18625,
+          "p_mem": 4.077779976796592e-06,
+          "entropy": 8.524374961853027
+        }
+      },
+      "rank_at_prompt_end": 130308,
+      "p_mem_at_prompt_end": 1.433159102504078e-08,
+      "entropy_at_prompt_end": 7.838369369506836
+    },
+    {
+      "id": "1a16dfb39ae6cf0874aefc9d22d1cc299f3003fc6d8b19e2",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 17293,
+      "gold": "Rafael Palmeiro Corrales",
+      "target_token_id": 49,
+      "target_token_text": "R",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 28958,
+          "p_mem": 4.846737167870888e-20,
+          "entropy": 0.013495884835720062
+        },
+        "18": {
+          "rank": 148957,
+          "p_mem": 7.301498988754318e-11,
+          "entropy": 4.499904155731201
+        },
+        "27": {
+          "rank": 23142,
+          "p_mem": 3.8314492485369556e-06,
+          "entropy": 9.07959270477295
+        }
+      },
+      "rank_at_prompt_end": 148957,
+      "p_mem_at_prompt_end": 7.301498988754318e-11,
+      "entropy_at_prompt_end": 4.499904155731201
+    },
+    {
+      "id": "89d46cdb218ad0444871f9b44dea057e0cdbd6c08be8d9c1",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 16441,
+      "gold": "Pandosia and Heraclea",
+      "target_token_id": 47,
+      "target_token_text": "P",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": -0.6666666666666666,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 1.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 13592,
+          "p_mem": 1.575848537160275e-20,
+          "entropy": 0.6438621878623962
+        },
+        "18": {
+          "rank": 137308,
+          "p_mem": 3.439920399851866e-14,
+          "entropy": 2.648935079574585
+        },
+        "27": {
+          "rank": 55095,
+          "p_mem": 1.3634566187192831e-07,
+          "entropy": 7.1579179763793945
+        }
+      },
+      "rank_at_prompt_end": 137308,
+      "p_mem_at_prompt_end": 3.439920399851866e-14,
+      "entropy_at_prompt_end": 2.648935079574585
+    },
+    {
+      "id": "e1b6edc0310b4329374915aa013f0870213342822a728142",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 15535,
+      "gold": "yes",
+      "target_token_id": 9693,
+      "target_token_text": "yes",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.026737967914438512,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 1.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 12987,
+          "p_mem": 7.576929433039926e-19,
+          "entropy": 0.6644359230995178
+        },
+        "18": {
+          "rank": 42748,
+          "p_mem": 1.9029131048675652e-10,
+          "entropy": 1.6612251996994019
+        },
+        "27": {
+          "rank": 140195,
+          "p_mem": 3.0141238394065795e-09,
+          "entropy": 7.709314346313477
+        }
+      },
+      "rank_at_prompt_end": 42748,
+      "p_mem_at_prompt_end": 1.9029131048675652e-10,
+      "entropy_at_prompt_end": 1.6612251996994019
+    },
+    {
+      "id": "b382a3ff1ff044c91cba6eafbbae2a2be82e107109d35688",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 14638,
+      "gold": "Gary Lightbody",
+      "target_token_id": 72967,
+      "target_token_text": "Gary",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 27781,
+          "p_mem": 9.768037549040285e-17,
+          "entropy": 1.0493435859680176
+        },
+        "18": {
+          "rank": 61894,
+          "p_mem": 4.173159647707925e-12,
+          "entropy": 2.701817035675049
+        },
+        "27": {
+          "rank": 21898,
+          "p_mem": 2.362580744375009e-06,
+          "entropy": 7.045097351074219
+        }
+      },
+      "rank_at_prompt_end": 61894,
+      "p_mem_at_prompt_end": 4.173159647707925e-12,
+      "entropy_at_prompt_end": 2.701817035675049
+    },
+    {
+      "id": "f3c23b4984f14199f12862795aeb344f19c97bfc9c586a8f",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 13649,
+      "gold": "Nobel Prize",
+      "target_token_id": 45,
+      "target_token_text": "N",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": -0.006666666666666682,
+      "f1_ahn": 0.6666666666666666,
+      "f1_nowrite": 0.6666666666666666,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 85709,
+          "p_mem": 1.1470211798785375e-16,
+          "entropy": 1.5309181213378906
+        },
+        "18": {
+          "rank": 133573,
+          "p_mem": 3.4554529376729093e-12,
+          "entropy": 2.9929378032684326
+        },
+        "27": {
+          "rank": 29233,
+          "p_mem": 3.95821643905947e-06,
+          "entropy": 9.912358283996582
+        }
+      },
+      "rank_at_prompt_end": 133573,
+      "p_mem_at_prompt_end": 3.4554529376729093e-12,
+      "entropy_at_prompt_end": 2.9929378032684326
+    },
+    {
+      "id": "1f9db2aff02d37612e21ae47ae43ba53ce131848900865ff",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 15381,
+      "gold": "Charice",
+      "target_token_id": 4768,
+      "target_token_text": "Char",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 12923,
+          "p_mem": 6.465969105111673e-18,
+          "entropy": 1.140658974647522
+        },
+        "18": {
+          "rank": 124227,
+          "p_mem": 2.0752610445525475e-14,
+          "entropy": 1.8950011730194092
+        },
+        "27": {
+          "rank": 47284,
+          "p_mem": 4.93389677558298e-07,
+          "entropy": 7.775279998779297
+        }
+      },
+      "rank_at_prompt_end": 124227,
+      "p_mem_at_prompt_end": 2.0752610445525475e-14,
+      "entropy_at_prompt_end": 1.8950011730194092
+    },
+    {
+      "id": "6153db5292ec46160b06ceb90f401de731655879157b30d7",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 16707,
+      "gold": "Gaspare Luigi Pacifico Spontini",
+      "target_token_id": 58728,
+      "target_token_text": "Gas",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.04000000000000001,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 13040,
+          "p_mem": 5.605222529005203e-16,
+          "entropy": 1.4270890951156616
+        },
+        "18": {
+          "rank": 104023,
+          "p_mem": 1.12247895440315e-12,
+          "entropy": 2.5269155502319336
+        },
+        "27": {
+          "rank": 105395,
+          "p_mem": 1.5189880286925472e-07,
+          "entropy": 9.112841606140137
+        }
+      },
+      "rank_at_prompt_end": 104023,
+      "p_mem_at_prompt_end": 1.12247895440315e-12,
+      "entropy_at_prompt_end": 2.5269155502319336
+    },
+    {
+      "id": "0e4fac2d1da09fad0958e11c5d6d7d8cbe4143e5a105e084",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 16578,
+      "gold": "Man Haron",
+      "target_token_id": 1658,
+      "target_token_text": "Man",
+      "delta_f1": 0.8,
+      "delta_f1_full_generation": 0.14814814814814814,
+      "f1_ahn": 0.8,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 45747,
+          "p_mem": 1.5843181075593007e-23,
+          "entropy": 0.7391247749328613
+        },
+        "18": {
+          "rank": 108059,
+          "p_mem": 8.646015570157317e-10,
+          "entropy": 2.931729316711426
+        },
+        "27": {
+          "rank": 72697,
+          "p_mem": 4.2508622755121905e-07,
+          "entropy": 9.17846965789795
+        }
+      },
+      "rank_at_prompt_end": 108059,
+      "p_mem_at_prompt_end": 8.646015570157317e-10,
+      "entropy_at_prompt_end": 2.931729316711426
+    },
+    {
+      "id": "8149fb371e91a3c4e6776957a8591519d55910bb5029e267",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 16969,
+      "gold": "Pennsylvania",
+      "target_token_id": 80931,
+      "target_token_text": "Penn",
+      "delta_f1": 0.4,
+      "delta_f1_full_generation": 0.0909090909090909,
+      "f1_ahn": 0.4,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 63762,
+          "p_mem": 3.6995890185794453e-22,
+          "entropy": 0.2042188048362732
+        },
+        "18": {
+          "rank": 22872,
+          "p_mem": 4.899273001179871e-11,
+          "entropy": 2.6657865047454834
+        },
+        "27": {
+          "rank": 42147,
+          "p_mem": 1.1940902595597436e-06,
+          "entropy": 9.00769329071045
+        }
+      },
+      "rank_at_prompt_end": 22872,
+      "p_mem_at_prompt_end": 4.899273001179871e-11,
+      "entropy_at_prompt_end": 2.6657865047454834
+    },
+    {
+      "id": "adde6fd9958589ef78af9e192aeffd8e48dfbd8d35014f4f",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 16751,
+      "gold": "Holinshed's Chronicle",
+      "target_token_id": 39,
+      "target_token_text": "H",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 15100,
+          "p_mem": 3.460175161207896e-22,
+          "entropy": 0.5673651099205017
+        },
+        "18": {
+          "rank": 144551,
+          "p_mem": 1.0393838974177491e-13,
+          "entropy": 2.455965042114258
+        },
+        "27": {
+          "rank": 54405,
+          "p_mem": 6.036123636476987e-07,
+          "entropy": 8.832870483398438
+        }
+      },
+      "rank_at_prompt_end": 144551,
+      "p_mem_at_prompt_end": 1.0393838974177491e-13,
+      "entropy_at_prompt_end": 2.455965042114258
+    },
+    {
+      "id": "a6cda30d0950f2d8b0e5c1ee89466cbc43b37be7daedcb8b",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 16952,
+      "gold": "Emilia-Romagna Region",
+      "target_token_id": 2269,
+      "target_token_text": "Em",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.08695652173913042,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 14514,
+          "p_mem": 1.6894614711770067e-21,
+          "entropy": 1.28500235080719
+        },
+        "18": {
+          "rank": 114272,
+          "p_mem": 1.605351729371332e-14,
+          "entropy": 1.3092639446258545
+        },
+        "27": {
+          "rank": 66446,
+          "p_mem": 1.6677724090641277e-07,
+          "entropy": 7.935015678405762
+        }
+      },
+      "rank_at_prompt_end": 114272,
+      "p_mem_at_prompt_end": 1.605351729371332e-14,
+      "entropy_at_prompt_end": 1.3092639446258545
+    },
+    {
+      "id": "1ae026dfc12f5b58aeaf3bb8631d67f416a8d4e22a47d1de",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 15320,
+      "gold": "Christopher Nolan",
+      "target_token_id": 73966,
+      "target_token_text": "Christopher",
+      "delta_f1": 0.1904761904761905,
+      "delta_f1_full_generation": 0.1904761904761905,
+      "f1_ahn": 0.1904761904761905,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 35190,
+          "p_mem": 5.334931345957957e-19,
+          "entropy": 1.6315741539001465
+        },
+        "18": {
+          "rank": 45596,
+          "p_mem": 2.3226778573387508e-12,
+          "entropy": 1.4832838773727417
+        },
+        "27": {
+          "rank": 74041,
+          "p_mem": 2.7263058655080386e-07,
+          "entropy": 8.488646507263184
+        }
+      },
+      "rank_at_prompt_end": 45596,
+      "p_mem_at_prompt_end": 2.3226778573387508e-12,
+      "entropy_at_prompt_end": 1.4832838773727417
+    },
+    {
+      "id": "566cf1595f78c029378e6220cf960d0b791084225f60ccda",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 12570,
+      "gold": "Kongo",
+      "target_token_id": 42,
+      "target_token_text": "K",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 6643,
+          "p_mem": 6.128518001511252e-15,
+          "entropy": 1.6114308834075928
+        },
+        "18": {
+          "rank": 133004,
+          "p_mem": 8.388781206139506e-13,
+          "entropy": 2.543790578842163
+        },
+        "27": {
+          "rank": 53311,
+          "p_mem": 4.435106291111879e-07,
+          "entropy": 8.079134941101074
+        }
+      },
+      "rank_at_prompt_end": 133004,
+      "p_mem_at_prompt_end": 8.388781206139506e-13,
+      "entropy_at_prompt_end": 2.543790578842163
+    },
+    {
+      "id": "7caf887e7c7af6c1dbe41d09aa5138aa6147234257b15c42",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 16158,
+      "gold": "Kurt Vonnegut",
+      "target_token_id": 42,
+      "target_token_text": "K",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.03999999999999998,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 1.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 19219,
+          "p_mem": 4.2486180534528524e-19,
+          "entropy": 0.5978260636329651
+        },
+        "18": {
+          "rank": 137620,
+          "p_mem": 3.506558853504614e-14,
+          "entropy": 2.382631301879883
+        },
+        "27": {
+          "rank": 43546,
+          "p_mem": 1.7995329244513414e-06,
+          "entropy": 9.577726364135742
+        }
+      },
+      "rank_at_prompt_end": 137620,
+      "p_mem_at_prompt_end": 3.506558853504614e-14,
+      "entropy_at_prompt_end": 2.382631301879883
+    },
+    {
+      "id": "27fa190091460428cd374c49583b9721fbd4a742e0e5e66e",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 13056,
+      "gold": "Honolulu",
+      "target_token_id": 70807,
+      "target_token_text": "Hon",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 75882,
+          "p_mem": 1.0292506466411918e-23,
+          "entropy": 0.16527727246284485
+        },
+        "18": {
+          "rank": 49348,
+          "p_mem": 3.133737410190851e-12,
+          "entropy": 2.3217995166778564
+        },
+        "27": {
+          "rank": 91843,
+          "p_mem": 1.7454100031955022e-07,
+          "entropy": 8.745111465454102
+        }
+      },
+      "rank_at_prompt_end": 49348,
+      "p_mem_at_prompt_end": 3.133737410190851e-12,
+      "entropy_at_prompt_end": 2.3217995166778564
+    },
+    {
+      "id": "88e3bc9e0eee130cd7cd23ebed32a425fd76a7bc566a64bd",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 15663,
+      "gold": "NYPD's 83rd Precinct",
+      "target_token_id": 45,
+      "target_token_text": "N",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.2,
+      "f1_nowrite": 0.2,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 29366,
+          "p_mem": 6.328664354795882e-21,
+          "entropy": 0.06075679883360863
+        },
+        "18": {
+          "rank": 129179,
+          "p_mem": 2.0561306021509018e-13,
+          "entropy": 2.8007123470306396
+        },
+        "27": {
+          "rank": 30668,
+          "p_mem": 3.7301253996702144e-06,
+          "entropy": 9.875556945800781
+        }
+      },
+      "rank_at_prompt_end": 129179,
+      "p_mem_at_prompt_end": 2.0561306021509018e-13,
+      "entropy_at_prompt_end": 2.8007123470306396
+    },
+    {
+      "id": "5dea8866ddd6e6bd76e82c8d8cea1dbfc441e58ec31724d6",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 16503,
+      "gold": "Hamlet",
+      "target_token_id": 39941,
+      "target_token_text": "Ham",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 60583,
+          "p_mem": 1.0679681067292977e-19,
+          "entropy": 0.783115029335022
+        },
+        "18": {
+          "rank": 72429,
+          "p_mem": 3.6374707690356445e-08,
+          "entropy": 4.86760950088501
+        },
+        "27": {
+          "rank": 45257,
+          "p_mem": 3.9153266584435187e-07,
+          "entropy": 7.741603851318359
+        }
+      },
+      "rank_at_prompt_end": 72429,
+      "p_mem_at_prompt_end": 3.6374707690356445e-08,
+      "entropy_at_prompt_end": 4.86760950088501
+    },
+    {
+      "id": "6d83121d4b9d36d10b3eeaeabe37ca728dcdbcea9541b57b",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 15928,
+      "gold": "Atsushi Ogata",
+      "target_token_id": 1655,
+      "target_token_text": "At",
+      "delta_f1": -1.0,
+      "delta_f1_full_generation": 0.023809523809523808,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 1.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 9153,
+          "p_mem": 9.867528847884693e-17,
+          "entropy": 1.5452929735183716
+        },
+        "18": {
+          "rank": 120624,
+          "p_mem": 4.1689712120852873e-13,
+          "entropy": 2.2722716331481934
+        },
+        "27": {
+          "rank": 69859,
+          "p_mem": 4.4485838657237764e-07,
+          "entropy": 9.123819351196289
+        }
+      },
+      "rank_at_prompt_end": 120624,
+      "p_mem_at_prompt_end": 4.1689712120852873e-13,
+      "entropy_at_prompt_end": 2.2722716331481934
+    },
+    {
+      "id": "7681a4ae6d92c179c938738ad170b6626534556d9ea993b6",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 13688,
+      "gold": "1902",
+      "target_token_id": 16,
+      "target_token_text": "1",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 55391,
+          "p_mem": 5.437001297643938e-20,
+          "entropy": 1.1927878856658936
+        },
+        "18": {
+          "rank": 150933,
+          "p_mem": 5.452537428724327e-14,
+          "entropy": 2.560431718826294
+        },
+        "27": {
+          "rank": 51452,
+          "p_mem": 8.481887903144525e-07,
+          "entropy": 9.1179780960083
+        }
+      },
+      "rank_at_prompt_end": 150933,
+      "p_mem_at_prompt_end": 5.452537428724327e-14,
+      "entropy_at_prompt_end": 2.560431718826294
+    },
+    {
+      "id": "e71fd79076da6ff2259a596d154b78301488419a5736ac21",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 12663,
+      "gold": "no",
+      "target_token_id": 2152,
+      "target_token_text": "no",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 1.0,
+      "f1_nowrite": 1.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 81369,
+          "p_mem": 3.4832433422940213e-19,
+          "entropy": 0.23791086673736572
+        },
+        "18": {
+          "rank": 125562,
+          "p_mem": 4.0772144368388455e-14,
+          "entropy": 1.682773470878601
+        },
+        "27": {
+          "rank": 36007,
+          "p_mem": 5.186543035051727e-07,
+          "entropy": 7.507917404174805
+        }
+      },
+      "rank_at_prompt_end": 125562,
+      "p_mem_at_prompt_end": 4.0772144368388455e-14,
+      "entropy_at_prompt_end": 1.682773470878601
+    },
+    {
+      "id": "1bfa4cb5fc609ed2f83787800d112fa7fcb5cdcbef7756fa",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "mid",
+      "n_tokens": 14978,
+      "gold": "from around 1520",
+      "target_token_id": 1499,
+      "target_token_text": "from",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
+      "f1_ahn": 0.0,
+      "f1_nowrite": 0.0,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 80621,
+          "p_mem": 6.427527850697226e-19,
+          "entropy": 0.1254928708076477
+        },
+        "18": {
+          "rank": 119204,
+          "p_mem": 1.402913734889575e-14,
+          "entropy": 2.163562774658203
+        },
+        "27": {
+          "rank": 55429,
+          "p_mem": 7.029440212136251e-07,
+          "entropy": 8.791254043579102
+        }
+      },
+      "rank_at_prompt_end": 119204,
+      "p_mem_at_prompt_end": 1.402913734889575e-14,
+      "entropy_at_prompt_end": 2.163562774658203
+    },
+    {
+      "id": "52159c74eaf34175bef4c0c07531f5908ba3eb1d390ca97d",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 16099,
+      "gold": "Tharangambadi",
+      "target_token_id": 1001,
+      "target_token_text": "Th",
+      "delta_f1": -0.05555555555555558,
+      "delta_f1_full_generation": -0.05555555555555558,
+      "f1_ahn": 0.1111111111111111,
+      "f1_nowrite": 0.16666666666666669,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 6333,
+          "p_mem": 4.642006075930195e-18,
+          "entropy": 0.136930450797081
+        },
+        "18": {
+          "rank": 97694,
+          "p_mem": 5.462588931540169e-13,
+          "entropy": 2.2103021144866943
+        },
+        "27": {
+          "rank": 79344,
+          "p_mem": 1.7187775824822893e-07,
+          "entropy": 8.125855445861816
+        }
+      },
+      "rank_at_prompt_end": 97694,
+      "p_mem_at_prompt_end": 5.462588931540169e-13,
+      "entropy_at_prompt_end": 2.2103021144866943
+    },
+    {
+      "id": "ef6033d606cd6e5c9cc6ab85b75e68cdb4cc7578a3dc573f",
+      "cell": "GatedDeltaNet",
+      "scale": "3B",
+      "stratum": "long",
+      "n_tokens": 16450,
+      "gold": "he turned 51, he died of cancer",
+      "target_token_id": 383,
+      "target_token_text": "he",
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": -0.2872200263504611,
+      "f1_ahn": 0.25,
+      "f1_nowrite": 0.25,
+      "readout": "jlens",
+      "summary_layer": 18,
+      "half_life": null,
+      "layers": {
+        "9": {
+          "rank": 27575,
+          "p_mem": 8.93282786651248e-19,
+          "entropy": 0.21719035506248474
+        },
+        "18": {
+          "rank": 144805,
+          "p_mem": 6.552288009040175e-13,
+          "entropy": 2.4717929363250732
+        },
+        "27": {
+          "rank": 14445,
+          "p_mem": 2.9524123874580255e-06,
+          "entropy": 7.15521240234375
+        }
+      },
+      "rank_at_prompt_end": 144805,
+      "p_mem_at_prompt_end": 6.552288009040175e-13,
+      "entropy_at_prompt_end": 2.4717929363250732
+    }
+  ]
+}
