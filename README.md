@@ -497,9 +497,12 @@ resolved.
   real effect-size gap — worth telling him in those terms rather than asking about cohort
   length distributions.
 
-Still open and blocking: the training-only compute-reimbursement rule (Question 1 — Ops,
-not Gautam), and whether AHN runs on a free T4 with an FP16 + eager-attention fallback
-(Question 3), which notebook 00 now tests directly.
+~~Question 1 (training-only compute-reimbursement rule)~~ — **resolved**: work has been
+running continuously on the GPU box Algoverse provided directly, so the reimbursement
+question doesn't block anything in practice.
+
+Still open, not blocking: whether AHN runs on a free T4 with an FP16 + eager-attention
+fallback (Question 3), which notebook 00 now tests directly.
 
 ## Citation
 
