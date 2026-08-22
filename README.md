@@ -328,6 +328,24 @@ None of this is wasted work. The instrumentation, the hook-ordering discipline, 
 NOWRITE control and the merged checkpoint all carry forward unchanged; what changes is
 the vector that gets decoded and where the needle is placed.
 
+## Findings from the 21 Aug C1 diagnosis
+
+Ran Gautam's three requested checks on one evicted needle example (GDN 3B, real project settings: sliding_window=8064, num_attn_sinks=128), needle "Paris" evicted 515 tokens past the compression boundary.
+
+- **Eviction index**: confirmed evicted — not in-window, not in the sink region.
+- **WRITE vs NOWRITE**: `raw_off` norm is exactly 0.0000 at every checked layer (9/18/27); the suppression hook fires correctly.
+- **Does `o_t` actually change**: yes. `||o_t_on - o_t_off||` = 0.52 / 0.94 / 2.45 at layers 9/18/27, growing with depth rather than flat or near-zero. The memory channel is genuinely active and contributing signal on this example.
+
+Follow-up, evicted vs in-window rank at layer 18, same needle:
+
+- Evicted rank: 108,733
+- In-window rank: 95,949 (needle never touched by AHN, fully visible to ordinary attention)
+- Chance baseline: ~76,000 — both conditions are near or worse than chance.
+
+The in-window result is the important one: that needle was never compressed by AHN at all, so AHN cannot be responsible for the readout failing there. This points at the NIAH prompt construction itself, not AHN's memory — consistent with the 18 Aug pilot's own note that its in-window baseline scored worse than its evicted condition.
+
+**Caveat**: the rank comparison above used the plain logit lens, not the fitted J-Lens (no lens argument was available on this box at the time). Not a like-for-like comparison with the earlier "J-Lens beats logit lens by up to 204x" result. Re-running this same evicted-vs-in-window comparison through the actual J-Lens is the natural next step, to confirm construction is the issue rather than AHN itself.
+
 ## Repository layout
 
 ```
