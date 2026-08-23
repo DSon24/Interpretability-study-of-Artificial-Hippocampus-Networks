@@ -388,8 +388,9 @@ bloating repo history the same way the `.pt` rule was meant to prevent. `*.ckpt`
 `.gitignore` and the file is untracked (`git rm --cached`, kept on disk). `notebooks/
 02-duplicate.ipynb` is **not** a stray duplicate — it's a teammate's in-progress 1000-context
 corpus fit through notebook 02, kept intentionally. Neither `.pt` file (corpus A or B) is in
-git — they only exist on the GPU box right now; back them up to Hugging Face Hub before that
-box's storage is reclaimed, nothing currently guarantees they survive past this session.
+git — they only exist on the GPU box, so they're backed up to Hugging Face Hub instead:
+[gautam-dphs/ahn-interp-jlens-qwen25-3b](https://huggingface.co/gautam-dphs/ahn-interp-jlens-qwen25-3b/tree/main)
+(private, org-owned). Re-download from there on any new box rather than re-fitting.
 
 ## Running an experiment
 
