@@ -750,9 +750,13 @@ def build_niah_prompt(
     ids = tokenizer(prompt, return_tensors="pt")
     n = int(ids["input_ids"].shape[1])
 
-    # where the needle actually landed
-    head_ids = tokenizer(prefix if not in_window else prompt.split(needle_sentence)[0],
-                         add_special_tokens=True)["input_ids"]
+    # where the actual needle token landed
+    head = prefix if not in_window else prompt.split(needle_sentence)[0]
+    head_plus_scaffold = head + "The special word is"
+    head_ids = tokenizer(
+        head_plus_scaffold,
+        add_special_tokens=True
+    )["input_ids"]
     needle_pos = len(head_ids)
 
     # `window_start` is the index where the lossless local window begins -- tokens at
