@@ -57,6 +57,8 @@ Sequencing follows Gautam's instruction after the last meeting:
 | Reproduce the published NOWRITE result (38–42% changed answers) | **done, with a metric correction** — 33.3% changed (first-line), ΔF1 **+6.1 pts** | `results/run_3b_gdn/03_nowrite_reproduction.json` |
 | J-lens fitted for Qwen2.5-3B | **done, map converged** — 500 contexts, layers 9/18/27, 1.92 GPU-h; **Table 3 check 4 (map stability) now passes** (top-10 overlap 0.91/0.87/0.89 across a disjoint second corpus); checks 2 and 3 still fail | `results/run_3b_gdn/02_table3_jlens_validation.json` |
 | NIAH retention with pre-eviction / NOWRITE controls | **done — control battery fails.** C4 passes, **C1, C2, C3 all fail**; readout is at chance | `results/run_3b_gdn/04_table4_controls.json` |
+| C2 follow-up — is the distractor control measuring anything? | **done, and it reframes C2** — the raw ratio is confounded by pair identity; after baseline correction no layer shows a memory-specific effect | `notebooks/04-C2-debug.ipynb`, Sơn, 28–31 Aug |
+| C3 follow-up — corrected shuffled-context rerun | **done** — needle held at a fixed token position; 96 matched rows. C3 does **not** give the expected order-sensitivity in either direction | `notebooks/04_niah_C3_analyze.ipynb`, Sơn, 29 Aug |
 | Retention curves (Table 6) | **run, not usable** — exponential fit inadequate at all three layers (R² < 0); nonparametric half-distance ≈ 11 tokens everywhere | `results/run_3b_gdn/05_table6_retention_summary.json` |
 | RQ1 on LongBench-E HotpotQA (Table 5) | **done** — pooled first-line ΔF1 +6.11 pts, but **95% CI [−1.85, +14.42] spans zero** | `results/run_3b_gdn/05_table5_rq1.json` |
 | RQ3 join (`04b`) | **built and run by Sơn** — no significant correlation between memory rank and ΔF1 at any of layers 9/18/27, before or after Holm correction; **result is provisional**, inherits the same C1 chance-level readout | `results/run_3b_gdn/04b_joined_retention_task.json` |
@@ -111,6 +113,18 @@ gold-answer-token rank against ΔF1. No significant correlation at any layer (Sp
 three layers). A 1000-context refit of the J-lens was also kicked off, in progress as of
 this writing, as a further robustness check beyond the 500-context stability pass. Detail
 below.
+
+**28–31 Aug 2026 — Sơn.** Took the two failing controls apart on branch
+`son-c2-investigation` (now merged to `main`). For C2: established that the failure is
+word-dependent rather than distance-dependent, that it is present *before* eviction, that
+the plain logit lens shows the same reversal so it is not a J-Lens artifact, and finally
+that the raw `p(needle)/p(distractor)` statistic is dominated by a pair-specific baseline
+readout preference — `mango` beats `banana` by 31–54× regardless of which needle was
+actually stored. Re-ran the whole C2 design baseline-corrected (252 matched observations,
+aggregated to 21 conditions per layer). For C3: rebuilt the control so the needle stays at
+the same token position in both the ordered and shuffled conditions, and reran it as 96
+fully matched pairs. Also fixed the `needle_pos` off-by-four in `ahn_interp.py` and
+regenerated `04_table4_controls.json`. Detail below.
 
 ## Findings from the 19–20 Aug run
 
@@ -198,10 +212,16 @@ GDN 3B, the same window/sinks as the config of record:
 
 | control | result | passed |
 |---|---|---|
-| C1 zero-state | mean rank 87,675 vs chance rank 75,968 — indistinguishable from chance | **fail** |
+| C1 zero-state | mean rank 87,688 vs chance rank 75,968 — indistinguishable from chance | **fail** |
 | C2 distractor | median probability ratio 1.00 (need ≥10×) — no needle/distractor separation | **fail** |
-| C3 shuffled context | ordered rank 88,642 vs shuffled rank 72,943 — shuffling context makes the rank *better* | **fail** |
-| C4 pre-eviction ceiling | in-window rank 77,411 beats evicted rank 87,675, as required | pass |
+| C3 shuffled context | ordered rank 88,702 vs shuffled rank 72,769 — shuffling context makes the rank *better* | **fail** |
+| C4 pre-eviction ceiling | in-window rank 77,430 beats evicted rank 87,688, as required | pass |
+
+> These are the **corrected** numbers, regenerated 31 Aug after Sơn fixed an off-by-four in
+> `build_niah_prompt` (`needle_pos` was measuring the start of the needle *sentence*, not the
+> needle *token*). Every eviction distance in the sweep shifts by ~4 tokens. The battery moves
+> by less than 0.2% and **no pass/fail verdict changes**; earlier drafts of this README quoted
+> 87,675 / 88,642 / 72,943 / 77,411.
 
 C1 failing is the load-bearing result: it means the readout is not finding the needle
 above chance in a 151,936-token vocabulary, full stop. That sits in tension with Finding 4
@@ -275,6 +295,11 @@ behaves closer to a recency mechanism than a content store. Both remaining candi
 a comparison the stability check can't provide on its own; this is the open question to
 bring to Gautam now that the cheap explanation is closed off.
 
+> **Superseded in part by the 28–31 Aug work below.** Candidate (c) rested on C3 as
+> originally run. The corrected C3 does not support a clean recency reading either — the
+> effect of shuffling depends on layer, distance and which metric you look at. That leaves
+> **(b), construction, as the live candidate**, and it is now the one to test directly.
+
 ## Findings from the 18 Aug pilot
 
 Five issues, in the order they need fixing. All five are addressed by
@@ -346,6 +371,113 @@ The in-window result is the important one: that needle was never compressed by A
 
 **Caveat**: the rank comparison above used the plain logit lens, not the fitted J-Lens (no lens argument was available on this box at the time). Not a like-for-like comparison with the earlier "J-Lens beats logit lens by up to 204x" result. Re-running this same evicted-vs-in-window comparison through the actual J-Lens is the natural next step, to confirm construction is the issue rather than AHN itself.
 
+## Findings from the 28–31 Aug C2 and C3 investigation
+
+Sơn's work on branch `son-c2-investigation`, merged to `main` on 2 Sep. Everything here is
+in `notebooks/04-C2-debug.ipynb` and `notebooks/04_niah_C3_analyze.ipynb`. All of it
+remains conditional on the J-Lens not having passed the full Table 3 battery.
+
+**1. A real bug in the eviction-distance measurement, fixed.** `build_niah_prompt` computed
+`needle_pos` from the tokenized head *plus the needle sentence's opening words*, so it was
+pointing at the start of `"The special word is Paris. "` rather than at ` Paris` itself —
+an off-by-four in every reported eviction distance. The fix appends the
+`"The special word is"` scaffold before measuring. `04_table4_controls.json` was
+regenerated: the battery moves by under 0.2% and **no verdict changes**.
+
+**2. C2 does not fail uniformly — it fails per needle.** Median `p(needle)/p(distractor)`
+at layer 27, evicted rows only:
+
+| needle → distractor | median ratio | needle win rate |
+|---|---:|---:|
+| Paris → London | 9.75× | 100% (23/23) |
+| Tokyo → Osaka | 5.75× | 100% (23/23) |
+| lantern → torch | 3.93× | 91.3% (21/23) |
+| banana → mango | **0.037×** | **0% (0/23)** |
+
+Overall median 4.50× against the 10× bar. Every term was verified to be a single token
+with the expected leading space, so tokenization does not explain it.
+
+**3. The `banana` reversal is not caused by eviction, and not caused by the J-Lens.** Two
+controls close both explanations:
+
+- **In-window**: `banana` already favours `mango` at 0.074× *before* the needle is ever
+  compressed. AHN forgetting the needle cannot be the mechanism.
+- **Plain vs J-Lens** at the same layer and distance: `banana → mango` is 0.015 under the
+  plain logit lens and 0.024 under the J-Lens; `Paris → London` is 23.33 and 21.55. The
+  direction is already present in `o_t` before any lens transform is applied.
+
+**4. The raw C2 statistic is confounded by pair identity — this is the load-bearing
+result.** Holding the readout fixed and varying *which needle was actually stored*,
+`p(banana)/p(mango)` barely moves:
+
+| stored needle | p(banana)/p(mango) |
+|---|---:|
+| Paris | 0.0207 |
+| Tokyo | 0.0185 |
+| banana | 0.0239 |
+| lantern | 0.0323 |
+
+`mango` wins regardless of what is in memory. The same holds across all four pairs:
+Paris > London by ~15–26×, Tokyo > Osaka by ~6.5–7×, mango > banana by ~31–54×, lantern >
+torch by ~9–12.5×, **whichever needle is stored**. So `p(needle)/p(distractor)` is
+measuring a baseline property of the vocabulary pair, not memory selectivity. The apparent
+success of Paris/Tokyo and failure of banana were both artefacts of that baseline.
+
+**5. Baseline-corrected, no layer shows a memory-specific effect.** Normalising each pair
+against its own preference when *other* needles are stored, across the full design
+(3 layers × 7 distances × 3 fillers × 4 pairs = 252 matched observations, aggregated to 21
+condition-level observations per layer):
+
+| layer | geometric-mean fold | 95% CI | p |
+|---:|---:|:---:|---:|
+| 9 | 0.995× | [0.983, 1.007] | .412 |
+| 18 | **1.047×** | [1.021, 1.074] | **.0012** |
+| 27 | 0.991× | [0.962, 1.021] | .546 |
+
+Layer 18's small positive effect then **fails its own scrambled-needle control** — with
+scrambled content the same analysis gives 1.009× [0.974, 1.045], p = .594 at layer 18
+(and 0.961× [0.937, 0.985], p = .0029 at layer 9, i.e. significant in the *wrong*
+direction). A prompt-contamination check came back clean: 0 cases across all 84 prompts.
+
+So the honest reading is that **C2 as specified was never a valid selectivity measure**,
+and the corrected version finds no token-level, memory-specific retention signal on this
+checkpoint. That is not the same as "AHN retains nothing" — it is "this readout cannot
+show that it does."
+
+**6. Corrected C3 does not give order-sensitivity in either direction.** The original C3
+let the needle move when the context was shuffled. The rerun holds it at the same token
+position: 8 needles × 2 eviction distances (1024, 4096) × ordered/shuffled × 3 layers =
+**96 rows, 48 complete matched pairs, none dropped**.
+
+| layer | rank effect | probability effect |
+|---|---|---|
+| 9 | no consistent direction | shuffled higher at both distances |
+| 18 | shuffled better in **16/16** pairs | **reverses with distance** — shuffled far higher at 1024 (ordered/shuffled ≈ 0.106), ordered far higher at 4096 (≈ 104,969) |
+| 27 | shuffled better in 13/16, not surviving Holm | shuffled higher in **16/16** |
+
+Read carefully: this is **not** evidence that shuffling helps memory. It is C3 failing to
+be the control it was designed to be — the effect depends on layer, on eviction distance,
+and on whether you measure rank or probability, and those three disagree. A control whose
+sign flips with distance cannot support a content-memory interpretation *or* refute one.
+
+**One statistical caveat worth carrying into the paper.** Each layer × distance cell holds
+8 matched pairs, so a two-sided exact sign-flip test has 2⁸ = 256 arrangements and a
+minimum achievable p of 2/256 = .0078. After Holm across the six tests, the smallest
+possible adjusted p is **.0469**. Any ".047" in this analysis means *all 8 pairs agreed in
+direction*, not a finely resolved significance estimate.
+
+**7. What this does to the diagnosis.** Candidate (c) — AHN as a recency mechanism — was
+resting on the original C3 result. The corrected C3 does not support it. Combined with
+(a) already ruled out by map stability, **candidate (b), prompt construction, is the only
+live explanation left**, and §5 of Next steps says how to test it.
+
+> **Reproducibility gap — fix before any of this goes in the paper.** The corrected C2
+> statistics and the matched-pair C3 results exist only as markdown inside the two
+> notebooks. `04_table4_controls.json` was regenerated but still carries only the original
+> four controls. Nothing in `results/` holds the baseline-corrected folds, the CIs, or the
+> 96 C3 rows. Export both to JSON under `results/run_3b_gdn/` so Tables 4 and 8 can be
+> regenerated by `05_analysis_and_figures.ipynb` rather than transcribed by hand.
+
 ## Repository layout
 
 ```
@@ -356,6 +488,8 @@ notebooks/
   02_jlens_fit_and_validate.ipynb    fit the J-lens; run Table 3's five checks
   03_nowrite_reproduction.ipynb      Week-6 milestone: 38–42% changed answers
   04_niah_retention.ipynb            retention curves + controls C1–C4 (Tables 4, 6)
+  04-C2-debug.ipynb                  C2 readout-bias investigation — Sơn, 28–31 Aug
+  04_niah_C3_analyze.ipynb           corrected C3 shuffled-context rerun — Sơn, 29 Aug
   05_analysis_and_figures.ipynb      CPU only — Tables 5–9, Figures 3–8
   0.4b.ipynb                         RQ3 join — Sơn's build; see Findings
   pilot/                             Sơn's 18 Aug notebooks, kept for provenance
@@ -468,14 +602,16 @@ resolved.
    needle above chance in the full NIAH sweep, despite beating the logit lens by 8–204× on
    isolated known-fact prompts (19–20 Aug Finding 4). Bootstrap on RQ1's first-line ΔF1 also
    shows the +6.11-point effect's 95% CI spans zero at n=60.
-5. **Diagnose the C1/isolated-fact disagreement — now down to two candidates.** (a)
-   undersampling — **ruled out**, map stability passes. Remaining: (b) the NIAH prompt
-   template — check whether the needle position/padding in the sweep matches the
-   known-fact test's conditions; (c) C3's result (shuffled beats ordered) is real and AHN is
-   closer to a recency mechanism than content memory, which the GPU plan flags as
-   potentially the most publishable result in the project if it survives (b). Message
-   Gautam with both framings plus the now-closed (a) — this is exactly the kind of call the
-   plan says is his, not ours.
+5. **Diagnose the C1/isolated-fact disagreement — now down to ONE live candidate.** (a)
+   undersampling — **ruled out**, map stability passes. (c) the recency reading — **weakened**
+   by the corrected C3 (28–31 Aug), which does not show order-sensitivity in either
+   direction. That leaves **(b), the NIAH prompt construction**, as the thing to test: does
+   the needle position, padding and prompt format in the sweep match the conditions the
+   known-fact test runs under? Note that `build_niah_prompt` ends the prompt at
+   `"What was the special word?"` while `load_ruler` appends RULER's own `answer_prefix` —
+   the two code paths in this module disagree about whether the target sits in the
+   next-token slot, and the readout is taken at `pos=-1`. Test that directly before taking
+   any of this to Gautam as a finding.
 6. ~~Build `04b` — the RQ3 join~~ — **done, by Sơn.** No significant correlation between
    memory rank and ΔF1 at any of the three layers, before or after Holm correction. Result
    is provisional, not a green light to proceed — see Finding 2 in the section above for
@@ -500,7 +636,7 @@ resolved.
 - **The J-lens decision has new evidence, and the cheapest explanation is now closed off.**
   The lens beats the logit lens by up to 204× on eight isolated known-fact prompts, but
   notebook 04's full control battery shows the readout at chance (C1 fails, mean rank
-  87,675 vs a chance rank of 75,968) with no needle/distractor separation (C2 fails) and
+  87,688 vs a chance rank of 75,968) with no needle/distractor separation (C2 fails) and
   shuffled context scoring *better* than ordered context (C3 fails). The map-stability
   re-fit (Table 3 check 4) has now run and **passes** at all three layers (0.91/0.87/0.89
   top-10 overlap) — the lens is converged, so this isn't an unconverged fit. `04b` (the RQ3
