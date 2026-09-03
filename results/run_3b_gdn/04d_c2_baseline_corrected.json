@@ -1,0 +1,130 @@
+{
+  "note": "Baseline-corrected C2, per layer. EXTRACTED from notebook cell outputs, not recomputed. Regenerating needs the GPU sweep in 04-C2-debug.ipynb cells 40-52 (2 x 84 forward passes on the merged 3B checkpoint).",
+  "source_notebook": "notebooks/04-C2-debug.ipynb",
+  "extracted_at_commit": "a9a140c1815a93fbb7b7adf169aa68fa7071070b",
+  "design": "3 layers x 7 eviction distances x 3 fillers x 4 needle/distractor pairs = 252 matched observations, aggregated to 21 conditions per layer",
+  "correction": "each pair's needle/distractor log-ratio when that needle is stored, minus the same pair's mean log-ratio when the other three are stored",
+  "lens_validated": false,
+  "layers": {
+    "9": {
+      "raw": {
+        "n": 84,
+        "raw_median_ratio": 0.706,
+        "needle_win_rate": 0.46,
+        "frac_pass_10x": 0.25
+      },
+      "baseline_corrected": {
+        "corrected_fold": 0.9953,
+        "ci_95": [
+          0.9816,
+          1.0092
+        ],
+        "t_test_p": 0.489646,
+        "leave_one_distance_out_fold_range": [
+          0.9913,
+          1.0025
+        ],
+        "leave_one_filler_out_fold_range": [
+          0.99,
+          1.0009
+        ],
+        "per_needle_fold_range": [
+          0.9739,
+          1.0175
+        ],
+        "blocked_permutation_p": 0.579271
+      },
+      "scrambled_needle_control": {
+        "n_conditions": 21,
+        "geom_fold": 0.958037,
+        "ci_95": [
+          0.9313,
+          0.985542
+        ],
+        "p": 0.00493411
+      },
+      "corrected_effect_survives": false,
+      "survives_scrambled_control": true
+    },
+    "18": {
+      "raw": {
+        "n": 84,
+        "raw_median_ratio": 0.557,
+        "needle_win_rate": 0.38,
+        "frac_pass_10x": 0.1
+      },
+      "baseline_corrected": {
+        "corrected_fold": 1.0463,
+        "ci_95": [
+          1.0201,
+          1.0732
+        ],
+        "t_test_p": 0.00135559,
+        "leave_one_distance_out_fold_range": [
+          1.0326,
+          1.054
+        ],
+        "leave_one_filler_out_fold_range": [
+          1.0355,
+          1.0615
+        ],
+        "per_needle_fold_range": [
+          1.0121,
+          1.1363
+        ],
+        "blocked_permutation_p": 0.00539973
+      },
+      "scrambled_needle_control": {
+        "n_conditions": 21,
+        "geom_fold": 1.01009,
+        "ci_95": [
+          0.976095,
+          1.04527
+        ],
+        "p": 0.547621
+      },
+      "corrected_effect_survives": true,
+      "survives_scrambled_control": false
+    },
+    "27": {
+      "raw": {
+        "n": 84,
+        "raw_median_ratio": 5.033,
+        "needle_win_rate": 0.75,
+        "frac_pass_10x": 0.17
+      },
+      "baseline_corrected": {
+        "corrected_fold": 0.9911,
+        "ci_95": [
+          0.9657,
+          1.0173
+        ],
+        "t_test_p": 0.484006,
+        "leave_one_distance_out_fold_range": [
+          0.982,
+          0.9997
+        ],
+        "leave_one_filler_out_fold_range": [
+          0.9832,
+          1.0034
+        ],
+        "per_needle_fold_range": [
+          0.8938,
+          1.0713
+        ],
+        "blocked_permutation_p": 0.661967
+      },
+      "scrambled_needle_control": {
+        "n_conditions": 21,
+        "geom_fold": 0.990597,
+        "ci_95": [
+          0.948591,
+          1.03446
+        ],
+        "p": 0.654162
+      },
+      "corrected_effect_survives": false,
+      "survives_scrambled_control": false
+    }
+  }
+}
