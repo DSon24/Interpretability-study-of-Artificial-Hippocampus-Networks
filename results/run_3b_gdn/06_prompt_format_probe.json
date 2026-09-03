@@ -1,0 +1,121 @@
+{
+  "note": "Base Qwen2.5-3B-Instruct, no AHN, no J-lens. Tests whether the needle is a plausible next token at the position where 04's readout is taken (pos=-1).",
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "device": "mps",
+  "dtype": "torch.bfloat16",
+  "vocab": 151936,
+  "chance_rank": 75968.0,
+  "needle": "Paris",
+  "needle_token_id": 12095,
+  "rows": [
+    {
+      "variant": "A_known_fact",
+      "has_answer_prefix": true,
+      "n_tokens": 5,
+      "last_tokens": "The capital of France is",
+      "rank_needle": 0,
+      "prob_needle": 0.5072969794273376,
+      "top5": [
+        " Paris",
+        " __",
+        " a",
+        " located",
+        " the"
+      ]
+    },
+    {
+      "variant": "B_niah_short_no_prefix",
+      "has_answer_prefix": false,
+      "n_tokens": 16,
+      "last_tokens": " What was the special word?",
+      "rank_needle": 31,
+      "prob_needle": 0.001562772085890174,
+      "top5": [
+        " The",
+        " In",
+        " It",
+        " What",
+        " Let"
+      ]
+    },
+    {
+      "variant": "C_niah_short_with_prefix",
+      "has_answer_prefix": true,
+      "n_tokens": 20,
+      "last_tokens": " word? The special word is",
+      "rank_needle": 1,
+      "prob_needle": 0.17963899672031403,
+      "top5": [
+        " \"",
+        " Paris",
+        " likely",
+        " not",
+        " indeed"
+      ]
+    },
+    {
+      "variant": "D_niah_padded_no_prefix",
+      "has_answer_prefix": false,
+      "n_tokens": 300,
+      "last_tokens": " What was the special word?",
+      "rank_needle": 35,
+      "prob_needle": 0.00057505804579705,
+      "top5": [
+        " The",
+        " In",
+        " It",
+        " Let",
+        " Oh"
+      ]
+    },
+    {
+      "variant": "E_niah_padded_with_prefix",
+      "has_answer_prefix": true,
+      "n_tokens": 304,
+      "last_tokens": " word? The special word is",
+      "rank_needle": 1,
+      "prob_needle": 0.04589196667075157,
+      "top5": [
+        " \"",
+        " Paris",
+        " **",
+        " clearly",
+        " indeed"
+      ]
+    },
+    {
+      "variant": "F_ruler_style_prefix",
+      "has_answer_prefix": true,
+      "n_tokens": 302,
+      "last_tokens": " the special word? Answer:",
+      "rank_needle": 0,
+      "prob_needle": 0.9593453407287598,
+      "top5": [
+        " Paris",
+        " The",
+        "Paris",
+        " \"",
+        " To"
+      ]
+    },
+    {
+      "variant": "G_no_question_bare_stem",
+      "has_answer_prefix": true,
+      "n_tokens": 298,
+      "last_tokens": " again. The special word is",
+      "rank_needle": 0,
+      "prob_needle": 0.9089694023132324,
+      "top5": [
+        " Paris",
+        " still",
+        " London",
+        " the",
+        " green"
+      ]
+    }
+  ],
+  "verdict": {
+    "short_prefix_gain_B_to_C": 30,
+    "padded_prefix_gain_D_to_E": 34
+  }
+}
