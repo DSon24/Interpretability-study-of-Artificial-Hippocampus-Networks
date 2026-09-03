@@ -151,6 +151,15 @@ def main():
     ap.add_argument("--results-dir", default="results/run_3b_gdn")
     ap.add_argument("--sliding-window", type=int, default=8064)
     ap.add_argument("--num-attn-sinks", type=int, default=128)
+    # ahn_interp.load_ahn_model defaults to "flash_attention_2", which needs a source
+    # build matching the system CUDA toolkit exactly. On at least one EC2 AMI
+    # (Deep Learning OSS Nvidia Driver AMI, Ubuntu 26.04, driver 595.91.07) the system
+    # nvcc reports CUDA 13.0 while the torch wheel needed for transformers==4.51.0
+    # compatibility is cu124 -- torch.utils.cpp_extension refuses to build against the
+    # mismatch. "sdpa" is torch's built-in fused attention, needs no compilation, and
+    # is plenty for these prompt lengths (at most a few thousand tokens on a 3B model).
+    ap.add_argument("--attn-implementation", default="sdpa",
+                     choices=["sdpa", "eager", "flash_attention_2"])
     args = ap.parse_args()
 
     ai.set_seed()
@@ -160,6 +169,7 @@ def main():
         args.model_path,
         sliding_window=args.sliding_window,
         num_attn_sinks=args.num_attn_sinks,
+        attn_implementation=args.attn_implementation,
     )
     tok = bundle.tokenizer
 
