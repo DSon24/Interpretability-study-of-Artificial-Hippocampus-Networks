@@ -1,0 +1,46 @@
+[
+  {
+    "predictor": "retention half-life",
+    "outcome": "per-example dF1",
+    "rho": NaN,
+    "p": NaN,
+    "ci": [
+      NaN,
+      NaN
+    ],
+    "n": 0
+  },
+  {
+    "predictor": "target rank @8K",
+    "outcome": "per-example dF1",
+    "rho": NaN,
+    "p": NaN,
+    "ci": [
+      NaN,
+      NaN
+    ],
+    "n": 0
+  },
+  {
+    "predictor": "target mass @8K",
+    "outcome": "per-example dF1",
+    "rho": NaN,
+    "p": NaN,
+    "ci": [
+      NaN,
+      NaN
+    ],
+    "n": 0
+  },
+  {
+    "predictor": "readout entropy @8K",
+    "outcome": "per-example dF1",
+    "rho": NaN,
+    "p": NaN,
+    "ci": [
+      NaN,
+      NaN
+    ],
+    "n": 0
+  }
+]

@@ -1,6 +1,6 @@
 {
   "run_name": "run_3b_gdn",
-  "model_path": "/home/jupyter-dphs-4ca1/AHN/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
+  "model_path": "/home/jupyter-dphs-23fd/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
   "cell": "GatedDeltaNet",
   "scale": "3B",
   "sliding_window": 8064,
