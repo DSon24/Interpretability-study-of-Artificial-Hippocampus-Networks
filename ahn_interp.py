@@ -46,7 +46,7 @@ import random
 import re
 import string
 from collections import Counter
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field
 from typing import Any, Callable, Dict, Iterable, List, Optional, Sequence, Tuple
 
 import numpy as np
@@ -143,7 +143,9 @@ class ModelBundle:
     model_path: str
 
     def summary(self) -> Dict[str, Any]:
-        d = {k: v for k, v in asdict(self).items() if k not in ("model", "tokenizer")}
+        # NOT asdict(self) -- that deep-copies every field, including `model`, which
+        # clones all 3B parameters just to build a metadata dict. Shallow-copy instead.
+        d = {k: v for k, v in self.__dict__.items() if k not in ("model", "tokenizer")}
         d["n_ahn_layers"] = len(self.ahn_layers)
         d["ahn_layers"] = self.ahn_layers
         return d
