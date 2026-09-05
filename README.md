@@ -60,6 +60,7 @@ Sequencing follows Gautam's instruction after the last meeting:
 | C2 follow-up — is the distractor control measuring anything? | **done, and it reframes C2** — the raw ratio is confounded by pair identity; after baseline correction no layer shows a memory-specific effect | `notebooks/04-C2-debug.ipynb`, Sơn, 28–31 Aug |
 | C3 follow-up — corrected shuffled-context rerun | **done** — needle held at a fixed token position; 96 matched rows. C3 does **not** give the expected order-sensitivity in either direction | `notebooks/04_niah_C3_analyze.ipynb`, Sơn, 29 Aug |
 | Per-layer recomputation of the control battery | **done, no GPU** — layer 9's readout is degenerate and fails C4. The 2 Sep "layer 27 works" claim is **withdrawn**: wrong readout basis, and its C2 ratio vanishes under baseline correction | `04c_per_layer_controls.json`, `04d_c2_baseline_corrected.json`, 2–3 Sep |
+| C1 rank correction + construction ladder + needle-category test | **done, reframes C1** — layers 18/27 show a real, Holm-significant needle-identity effect (12 place names vs. 12 common nouns); the pooled "C1 fails" verdict was an artifact of the original 4-needle sample, not evidence of no retention | `04c1_rank_baseline.json`, `06_construction_ladder.json`, `04f_needle_category_stats.json`, 4–5 Sep |
 | Retention curves (Table 6) | **run, not usable** — exponential fit inadequate at all three layers (R² < 0); nonparametric half-distance ≈ 11 tokens everywhere | `results/run_3b_gdn/05_table6_retention_summary.json` |
 | RQ1 on LongBench-E HotpotQA (Table 5) | **done** — pooled first-line ΔF1 +6.11 pts, but **95% CI [−1.85, +14.42] spans zero** | `results/run_3b_gdn/05_table5_rq1.json` |
 | RQ3 join (`04b`) | **built and run by Sơn** — no significant correlation between memory rank and ΔF1 at any of layers 9/18/27, before or after Holm correction; **result is provisional**, inherits the same C1 chance-level readout | `results/run_3b_gdn/04b_joined_retention_task.json` |
@@ -571,6 +572,143 @@ cells and not more scale.
 > the numbers. The pre-registration earned its keep. The 5.03× also survived a first
 > reading precisely because it pointed the way the hypothesis wanted.
 
+## Findings from the 4–5 Sep C1 rank correction, construction ladder, and needle-category test
+
+> **Revises, does not contradict, the "no layer works" bottom line above.** Item 6 of the 2
+> Sep section says there is "no layer and no control on which the instrument demonstrably
+> works." That was true of the 4-needle design it was measured on. Extending the needle set
+> below shows the instrument does work, for some words, at two of the three layers — the
+> earlier negative was an artifact of which four words got tested, not a property of the
+> instrument itself.
+
+First GPU access on program-provided A100s (replacing the earlier no-SSH shared box).
+Three linked pieces of work, in the order they happened.
+
+**1. C1 baseline-corrected by rank, the same way C2 was.** `04-C2-debug.ipynb` cell 40's
+84-forward-pass sweep only ever recorded `p_needle`/`p_distractor`; added `rank_needle`/
+`rank_distractor` and persisted the frame (previously it only ever lived in notebook
+memory — the same gap C2's `df_bias` had). Matched/clustered design identical to the C2
+statistics (21 independent condition-level values per layer, bootstrap CI, sign-flip
+permutation test, Holm correction across 3 layers):
+
+| layer | mean rank, target stored | mean rank, other stored | mean delta (95% CI) | Holm p | significant |
+|---:|---:|---:|---|---:|:---:|
+| 9 | 77,134 | 77,376 | −242.2 [−398.2, −89.4] | .0126 | yes |
+| 18 | 90,883 | 91,743 | −860.0 [−1365.0, −396.3] | .0054 | yes |
+| 27 | 63,041 | 61,952 | **+1089.6** [+369.2, +1823.7] | .0126 | yes |
+
+Chance rank 75,968. Layers 9 and 18 move in the direction a real memory signal predicts,
+but the effect is small — under 1.5% of vocab. Layer 27 is significant in the *wrong*
+direction: rank gets worse when the needle is actually stored. None of the individual
+layer×needle tests (12 total, n=21 each) survive Holm correction — the effect only
+appears once pooled across the 4 needles. This by itself does not resolve C1; item 3
+below explains why pooling across needles is exactly the wrong move here.
+
+**2. The construction ladder ran on GPU for the first time.** `probe_construction.py` was
+written 3 Sep against a CPU-only base-model check (the answer-prefix costs ~30 ranks, not
+the ~87,000 separating C1 from chance) but had never been run through the real merged
+model + fitted J-lens + actual eviction — it needed a GPU, and the box available at the
+time had no SSH. Two bugs fixed to get a full run: `probe.run(inputs, keep_logits=True)`
+was missing `layers=LAYERS`, so it captured all 36 AHN layers instead of 3 (~12× the
+needed memory, OOM'd at rung 5 of 8 even after the fix below); and `ModelBundle.summary()`
+called `dataclasses.asdict(self)`, which deep-copies every field — including the 3B-param
+`model` field — before the dict comprehension filters it out, so building a metadata dict
+was cloning the whole model on GPU first. Both fixed in `ahn_interp.py` and
+`probe_construction.py`.
+
+With those fixed, all 8 rungs complete. Reading `o_t` (AHN's memory contribution
+specifically — the column that actually answers the C1 question, not the model's own
+final-layer logits) for the single needle "Paris" at eviction distance ≈1024:
+
+| rung | L9 `o_t` rank | L18 `o_t` rank | L27 `o_t` rank |
+|---|---:|---:|---:|
+| L3 in-window, no prefix | 116,491 | 109,630 | 2,190 |
+| L4 in-window, with prefix | 127,346 | 129,821 | 43,002 |
+| L5 evicted, no prefix | 89,792 | 147,618 | **6,703** |
+| L6 evicted, with prefix | 109,408 | 146,636 | **33,092** |
+| L7 evicted, natural filler | 115,153 | **12,893** | 14,284 |
+
+Layer 27 stays well below the 75,968 chance rank in *every* rung, evicted included — this
+single-example number (L5, distance≈1024) matches the population sweep's own Paris/layer
+27/distance≈1040 rows exactly (6,703 / 7,984 / 7,008 across the three fillers in item 1's
+sweep), cross-validating between the two independently-written scripts. Layer 18 is dead
+at chance for repeated filler (L3–L6) but recovers sharply with natural filler instead of
+the degenerate repeated 5-sentence filler (L7: 12,893) — one example, but a 10× swing from
+changing filler text alone. Layer 9's `o_t` never recovers anywhere, consistent with it
+being independently established as degenerate.
+
+**3. The pooled/4-needle C1 failure is a needle-selection artifact, not evidence AHN
+retains nothing.** Pulled needle-level means (n=21 conditions each) from item 1's sweep,
+split by needle rather than pooled:
+
+| needle | layer 27 mean rank |
+|---|---:|
+| Paris | 9,767 |
+| Tokyo | 17,300 |
+| lantern | 77,704 |
+| banana | 147,394 |
+
+A 15× gap between the best and worst needle, ranges barely overlapping (Paris tops out at
+38,556; banana bottoms out at 143,182) — not noise. The pooled verdict averages a working
+signal against a broken one. This is the same pooling mistake the 2 Sep section already
+caught with layer 9 (Finding 2 there), just found on a second axis: needle identity, not
+layer.
+
+**4. Extended to 24 needles (12 place names, 12 common nouns) to test whether this
+generalizes past the original 4.** Tokenizer-verified single-token, same pattern as the
+existing `CONTROL_CANDIDATES` cell; one forward pass per (needle, distance, filler), ~500
+passes total. Two-sample permutation test on needle-level mean rank, Holm-corrected across
+3 layers:
+
+| layer | mean rank, place (n=12) | mean rank, noun (n=12) | diff | Holm p | significant |
+|---:|---:|---:|---:|---:|:---:|
+| 9 | 82,610 | 92,388 | −9,778 | .488 | no |
+| 18 | 71,727 | 89,056 | −17,329 | **.0164** | yes |
+| 27 | 24,063 | 92,491 | **−68,428** | **.00045** | yes |
+
+At layer 27, all 12 place names land below chance (worst is Lisbon, 64,543); 10 of 12
+nouns land above it. Not a perfectly clean split — `green`/`stone`/`window`/`cloud` also
+read below chance alongside the place names — so "place name" is not the whole mechanism,
+but the category-level difference is real and Holm-significant, not an artifact of which
+24 words got picked this time either.
+
+**5. Candidate list, revised a third time.**
+
+- **(a) undersampling** — still ruled out.
+- **(b) prompt construction / answer-prefix** — still weakened; the ~30-rank cost from the
+  3 Sep CPU probe is nowhere near the gap to chance. **Narrows to a new, untested version**:
+  Finding 2's L7 result suggests the *degenerate repeated filler*, not the missing prefix,
+  may be masking signal at layer 18 specifically. One example — needs the same
+  population-level test Finding 4 gave the needle-identity question before it can be
+  believed.
+- **(c) content does not survive compression (recency reading)** — **unsupported**. Layer
+  27's `o_t` rank for Paris/Tokyo stays low after eviction, in both the single-example
+  ladder and the 21-condition population sweep. Content demonstrably *can* survive
+  compression, at least for some words.
+- **(e) new — needle-identity / category-dependent retention.** Layers 18 and 27 show
+  Holm-significant place-name-vs-common-noun differences at n=12 per category, not just
+  the original 4-needle spot check. Whether the operative dimension is really semantic
+  category, word frequency, embedding geometry, or something else is untested — 24 needles
+  across 2 hand-picked categories establishes the effect is real, not what causes it.
+
+**6. What this leaves.** C1 does not cleanly fail. It fails for some words and works for
+others, at layers 18 and 27 (layer 9 remains dead throughout, every finding above is
+consistent with its independently-established degeneracy). That is a different thing to
+bring to Gautam than either original candidate — not "the instrument is broken," not "AHN
+is a recency mechanism," but "AHN's compressed memory retains some word identities far
+better than others, and the pooled battery's chance-level verdict is an averaging artifact
+over which needles were chosen." The cheapest next test is the same kind of extension
+Finding 4 ran: more needles, testing whether the category split holds under a
+principled category design (e.g. matched-frequency place names vs. common nouns) rather
+than the current hand-picked 24, and whether Finding 2's filler-degeneracy hint replicates
+at scale.
+
+> **Process note.** Two OOM bugs (Finding 2) and one needle-selection artifact (Finding 3)
+> were all found by reading the actual data closely enough to notice something matched or
+> didn't match a prior result, not by the code failing loudly — the OOMs did fail loudly,
+> but the needle-selection artifact would have shipped silently as "C1 fails, full stop" if
+> the cross-check against the population sweep hadn't been run at all.
+
 ## Repository layout
 
 ```
@@ -745,6 +883,16 @@ resolved.
   direct comparison of the NIAH sweep's prompt construction against the known-fact test's,
   or (b) accepting C3's result as real — AHN behaving closer to a recency mechanism than a
   content store. Both are his call, not a compute problem anymore.
+- **New evidence, 4–5 Sep — neither (a) nor (b) above is the answer.** Extending the C1
+  needle set from 4 to 24 words (12 place names, 12 common nouns) finds a real,
+  Holm-significant retention difference by needle identity at layers 18 and 27 (see
+  "Findings from the 4–5 Sep C1 rank correction..." below) — place names read out far
+  below chance, most common nouns don't. The pooled "C1 fails" verdict was averaging a
+  working signal against a broken one across an arbitrary 4-word sample, not evidence
+  the instrument or AHN's memory is broken. This needs a name and a decision from him:
+  is needle-identity-dependent retention the finding to build RQ2 around, and if so, what
+  needle set is now of record — the original 4, or a principled category design testing
+  what Finding 4 only spot-checked?
 - **RQ1's effect does not survive its own confidence interval.** Bootstrapped first-line
   ΔF1 is +6.11 pts but the 95% CI is [−1.85, +14.42] at n=60 — it spans zero, and so does
   every per-stratum interval. His published +0.4 to +2.3 pts sits entirely inside that
