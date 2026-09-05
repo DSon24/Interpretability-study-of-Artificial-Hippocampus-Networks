@@ -199,7 +199,7 @@ def main():
             "ahn_active": n_tok > (bundle.sliding_window or 0) + bundle.num_attn_sinks,
         }
 
-        cap = probe.run(inputs, keep_logits=True)
+        cap = probe.run(inputs, layers=LAYERS, keep_logits=True)
 
         # -- step 0: the model's own final logits at the readout position. If the
         # needle is not findable here, nothing downstream can find it either.
