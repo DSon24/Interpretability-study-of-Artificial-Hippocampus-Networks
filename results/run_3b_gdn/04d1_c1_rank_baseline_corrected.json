@@ -1,0 +1,171 @@
+{
+  "by_needle": [
+    {
+      "layer": 9,
+      "needle": "Paris",
+      "n_conditions": 21,
+      "mean_delta_rank": -643.4444444444453,
+      "ci_low": -1951.2432539682538,
+      "ci_high": 316.49404761904754,
+      "p_raw": 0.35248647513524867,
+      "p_holm": 1.0,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 9,
+      "needle": "Tokyo",
+      "n_conditions": 21,
+      "mean_delta_rank": -453.3333333333333,
+      "ci_low": -998.0670634920634,
+      "ci_high": 9.938095238095753,
+      "p_raw": 0.0976690233097669,
+      "p_holm": 0.8790212097879021,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 9,
+      "needle": "banana",
+      "n_conditions": 21,
+      "mean_delta_rank": -180.22222222222177,
+      "ci_low": -637.4948412698401,
+      "ci_high": 307.4488095238096,
+      "p_raw": 0.4800851991480085,
+      "p_holm": 1.0,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 9,
+      "needle": "lantern",
+      "n_conditions": 21,
+      "mean_delta_rank": 308.15873015872995,
+      "ci_low": -374.25555555555684,
+      "ci_high": 1163.321825396825,
+      "p_raw": 0.5146748532514674,
+      "p_holm": 1.0,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 18,
+      "needle": "Paris",
+      "n_conditions": 21,
+      "mean_delta_rank": -837.3968253968267,
+      "ci_low": -2027.2007936507966,
+      "ci_high": 366.1833333333306,
+      "p_raw": 0.19581804181958182,
+      "p_holm": 1.0,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 18,
+      "needle": "Tokyo",
+      "n_conditions": 21,
+      "mean_delta_rank": -1370.5714285714287,
+      "ci_low": -2562.545634920634,
+      "ci_high": -188.19206349206655,
+      "p_raw": 0.04239957600423996,
+      "p_holm": 0.4663953360466395,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 18,
+      "needle": "banana",
+      "n_conditions": 21,
+      "mean_delta_rank": -574.1904761904784,
+      "ci_low": -2118.683333333335,
+      "ci_high": 879.9059523809494,
+      "p_raw": 0.4793252067479325,
+      "p_holm": 1.0,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 18,
+      "needle": "lantern",
+      "n_conditions": 21,
+      "mean_delta_rank": -657.7777777777784,
+      "ci_low": -1589.8416666666678,
+      "ci_high": 231.32261904761464,
+      "p_raw": 0.18744812551874482,
+      "p_holm": 1.0,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 27,
+      "needle": "Paris",
+      "n_conditions": 21,
+      "mean_delta_rank": 552.6349206349207,
+      "ci_low": -278.00436507936496,
+      "ci_high": 1286.208333333333,
+      "p_raw": 0.1954280457195428,
+      "p_holm": 1.0,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 27,
+      "needle": "Tokyo",
+      "n_conditions": 21,
+      "mean_delta_rank": 705.9841269841272,
+      "ci_low": -0.8420634920629503,
+      "ci_high": 1436.6194444444448,
+      "p_raw": 0.07192928070719293,
+      "p_holm": 0.7192928070719293,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 27,
+      "needle": "banana",
+      "n_conditions": 21,
+      "mean_delta_rank": 61.66666666666528,
+      "ci_low": -85.6833333333337,
+      "ci_high": 192.588492063491,
+      "p_raw": 0.4066059339406606,
+      "p_holm": 1.0,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 27,
+      "needle": "lantern",
+      "n_conditions": 21,
+      "mean_delta_rank": 3038.222222222223,
+      "ci_low": 742.348015873016,
+      "ci_high": 5337.535714285713,
+      "p_raw": 0.02179978200217998,
+      "p_holm": 0.26159738402615973,
+      "significant_holm_005": false
+    }
+  ],
+  "by_layer": [
+    {
+      "layer": 9,
+      "n_conditions": 21,
+      "mean_delta_rank": -242.2103174603176,
+      "ci_low": -398.21577380952397,
+      "ci_high": -89.4296626984132,
+      "p_raw": 0.006299937000629994,
+      "p_holm": 0.012599874001259987,
+      "significant_holm_005": true
+    },
+    {
+      "layer": 18,
+      "n_conditions": 21,
+      "mean_delta_rank": -859.9841269841282,
+      "ci_low": -1365.0069444444455,
+      "ci_high": -396.28759920635076,
+      "p_raw": 0.0017999820001799983,
+      "p_holm": 0.005399946000539994,
+      "significant_holm_005": true
+    },
+    {
+      "layer": 27,
+      "n_conditions": 21,
+      "mean_delta_rank": 1089.626984126984,
+      "ci_low": 369.1678571428572,
+      "ci_high": 1823.6699404761898,
+      "p_raw": 0.00903990960090399,
+      "p_holm": 0.012599874001259987,
+      "significant_holm_005": true
+    }
+  ],
+  "readout": "jlens",
+  "lens_validated": false,
+  "chance_rank": 75968.0
+}
