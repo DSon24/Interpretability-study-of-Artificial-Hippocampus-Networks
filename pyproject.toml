@@ -36,6 +36,18 @@ train = [
   "liger-kernel"
 ]
 
+# FlashAttention-2. Required for correctness, not speed: the sliding-window
+# attention this project depends on is not implemented for sdpa, so a non-FA2
+# load silently ignores CFG["sliding_window"] and AHN never activates.
+# Kept out of the core deps because the PyPI package is an sdist that compiles
+# against nvcc (~30 min, and impossible on a box without the CUDA toolkit).
+# Install the prebuilt wheel matching your torch/python/ABI instead, e.g.:
+#   pip install "https://github.com/Dao-AILab/flash-attention/releases/download/\
+#     v2.7.4.post1/flash_attn-2.7.4.post1+cu12torch2.5cxx11abiFALSE-cp312-cp312-linux_x86_64.whl"
+gpu = [
+  "flash-attn==2.7.4.post1",
+]
+
 # Everything needed to eval
 eval = [
   "fuzzywuzzy",
