@@ -12,7 +12,17 @@ authors = [
     { name = "Yunhao Fang", email = "seerkfang@gmail.com" },
     { name = "Weihao Yu", email = "weihaoyu6@gmail.com" }
 ]
-dependencies = []  # keep core deps here
+# Needed to `import ahn` at all: qwen2_ahn/qwen3_ahn import wandb and fla at
+# module scope, and transformers' from_pretrained needs accelerate for
+# init_empty_weights. torch is pinned because an unpinned resolve picks up
+# CUDA 13 wheels, which fail on CUDA 12.x drivers.
+dependencies = [
+  "torch==2.5.1",
+  "accelerate==1.6.0",
+  "wandb",
+  # Forked FLA; upstream FLA on PyPI is not a substitute.
+  "flash-linear-attention @ git+https://github.com/Seerkfang/flash-linear-attention.git@main",
+]
 
 [project.optional-dependencies]
 # Everything needed to train
