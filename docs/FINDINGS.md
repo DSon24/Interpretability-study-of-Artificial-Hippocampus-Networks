@@ -7,8 +7,9 @@ hard to reach.
 
 Nothing here is edited. Later entries correct earlier ones rather than replacing them, so
 a claim's history stays visible: read top to bottom and the withdrawals are part of the
-record. The 7 Sep J-lens repeat is the most recent state of the C1 question, and it reverses
-the reading of every entry above it.
+record. The 7 Sep control-battery entry is the most recent state of the C1 question, and it
+withdraws the specific numbers in the entry immediately above it while confirming its
+direction at a smaller magnitude.
 
 - [Findings from the 19–20 Aug run](#findings-from-the-1920-aug-run)
 - [Findings from the 20 Aug NIAH retention run](#findings-from-the-20-aug-niah-retention-run)
@@ -20,6 +21,7 @@ the reading of every entry above it.
 - [Findings from the 4–5 Sep C1 rank correction, construction ladder, and needle-category test](#findings-from-the-45-sep-c1-rank-correction-construction-ladder-and-needle-category-test)
 - [Findings from the 7 Sep RULER cohort run](#findings-from-the-7-sep-ruler-cohort-run)
 - [Findings from the 7 Sep J-lens repeat and placement check](#findings-from-the-7-sep-j-lens-repeat-and-placement-check)
+- [Findings from the 7 Sep target-scoring bug and the RULER control battery](#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery)
 
 ---
 
@@ -767,3 +769,78 @@ the J-lens run of record. The third — this one — looked correct until the in
 question was asked, and would have been a headline claim resting on 28 needles that were
 never compressed. The cost of each check was minutes; the cost of publishing any of the
 three would not have been.
+
+
+## Findings from the 7 Sep target-scoring bug and the RULER control battery
+
+Run 026. `04i_ruler_controls_rows.json`, `04i_ruler_controls_stats.json`; regenerate with
+`python ruler_controls.py`. **This withdraws the specific numbers in the entry above** (run
+025, rank 17,250 at layer 27) and replaces them with a smaller, differently-shaped, but
+better-supported result.
+
+**1. Run 025 scored a space character, not the needle.** RULER NIAH answers in this cohort
+are 7-digit numbers, and Qwen tokenizes `" 7700828"` as
+`[' ', '7', '7', '0', '0', '8', '2', '8']` — the leading space is its own token.
+`measure_ruler`'s target was `encode(" " + answer)[0]`, token 220, **identical for all 60
+examples**. Run 025's rank-17,250 headline is the rank of a space, not of any digit. This
+surfaced immediately on trying to build C2: with one distinct target token, every one of
+the 1,770 possible pairs dropped as a same-token collision, and C2 could not run at all.
+
+**2. The measurement now scores the answer as a sequence.** The gold answer is appended to
+the prompt; the readout at each of the 7 digit positions gives the log-probability of all
+ten digit tokens, a 7x10 table per example. C1 is the example's own answer read from its
+own table. C2 is any *other* example's answer read from the same table — the full 60x60
+cross matrix costs nothing beyond the forward pass C1 already needed.
+
+**3. C3-lens disqualifies layers 9 and 18.** DIVERGENCE 3a (the proposal's Table 4 defines
+C3 as a row-permuted J-lens map, never implemented before this) is decisive here: at
+layers 9 and 18 the signal *survives* the permuted map (Δ +98.2 and +225.0 log-nats,
+both CIs excluding zero on the wrong side). Whatever those layers show is a property of
+the decoding procedure, not of memory — most importantly, layer 18's striking C1 number
+(median mean-digit-rank 6,254, deep below chance) **is exactly this artefact** and must
+not be reported as evidence of anything.
+
+**4. Layer 27 passes every check, at a real but modest magnitude.**
+
+| control | result |
+|---|---|
+| C1 | median mean-digit-rank 49,776 [41,803, 54,797] — below chance (75,968) |
+| C2, per-digit effect | **1.076x [1.054, 1.098]**, permutation p < 0.0001 |
+| C2, per-example effect | 1.672x [1.446, 1.929] — excludes 1.0, does not clear the pre-registered 10x bar |
+| C3-context | no order sensitivity (Δ −1,004 [−7,946, +18,689]) |
+| C3-lens | **collapses**, Δ −39.2 log-nats [−46.1, −34.4], signal depends on the real map |
+
+C2's CI excludes the null about as unambiguously as this kind of test produces. It also
+does not come close to the magnitude that would count as a clean pass. Both of those are
+the finding: a small, statistically robust, memory-specific effect at layer 27, an order
+of magnitude short of "AHN clearly retains the content."
+
+**5. The per-example vs per-digit distinction is not a technicality here.** The
+ratio-of-ratios C2 statistic is the *square* of the per-example effect (Finding, process
+note below), and the per-example effect itself compounds multiplicatively over the
+answer's 7 digits. 1.076x per digit is already 1.672x end to end; the pre-registered 10x
+bar was written for a single-token needle and is not the number this design should be
+measured against. `effect_per_digit` is the figure to quote.
+
+**6. C3-context replicates the 29 Aug null, on a different cohort and a different
+construction.** No order sensitivity at layer 27 here; none on the homemade cohort in the
+28-31 Aug investigation. Two independent constructions agreeing on "no clean order effect"
+is corroboration, not a second failure to explain away.
+
+**7. What this does and does not license.** It does not reinstate the 2 Sep claim (o_t
+basis, C2 confound) or the withdrawn run-025 magnitude. It licenses: *a small,
+statistically significant, memory-specific signal exists at layer 27 on the primary
+pre-registered cohort, that is not an artefact of the decoding procedure, and that falls
+well short of the pre-registered threshold for a clear pass.* That is a materially weaker
+and more defensible claim than either "the instrument doesn't work" (20 Aug) or "AHN
+clearly retains the needle" (run 025, now withdrawn).
+
+**8. Process note — the second self-caught error in two days.** `ruler_controls.py` was
+tested against synthetic null and planted-effect cohorts before being run against real
+data, the same discipline that caught the fold-squaring bug in the estimator itself. Two
+bugs were caught this way before any of this reached a notebook: the space-token target,
+found because C2 literally could not execute; and the squared fold, found because a
+planted 50x effect reported as 2500x on synthetic data. Neither would have been visible
+from the real RULER numbers alone — a 1.076x-per-digit effect does not look obviously
+wrong the way a space-token rank does. The synthetic-data check is now load-bearing for
+any future control on this cohort, not optional scaffolding.

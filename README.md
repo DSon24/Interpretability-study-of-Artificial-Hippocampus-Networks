@@ -64,7 +64,7 @@ Sequencing follows Gautam's instruction after the last meeting:
 | Reproduce the published NOWRITE result (38–42% changed answers) | **done, with a metric correction** — 33.3% changed (first-line), ΔF1 **+6.1 pts** | `results/run_3b_gdn/03_nowrite_reproduction.json` |
 | J-lens fitted for Qwen2.5-3B | **done, map converged** — 500 contexts, layers 9/18/27, 1.92 GPU-h; **Table 3 check 4 (map stability) now passes** (top-10 overlap 0.91/0.87/0.89 across a disjoint second corpus); checks 2 and 3 still fail | `results/run_3b_gdn/02_table3_jlens_validation.json` |
 | NIAH retention with pre-eviction / NOWRITE controls | **done — control battery fails.** C4 passes, **C1, C2, C3 all fail**; readout is at chance | `results/run_3b_gdn/04_table4_controls.json` |
-| RULER NIAH n=60 — the *primary* RQ2 cohort | **done 7 Sep in the pre-registered instrument, and it reverses the C1 reading.** Layer 27 reads the *evicted* needle at median rank **17,250** of 151,936 (84.4% of examples beat chance) where the homemade prompts give 111,694 — worse than chance. The in-window confound was checked and runs backwards (evicted 17,250 vs in-window 54,506, permutation p=0.0021) | `04g_ruler_niah_stats.json`, `04h_ruler_needle_position.json` |
+| RULER NIAH n=60 — the *primary* RQ2 cohort, with C2/C3 | **done 7 Sep, corrected twice.** The first pass scored a space token (all 60 answers are 7-digit numbers whose first BPE token is a shared leading space); rebuilt to score the full 7-digit sequence. C2, cross-example baseline-corrected: layer 27 excludes the null (1.076x per digit, CI [1.054, 1.098], p<0.0001) but stays well under the pre-registered 10x bar. C3-lens **disqualifies layers 9 and 18** (signal survives a permuted map — decoding artefact) and **confirms layer 27** (signal collapses, as it should) | `04i_ruler_controls_stats.json` |
 | C2 follow-up — is the distractor control measuring anything? | **done, and it reframes C2** — the raw ratio is confounded by pair identity; after baseline correction no layer shows a memory-specific effect | `notebooks/04-C2-debug.ipynb`, Sơn, 28–31 Aug |
 | C3 follow-up — corrected shuffled-context rerun | **done** — needle held at a fixed token position; 96 matched rows. C3 does **not** give the expected order-sensitivity in either direction | `notebooks/04_niah_C3_analyze.ipynb`, Sơn, 29 Aug |
 | Per-layer recomputation of the control battery | **done, no GPU** — layer 9's readout is degenerate and fails C4. The 2 Sep "layer 27 works" claim is **withdrawn**: wrong readout basis, and its C2 ratio vanishes under baseline correction | `04c_per_layer_controls.json`, `04d_c2_baseline_corrected.json`, 2–3 Sep |
@@ -138,10 +138,10 @@ regenerated `04_table4_controls.json`. Detail below.
 
 ## Findings
 
-The full findings log lives in **[docs/FINDINGS.md](docs/FINDINGS.md)** -- ten entries,
+The full findings log lives in **[docs/FINDINGS.md](docs/FINDINGS.md)** -- eleven entries,
 written as an append-only record so that later corrections sit visibly on top of what they
-correct rather than quietly replacing it. **The 7 Sep J-lens repeat reverses the reading of
-every entry before it** and is the current state of the C1 question.
+correct rather than quietly replacing it. **The 7 Sep control-battery entry withdraws the
+specific numbers of the entry before it** and is the current state of the C1 question.
 
 | Entry | What it established |
 |---|---|
@@ -154,7 +154,8 @@ every entry before it** and is the current state of the C1 question.
 | [2 Sep per-layer re-analysis](docs/FINDINGS.md#findings-from-the-2-sep-per-layer-re-analysis-corrected-3-sep) | CORRECTED 3 Sep -- the "layer 27 works" claim is withdrawn on two independent grounds |
 | [4-5 Sep C1 rank correction](docs/FINDINGS.md#findings-from-the-45-sep-c1-rank-correction-construction-ladder-and-needle-category-test) | Baseline-corrected C1, the construction ladder, and the place-name vs common-noun split |
 | [7 Sep RULER cohort](docs/FINDINGS.md#findings-from-the-7-sep-ruler-cohort-run) | The primary cohort, run at last -- logit-lens, superseded by the entry below |
-| [7 Sep J-lens repeat + placement check](docs/FINDINGS.md#findings-from-the-7-sep-j-lens-repeat-and-placement-check) | **Layer 27 reads the *evicted* needle at rank 17,250 of 151,936 in the pre-registered instrument.** The in-window confound runs backwards (evicted beats in-window, p=0.0021). The C1 failure is a property of the homemade prompt construction, not of AHN |
+| [7 Sep J-lens repeat + placement check](docs/FINDINGS.md#findings-from-the-7-sep-j-lens-repeat-and-placement-check) | Layer 27 rank 17,250 -- **withdrawn below**, it scored a space token, not the needle |
+| [7 Sep target-scoring bug + control battery](docs/FINDINGS.md#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery) | **Layer 27, corrected: a real but small memory-specific effect.** C2 excludes the null (1.076x/digit, p<0.0001) but falls well short of the pre-registered 10x bar. C3-lens confirms layers 9 and 18 are decoding artefacts; only layer 27 survives the check |
 
 ## Repository layout
 
@@ -510,16 +511,19 @@ resolved.
    **weakened** by the corrected C3, which shows no order-sensitivity in either direction,
    but the *related* claim that content simply does not survive compression is
    **strengthened** by the 2 Sep per-layer result (strong in-window signal, weak evicted
-   signal at layers 18 and 27). (b) prompt construction — **confirmed, and it is the
-   answer at layer 27.** The 7 Sep J-lens repeat (Findings) reads the *evicted* RULER
-   needle at median rank 17,250 [11,318, 30,936] against chance 75,968, with 84.4% of
-   examples beating chance, while the homemade prompts read 111,694 [105,947, 121,525] —
-   worse than chance — in the same instrument on the same day. The in-window confound was
-   tested and runs backwards: evicted needles read *better* than visible ones (17,250 vs
-   54,506, permutation p=0.0021), which is what the D-resid basis should do, since the
-   memory is the only channel carrying an evicted needle. `build_niah_prompt` was hiding
-   the signal. **This does not clear C2 or C3** — no analog of either exists on RULER, and
-   C2 is what killed the previous layer-27 claim. (d) **layer
+   signal at layers 18 and 27). (b) prompt construction — **confirmed at layer 27, at a
+   modest magnitude, after two corrections.** The first RULER pass (7 Sep) scored a bare
+   space token — every answer here is a 7-digit number, and Qwen tokenizes the leading
+   space as its own token, identical across all 60 examples — so its rank-17,250 headline
+   is withdrawn. Rebuilt to score the full digit sequence: at layer 27, C2 (cross-example,
+   baseline-corrected, the same control that killed the 2 Sep claim) excludes the null at
+   1.076x per digit [1.054, 1.098], p<0.0001, but falls well short of the pre-registered
+   10x bar. C3-lens (a row-permuted J-lens map, DIVERGENCE 3a) **disqualifies layers 9 and
+   18** — their apparent signals survive the permuted map, meaning they are artefacts of
+   decoding, not memory — and confirms layer 27, where the signal collapses as it should.
+   Net: a small, real, statistically robust memory-specific effect at layer 27 on the
+   primary cohort, an order of magnitude short of "AHN clearly retains the content." (d)
+   **layer
    selection — new and cheapest to act on.** Layer 9's readout is degenerate (0.088 nats)
    and fails C4. Re-run `04` without it, and with deeper layers added, before concluding
    anything about AHN.
