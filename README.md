@@ -255,7 +255,7 @@ GitHub web path and git rejects it with `repository not found`.
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e ".[train,eval]"
-pip install ipykernel && python -m ipykernel install --user --name ahn --display-name "ahn (tf4.51)"
+pip install ipykernel && python -m ipykernel install --user --name ahn-venv --display-name "AHN (transformers 4.51)"
 ```
 
 `wandb`, `accelerate`, `flash-linear-attention` (the Seerkfang fork — the PyPI package of
@@ -263,6 +263,12 @@ that name is a different library) and a `torch` pin are declared in `pyproject.t
 6 Sep. They are import-time requirements: `qwen2_ahn` imports wandb and fla at module
 scope, and transformers 4.51.0 only binds `init_empty_weights` when accelerate is present,
 so without it `from_pretrained` dies with a bare `NameError`.
+
+**Register the kernel under exactly that name.** Every notebook records the kernel it was
+last opened with, so a differently-named kernel rewrites the file's metadata just by
+opening it, and the next `git pull` aborts with *"local changes would be overwritten"*.
+Fourteen notebooks had accumulated six different kernel names this way. The two of record
+are `ahn-venv` for the main environment and `jlens-venv` for notebook 02.
 
 **3. Check torch against the driver.**
 
