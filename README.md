@@ -250,6 +250,18 @@ cd Interpretability-study-of-Artificial-Hippocampus-Networks
 Use the repository URL, not a `/tree/main` link copied from the browser — that is the
 GitHub web path and git rejects it with `repository not found`.
 
+A reset wipes `~/.gitconfig` along with everything else, so set your identity before you
+commit anything — otherwise the first `git commit` fails with *"Author identity unknown"*:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+Push credentials are gone too. Use a personal access token when git prompts, or
+`gh auth login` if the CLI is there. Do not run `git config credential.helper store` — it
+writes the token in plain text to a home directory on a machine four of us share.
+
 **2. Main environment.**
 
 ```bash

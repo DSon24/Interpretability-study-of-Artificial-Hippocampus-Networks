@@ -880,7 +880,7 @@ def build_niah_prompt(
 
 
 def load_ruler(config: str = "8192", split: str = "test", n: int = 60, seed: int = SEED):
-    """Stream RULER NIAH examples. Returns list of {prompt, answer, task, n_chars}."""
+    """Stream RULER NIAH examples. Returns list of {prompt, answer, task, max_new_tokens}."""
     from datasets import load_dataset
     ds = load_dataset("simonjegou/ruler", config, split=split, streaming=True)
     out = []
