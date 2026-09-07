@@ -420,106 +420,29 @@ Keep `merged_ckpt/` out of git (it already is).
 ## Next steps
 
 Steps 1–4 are done. Gautam's own instruction says not to scale past a failed control
-battery, so steps 5–7 are **paused**, not skipped, until the C1/C3 disagreement below is
-resolved.
+battery, so steps 5, 8 and 9 are **paused**, not skipped, pending step 5. Full reasoning
+for every row lives in [docs/FINDINGS.md](docs/FINDINGS.md); this is status, not narrative.
 
-1. ~~Run `01_instrumentation_gate.ipynb`~~ — **done**, all gates pass.
-2. ~~Run `03_nowrite_reproduction.ipynb`~~ — **done**; see Findings item 5.
-3. ~~Run `02_jlens_fit_and_validate.ipynb` with a real corpus~~ — **done** in 1.92 GPU-h;
-   Table 3 checks 2 and 3 fail, diagnosed in Findings items 3 and 4. ~~Check 4 (map
-   stability across disjoint corpora)~~ — **done**, passes at all three layers (0.91 / 0.87
-   / 0.89). This rules out an unconverged fit as the explanation for the C1 failure below —
-   see "Findings from the map-stability check and the RQ3 join."
-4. ~~Run `04_niah_retention.ipynb` on GDN 3B~~ — **done**; see "Findings from the 20 Aug
-   NIAH retention run" above. **C1, C2 and C3 all fail** — the readout does not find the
-   needle above chance in the full NIAH sweep, despite beating the logit lens by 8–204× on
-   isolated known-fact prompts (19–20 Aug Finding 4). Bootstrap on RQ1's first-line ΔF1 also
-   shows the +6.11-point effect's 95% CI spans zero at n=60.
-5. **Diagnose the C1/isolated-fact disagreement — the candidate list has moved twice.**
-   (a) undersampling — **ruled out**, map stability passes. (c) the recency reading —
-   **weakened** by the corrected C3, which shows no order-sensitivity in either direction,
-   but the *related* claim that content simply does not survive compression is
-   **strengthened** by the 2 Sep per-layer result (strong in-window signal, weak evicted
-   signal at layers 18 and 27). (b) prompt construction — **confirmed at layer 27, at a
-   modest magnitude, after two corrections.** The first RULER pass (7 Sep) scored a bare
-   space token — every answer here is a 7-digit number, and Qwen tokenizes the leading
-   space as its own token, identical across all 60 examples — so its rank-17,250 headline
-   is withdrawn. Rebuilt to score the full digit sequence: at layer 27, C2 (cross-example,
-   baseline-corrected, the same control that killed the 2 Sep claim) excludes the null at
-   1.076x per digit [1.054, 1.098], p<0.0001, but falls well short of the pre-registered
-   10x bar. C3-lens (a row-permuted J-lens map, DIVERGENCE 3a) **disqualifies layers 9 and
-   18** — their apparent signals survive the permuted map, meaning they are artefacts of
-   decoding, not memory — and confirms layer 27, where the signal collapses as it should.
-   Net: a small, real, statistically robust memory-specific effect at layer 27 on the
-   primary cohort, an order of magnitude short of "AHN clearly retains the content." **Not
-   content-general, though** — a same-day permutation test on Sơn's independent homemade-set
-   C2 design (Paris/Tokyo/banana/lantern) finds layer 27 significantly **negative** (0.863x,
-   p=0.016), and confirms via 20 independent permutations that this is real, not decoding
-   noise, by the identical standard that verified RULER's positive result. Two
-   independently-verified-real effects, opposite signs, same layer, same checkpoint,
-   different needle content (common words vs. digit sequences) — see "Findings from the 7
-   Sep permutation test." **This is now the open question**, not (a)/(b)/(c)/(d) above: why
-   does layer 27's sign flip with needle content, and is "layer 27 retrieves content" even a
-   coherent claim until that's explained. (d) **layer
-   selection — new and cheapest to act on.** Layer 9's readout is degenerate (0.088 nats)
-   and fails C4. Re-run `04` without it, and with deeper layers added, before concluding
-   anything about AHN.
-6. ~~Build `04b` — the RQ3 join~~ — **done, by Sơn.** No significant correlation between
-   memory rank and ΔF1 at any of the three layers, before or after Holm correction. Result
-   is provisional, not a green light to proceed — see Finding 2 in the section above for
-   why it inherits the same open question as C1.
-7. **Add the boundary-JS column.** Notebook 01's Gate B already computes JS between the
-   AHN and NOWRITE next-token distributions. Log it per example in notebook 03 and Table 8
-   row 2 — the pre-registered comparison against prior work — comes for free rather than
-   needing Gautam's numbers. Not blocked by 5; safe to do any time.
-8. **The second and third cells at 3B — paused, not skipped.** `configs/run_3b_dn.json`
-   and `run_3b_m2.json` exist and are correctly unrun. GPU_PLAN is explicit: a second and
-   third cell measured with a broken instrument is nine wasted GPU-hours, so this waits for
-   5.
-9. **7B last**, gated on the J-lens map cost measured in step 3 (Table 10 row 2) and on the
-   C1 diagnosis above.
+| Step | Status |
+|---|---|
+| 1. `01_instrumentation_gate.ipynb` | done, all gates pass — [19–20 Aug Finding 1](docs/FINDINGS.md#findings-from-the-1920-aug-run) |
+| 2. `03_nowrite_reproduction.ipynb` | done, metric-corrected — [19–20 Aug Finding 5](docs/FINDINGS.md#findings-from-the-1920-aug-run) |
+| 3. `02_jlens_fit_and_validate.ipynb` | done, 1.92 GPU-h; Table 3 checks 2/3 fail, check 4 (map stability) passes — [19–20 Aug Findings 2–4](docs/FINDINGS.md#findings-from-the-1920-aug-run), [map-stability check](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
+| 4. `04_niah_retention.ipynb` on GDN 3B | done — **C1, C2, C3 fail** on the homemade cohort — [20 Aug NIAH retention run](docs/FINDINGS.md#findings-from-the-20-aug-niah-retention-run) |
+| 5. **Diagnose the C1 disagreement** | **open, in progress.** Candidate (b) confirmed real at layer 27 on RULER (C2 excludes null, C3-lens verifies it), but the same layer gives a real, opposite-signed effect on the homemade word set — sign is needle-content-dependent, not yet a coherent content-general claim — [7 Sep control battery](docs/FINDINGS.md#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery), [7 Sep permutation test](docs/FINDINGS.md#findings-from-the-7-sep-permutation-test-layer-27s-sign-is-needle-content-dependent) |
+| 6. `04b` — the RQ3 join | done, by Sơn — no significant correlation, provisional — [map-stability + RQ3 join](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
+| 7. Add the boundary-JS column | not started — Gate B already computes it; not blocked by 5, safe any time |
+| 8. DN + Mamba2 3B merges | **paused**, blocked on 5 — `configs/run_3b_dn.json`, `run_3b_m2.json` correctly unrun |
+| 9. 7B checkpoints | **blocked** on 5 and Table 10 row 2 (J-lens map cost) |
 
-### To raise with Gautam now, not later
-
-- **Open Question 4 is answered**: the combination is a plain sum before `o_proj`, so
-  `o_t` isolates cleanly. Confirmed empirically by Gate A, not just by reading the source.
-- **Open Question 6**: he uses 8,064 on LongBench-E himself, which makes our 8064 window
-  easy to defend. Confirm it in writing so it goes in Methods as a stated parameter.
-- **The J-lens decision has new evidence, and the cheapest explanation is now closed off.**
-  The lens beats the logit lens by up to 204× on eight isolated known-fact prompts, but
-  notebook 04's full control battery shows the readout at chance (C1 fails, mean rank
-  87,688 vs a chance rank of 75,968) with no needle/distractor separation (C2 fails) and
-  shuffled context scoring *better* than ordered context (C3 fails). The map-stability
-  re-fit (Table 3 check 4) has now run and **passes** at all three layers (0.91/0.87/0.89
-  top-10 overlap) — the lens is converged, so this isn't an unconverged fit. `04b` (the RQ3
-  join) also ran and finds no significant rank/ΔF1 correlation at any layer, but that
-  result inherits the same open question rather than resolving it. What's left: (a) a
-  direct comparison of the NIAH sweep's prompt construction against the known-fact test's,
-  or (b) accepting C3's result as real — AHN behaving closer to a recency mechanism than a
-  content store. Both are his call, not a compute problem anymore.
-- **New evidence, 4–5 Sep — neither (a) nor (b) above is the answer.** Extending the C1
-  needle set from 4 to 24 words (12 place names, 12 common nouns) finds a real,
-  Holm-significant retention difference by needle identity at layers 18 and 27 (see
-  "Findings from the 4–5 Sep C1 rank correction..." below) — place names read out far
-  below chance, most common nouns don't. The pooled "C1 fails" verdict was averaging a
-  working signal against a broken one across an arbitrary 4-word sample, not evidence
-  the instrument or AHN's memory is broken. This needs a name and a decision from him:
-  is needle-identity-dependent retention the finding to build RQ2 around, and if so, what
-  needle set is now of record — the original 4, or a principled category design testing
-  what Finding 4 only spot-checked?
-- **RQ1's effect does not survive its own confidence interval.** Bootstrapped first-line
-  ΔF1 is +6.11 pts but the 95% CI is [−1.85, +14.42] at n=60 — it spans zero, and so does
-  every per-stratum interval. His published +0.4 to +2.3 pts sits entirely inside that
-  interval, so the earlier "our effect is 3× his" framing was a cohort-size artifact, not a
-  real effect-size gap — worth telling him in those terms rather than asking about cohort
-  length distributions.
-
-~~Question 1 (training-only compute-reimbursement rule)~~ — **resolved**: work has been
-running continuously on the GPU box Algoverse provided directly, so the reimbursement
-question doesn't block anything in practice.
-
-Still open, not blocking: whether AHN runs on a free T4 with an FP16 + eager-attention
-fallback (Question 3), which notebook 00 now tests directly.
+**Current asks for Gautam — with lettered options he can answer in one line — live in
+[docs/DIAGNOSIS_PACKET_2026-09-07.md](docs/DIAGNOSIS_PACKET_2026-09-07.md).** Two smaller,
+already-resolved items that predate the packet and aren't in it: Open Question 4 (the AHN
+combination is a plain sum before `o_proj`, confirmed by Gate A) and Open Question 6 (he
+uses 8,064 on LongBench-E himself — get it confirmed in writing for Methods). Question 1
+(compute reimbursement) is resolved — work has run continuously on the box Algoverse
+provided. Question 3 (a free-T4 fallback) is open, not blocking, and notebook 00 tests it
+directly.
 
 ## Citation
 
