@@ -12487,7 +12487,7 @@
     "scale": "3B",
     "sliding_window": 8064,
     "num_attn_sinks": 128,
-    "attn_impl": "flash_attention_2",
+    "attn_impl": "sdpa",
     "dtype": "bfloat16",
     "results_dir": "results/run_3b_gdn"
   },
