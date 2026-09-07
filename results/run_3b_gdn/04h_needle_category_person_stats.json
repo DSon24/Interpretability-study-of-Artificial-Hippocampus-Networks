@@ -1,0 +1,834 @@
+{
+  "pairwise": [
+    {
+      "layer": 9,
+      "comparison": "place_vs_person",
+      "n_a": 14,
+      "n_b": 12,
+      "mean_a": 78167.18027210885,
+      "mean_b": 82715.81746031744,
+      "diff": -4548.637188208595,
+      "p_raw": 0.7194828051719483,
+      "p_holm": 1.0,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 9,
+      "comparison": "place_vs_noun",
+      "n_a": 14,
+      "n_b": 14,
+      "mean_a": 78167.18027210885,
+      "mean_b": 93869.68027210885,
+      "diff": -15702.5,
+      "p_raw": 0.2179378206217938,
+      "p_holm": 0.9172708272917272,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 9,
+      "comparison": "person_vs_noun",
+      "n_a": 12,
+      "n_b": 14,
+      "mean_a": 82715.81746031744,
+      "mean_b": 93869.68027210885,
+      "diff": -11153.862811791405,
+      "p_raw": 0.3424965750342497,
+      "p_holm": 1.0,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 18,
+      "comparison": "place_vs_person",
+      "n_a": 14,
+      "n_b": 12,
+      "mean_a": 76079.73809523809,
+      "mean_b": 84822.1746031746,
+      "diff": -8742.436507936509,
+      "p_raw": 0.15299847001529984,
+      "p_holm": 0.9172708272917272,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 18,
+      "comparison": "place_vs_noun",
+      "n_a": 14,
+      "n_b": 14,
+      "mean_a": 76079.73809523809,
+      "mean_b": 87701.25170068025,
+      "diff": -11621.51360544216,
+      "p_raw": 0.09287907120928791,
+      "p_holm": 0.6501534984650154,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 18,
+      "comparison": "person_vs_noun",
+      "n_a": 12,
+      "n_b": 14,
+      "mean_a": 84822.1746031746,
+      "mean_b": 87701.25170068025,
+      "diff": -2879.077097505651,
+      "p_raw": 0.6826731732682673,
+      "p_holm": 1.0,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 27,
+      "comparison": "place_vs_person",
+      "n_a": 14,
+      "n_b": 12,
+      "mean_a": 22558.778911564623,
+      "mean_b": 12159.650793650797,
+      "diff": 10399.128117913826,
+      "p_raw": 0.15287847121528786,
+      "p_holm": 0.9172708272917272,
+      "significant_holm_005": false
+    },
+    {
+      "layer": 27,
+      "comparison": "place_vs_noun",
+      "n_a": 14,
+      "n_b": 14,
+      "mean_a": 22558.778911564623,
+      "mean_b": 95356.3707482993,
+      "diff": -72797.59183673467,
+      "p_raw": 1.999980000199998e-05,
+      "p_holm": 0.00017999820001799984,
+      "significant_holm_005": true
+    },
+    {
+      "layer": 27,
+      "comparison": "person_vs_noun",
+      "n_a": 12,
+      "n_b": 14,
+      "mean_a": 12159.650793650797,
+      "mean_b": 95356.3707482993,
+      "diff": -83196.7199546485,
+      "p_raw": 2.999970000299997e-05,
+      "p_holm": 0.00023999760002399976,
+      "significant_holm_005": true
+    }
+  ],
+  "by_needle": [
+    {
+      "layer": 9,
+      "needle": "Anna",
+      "category": "person",
+      "mean_rank": 74869.19047619047
+    },
+    {
+      "layer": 9,
+      "needle": "Athens",
+      "category": "place",
+      "mean_rank": 123150.0
+    },
+    {
+      "layer": 9,
+      "needle": "Berlin",
+      "category": "place",
+      "mean_rank": 40226.28571428572
+    },
+    {
+      "layer": 9,
+      "needle": "Cairo",
+      "category": "place",
+      "mean_rank": 120486.42857142857
+    },
+    {
+      "layer": 9,
+      "needle": "David",
+      "category": "person",
+      "mean_rank": 55557.666666666664
+    },
+    {
+      "layer": 9,
+      "needle": "Dublin",
+      "category": "place",
+      "mean_rank": 136719.14285714287
+    },
+    {
+      "layer": 9,
+      "needle": "Emma",
+      "category": "person",
+      "mean_rank": 103687.33333333333
+    },
+    {
+      "layer": 9,
+      "needle": "James",
+      "category": "person",
+      "mean_rank": 121260.23809523809
+    },
+    {
+      "layer": 9,
+      "needle": "John",
+      "category": "person",
+      "mean_rank": 42896.857142857145
+    },
+    {
+      "layer": 9,
+      "needle": "Laura",
+      "category": "person",
+      "mean_rank": 126281.28571428571
+    },
+    {
+      "layer": 9,
+      "needle": "Linda",
+      "category": "person",
+      "mean_rank": 92063.09523809524
+    },
+    {
+      "layer": 9,
+      "needle": "Lisbon",
+      "category": "place",
+      "mean_rank": 111745.85714285714
+    },
+    {
+      "layer": 9,
+      "needle": "Madrid",
+      "category": "place",
+      "mean_rank": 42813.52380952381
+    },
+    {
+      "layer": 9,
+      "needle": "Mary",
+      "category": "person",
+      "mean_rank": 111405.66666666667
+    },
+    {
+      "layer": 9,
+      "needle": "Michael",
+      "category": "person",
+      "mean_rank": 79641.04761904762
+    },
+    {
+      "layer": 9,
+      "needle": "Moscow",
+      "category": "place",
+      "mean_rank": 72860.76190476191
+    },
+    {
+      "layer": 9,
+      "needle": "Oslo",
+      "category": "place",
+      "mean_rank": 34553.619047619046
+    },
+    {
+      "layer": 9,
+      "needle": "Paris",
+      "category": "place",
+      "mean_rank": 64111.333333333336
+    },
+    {
+      "layer": 9,
+      "needle": "Peter",
+      "category": "person",
+      "mean_rank": 80808.14285714286
+    },
+    {
+      "layer": 9,
+      "needle": "Prague",
+      "category": "place",
+      "mean_rank": 106288.09523809524
+    },
+    {
+      "layer": 9,
+      "needle": "Robert",
+      "category": "person",
+      "mean_rank": 46156.28571428572
+    },
+    {
+      "layer": 9,
+      "needle": "Rome",
+      "category": "place",
+      "mean_rank": 50429.666666666664
+    },
+    {
+      "layer": 9,
+      "needle": "Sarah",
+      "category": "person",
+      "mean_rank": 57963.0
+    },
+    {
+      "layer": 9,
+      "needle": "Tokyo",
+      "category": "place",
+      "mean_rank": 38908.76190476191
+    },
+    {
+      "layer": 9,
+      "needle": "Vienna",
+      "category": "place",
+      "mean_rank": 88612.23809523809
+    },
+    {
+      "layer": 9,
+      "needle": "Warsaw",
+      "category": "place",
+      "mean_rank": 63434.80952380953
+    },
+    {
+      "layer": 9,
+      "needle": "banana",
+      "category": "noun",
+      "mean_rank": 110374.57142857143
+    },
+    {
+      "layer": 9,
+      "needle": "chair",
+      "category": "noun",
+      "mean_rank": 57893.857142857145
+    },
+    {
+      "layer": 9,
+      "needle": "cloud",
+      "category": "noun",
+      "mean_rank": 122990.28571428571
+    },
+    {
+      "layer": 9,
+      "needle": "garden",
+      "category": "noun",
+      "mean_rank": 32138.238095238095
+    },
+    {
+      "layer": 9,
+      "needle": "green",
+      "category": "noun",
+      "mean_rank": 86612.33333333333
+    },
+    {
+      "layer": 9,
+      "needle": "house",
+      "category": "noun",
+      "mean_rank": 82619.04761904762
+    },
+    {
+      "layer": 9,
+      "needle": "lantern",
+      "category": "noun",
+      "mean_rank": 95140.52380952382
+    },
+    {
+      "layer": 9,
+      "needle": "music",
+      "category": "noun",
+      "mean_rank": 127247.52380952382
+    },
+    {
+      "layer": 9,
+      "needle": "paper",
+      "category": "noun",
+      "mean_rank": 50791.76190476191
+    },
+    {
+      "layer": 9,
+      "needle": "river",
+      "category": "noun",
+      "mean_rank": 130100.85714285714
+    },
+    {
+      "layer": 9,
+      "needle": "stone",
+      "category": "noun",
+      "mean_rank": 103677.33333333333
+    },
+    {
+      "layer": 9,
+      "needle": "table",
+      "category": "noun",
+      "mean_rank": 88588.57142857143
+    },
+    {
+      "layer": 9,
+      "needle": "water",
+      "category": "noun",
+      "mean_rank": 126103.23809523809
+    },
+    {
+      "layer": 9,
+      "needle": "window",
+      "category": "noun",
+      "mean_rank": 99897.38095238095
+    },
+    {
+      "layer": 18,
+      "needle": "Anna",
+      "category": "person",
+      "mean_rank": 90199.42857142857
+    },
+    {
+      "layer": 18,
+      "needle": "Athens",
+      "category": "place",
+      "mean_rank": 74647.90476190476
+    },
+    {
+      "layer": 18,
+      "needle": "Berlin",
+      "category": "place",
+      "mean_rank": 79019.47619047618
+    },
+    {
+      "layer": 18,
+      "needle": "Cairo",
+      "category": "place",
+      "mean_rank": 52101.380952380954
+    },
+    {
+      "layer": 18,
+      "needle": "David",
+      "category": "person",
+      "mean_rank": 68586.61904761905
+    },
+    {
+      "layer": 18,
+      "needle": "Dublin",
+      "category": "place",
+      "mean_rank": 58853.71428571428
+    },
+    {
+      "layer": 18,
+      "needle": "Emma",
+      "category": "person",
+      "mean_rank": 109935.38095238095
+    },
+    {
+      "layer": 18,
+      "needle": "James",
+      "category": "person",
+      "mean_rank": 71041.14285714286
+    },
+    {
+      "layer": 18,
+      "needle": "John",
+      "category": "person",
+      "mean_rank": 67056.33333333333
+    },
+    {
+      "layer": 18,
+      "needle": "Laura",
+      "category": "person",
+      "mean_rank": 99816.0
+    },
+    {
+      "layer": 18,
+      "needle": "Linda",
+      "category": "person",
+      "mean_rank": 94585.38095238095
+    },
+    {
+      "layer": 18,
+      "needle": "Lisbon",
+      "category": "place",
+      "mean_rank": 82315.09523809524
+    },
+    {
+      "layer": 18,
+      "needle": "Madrid",
+      "category": "place",
+      "mean_rank": 71221.71428571429
+    },
+    {
+      "layer": 18,
+      "needle": "Mary",
+      "category": "person",
+      "mean_rank": 90473.61904761905
+    },
+    {
+      "layer": 18,
+      "needle": "Michael",
+      "category": "person",
+      "mean_rank": 81127.61904761905
+    },
+    {
+      "layer": 18,
+      "needle": "Moscow",
+      "category": "place",
+      "mean_rank": 62865.71428571428
+    },
+    {
+      "layer": 18,
+      "needle": "Oslo",
+      "category": "place",
+      "mean_rank": 80980.14285714286
+    },
+    {
+      "layer": 18,
+      "needle": "Paris",
+      "category": "place",
+      "mean_rank": 89113.23809523809
+    },
+    {
+      "layer": 18,
+      "needle": "Peter",
+      "category": "person",
+      "mean_rank": 74661.71428571429
+    },
+    {
+      "layer": 18,
+      "needle": "Prague",
+      "category": "place",
+      "mean_rank": 87471.19047619047
+    },
+    {
+      "layer": 18,
+      "needle": "Robert",
+      "category": "person",
+      "mean_rank": 71671.04761904762
+    },
+    {
+      "layer": 18,
+      "needle": "Rome",
+      "category": "place",
+      "mean_rank": 74177.33333333333
+    },
+    {
+      "layer": 18,
+      "needle": "Sarah",
+      "category": "person",
+      "mean_rank": 98711.80952380953
+    },
+    {
+      "layer": 18,
+      "needle": "Tokyo",
+      "category": "place",
+      "mean_rank": 115275.09523809524
+    },
+    {
+      "layer": 18,
+      "needle": "Vienna",
+      "category": "place",
+      "mean_rank": 70991.76190476191
+    },
+    {
+      "layer": 18,
+      "needle": "Warsaw",
+      "category": "place",
+      "mean_rank": 66082.57142857143
+    },
+    {
+      "layer": 18,
+      "needle": "banana",
+      "category": "noun",
+      "mean_rank": 99814.47619047618
+    },
+    {
+      "layer": 18,
+      "needle": "chair",
+      "category": "noun",
+      "mean_rank": 105946.71428571429
+    },
+    {
+      "layer": 18,
+      "needle": "cloud",
+      "category": "noun",
+      "mean_rank": 85880.76190476191
+    },
+    {
+      "layer": 18,
+      "needle": "garden",
+      "category": "noun",
+      "mean_rank": 86378.95238095238
+    },
+    {
+      "layer": 18,
+      "needle": "green",
+      "category": "noun",
+      "mean_rank": 81149.14285714286
+    },
+    {
+      "layer": 18,
+      "needle": "house",
+      "category": "noun",
+      "mean_rank": 106548.52380952382
+    },
+    {
+      "layer": 18,
+      "needle": "lantern",
+      "category": "noun",
+      "mean_rank": 59330.71428571428
+    },
+    {
+      "layer": 18,
+      "needle": "music",
+      "category": "noun",
+      "mean_rank": 131104.95238095237
+    },
+    {
+      "layer": 18,
+      "needle": "paper",
+      "category": "noun",
+      "mean_rank": 99006.90476190476
+    },
+    {
+      "layer": 18,
+      "needle": "river",
+      "category": "noun",
+      "mean_rank": 77420.42857142857
+    },
+    {
+      "layer": 18,
+      "needle": "stone",
+      "category": "noun",
+      "mean_rank": 57570.142857142855
+    },
+    {
+      "layer": 18,
+      "needle": "table",
+      "category": "noun",
+      "mean_rank": 82220.38095238095
+    },
+    {
+      "layer": 18,
+      "needle": "water",
+      "category": "noun",
+      "mean_rank": 75538.85714285714
+    },
+    {
+      "layer": 18,
+      "needle": "window",
+      "category": "noun",
+      "mean_rank": 79906.57142857143
+    },
+    {
+      "layer": 27,
+      "needle": "Anna",
+      "category": "person",
+      "mean_rank": 30859.809523809523
+    },
+    {
+      "layer": 27,
+      "needle": "Athens",
+      "category": "place",
+      "mean_rank": 8366.380952380952
+    },
+    {
+      "layer": 27,
+      "needle": "Berlin",
+      "category": "place",
+      "mean_rank": 20195.809523809523
+    },
+    {
+      "layer": 27,
+      "needle": "Cairo",
+      "category": "place",
+      "mean_rank": 11326.095238095239
+    },
+    {
+      "layer": 27,
+      "needle": "David",
+      "category": "person",
+      "mean_rank": 7770.333333333333
+    },
+    {
+      "layer": 27,
+      "needle": "Dublin",
+      "category": "place",
+      "mean_rank": 63883.04761904762
+    },
+    {
+      "layer": 27,
+      "needle": "Emma",
+      "category": "person",
+      "mean_rank": 6778.476190476191
+    },
+    {
+      "layer": 27,
+      "needle": "James",
+      "category": "person",
+      "mean_rank": 14778.857142857143
+    },
+    {
+      "layer": 27,
+      "needle": "John",
+      "category": "person",
+      "mean_rank": 6519.857142857143
+    },
+    {
+      "layer": 27,
+      "needle": "Laura",
+      "category": "person",
+      "mean_rank": 19404.04761904762
+    },
+    {
+      "layer": 27,
+      "needle": "Linda",
+      "category": "person",
+      "mean_rank": 19295.04761904762
+    },
+    {
+      "layer": 27,
+      "needle": "Lisbon",
+      "category": "place",
+      "mean_rank": 64543.23809523809
+    },
+    {
+      "layer": 27,
+      "needle": "Madrid",
+      "category": "place",
+      "mean_rank": 17988.666666666668
+    },
+    {
+      "layer": 27,
+      "needle": "Mary",
+      "category": "person",
+      "mean_rank": 2269.4285714285716
+    },
+    {
+      "layer": 27,
+      "needle": "Michael",
+      "category": "person",
+      "mean_rank": 8047.476190476191
+    },
+    {
+      "layer": 27,
+      "needle": "Moscow",
+      "category": "place",
+      "mean_rank": 5526.238095238095
+    },
+    {
+      "layer": 27,
+      "needle": "Oslo",
+      "category": "place",
+      "mean_rank": 9747.095238095239
+    },
+    {
+      "layer": 27,
+      "needle": "Paris",
+      "category": "place",
+      "mean_rank": 9766.57142857143
+    },
+    {
+      "layer": 27,
+      "needle": "Peter",
+      "category": "person",
+      "mean_rank": 12998.761904761905
+    },
+    {
+      "layer": 27,
+      "needle": "Prague",
+      "category": "place",
+      "mean_rank": 6381.285714285715
+    },
+    {
+      "layer": 27,
+      "needle": "Robert",
+      "category": "person",
+      "mean_rank": 15461.380952380952
+    },
+    {
+      "layer": 27,
+      "needle": "Rome",
+      "category": "place",
+      "mean_rank": 464.2857142857143
+    },
+    {
+      "layer": 27,
+      "needle": "Sarah",
+      "category": "person",
+      "mean_rank": 1732.3333333333333
+    },
+    {
+      "layer": 27,
+      "needle": "Tokyo",
+      "category": "place",
+      "mean_rank": 17300.04761904762
+    },
+    {
+      "layer": 27,
+      "needle": "Vienna",
+      "category": "place",
+      "mean_rank": 57979.04761904762
+    },
+    {
+      "layer": 27,
+      "needle": "Warsaw",
+      "category": "place",
+      "mean_rank": 22355.095238095237
+    },
+    {
+      "layer": 27,
+      "needle": "banana",
+      "category": "noun",
+      "mean_rank": 147393.85714285713
+    },
+    {
+      "layer": 27,
+      "needle": "chair",
+      "category": "noun",
+      "mean_rank": 126617.85714285714
+    },
+    {
+      "layer": 27,
+      "needle": "cloud",
+      "category": "noun",
+      "mean_rank": 62751.80952380953
+    },
+    {
+      "layer": 27,
+      "needle": "garden",
+      "category": "noun",
+      "mean_rank": 114969.80952380953
+    },
+    {
+      "layer": 27,
+      "needle": "green",
+      "category": "noun",
+      "mean_rank": 26596.714285714286
+    },
+    {
+      "layer": 27,
+      "needle": "house",
+      "category": "noun",
+      "mean_rank": 144723.0
+    },
+    {
+      "layer": 27,
+      "needle": "lantern",
+      "category": "noun",
+      "mean_rank": 77704.42857142857
+    },
+    {
+      "layer": 27,
+      "needle": "music",
+      "category": "noun",
+      "mean_rank": 121950.42857142857
+    },
+    {
+      "layer": 27,
+      "needle": "paper",
+      "category": "noun",
+      "mean_rank": 104714.47619047618
+    },
+    {
+      "layer": 27,
+      "needle": "river",
+      "category": "noun",
+      "mean_rank": 112067.0
+    },
+    {
+      "layer": 27,
+      "needle": "stone",
+      "category": "noun",
+      "mean_rank": 37148.47619047619
+    },
+    {
+      "layer": 27,
+      "needle": "table",
+      "category": "noun",
+      "mean_rank": 100897.28571428571
+    },
+    {
+      "layer": 27,
+      "needle": "water",
+      "category": "noun",
+      "mean_rank": 107382.57142857143
+    },
+    {
+      "layer": 27,
+      "needle": "window",
+      "category": "noun",
+      "mean_rank": 50071.47619047619
+    }
+  ]
+}

@@ -1,0 +1,6808 @@
+{
+  "rows": [
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 36806
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 129401
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 2625
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 14346
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 58681
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 16028
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 61923
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 36405
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 7287
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 44548
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 136763
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 4407
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 10688
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 19154
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 4575
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 54918
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 84524
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 6202
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 52798
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 143542
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 6377
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 12151
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 6182
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 3998
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 53208
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 78605
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 10387
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 58807
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 141093
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 8368
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 10055
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 5046
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 4310
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 46943
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 68007
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 5534
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 55263
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 140749
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 5748
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 11740
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 1859
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 4122
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 52613
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 54862
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 7322
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 64729
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 144632
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 3291
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 16623
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 1292
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 4543
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 64019
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 8166
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 4295
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 75942
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 146653
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 3589
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 20198
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 1337
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 17772
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 82516
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 1230
+    },
+    {
+      "needle": "John",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 6137
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 133920
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 145565
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 1793
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 68261
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 138270
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 2675
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 124995
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 121439
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 3129
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 136881
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 147126
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 1800
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 57584
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 63507
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 900
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 122649
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 132468
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 2186
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 139059
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 148344
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 2575
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 66303
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 14668
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 643
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 124094
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 130079
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 4751
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 138551
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 147012
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 4269
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 59399
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 7292
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 861
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 121763
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 106260
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 3736
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 137779
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 142889
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 2701
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 65784
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 3574
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 473
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 129519
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 92954
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 2978
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 140162
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 142039
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 1425
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 77731
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 1665
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 251
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 134701
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 61791
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 4546
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 138693
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 128360
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 847
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 83453
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 1282
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 337
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 138238
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 23362
+    },
+    {
+      "needle": "Mary",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 4782
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 136698
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 124245
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 12117
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 93282
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 77336
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 43729
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 122490
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 43917
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 18880
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 139146
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 135255
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 13252
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 87980
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 31882
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 13717
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 120940
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 83386
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 15640
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 144443
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 143030
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 15294
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 91913
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 14740
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 10622
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 125427
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 78376
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 18270
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 143414
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 143666
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 12498
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 87007
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 13991
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 9311
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 118634
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 64857
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 14013
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 142738
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 143451
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 7474
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 90089
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 6611
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 10143
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 125726
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 62414
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 16813
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 143823
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 145369
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 4680
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 103185
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 5141
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 10394
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 134298
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 16594
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 11642
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 144170
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 146710
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 3232
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 110474
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 5663
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 30897
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 140588
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 5230
+    },
+    {
+      "needle": "James",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 17738
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 47337
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 143877
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 1104
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 37335
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 133388
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 821
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 90236
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 126347
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 3238
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 55433
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 146931
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 1083
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 33419
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 83891
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 554
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 85438
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 122287
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 3464
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 58698
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 148286
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 1042
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 32871
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 56390
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 665
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 84243
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 115038
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 6234
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 60176
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 147770
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 1041
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 29358
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 39781
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 486
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 74999
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 102790
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 4403
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 55699
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 144737
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 811
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 29950
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 28633
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 394
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 74390
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 108382
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 3426
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 57033
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 144471
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 589
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 38762
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 21354
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 284
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 79433
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 75392
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 3009
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 57936
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 134517
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 325
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 44330
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 15783
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 398
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 90147
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 32903
+    },
+    {
+      "needle": "Sarah",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 3008
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 78236
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 132893
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 3977
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 39476
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 111597
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 17492
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 95874
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 70699
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 8218
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 95229
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 132568
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 4693
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 42155
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 50982
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 6168
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 87312
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 99506
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 8288
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 104227
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 141129
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 5916
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 48757
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 21200
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 4578
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 87604
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 90492
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 12009
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 103179
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 140767
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 4773
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 46610
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 21342
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 5060
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 74421
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 86610
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 6700
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 100926
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 142920
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 3598
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 56287
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 11751
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 5992
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 80722
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 85365
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 8597
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 107015
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 144747
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 2694
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 67990
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 10819
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 10000
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 93649
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 38475
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 8460
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 98174
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 145085
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 2561
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 64692
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 11469
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 29202
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 99927
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 13264
+    },
+    {
+      "needle": "Michael",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 10021
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 110541
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 148869
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 8932
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 85191
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 147465
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 8727
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 112057
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 133733
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 12619
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 110377
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 149058
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 6801
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 93651
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 121157
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 3651
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 113213
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 133733
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 12672
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 109959
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 149578
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 6390
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 100697
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 78861
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 3122
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 113853
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 124302
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 14231
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 105880
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 149699
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 6302
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 101006
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 55575
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 2503
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 98736
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 109036
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 10724
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 96471
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 148921
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 4486
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 106968
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 40437
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 1766
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 95241
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 112855
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 9926
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 94230
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 149013
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 3947
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 118240
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 33657
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 1084
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 97052
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 102062
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 9708
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 90861
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 139044
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 1887
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 120721
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 22933
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 1601
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 102489
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 58655
+    },
+    {
+      "needle": "Emma",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 11269
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 45419
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 128997
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 6017
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 10528
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 96352
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 24091
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 72993
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 42328
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 7039
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 58308
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 134646
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 6781
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 8602
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 30929
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 6705
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 65942
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 68411
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 9020
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 74596
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 141173
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 6899
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 10852
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 12536
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 5391
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 76208
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 55344
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 10150
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 76632
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 140823
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 5790
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 9234
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 10851
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 6874
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 68270
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 57571
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 6369
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 71340
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 142874
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 3507
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 10962
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 5604
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 6140
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 81023
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 52954
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 7413
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 89052
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 142651
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 2217
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 15705
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 4567
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 7248
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 102987
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 19376
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 6215
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 84969
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 142817
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 1598
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 16010
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 3873
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 19656
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 117079
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 5642
+    },
+    {
+      "needle": "David",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 8057
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 124227
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 147628
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 22088
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 113094
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 120595
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 21023
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 138703
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 131181
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 34118
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 125409
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 148961
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 19293
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 111226
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 47829
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 9719
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 137285
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 133008
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 32776
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 131959
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 149908
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 18682
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 115062
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 30521
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 7179
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 136860
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 128299
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 38381
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 128725
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 150107
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 21582
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 108569
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 21852
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 7563
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 132307
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 117431
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 30799
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 124491
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 148961
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 15135
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 113079
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 15737
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 7106
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 132853
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 123963
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 30435
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 126899
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 148531
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 11163
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 122529
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 13547
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 5547
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 135452
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 101515
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 27615
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 124714
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 142863
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 7206
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 128140
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 13281
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 10874
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 140324
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 60418
+    },
+    {
+      "needle": "Laura",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 29201
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 53788
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 124086
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 6246
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 8015
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 77787
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 40987
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 69601
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 46210
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 14797
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 53896
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 130671
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 12067
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 7303
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 31164
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 14369
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 68296
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 84589
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 14075
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 60153
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 138906
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 15980
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 7803
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 13005
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 10550
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 64470
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 85578
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 18117
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 63026
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 138799
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 19209
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 7378
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 13650
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 11353
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 54930
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 73336
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 10773
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 59653
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 139468
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 14239
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 8302
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 6656
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 12458
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 58204
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 73711
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 14447
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 66444
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 141921
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 12520
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 10925
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 4948
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 13158
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 71091
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 24545
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 9651
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 73584
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 144390
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 13270
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 13184
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 4459
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 31569
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 89236
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 7213
+    },
+    {
+      "needle": "Robert",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 14854
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 82314
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 147279
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 27555
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 22262
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 142836
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 48787
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 87553
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 94696
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 45107
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 89471
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 147059
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 27566
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 25612
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 72458
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 26438
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 88835
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 94161
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 38434
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 99889
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 148118
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 24192
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 30887
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 28941
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 24488
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 94322
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 78502
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 52537
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 98434
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 148395
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 23555
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 30174
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 22583
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 30105
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 86077
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 73291
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 35170
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 94236
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 147900
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 18022
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 35340
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 19458
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 29840
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 91232
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 85514
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 38820
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 100651
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 146904
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 14394
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 48602
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 21302
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 20736
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 99981
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 77165
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 32710
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 97778
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 136241
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 10863
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 54386
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 16710
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 41241
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 114217
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 44675
+    },
+    {
+      "needle": "Anna",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 37496
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 95832
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 137012
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 10215
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 23911
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 98552
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 40311
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 76692
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 57544
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 10767
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 105175
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 131391
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 10727
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 28182
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 31321
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 11799
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 78038
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 82792
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 9445
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 115053
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 137270
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 12382
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 36510
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 11491
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 9134
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 82098
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 73656
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 13060
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 116685
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 136346
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 14938
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 32564
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 10437
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 11820
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 75996
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 70793
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 8532
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 111743
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 141605
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 10590
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 42839
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 6799
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 13200
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 85988
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 80256
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 11061
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 120855
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 144494
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 6257
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 55204
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 6269
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 12295
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 103695
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 39207
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 10952
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 123916
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 146294
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 4883
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 65098
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 7167
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 28842
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 120897
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 17200
+    },
+    {
+      "needle": "Peter",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 11764
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 86326
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 142612
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 80,
+      "filler_idx": 0,
+      "rank_needle": 21032
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 80209
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 125174
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 87,
+      "filler_idx": 1,
+      "rank_needle": 22423
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 101783
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 141322
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 64,
+      "actual_eviction_distance": 84,
+      "filler_idx": 2,
+      "rank_needle": 38440
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 79665
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 143556
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 272,
+      "filler_idx": 0,
+      "rank_needle": 15418
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 61799
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 74172
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 274,
+      "filler_idx": 1,
+      "rank_needle": 14827
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 105311
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 143464
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 256,
+      "actual_eviction_distance": 264,
+      "filler_idx": 2,
+      "rank_needle": 32190
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 92995
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 140755
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 536,
+      "filler_idx": 0,
+      "rank_needle": 16905
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 66738
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 39316
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 529,
+      "filler_idx": 1,
+      "rank_needle": 11182
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 110387
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 139805
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 512,
+      "actual_eviction_distance": 524,
+      "filler_idx": 2,
+      "rank_needle": 35993
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 89846
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 136318
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1040,
+      "filler_idx": 0,
+      "rank_needle": 19892
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 62555
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 19205
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1039,
+      "filler_idx": 1,
+      "rank_needle": 10971
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 112134
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 128388
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 1024,
+      "actual_eviction_distance": 1044,
+      "filler_idx": 2,
+      "rank_needle": 21966
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 85709
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 126516
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2072,
+      "filler_idx": 0,
+      "rank_needle": 17342
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 68457
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 9440
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2059,
+      "filler_idx": 1,
+      "rank_needle": 8723
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 121123
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 119722
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 2048,
+      "actual_eviction_distance": 2064,
+      "filler_idx": 2,
+      "rank_needle": 22480
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 99224
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 123733
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4112,
+      "filler_idx": 0,
+      "rank_needle": 14505
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 73360
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 5329
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4116,
+      "filler_idx": 1,
+      "rank_needle": 7595
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 129593
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 83642
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 4096,
+      "actual_eviction_distance": 4104,
+      "filler_idx": 2,
+      "rank_needle": 22269
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 98767
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 94624
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8216,
+      "filler_idx": 0,
+      "rank_needle": 10967
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 72463
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 3816
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8213,
+      "filler_idx": 1,
+      "rank_needle": 7277
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 9,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 134881
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 18,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 45384
+    },
+    {
+      "needle": "Linda",
+      "category": "person",
+      "layer": 27,
+      "requested_distance": 8192,
+      "actual_eviction_distance": 8204,
+      "filler_idx": 2,
+      "rank_needle": 32799
+    }
+  ]
+}
