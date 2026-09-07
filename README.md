@@ -761,13 +761,158 @@ git — they only exist on the GPU box, so they're backed up to Hugging Face Hub
 [gautam-dphs/ahn-interp-jlens-qwen25-3b](https://huggingface.co/gautam-dphs/ahn-interp-jlens-qwen25-3b/tree/main)
 (private, org-owned). Re-download from there on any new box rather than re-fitting.
 
+## Setting up a fresh GPU box
+
+The box resets roughly every 48 hours, so this is a from-scratch recipe rather than a
+one-time note. Budget ~20 minutes, nearly all of it downloads. Walked end to end on
+6 Sep 2026; every trap below cost real time, so none of them are hypothetical.
+
+**1. Clone.**
+
+```bash
+git clone https://github.com/DSon24/Interpretability-study-of-Artificial-Hippocampus-Networks.git
+cd Interpretability-study-of-Artificial-Hippocampus-Networks
+```
+
+Use the repository URL, not a `/tree/main` link copied from the browser — that is the
+GitHub web path and git rejects it with `repository not found`.
+
+**2. Main environment.**
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -e ".[train,eval]"
+pip install ipykernel && python -m ipykernel install --user --name ahn --display-name "ahn (tf4.51)"
+```
+
+`wandb`, `accelerate`, `flash-linear-attention` (the Seerkfang fork — the PyPI package of
+that name is a different library) and a `torch` pin are declared in `pyproject.toml` as of
+6 Sep. They are import-time requirements: `qwen2_ahn` imports wandb and fla at module
+scope, and transformers 4.51.0 only binds `init_empty_weights` when accelerate is present,
+so without it `from_pretrained` dies with a bare `NameError`.
+
+**3. Check torch against the driver.**
+
+```bash
+nvidia-smi
+python -c "import torch;print(torch.__version__, torch.version.cuda, torch.cuda.is_available())"
+```
+
+Want `True`. The pin exists because an unpinned resolve now picks torch 2.14 with CUDA 13
+wheels, which refuse to initialise against this box's driver (570.148.08 = CUDA 12.8) with
+*"The NVIDIA driver on your system is too old"*. If the driver is ever upgraded, re-pin
+rather than deleting the pin.
+
+Related trap: installing `scipy`/`matplotlib` unpinned drags numpy from the project's
+`1.26.4` up to 2.x. Pin them — `scipy==1.14.1`, `matplotlib==3.9.2` — if you need them.
+
+**4. FlashAttention-2 — required for correctness, not speed.**
+
+```bash
+pip install "https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1/flash_attn-2.7.4.post1+cu12torch2.5cxx11abiFALSE-cp312-cp312-linux_x86_64.whl"
+```
+
+Sliding-window attention is **not implemented for `sdpa`**. Load without FA2 and
+transformers prints one warning, ignores `CFG["sliding_window"]`, and AHN never
+activates — the run completes and every retention number in it is meaningless. Use the
+prebuilt wheel matching torch/python/ABI; the PyPI sdist compiles against `nvcc`, which
+this box does not have.
+
+**5. Merge a checkpoint.**
+
+```bash
+python ./examples/scripts/utils/merge_weights.py \
+  --base-model Qwen/Qwen2.5-3B-Instruct \
+  --ahn-path  ByteDance-Seed/AHN-GDN-for-Qwen-2.5-Instruct-3B \
+  --output-path ./merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN
+```
+
+The long *"newly initialized: `model.layers.*.ahn.fn.*`"* warning is expected — base
+Qwen2.5 has no AHN parameters, so they are random until `load_ahn_overrides` overwrites
+them. Confirm they landed:
+
+```bash
+python -c "
+from safetensors import safe_open
+import glob
+ks=[]
+for f in glob.glob('./merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN/*.safetensors'):
+    with safe_open(f,'pt') as h: ks += [k for k in h.keys() if 'ahn' in k]
+print(len(ks))"
+```
+
+Expect **288** (8 tensors x 36 layers). That proves presence, not values — notebook 01's
+Gate B is what proves the AHN weights are real rather than random.
+
+**6. Pick a MIG slice.**
+
+The H100s are partitioned with MIG, so a process gets one 20 GB slice, not a card, and
+`device_map="cuda:<idle_index>"` does not select it. UUIDs change on every box reset.
+
+```bash
+nvidia-smi -L     # list slices
+nvidia-smi        # check which are actually idle — 3 other people share this box
+export CUDA_VISIBLE_DEVICES=MIG-<uuid>
+```
+
+Pick an idle `1g.20gb`; a 3B job needs 6–16 GB. Inside the process the slice is always
+`cuda:0`, so leave `device_map="cuda"` alone. Independent notebooks can run in parallel on
+separate slices — wall clock, not GPU-hours, is the binding constraint.
+
+For a **notebook**, the shell `export` does not reach the kernel — the Jupyter server
+spawns it. Put this in the first cell, above any torch import, because CUDA reads the
+variable once at init and later assignment is silently ignored:
+
+```python
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "MIG-<uuid>"   # from nvidia-smi -L, changes on reset
+```
+
+**7. Smoke test before opening Jupyter.**
+
+```bash
+python -c "
+import torch, ahn_interp as ai
+b = ai.load_ahn_model('./merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN', sliding_window=8064, num_attn_sinks=128)
+print(torch.cuda.get_device_name(0), round(torch.cuda.memory_allocated()/1e9,2),'GB')
+print(b.model.config._attn_implementation, b.model.config.sliding_window)"
+```
+
+Want ~6–7 GB, `flash_attention_2`, `8064`. Cheapest place to find a broken environment.
+
+**8. Only if you are fitting a new J-lens (notebook 02).**
+
+```bash
+python3 -m venv ~/jlens-venv && source ~/jlens-venv/bin/activate
+git clone https://github.com/anthropics/jacobian-lens.git && pip install -e jacobian-lens
+pip install datasets accelerate ipykernel
+pip install "torch==2.8.0" --index-url https://download.pytorch.org/whl/cu128
+python -m ipykernel install --user --name jlens-venv --display-name "jlens (transformers>=5)"
+```
+
+This env needs its own torch pin for the same driver reason. Usually you should **not**
+refit: the corpus A and B lenses cost 1.92 + 1.25 GPU-h and live on the Hub. Pull them
+instead, and note the `.pt` is a plain tensor dict that loads fine under the main
+`transformers==4.51.0` env:
+
+```bash
+huggingface-cli login
+huggingface-cli download gautam-dphs/ahn-interp-jlens-qwen25-3b --local-dir results/run_3b_gdn
+```
+
+Ignorable noise throughout: TensorFlow's cuFFT/cuDNN/cuBLAS *"already registered"* errors
+(TF is dead weight from the `[train]` extra) and `df: ~/.triton/autotune: No such file`.
+
 ## Running an experiment
 
-There is no SSH to the GPU box, so the workflow is: **upload two files, run, download the
-JSON.** Every notebook is standalone apart from `ahn_interp.py`.
+The box has a shell, so work directly in the clone — there is no need to upload anything.
+Every notebook's bootstrap cell walks up the tree for `ahn_interp.py`, so running from
+`notebooks/` inside the repo resolves it. Download the JSON at the end.
 
-1. Upload `ahn_interp.py` and the notebook you want into the Jupyter working directory.
+1. Open the notebook from `notebooks/` in the clone.
 2. Edit the `CFG` cell — model path, cell family, `sliding_window`, `num_attn_sinks`.
+   **`CFG["model_path"]` is hardcoded to whoever last ran the notebook** (three different
+   `/home/jupyter-dphs-*` homes appear across the notebooks); point it at your own.
 3. Run top to bottom. Each notebook ends in an explicit **gate**; if the gate fails, fix
    it before moving on rather than proceeding with a caveat.
 4. Download the `results/<run>/*.json` files.
@@ -780,32 +925,14 @@ environment** with `transformers>=5` because `jlens` conflicts with the repo's
 `.pt` the fit produces is a plain tensor dict, so it loads back under the 4.51.0 env
 without issue.
 
-```bash
-# one-time: the notebook-02 environment
-python3 -m venv ~/jlens-venv && source ~/jlens-venv/bin/activate
-git clone https://github.com/anthropics/jacobian-lens.git && pip install -e jacobian-lens
-pip install datasets accelerate ipykernel
-python -m ipykernel install --user --name jlens-venv --display-name "jlens (transformers>=5)"
-```
+Building that environment, merging a checkpoint, and pinning a MIG slice are all in
+**Setting up a fresh GPU box** above — the box resets every ~48 hours, so that is the
+recipe you rerun, not a one-time note.
 
-**On a shared box, pin the GPU.** The default `device_map="cuda"` resolves to device 0,
-which is usually the most contended. Check `torch.cuda.mem_get_info(i)` across devices and
-pass `device_map="cuda:<idle_index>"` to `ai.load_ahn_model`, or set
-`CUDA_VISIBLE_DEVICES` before importing torch. Independent notebooks can then be run in
-parallel on separate devices — each 3B job needs only 6–16 GB of a 40 GB card, and wall
-clock, not GPU-hours, is the binding constraint.
-
-### Merging a checkpoint
-
-```bash
-python ./examples/scripts/utils/merge_weights.py \
-  --base-model Qwen/Qwen2.5-3B-Instruct \
-  --ahn-path  ByteDance-Seed/AHN-GDN-for-Qwen-2.5-Instruct-3B \
-  --output-path ./merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN
-```
-
-Three cells at 3B: swap `AHN-GDN` for `AHN-DN` and `AHN-Mamba2`. Keep `merged_ckpt/` out
-of git (it already is).
+Three cells at 3B: swap `AHN-GDN` for `AHN-DN` and `AHN-Mamba2` in the merge command.
+Mamba2 additionally needs the forked mamba
+(`MAMBA_FORCE_BUILD=TRUE pip install "git+https://github.com/yuweihao/mamba.git"`).
+Keep `merged_ckpt/` out of git (it already is).
 
 ## Experimental settings of record
 
