@@ -7,13 +7,20 @@ does not licence an RQ2 claim on its own.
 
 WHAT EACH CONTROL IS HERE
 
+TARGET. RULER NIAH answers here are 7-digit numbers, and Qwen tokenizes " 7700828" as
+[' ', '7', '7', '0', '0', '8', '2', '8'] -- the leading space is its own token. Scoring
+encode(" " + answer)[0] therefore scored token 220, a bare space, identically for all 60
+examples; that is what run 025 did. The measurement now scores the answer as a sequence:
+the readout at each of the 7 digit positions, from which the log-probability of any
+candidate 7-digit answer can be assembled.
+
 C2, baseline-corrected, cross-example. RULER has no distractor, so the other examples'
 answers are the distractor pool. For an ordered pair (i, j):
 
-    fold_ij = [ p_i(a_i) / p_i(a_j) ] / [ p_j(a_i) / p_j(a_j) ]
+    fold_ij = [ P_i(a_i) / P_i(a_j) ] / [ P_j(a_i) / P_j(a_j) ]
 
-p_i(a_j) is the readout probability of example j's answer token when example i's prompt
-was stored. The denominator measures the same pair with the other example stored, so a
+P_i(a_j) is the readout probability of example j's ANSWER SEQUENCE evaluated at example
+i's digit positions. The denominator measures the same pair with the other example stored, so a
 token that is simply more probable in general cancels out. Under the null that the readout
 is indifferent to what was stored, fold = 1. This is the ratio-of-ratios shape Son's 28 Aug
 correction arrived at, applied across examples instead of across hand-picked needle pairs.
@@ -73,20 +80,31 @@ def boot_ci(xs: Sequence[float], stat, n_boot: int = N_BOOT, seed: int = SEED):
     return reps[int(0.025 * n_boot)], reps[int(0.975 * n_boot)]
 
 
+def answer_logprob(table: Sequence[Sequence[float]], digits: Sequence[int]) -> float:
+    """Log-probability of a candidate digit sequence under one example's readout table."""
+    n = min(len(table), len(digits))
+    return sum(table[t][digits[t]] for t in range(n))
+
+
 def c2_folds(rows_by_example: Dict[int, dict], keep: Sequence[int],
-             answer_ids: Sequence[int]) -> Tuple[List[float], int]:
-    """Baseline-corrected C2 fold for every unordered pair of kept examples."""
+             answer_seqs: Sequence[Sequence[int]]) -> Tuple[List[float], int]:
+    """Baseline-corrected C2 fold for every unordered pair of kept examples.
+
+    Worked in log space: log fold = [lp_i(a_i) - lp_i(a_j)] - [lp_j(a_i) - lp_j(a_j)].
+    """
     folds, dropped = [], 0
     for a in range(len(keep)):
         for b in range(a + 1, len(keep)):
             i, j = keep[a], keep[b]
-            if answer_ids[i] == answer_ids[j]:
-                dropped += 1          # same first token: the ratio is 1 by construction
+            di, dj = answer_seqs[i], answer_seqs[j]
+            if di is None or dj is None or di == dj:
+                dropped += 1
                 continue
-            pi, pj = rows_by_example[i]["p_all_answers"], rows_by_example[j]["p_all_answers"]
-            num = (pi[i] + EPS) / (pi[j] + EPS)
-            den = (pj[i] + EPS) / (pj[j] + EPS)
-            folds.append(num / den)
+            ti = rows_by_example[i]["digit_logprobs"]
+            tj = rows_by_example[j]["digit_logprobs"]
+            log_fold = ((answer_logprob(ti, di) - answer_logprob(ti, dj))
+                        - (answer_logprob(tj, di) - answer_logprob(tj, dj)))
+            folds.append(math.exp(max(min(log_fold, 700.0), -700.0)))
     return folds, dropped
 
 
@@ -108,7 +126,7 @@ def main() -> None:
     with open(ROWS_PATH) as f:
         blob = json.load(f)
     rows = blob["rows"]
-    answer_ids = blob["answer_ids"]
+    answer_seqs = blob["answer_digit_seqs"]
     layers = sorted({int(r["layer"]) for r in rows})
 
     print(f"RULER control battery — {len(rows)} rows, config={blob['ruler_cfg']}")
@@ -130,18 +148,41 @@ def main() -> None:
         rec: dict = {"n_evicted": len(evicted)}
         print(f"--- layer {L}  (n evicted = {len(evicted)}) " + "-" * 26)
 
+        # ---- C1 on the sequence target --------------------------------------------
+        if evicted:
+            mranks = [ordered[i]["mean_digit_rank"] for i in evicted]
+            lo, hi = boot_ci(mranks, st.median)
+            rec["C1_sequence"] = {
+                "n": len(mranks), "median_mean_digit_rank": st.median(mranks),
+                "ci95": [lo, hi],
+                "below_chance": bool(hi < CHANCE),
+                "median_answer_logprob": st.median([ordered[i]["answer_logprob"] for i in evicted]),
+            }
+            v = "BELOW chance" if hi < CHANCE else ("above chance" if lo > CHANCE else "spans chance")
+            print(f"  C1 mean digit rank {st.median(mranks):9.0f} [{lo:.0f}, {hi:.0f}]  -> {v}")
+
         # ---- C2 -------------------------------------------------------------------
-        folds, dropped = c2_folds(ordered, evicted, answer_ids)
+        folds, dropped = c2_folds(ordered, evicted, answer_seqs)
         if folds:
             g = geo_mean(folds)
             lo, hi = boot_ci(folds, geo_mean)
             p = permutation_p(folds)
             # fold = (per-example effect)^2; the bar is stated per example
             eff, eff_lo, eff_hi = math.sqrt(g), math.sqrt(lo), math.sqrt(hi)
+            # The per-example effect compounds over the answer's digits, so a modest
+            # per-digit preference looks large end to end: 1.4x per digit over 7 digits
+            # is already 10.5x. The pre-registered 10x bar was written for a
+            # single-token needle, so the per-digit figure is the honest comparison and
+            # both are reported.
+            ndig = len(answer_seqs[evicted[0]]) if evicted and answer_seqs[evicted[0]] else 1
+            per_digit = eff ** (1.0 / ndig) if ndig else eff
             rec["C2_cross_example"] = {
-                "n_pairs": len(folds), "pairs_dropped_same_token": dropped,
+                "n_pairs": len(folds), "pairs_dropped": dropped,
                 "corrected_fold_geomean": g, "ci95_fold": [lo, hi],
                 "effect_per_example": eff, "ci95_effect_per_example": [eff_lo, eff_hi],
+                "answer_digits_scored": ndig,
+                "effect_per_digit": per_digit,
+                "ci95_effect_per_digit": [eff_lo ** (1.0 / ndig), eff_hi ** (1.0 / ndig)],
                 "permutation_p": p,
                 "passes_preregistered_bar": bool(eff_lo > C2_BAR),
                 "excludes_null": bool(eff_lo > 1.0),
@@ -151,11 +192,13 @@ def main() -> None:
                        "does not exclude 1.0")
             print(f"  C2 per-example effect {eff:8.3f}x  CI [{eff_lo:.3f}, {eff_hi:.3f}]  "
                   f"perm p={p:.4f}  n_pairs={len(folds)}")
-            print(f"     (ratio-of-ratios fold {g:.3f}x = effect squared)")
+            print(f"     (ratio-of-ratios fold {g:.3g}x = effect squared; "
+                  f"{per_digit:.3f}x per digit over {ndig} digits)")
             print(f"     -> {verdict}")
 
         # ---- C3-context -----------------------------------------------------------
-        pairs = [(ordered[i]["rank"], shuffled[i]["rank"]) for i in evicted if i in shuffled]
+        pairs = [(ordered[i]["mean_digit_rank"], shuffled[i]["mean_digit_rank"])
+                 for i in evicted if i in shuffled]
         if pairs:
             deltas = [s - o for o, s in pairs]          # positive = shuffling hurt
             lo, hi = boot_ci(deltas, st.median)
@@ -174,25 +217,26 @@ def main() -> None:
                   f"delta {st.median(deltas):+8.0f} [{lo:+.0f}, {hi:+.0f}]  -> {direction}")
 
         # ---- C3-lens --------------------------------------------------------------
-        lens_pairs = [(ordered[i]["rank"], ordered[i]["rank_shuffled_lens"])
-                      for i in evicted if "rank_shuffled_lens" in ordered[i]]
+        lens_pairs = [(ordered[i]["answer_logprob"], ordered[i]["answer_logprob_shuffled_lens"])
+                      for i in evicted if "answer_logprob_shuffled_lens" in ordered[i]]
         if lens_pairs:
+            # answer log-probability: higher is better, so a real lens should beat the
+            # permuted one and the delta should be negative
             deltas = [s - o for o, s in lens_pairs]
             lo, hi = boot_ci(deltas, st.median)
-            med_shuf = st.median([s for _, s in lens_pairs])
             rec["C3_lens"] = {
                 "n": len(lens_pairs),
-                "median_rank_real_lens": st.median([o for o, _ in lens_pairs]),
-                "median_rank_shuffled_lens": med_shuf,
+                "median_answer_logprob_real": st.median([o for o, _ in lens_pairs]),
+                "median_answer_logprob_shuffled": st.median([s for _, s in lens_pairs]),
                 "median_delta": st.median(deltas),
                 "ci95_delta": [lo, hi],
-                "signal_collapses": bool(lo > 0 and med_shuf > CHANCE),
+                "signal_collapses": bool(hi < 0),
             }
-            verdict = ("signal COLLAPSES, as it should" if lo > 0 and med_shuf > CHANCE
-                       else "signal SURVIVES the permuted map — decoding artefact")
-            print(f"  C3-lens    real {st.median([o for o,_ in lens_pairs]):8.0f} -> "
-                  f"permuted {med_shuf:8.0f}   delta {st.median(deltas):+8.0f} "
-                  f"[{lo:+.0f}, {hi:+.0f}]")
+            verdict = ("signal COLLAPSES under the permuted map, as it should" if hi < 0
+                       else "signal SURVIVES the permuted map — DECODING ARTEFACT")
+            print(f"  C3-lens    real logP {st.median([o for o,_ in lens_pairs]):+8.2f} -> "
+                  f"permuted {st.median([s for _,s in lens_pairs]):+8.2f}   "
+                  f"delta {st.median(deltas):+7.2f} [{lo:+.2f}, {hi:+.2f}]")
             print(f"     -> {verdict}")
 
         out["layers"][str(L)] = rec
