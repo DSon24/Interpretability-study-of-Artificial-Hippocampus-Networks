@@ -844,6 +844,19 @@ print(len(ks))"
 Expect **288** (8 tensors x 36 layers). That proves presence, not values — notebook 01's
 Gate B is what proves the AHN weights are real rather than random.
 
+Nothing records this path. Configs carry `ckpt_name`, and `ai.resolve_ckpt("<dir name>")`
+resolves it at runtime against `$AHN_CKPT_ROOT`, defaulting to `<repo>/merged_ckpt` — so
+merging into the repo as above needs no environment variable at all. Only if the
+checkpoints live elsewhere on the box:
+
+```bash
+export AHN_CKPT_ROOT=/path/to/merged_ckpt     # before starting Jupyter
+```
+
+A checkpoint that cannot be found raises a `FileNotFoundError` listing every location
+tried and what the root actually contains, rather than the `HFValidationError` you get
+when transformers reinterprets a dead path as a Hub repo id.
+
 **6. Pick a MIG slice.**
 
 The H100s are partitioned with MIG, so a process gets one 20 GB slice, not a card, and
@@ -873,7 +886,8 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "MIG-<uuid>"   # from nvidia-smi -L, change
 ```bash
 python -c "
 import torch, ahn_interp as ai
-b = ai.load_ahn_model('./merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN', sliding_window=8064, num_attn_sinks=128)
+print('ckpt root:', ai.ckpt_root())
+b = ai.load_ahn_model(ai.resolve_ckpt('Qwen-2.5-Instruct-3B-AHN-GDN'), sliding_window=8064, num_attn_sinks=128)
 print(torch.cuda.get_device_name(0), round(torch.cuda.memory_allocated()/1e9,2),'GB')
 print(b.model.config._attn_implementation, b.model.config.sliding_window)"
 ```

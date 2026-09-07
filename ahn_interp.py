@@ -148,26 +148,35 @@ def ckpt_root() -> str:
 def resolve_ckpt(ckpt_name: str) -> str:
     """Turn a checkpoint directory name into an absolute, verified local path.
 
-    Raises with the roots that were tried rather than letting transformers reinterpret
-    a missing directory as a Hub repo id.
+    Accepts a bare directory name (`Qwen-2.5-Instruct-3B-AHN-GDN`), a path relative to
+    the working directory (`merged_ckpt/Qwen-...`), or an absolute path. Raises with
+    every location tried rather than letting transformers reinterpret a missing
+    directory as a Hub repo id.
     """
-    if os.path.isabs(ckpt_name):
-        path = ckpt_name
-    else:
-        path = os.path.join(ckpt_root(), ckpt_name)
-    if not os.path.isdir(path):
-        available = []
-        root = ckpt_root()
-        if os.path.isdir(root):
-            available = sorted(os.listdir(root))
-        raise FileNotFoundError(
-            f"checkpoint not found: {path}\n"
-            f"  AHN_CKPT_ROOT = {os.environ.get('AHN_CKPT_ROOT', '(unset, using repo default)')}\n"
-            f"  root searched = {root}\n"
-            f"  available     = {available or '(root does not exist)'}\n"
-            f"Set AHN_CKPT_ROOT to the directory holding the merged checkpoints."
-        )
-    return path
+    name = os.path.expanduser(ckpt_name)
+    root = ckpt_root()
+
+    tried: List[str] = []
+    for cand in (name,
+                 os.path.join(root, name),
+                 os.path.join(root, os.path.basename(name.rstrip("/")))):
+        cand = os.path.abspath(cand)
+        if cand in tried:
+            continue
+        tried.append(cand)
+        if os.path.isdir(cand):
+            return cand
+
+    available = sorted(os.listdir(root)) if os.path.isdir(root) else []
+    tried_lines = "\n".join(f"    {t}" for t in tried)
+    raise FileNotFoundError(
+        f"checkpoint not found: {ckpt_name}\n"
+        f"  tried:\n{tried_lines}\n"
+        f"  AHN_CKPT_ROOT = {os.environ.get('AHN_CKPT_ROOT', '(unset, using repo default)')}\n"
+        f"  root searched = {root}\n"
+        f"  available     = {available or '(root does not exist)'}\n"
+        f"Set AHN_CKPT_ROOT to the directory holding the merged checkpoints."
+    )
 
 
 def load_run_config(name: str) -> Dict[str, Any]:
@@ -237,12 +246,24 @@ def load_ahn_model(
 
     # A local path that does not exist is reinterpreted by transformers as a Hub repo
     # id, which fails much later with a confusing HFValidationError. Check it here.
-    # Hub ids ("Qwen/Qwen2.5-3B-Instruct") have exactly one slash and no leading ./ ~ /,
-    # so they still route to the Hub untouched.
-    looks_local = os.path.isabs(model_path) or model_path.startswith(("./", "../", "~")) \
-        or model_path.count("/") > 1
-    if looks_local and not os.path.isdir(os.path.expanduser(model_path)):
-        model_path = resolve_ckpt(os.path.expanduser(model_path))
+    #
+    # Resolution is attempted first and the Hub is the fallback, rather than guessing
+    # from the string's shape: a shape test has to ask whether the first segment is a
+    # local directory, which depends on the working directory and so answers differently
+    # for the same checkpoint depending on whether a notebook runs from the repo root or
+    # from notebooks/. Only an "owner/name" string survives a failed resolution.
+    expanded = os.path.expanduser(model_path)
+    if not os.path.isdir(expanded):
+        looks_like_hub_id = (
+            expanded.count("/") == 1
+            and not os.path.isabs(expanded)
+            and not expanded.startswith(("./", "../", "~"))
+        )
+        try:
+            model_path = resolve_ckpt(expanded)
+        except FileNotFoundError:
+            if not looks_like_hub_id:
+                raise
 
     tok = AutoTokenizer.from_pretrained(model_path)
     model = AutoModelForCausalLM.from_pretrained(
