@@ -232,6 +232,14 @@ The box resets roughly every 48 hours, so this is a from-scratch recipe rather t
 one-time note. Budget ~20 minutes, nearly all of it downloads. Walked end to end on
 6 Sep 2026; every trap below cost real time, so none of them are hypothetical.
 
+**We are unprivileged users on a shared JupyterHub box — no root, no `sudo`.** Every step
+below stays inside your home directory: a venv, pip into that venv, a user-level Jupyter
+kernel, and environment variables. Nothing here installs a system package or changes a
+system setting, and nothing should. What is fixed and not ours to change: the NVIDIA
+driver, the system CUDA toolkit, the MIG partitioning of the cards, and the JupyterHub
+install itself. Three or four of us share the machine, so also treat GPU slices as shared —
+check what is idle before taking one.
+
 **1. Clone.**
 
 ```bash
@@ -265,8 +273,13 @@ python -c "import torch;print(torch.__version__, torch.version.cuda, torch.cuda.
 
 Want `True`. The pin exists because an unpinned resolve now picks torch 2.14 with CUDA 13
 wheels, which refuse to initialise against this box's driver (570.148.08 = CUDA 12.8) with
-*"The NVIDIA driver on your system is too old"*. If the driver is ever upgraded, re-pin
-rather than deleting the pin.
+*"The NVIDIA driver on your system is too old"*.
+
+**Ignore that error's advice.** It tells you to update the driver; we are unprivileged
+users on a shared JupyterHub box and cannot. The driver, the CUDA toolkit and the MIG
+partitioning are all set by whoever administers the box. The only lever on our side is the
+torch pin — so match torch to the driver, never the other way round. If an admin ever
+upgrades the driver, re-pin rather than deleting the pin.
 
 Related trap: installing `scipy`/`matplotlib` unpinned drags numpy from the project's
 `1.26.4` up to 2.x. Pin them — `scipy==1.14.1`, `matplotlib==3.9.2` — if you need them.
@@ -281,7 +294,9 @@ Sliding-window attention is **not implemented for `sdpa`**. Load without FA2 and
 transformers prints one warning, ignores `CFG["sliding_window"]`, and AHN never
 activates — the run completes and every retention number in it is meaningless. Use the
 prebuilt wheel matching torch/python/ABI; the PyPI sdist compiles against `nvcc`, which
-this box does not have.
+this box does not have and which we cannot install without root. If no prebuilt wheel
+matches a future torch/python combination, change the torch pin to one that has a wheel —
+do not try to build from source here.
 
 **5. Merge a checkpoint.**
 
