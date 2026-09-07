@@ -938,6 +938,11 @@ def load_ruler(config: str = "8192", split: str = "test", n: int = 60, seed: int
             "answer": ex["answer"][0] if isinstance(ex["answer"], list) else ex["answer"],
             "task": ex.get("task", "niah"),
             "max_new_tokens": ex.get("max_new_tokens", 32),
+            # kept separate so a control can shuffle the CONTEXT without destroying the
+            # question and answer_prefix that the readout position depends on
+            "context": ex["context"],
+            "question": ex["question"],
+            "answer_prefix": ex["answer_prefix"],
         })
         if len(out) >= n:
             break
