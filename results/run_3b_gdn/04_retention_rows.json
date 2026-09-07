@@ -12482,12 +12482,12 @@
     }
   ],
   "cfg": {
-    "model_path": "/home/jupyter-dphs-23fd/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
+    "model_path": "/home/jupyter-dphs-a263/Interpretability-study-of-Artificial-Hippocampus-Networks/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
     "cell": "GatedDeltaNet",
     "scale": "3B",
     "sliding_window": 8064,
     "num_attn_sinks": 128,
-    "attn_impl": "sdpa",
+    "attn_impl": "flash_attention_2",
     "dtype": "bfloat16",
     "results_dir": "results/run_3b_gdn"
   },
