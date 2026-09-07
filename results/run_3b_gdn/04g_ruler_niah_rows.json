@@ -1,0 +1,51 @@
+{
+  "rows": [],
+  "cfg": {
+    "model_path": "/home/jupyter-dphs-a263/Interpretability-study-of-Artificial-Hippocampus-Networks/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
+    "cell": "GatedDeltaNet",
+    "scale": "3B",
+    "sliding_window": 8064,
+    "num_attn_sinks": 128,
+    "attn_impl": "flash_attention_2",
+    "dtype": "bfloat16",
+    "results_dir": "results/run_3b_gdn"
+  },
+  "exp": {
+    "layers": [
+      9,
+      18,
+      27
+    ],
+    "eviction_distances": [
+      64,
+      256,
+      512,
+      1024,
+      2048,
+      4096,
+      8192
+    ],
+    "needle_candidates": [
+      "Paris",
+      "banana",
+      "Tokyo",
+      "violin",
+      "cinnamon",
+      "harbour",
+      "lantern",
+      "sapphire",
+      "meadow",
+      "trumpet"
+    ],
+    "n_filler_variants": 3,
+    "use_jlens": false,
+    "jlens_path": "results/run_3b_gdn/jlens_qwen25_3b.pt",
+    "lens_validated": false
+  },
+  "ruler_cfg": {
+    "config": "8192",
+    "split": "test",
+    "n": 60,
+    "seed": 20260820
+  }
+}
