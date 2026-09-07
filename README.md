@@ -64,7 +64,7 @@ Sequencing follows Gautam's instruction after the last meeting:
 | Reproduce the published NOWRITE result (38–42% changed answers) | **done, with a metric correction** — 33.3% changed (first-line), ΔF1 **+6.1 pts** | `results/run_3b_gdn/03_nowrite_reproduction.json` |
 | J-lens fitted for Qwen2.5-3B | **done, map converged** — 500 contexts, layers 9/18/27, 1.92 GPU-h; **Table 3 check 4 (map stability) now passes** (top-10 overlap 0.91/0.87/0.89 across a disjoint second corpus); checks 2 and 3 still fail | `results/run_3b_gdn/02_table3_jlens_validation.json` |
 | NIAH retention with pre-eviction / NOWRITE controls | **done — control battery fails.** C4 passes, **C1, C2, C3 all fail**; readout is at chance | `results/run_3b_gdn/04_table4_controls.json` |
-| RULER NIAH n=60 — the *primary* RQ2 cohort | **done 7 Sep, and it moves the C1 question.** Layer 27 reads median rank 43,139 (below chance) where the homemade prompts give 89,805 (above chance). Logit-lens, so it needs a J-lens repeat before it carries a claim | `results/run_3b_gdn/04g_ruler_niah_stats.json` |
+| RULER NIAH n=60 — the *primary* RQ2 cohort | **done 7 Sep in the pre-registered instrument, and it reverses the C1 reading.** Layer 27 reads the *evicted* needle at median rank **17,250** of 151,936 (84.4% of examples beat chance) where the homemade prompts give 111,694 — worse than chance. The in-window confound was checked and runs backwards (evicted 17,250 vs in-window 54,506, permutation p=0.0021) | `04g_ruler_niah_stats.json`, `04h_ruler_needle_position.json` |
 | C2 follow-up — is the distractor control measuring anything? | **done, and it reframes C2** — the raw ratio is confounded by pair identity; after baseline correction no layer shows a memory-specific effect | `notebooks/04-C2-debug.ipynb`, Sơn, 28–31 Aug |
 | C3 follow-up — corrected shuffled-context rerun | **done** — needle held at a fixed token position; 96 matched rows. C3 does **not** give the expected order-sensitivity in either direction | `notebooks/04_niah_C3_analyze.ipynb`, Sơn, 29 Aug |
 | Per-layer recomputation of the control battery | **done, no GPU** — layer 9's readout is degenerate and fails C4. The 2 Sep "layer 27 works" claim is **withdrawn**: wrong readout basis, and its C2 ratio vanishes under baseline correction | `04c_per_layer_controls.json`, `04d_c2_baseline_corrected.json`, 2–3 Sep |
@@ -138,9 +138,10 @@ regenerated `04_table4_controls.json`. Detail below.
 
 ## Findings
 
-The full findings log lives in **[docs/FINDINGS.md](docs/FINDINGS.md)** -- nine
-entries, written as an append-only record so that later corrections sit visibly on top of
-what they correct rather than quietly replacing it.
+The full findings log lives in **[docs/FINDINGS.md](docs/FINDINGS.md)** -- ten entries,
+written as an append-only record so that later corrections sit visibly on top of what they
+correct rather than quietly replacing it. **The 7 Sep J-lens repeat reverses the reading of
+every entry before it** and is the current state of the C1 question.
 
 | Entry | What it established |
 |---|---|
@@ -152,7 +153,8 @@ what they correct rather than quietly replacing it.
 | [28-31 Aug C2 and C3](docs/FINDINGS.md#findings-from-the-2831-aug-c2-and-c3-investigation) | C2's raw ratio is pair-identity baseline, not memory; C3 gives no clean order-sensitivity |
 | [2 Sep per-layer re-analysis](docs/FINDINGS.md#findings-from-the-2-sep-per-layer-re-analysis-corrected-3-sep) | CORRECTED 3 Sep -- the "layer 27 works" claim is withdrawn on two independent grounds |
 | [4-5 Sep C1 rank correction](docs/FINDINGS.md#findings-from-the-45-sep-c1-rank-correction-construction-ladder-and-needle-category-test) | Baseline-corrected C1, the construction ladder, and the place-name vs common-noun split |
-| [7 Sep RULER cohort](docs/FINDINGS.md#findings-from-the-7-sep-ruler-cohort-run) | The primary cohort, run at last: layer 27 reads **below** chance on RULER where it reads above chance on the homemade prompts. Strongest evidence yet for candidate (b) |
+| [7 Sep RULER cohort](docs/FINDINGS.md#findings-from-the-7-sep-ruler-cohort-run) | The primary cohort, run at last -- logit-lens, superseded by the entry below |
+| [7 Sep J-lens repeat + placement check](docs/FINDINGS.md#findings-from-the-7-sep-j-lens-repeat-and-placement-check) | **Layer 27 reads the *evicted* needle at rank 17,250 of 151,936 in the pre-registered instrument.** The in-window confound runs backwards (evicted beats in-window, p=0.0021). The C1 failure is a property of the homemade prompt construction, not of AHN |
 
 ## Repository layout
 
@@ -508,16 +510,16 @@ resolved.
    **weakened** by the corrected C3, which shows no order-sensitivity in either direction,
    but the *related* claim that content simply does not survive compression is
    **strengthened** by the 2 Sep per-layer result (strong in-window signal, weak evicted
-   signal at layers 18 and 27). (b) prompt construction — **now the leading candidate,
-   reversing the earlier read.** The 7 Sep RULER run (Findings) puts layer 27 at median
-   rank 43,139 [27,536, 59,226] — below chance — against 89,805 [79,992, 99,068] on the
-   homemade prompts, same box, same readout, non-overlapping intervals. The earlier
-   "weakened, in-window needles read at rank ~800" reasoning does not survive: a prompt
-   can be well-formed and still place the target where the readout cannot reach it. The
-   difference remains that `build_niah_prompt` ends at `"What was the special word?"`
-   while `load_ruler` appends RULER's own `answer_prefix`, with the readout at `pos=-1`
-   in both. **Not yet the pre-registered instrument** — that run was logit-lens, so it
-   needs a J-lens repeat before it can carry a claim. (d) **layer
+   signal at layers 18 and 27). (b) prompt construction — **confirmed, and it is the
+   answer at layer 27.** The 7 Sep J-lens repeat (Findings) reads the *evicted* RULER
+   needle at median rank 17,250 [11,318, 30,936] against chance 75,968, with 84.4% of
+   examples beating chance, while the homemade prompts read 111,694 [105,947, 121,525] —
+   worse than chance — in the same instrument on the same day. The in-window confound was
+   tested and runs backwards: evicted needles read *better* than visible ones (17,250 vs
+   54,506, permutation p=0.0021), which is what the D-resid basis should do, since the
+   memory is the only channel carrying an evicted needle. `build_niah_prompt` was hiding
+   the signal. **This does not clear C2 or C3** — no analog of either exists on RULER, and
+   C2 is what killed the previous layer-27 claim. (d) **layer
    selection — new and cheapest to act on.** Layer 9's readout is degenerate (0.088 nats)
    and fails C4. Re-run `04` without it, and with deeper layers added, before concluding
    anything about AHN.

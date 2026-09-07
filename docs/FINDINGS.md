@@ -7,7 +7,8 @@ hard to reach.
 
 Nothing here is edited. Later entries correct earlier ones rather than replacing them, so
 a claim's history stays visible: read top to bottom and the withdrawals are part of the
-record. The 7 Sep entry is the most recent state of the C1 question.
+record. The 7 Sep J-lens repeat is the most recent state of the C1 question, and it reverses
+the reading of every entry above it.
 
 - [Findings from the 19–20 Aug run](#findings-from-the-1920-aug-run)
 - [Findings from the 20 Aug NIAH retention run](#findings-from-the-20-aug-niah-retention-run)
@@ -18,6 +19,7 @@ record. The 7 Sep entry is the most recent state of the C1 question.
 - [Findings from the 2 Sep per-layer re-analysis — CORRECTED 3 Sep](#findings-from-the-2-sep-per-layer-re-analysis-corrected-3-sep)
 - [Findings from the 4–5 Sep C1 rank correction, construction ladder, and needle-category test](#findings-from-the-45-sep-c1-rank-correction-construction-ladder-and-needle-category-test)
 - [Findings from the 7 Sep RULER cohort run](#findings-from-the-7-sep-ruler-cohort-run)
+- [Findings from the 7 Sep J-lens repeat and placement check](#findings-from-the-7-sep-j-lens-repeat-and-placement-check)
 
 ---
 
@@ -682,3 +684,86 @@ mismatches — wrong basis, wrong readout — pointing the same wrong way. Both 
 only when the numbers were put in a table next to their provenance. `ruler_cohort_stats.py`
 exists so these numbers regenerate from the rows with the basis printed next to every
 figure, instead of being transcribed.
+
+
+## Findings from the 7 Sep J-lens repeat and placement check
+
+Run 025. `04g_ruler_niah_rows.json` (J-lens), `04g_ruler_niah_stats.json`,
+`04h_ruler_needle_position.json`; regenerate with `python ruler_cohort_stats.py` and
+`python ruler_needle_position.py`. This supersedes the logit-lens entry above and is the
+first result in this project where the readout finds an evicted needle well above chance
+in the pre-registered instrument.
+
+**1. Layer 27 reads the evicted RULER needle at rank 17,250 of 151,936.** J-lens,
+pre-registered D-resid basis, bootstrap median CIs over 10,000 resamples, chance 75,968:
+
+| condition | n | median rank | 95% CI | |
+|---|---|---|---|---|
+| RULER, needle evicted | 32 | **17,250** | [11,318, 30,936] | below chance |
+| RULER, needle in-window | 28 | 54,506 | [32,372, 65,194] | below chance |
+| homemade `build_niah_prompt`, evicted | 168 | 111,694 | [105,947, 121,525] | above chance |
+
+84.4% of evicted RULER examples beat chance. The same instrument, on the same box, the
+same day, reads the homemade prompts at 111,694 — worse than chance. The cohort is the
+variable.
+
+**2. The in-window confound was checked and it runs backwards.** RULER varies needle
+depth, and 28 of 60 needles (46.7%) landed inside the 8064-token local window, where
+attention can read them directly without any compression. That was the obvious
+alternative explanation for the layer-27 result, and it is refuted: the **evicted** subset
+reads *better* than the in-window subset, 17,250 against 54,506, a median gap of 37,256
+with a permutation p of 0.0021.
+
+That direction is mechanistically the right one, which is worth stating because it is easy
+to misread as an anomaly. The D-resid basis measures `resid(AHN) − resid(NOWRITE)` — what
+the memory pathway specifically contributes. When the needle is in-window, both runs can
+read it through attention, so the difference between them is small and noisy. When the
+needle is evicted, the memory is the only channel carrying it, so the difference *is* the
+signal. The control behaves as designed.
+
+**3. Retention does not decay across the range measured.** Splitting the evicted subset at
+its median eviction distance: near half (median 2,753 tokens past the boundary) reads
+15,844, far half (median 5,822) reads 17,250, across a full range of 38 to 7,406 tokens.
+Flat. Table 6's exponential fit was already reported as inadequate (R² < 0 at all three
+layers); this says the reason may be that there is no decay to fit over this range, not
+that the fit was mis-specified.
+
+**4. What this does and does not overturn.** It does not reinstate the 2 Sep "layer 27 is
+a working instrument" claim, which was withdrawn on 3 Sep for using the `o_t` basis and
+for a C2 ratio that was pure pair-identity baseline. This is a different cohort, in the
+pre-registered basis, and the C2 objection is untouched — no C2 analog was run here. What
+it does overturn is the reading that the C1 failure is a property of AHN. On the primary
+pre-registered cohort, in the pre-registered basis, the readout finds evicted content well
+above chance at layer 27. The homemade `build_niah_prompt` construction was hiding it.
+Candidate (b) is no longer "weakened"; it is the explanation, at layer 27.
+
+**5. Layers 9 and 18 go the other way, and that asymmetry is now the open question.** On
+RULER they read 137,550 and 139,168 — worse than chance, near the top of the vocabulary
+range, and worse than they read on the homemade prompts. Whatever layer 27 is doing, the
+other two probed layers are not doing it. Layer 9's readout was already known to be
+degenerate (0.088 nats, fails C4 in both bases). Layer 18 has no such excuse.
+
+**6. Caveats that must travel with any use of this.**
+
+- **`lens_validated=false`.** Table 3 checks 2 and 3 still fail. The instrument has not
+  passed its own validation battery, and every row carries the flag.
+- **Single-token target.** Only the gold answer's first token is scored. RULER answers are
+  frequently multi-token, so this is weaker than "the answer was retained".
+- **n=32 evicted examples**, one layer, one cell, one scale.
+- **C1-shaped only.** No C2, C3 or C4 analog exists on RULER. C2 is precisely the control
+  that killed the previous layer-27 claim, so its absence here is not a small gap.
+- **The pre-registration gate still stands.** Expected Tables Table 4 requires C1–C3 to
+  pass on the primary condition before RQ2 or RQ3 is populated. This is a C1-shaped pass
+  on a cohort that did not exist in the repo four days ago; it does not retroactively pass
+  C2 or C3, and the deviation write-up in Methods is still owed.
+- **Not length-matched.** RULER at `16384` is ~15.7K tokens; the homemade evicted rows
+  span distances 64–8192 at shorter totals.
+
+**7. Process note.** Three readings of this cohort were wrong before this one, each caught
+by a check rather than by the code failing. The first compared `o_t` numbers against
+J-lens D-resid numbers and concluded the opposite result. The second ran on the logit lens
+because the J-lens file exists on the Hub under a different name, and silently overwrote
+the J-lens run of record. The third — this one — looked correct until the in-window
+question was asked, and would have been a headline claim resting on 28 needles that were
+never compressed. The cost of each check was minutes; the cost of publishing any of the
+three would not have been.
