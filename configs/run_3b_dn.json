@@ -1,6 +1,6 @@
 {
   "run_name": "run_3b_dn",
-  "model_path": "/home/jupyter-dphs-4ca1/AHN/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-DN",
+  "ckpt_name": "Qwen-2.5-Instruct-3B-AHN-DN",
   "cell": "DeltaNet",
   "scale": "3B",
   "sliding_window": 8064,

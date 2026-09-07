@@ -60,6 +60,7 @@ __all__ = [
     "qa_f1_score", "normalize_answer", "exact_match",
     "bootstrap_ci", "spearman", "fit_exponential_halflife", "variance_decomposition",
     "save_json", "load_json", "RESULTS_DIR", "set_results_dir", "free_cuda",
+    "ckpt_root", "resolve_ckpt", "load_run_config", "CONFIGS_DIR",
 ]
 
 SEED = 20260820
@@ -121,6 +122,71 @@ def free_cuda() -> None:
 
 
 # --------------------------------------------------------------------------------------
+# checkpoint / run-config resolution
+# --------------------------------------------------------------------------------------
+#
+# Checkpoint paths are NOT stored in the run configs. Every notebook has historically
+# been uploaded to a fresh Jupyter box with a different `/home/jupyter-dphs-XXXX`, so an
+# absolute path baked into a config is stale the moment the box is recycled — and the
+# failure surfaces as an unrelated `HFValidationError` from transformers, which falls
+# through to a Hub lookup when the local directory is missing.
+#
+# Instead: configs carry `ckpt_name` (a directory name), and the root comes from the
+# environment, defaulting to `<repo>/merged_ckpt`.
+#
+#     export AHN_CKPT_ROOT=/somewhere/else/merged_ckpt
+
+_MODULE_DIR = os.path.dirname(os.path.abspath(__file__))
+CONFIGS_DIR = os.path.join(_MODULE_DIR, "configs")
+
+
+def ckpt_root() -> str:
+    """Directory holding the merged checkpoints. `AHN_CKPT_ROOT` overrides."""
+    return os.environ.get("AHN_CKPT_ROOT") or os.path.join(_MODULE_DIR, "merged_ckpt")
+
+
+def resolve_ckpt(ckpt_name: str) -> str:
+    """Turn a checkpoint directory name into an absolute, verified local path.
+
+    Raises with the roots that were tried rather than letting transformers reinterpret
+    a missing directory as a Hub repo id.
+    """
+    if os.path.isabs(ckpt_name):
+        path = ckpt_name
+    else:
+        path = os.path.join(ckpt_root(), ckpt_name)
+    if not os.path.isdir(path):
+        available = []
+        root = ckpt_root()
+        if os.path.isdir(root):
+            available = sorted(os.listdir(root))
+        raise FileNotFoundError(
+            f"checkpoint not found: {path}\n"
+            f"  AHN_CKPT_ROOT = {os.environ.get('AHN_CKPT_ROOT', '(unset, using repo default)')}\n"
+            f"  root searched = {root}\n"
+            f"  available     = {available or '(root does not exist)'}\n"
+            f"Set AHN_CKPT_ROOT to the directory holding the merged checkpoints."
+        )
+    return path
+
+
+def load_run_config(name: str) -> Dict[str, Any]:
+    """Load `configs/<name>.json` and resolve its checkpoint to an absolute path.
+
+    Accepts a run name (`run_3b_gdn`), a bare filename, or a path. The returned dict
+    gains a `model_path` key; a config that already pins `model_path` is left alone so
+    one-off overrides still work.
+    """
+    cand = name if name.endswith(".json") else f"{name}.json"
+    path = cand if os.path.exists(cand) else os.path.join(CONFIGS_DIR, os.path.basename(cand))
+    with open(path) as f:
+        cfg = json.load(f)
+    if "model_path" not in cfg:
+        cfg["model_path"] = resolve_ckpt(cfg["ckpt_name"])
+    return cfg
+
+
+# --------------------------------------------------------------------------------------
 # model loading
 # --------------------------------------------------------------------------------------
 
@@ -168,6 +234,15 @@ def load_ahn_model(
     from ahn.transformer.qwen2_ahn import register_customized_qwen2
 
     register_customized_qwen2()
+
+    # A local path that does not exist is reinterpreted by transformers as a Hub repo
+    # id, which fails much later with a confusing HFValidationError. Check it here.
+    # Hub ids ("Qwen/Qwen2.5-3B-Instruct") have exactly one slash and no leading ./ ~ /,
+    # so they still route to the Hub untouched.
+    looks_local = os.path.isabs(model_path) or model_path.startswith(("./", "../", "~")) \
+        or model_path.count("/") > 1
+    if looks_local and not os.path.isdir(os.path.expanduser(model_path)):
+        model_path = resolve_ckpt(os.path.expanduser(model_path))
 
     tok = AutoTokenizer.from_pretrained(model_path)
     model = AutoModelForCausalLM.from_pretrained(

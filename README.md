@@ -910,9 +910,22 @@ Every notebook's bootstrap cell walks up the tree for `ahn_interp.py`, so runnin
 `notebooks/` inside the repo resolves it. Download the JSON at the end.
 
 1. Open the notebook from `notebooks/` in the clone.
-2. Edit the `CFG` cell — model path, cell family, `sliding_window`, `num_attn_sinks`.
-   **`CFG["model_path"]` is hardcoded to whoever last ran the notebook** (three different
-   `/home/jupyter-dphs-*` homes appear across the notebooks); point it at your own.
+2. Edit the `CFG` cell — cell family, `sliding_window`, `num_attn_sinks`. The checkpoint
+   is **not** hardcoded any more: `CFG["model_path"] = ai.resolve_ckpt("<dir name>")`
+   resolves against `$AHN_CKPT_ROOT`, defaulting to `<repo>/merged_ckpt`. If the merged
+   checkpoints live somewhere else on the box, export the root once before starting
+   Jupyter (or set it in the first cell, before `import ahn_interp`):
+
+   ```bash
+   export AHN_CKPT_ROOT=/path/to/merged_ckpt
+   ```
+
+   A missing checkpoint now raises a `FileNotFoundError` naming the root it searched and
+   what it found there, instead of an `HFValidationError` from transformers reinterpreting
+   the dead path as a Hub repo id. The run configs in `configs/` carry `ckpt_name`, not an
+   absolute path, for the same reason — the box's `/home/jupyter-dphs-*` changes on every
+   reset. (`notebooks/AHN_clean.ipynb` is the one exception: it predates `ahn_interp` and
+   still hardcodes `/workspace/...`.)
 3. Run top to bottom. Each notebook ends in an explicit **gate**; if the gate fails, fix
    it before moving on rather than proceeding with a caveat.
 4. Download the `results/<run>/*.json` files.
