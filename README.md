@@ -76,67 +76,6 @@ Sequencing follows Gautam's instruction after the last meeting:
 | 3 cells at 3B → retention curves | **blocked** — GPU_PLAN says do not proceed past a C1 failure until GDN's instrument is fixed; map-stability passing narrows but does not resolve the diagnosis | `configs/run_3b_dn.json`, `run_3b_m2.json` (unrun) |
 | 7B checkpoints, RQ3 correlation | not started (correct) | |
 
-### Progress log
-
-**18 Aug 2026 — Sơn.** Merged Qwen2.5-3B-Instruct + AHN-GatedDeltaNet and got it running
-on an A100-40GB. Built persistent capture hooks across all 36 AHN layers and a NOWRITE
-control hook, and verified hook ordering so NOWRITE fires before capture. Ran a layer
-profile, a 3-needle Δ-readout sweep and a retention-decay sweep over six eviction
-distances; loaded 20 RULER examples at 4K and confirmed AHN activates and NOWRITE zeroes
-on all of them. Separately, fitted a Jacobian lens for layer 18 of the base Qwen2.5-3B in
-a Colab T4 session (the `jlens` package needs `transformers>=5`, which conflicts with the
-repo's `transformers==4.51.0` pin) and saved `J18_qwen25_3b.pt`.
-
-That is real progress on the hardest engineering step — a working merged checkpoint with
-live hooks is most of Stage 1. The measurement built on top of it is not yet valid, for
-the reasons below.
-
-**19–20 Aug 2026 — Hannah.** Ran notebooks 00 → 03 end to end on the shared A100 box.
-Notebook 00 recorded the config of record (window 8064, sinks 128, `use_ahn_router=false`,
-`o_proj` has no bias). Notebook 01 passed all three instrumentation gates. Notebook 02 fit
-a real 500-context J-lens in 1.92 GPU-hours and ran the Table 3 battery. Notebook 03
-produced the project's first task scores on 60 LongBench-E HotpotQA examples. Four bugs
-were found and fixed in `ahn_interp.py` along the way (needle-padding precision, the
-eviction-distance formula, the Gate A residual-capture hook point, and an OOM from
-computing full-sequence logits); one dataset-id fix in notebook 02 (`wikitext` →
-`Salesforce/wikitext`, which recent `datasets` versions require). Detail below.
-
-**20 Aug 2026 — Hannah.** Audited the repo against the proposal and Gautam's instruction
-(`docs/GPU_PLAN_2026-08-20.md`) — no scope drift, everything is on his stated path in his
-stated order. Fixed the blocker that would have crashed `04` on startup (a stray
-`AssertionError` when Table 3 fails, now downgraded to a warning that stamps
-`lens_validated=False` onto every row), switched `05`'s Table 5 to the first-line metric
-fields, and trimmed the eviction-distance sweep from 240 to 210 configs. Ran
-`04_niah_retention.ipynb` on GDN 3B: the control battery **fails** (C4 passes; C1, C2, C3
-do not), the retention curves don't support an exponential fit at any of the three layers,
-and a bootstrap on RQ1's first-line ΔF1 shows the +6.11-point effect does not survive its
-own confidence interval at n=60. Detail below.
-
-**20 Aug 2026 (later) — Hannah + Sơn.** Ran Table 3 check 4 (map stability): fit a second
-J-lens on a disjoint 500-context corpus, compared top-10 overlap against the first map.
-**Passes at all three layers** (0.91 / 0.87 / 0.89, all ≥ the 0.80 bar). This rules out an
-undersampled/unconverged fit as the explanation for the C1 control failure — the lens is
-stable, so whatever is producing the chance-level readout on the full NIAH sweep is not a
-fitting artifact. Separately, Sơn built and ran `04b` (the RQ3 join, `notebooks/0.4b.ipynb`):
-joined the 60 LongBench-E examples from notebook 03 to a memory-readout pass, correlated
-gold-answer-token rank against ΔF1. No significant correlation at any layer (Spearman
-ρ = +0.257 / −0.100 / +0.020 at layers 9/18/27, none surviving Holm correction across the
-three layers). A 1000-context refit of the J-lens was also kicked off, in progress as of
-this writing, as a further robustness check beyond the 500-context stability pass. Detail
-below.
-
-**28–31 Aug 2026 — Sơn.** Took the two failing controls apart on branch
-`son-c2-investigation` (now merged to `main`). For C2: established that the failure is
-word-dependent rather than distance-dependent, that it is present *before* eviction, that
-the plain logit lens shows the same reversal so it is not a J-Lens artifact, and finally
-that the raw `p(needle)/p(distractor)` statistic is dominated by a pair-specific baseline
-readout preference — `mango` beats `banana` by 31–54× regardless of which needle was
-actually stored. Re-ran the whole C2 design baseline-corrected (252 matched observations,
-aggregated to 21 conditions per layer). For C3: rebuilt the control so the needle stays at
-the same token position in both the ordered and shuffled conditions, and reran it as 96
-fully matched pairs. Also fixed the `needle_pos` off-by-four in `ahn_interp.py` and
-regenerated `04_table4_controls.json`. Detail below.
-
 ## Findings
 
 The full findings log lives in **[docs/FINDINGS.md](docs/FINDINGS.md)** -- eleven entries,
@@ -442,21 +381,9 @@ Every notebook's bootstrap cell walks up the tree for `ahn_interp.py`, so runnin
 
 1. Open the notebook from `notebooks/` in the clone.
 2. Edit the `CFG` cell — cell family, `sliding_window`, `num_attn_sinks`. The checkpoint
-   is **not** hardcoded any more: `CFG["model_path"] = ai.resolve_ckpt("<dir name>")`
-   resolves against `$AHN_CKPT_ROOT`, defaulting to `<repo>/merged_ckpt`. If the merged
-   checkpoints live somewhere else on the box, export the root once before starting
-   Jupyter (or set it in the first cell, before `import ahn_interp`):
-
-   ```bash
-   export AHN_CKPT_ROOT=/path/to/merged_ckpt
-   ```
-
-   A missing checkpoint now raises a `FileNotFoundError` naming the root it searched and
-   what it found there, instead of an `HFValidationError` from transformers reinterpreting
-   the dead path as a Hub repo id. The run configs in `configs/` carry `ckpt_name`, not an
-   absolute path, for the same reason — the box's `/home/jupyter-dphs-*` changes on every
-   reset. (`notebooks/AHN_clean.ipynb` is the one exception: it predates `ahn_interp` and
-   still hardcodes `/workspace/...`.)
+   resolves via `ai.resolve_ckpt()` / `$AHN_CKPT_ROOT` — see **Setting up a fresh GPU box**
+   above for how that works and what to do if it can't find one. (`notebooks/AHN_clean.ipynb`
+   is the one exception: it predates `ahn_interp` and still hardcodes `/workspace/...`.)
 3. Run top to bottom. Each notebook ends in an explicit **gate**; if the gate fails, fix
    it before moving on rather than proceeding with a caveat.
 4. Download the `results/<run>/*.json` files.
@@ -524,8 +451,16 @@ resolved.
    18** — their apparent signals survive the permuted map, meaning they are artefacts of
    decoding, not memory — and confirms layer 27, where the signal collapses as it should.
    Net: a small, real, statistically robust memory-specific effect at layer 27 on the
-   primary cohort, an order of magnitude short of "AHN clearly retains the content." (d)
-   **layer
+   primary cohort, an order of magnitude short of "AHN clearly retains the content." **Not
+   content-general, though** — a same-day permutation test on Sơn's independent homemade-set
+   C2 design (Paris/Tokyo/banana/lantern) finds layer 27 significantly **negative** (0.863x,
+   p=0.016), and confirms via 20 independent permutations that this is real, not decoding
+   noise, by the identical standard that verified RULER's positive result. Two
+   independently-verified-real effects, opposite signs, same layer, same checkpoint,
+   different needle content (common words vs. digit sequences) — see "Findings from the 7
+   Sep permutation test." **This is now the open question**, not (a)/(b)/(c)/(d) above: why
+   does layer 27's sign flip with needle content, and is "layer 27 retrieves content" even a
+   coherent claim until that's explained. (d) **layer
    selection — new and cheapest to act on.** Layer 9's readout is degenerate (0.088 nats)
    and fails C4. Re-run `04` without it, and with deeper layers added, before concluding
    anything about AHN.
