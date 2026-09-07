@@ -60,7 +60,7 @@ __all__ = [
     "qa_f1_score", "normalize_answer", "exact_match",
     "bootstrap_ci", "spearman", "fit_exponential_halflife", "variance_decomposition",
     "save_json", "load_json", "RESULTS_DIR", "set_results_dir", "free_cuda",
-    "ckpt_root", "resolve_ckpt", "load_run_config", "CONFIGS_DIR",
+    "ckpt_root", "resolve_ckpt", "load_run_config", "CONFIGS_DIR", "resolve_lens_path",
 ]
 
 SEED = 20260820
@@ -176,6 +176,54 @@ def resolve_ckpt(ckpt_name: str) -> str:
         f"  root searched = {root}\n"
         f"  available     = {available or '(root does not exist)'}\n"
         f"Set AHN_CKPT_ROOT to the directory holding the merged checkpoints."
+    )
+
+
+def resolve_lens_path(path: str) -> str:
+    """Resolve a J-lens .pt path, accepting the Hub's filenames as aliases.
+
+    The repo writes and reads `jlens_qwen25_3b.pt` (notebook 02 saves it under that
+    name). The Hugging Face backup stores the same corpus-A fit as
+    `jlens_qwen25_3b_corpusA.pt`, so a fresh box that restores from the Hub has the file
+    but not the name, and every notebook silently falls back to the logit lens.
+
+    That fallback is not a cosmetic difference. On 7 Sep it swapped the readout on a
+    re-run of notebook 04, overwrote the J-lens run of record with logit-lens rows, and
+    flipped C3 from fail to pass -- a control verdict changing because of a filename.
+    Raising here, with the directory listing attached, is strictly better than a warning
+    nobody reads.
+
+    Tries, in order: the path as given; `<stem>_corpusA<suffix>`; any `*corpusA*.pt` in
+    the same directory.
+    """
+    if os.path.exists(path):
+        return path
+
+    root, base = os.path.dirname(path) or ".", os.path.basename(path)
+    stem, suffix = os.path.splitext(base)
+
+    tried = [path]
+    alias = os.path.join(root, f"{stem}_corpusA{suffix}")
+    tried.append(alias)
+    if os.path.exists(alias):
+        return alias
+
+    if os.path.isdir(root):
+        for name in sorted(os.listdir(root)):
+            if "corpusA" in name and name.endswith(".pt"):
+                return os.path.join(root, name)
+
+    available = sorted(f for f in os.listdir(root) if f.endswith((".pt", ".ckpt"))) \
+        if os.path.isdir(root) else []
+    raise FileNotFoundError(
+        "J-lens not found.\n"
+        "  tried:\n" + "".join(f"    {t}\n" for t in tried) +
+        f"  lens files present in {root}: {available or '(none)'}\n"
+        "Restore it with:\n"
+        "  huggingface-cli download gautam-dphs/ahn-interp-jlens-qwen25-3b "
+        "--local-dir results/run_3b_gdn\n"
+        "The Hub stores corpus A as jlens_qwen25_3b_corpusA.pt; this resolver accepts "
+        "that name, so a plain download is enough."
     )
 
 

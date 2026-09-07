@@ -414,6 +414,18 @@ huggingface-cli login
 huggingface-cli download gautam-dphs/ahn-interp-jlens-qwen25-3b --local-dir results/run_3b_gdn
 ```
 
+The Hub stores corpus A as **`jlens_qwen25_3b_corpusA.pt`**, while the repo writes and
+reads `jlens_qwen25_3b.pt` — the names do not match, so a plain download used to leave
+every notebook silently on the logit lens. `ai.resolve_lens_path()` now accepts the Hub's
+name, so the download above is sufficient; if no lens is found it raises with the
+directory listing rather than falling back. Confirm after loading the model that cell 5
+prints `readout: jlens`, not `logit_lens`.
+
+That fallback is not cosmetic. On 7 Sep it swapped the readout mid-rerun, overwrote the
+J-lens run of record in `04_retention_rows.json` with logit-lens rows, and flipped C3 from
+fail to pass — a control verdict changing because of a filename. The logit-lens rerun is
+kept as `04_*_logitlens_2026-09-07.json`.
+
 Ignorable noise throughout: TensorFlow's cuFFT/cuDNN/cuBLAS *"already registered"* errors
 (TF is dead weight from the `[train]` extra) and `df: ~/.triton/autotune: No such file`.
 
