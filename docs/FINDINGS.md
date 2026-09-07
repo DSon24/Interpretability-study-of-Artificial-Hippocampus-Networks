@@ -7,7 +7,7 @@ hard to reach.
 
 Nothing here is edited. Later entries correct earlier ones rather than replacing them, so
 a claim's history stays visible: read top to bottom and the withdrawals are part of the
-record. The 4-5 Sep entry is the most recent state of the C1 question.
+record. The 7 Sep entry is the most recent state of the C1 question.
 
 - [Findings from the 19–20 Aug run](#findings-from-the-1920-aug-run)
 - [Findings from the 20 Aug NIAH retention run](#findings-from-the-20-aug-niah-retention-run)
@@ -17,6 +17,7 @@ record. The 4-5 Sep entry is the most recent state of the C1 question.
 - [Findings from the 28–31 Aug C2 and C3 investigation](#findings-from-the-2831-aug-c2-and-c3-investigation)
 - [Findings from the 2 Sep per-layer re-analysis — CORRECTED 3 Sep](#findings-from-the-2-sep-per-layer-re-analysis-corrected-3-sep)
 - [Findings from the 4–5 Sep C1 rank correction, construction ladder, and needle-category test](#findings-from-the-45-sep-c1-rank-correction-construction-ladder-and-needle-category-test)
+- [Findings from the 7 Sep RULER cohort run](#findings-from-the-7-sep-ruler-cohort-run)
 
 ---
 
@@ -601,3 +602,83 @@ at scale.
 > but the needle-selection artifact would have shipped silently as "C1 fails, full stop" if
 > the cross-check against the population sweep hadn't been run at all.
 
+
+## Findings from the 7 Sep RULER cohort run
+
+Run 024. `results/run_3b_gdn/04g_ruler_niah_rows.json` (180 rows),
+`04g_ruler_niah_stats.json`; regenerate with `python ruler_cohort_stats.py`. This closes
+DIVERGENCE 2 from the 3 Sep pre-registration audit and is the first evidence that moves
+candidate (b) since 21 Aug.
+
+**1. The real RULER cohort had never been run, and `load_ruler` had zero call sites.**
+Expected Tables row 1 of Table 2 makes RULER NIAH n=60 the *primary* RQ2 cohort — "ground
+truth y\* is known by construction" is the proposal's number-one reason-to-believe — and
+every NIAH number in this project to date came from the homemade `build_niah_prompt`
+instead. `ai.load_ruler()` had existed since notebook 04's first sweep and was never
+called by anything.
+
+**2. `config="8192"` skipped 60/60 examples, and the reason matters beyond this run.**
+The first attempt used RULER's `"8192"` bucket on the reasoning that
+`sliding_window (8064) + num_attn_sinks (128) = 8192`, so it must sit exactly at the
+activation threshold. Measured, that bucket tokenizes to a median of **7,881** tokens
+under Qwen — *under* the threshold, so AHN never activated and every example was skipped.
+`simonjegou/ruler`'s length buckets were built with a different tokenizer, and Qwen's
+151,936-token vocabulary compresses English into fewer tokens than whatever built them.
+Only `4096`/`8192`/`16384` exist as configs. `16384` measures 15,678–15,684 tokens and
+activates for 60/60. **Any future length-matched comparison against a published benchmark
+has to re-measure the length in our own tokenizer rather than trusting the bucket name.**
+
+**3. Prompt construction changes the layer-27 readout from worse-than-chance to
+better-than-chance.** Same box, same day, same readout (logit lens — see caveat 5), C1
+residual-delta basis, bootstrap median CIs over 10,000 resamples:
+
+| layer | homemade evicted (n=168) | RULER (n=60) |
+|---|---|---|
+| 9 | 110,956 [89,767, 118,623] — above chance | 77,528 [65,652, 91,123] — spans chance |
+| 18 | 68,518 [56,571, 77,612] — spans chance | 70,693 [64,498, 80,703] — spans chance |
+| 27 | 89,805 [79,992, 99,068] — above chance | **43,139 [27,536, 59,226] — below chance** |
+
+Chance is 75,968; lower rank is better, so "below chance" is the readout succeeding. At
+layer 27 the two intervals do not overlap. At layer 9 the RULER cohort is also markedly
+better. Layer 18 is unchanged.
+
+**4. This is the strongest evidence yet for candidate (b), and it partly rehabilitates a
+withdrawn claim.** The 2 Sep "layer 27 is a working instrument" claim was withdrawn on 3
+Sep on two grounds: wrong readout basis, and a C2 ratio that turned out to be pure
+pair-identity baseline. Nothing here reinstates it — this is a different cohort in a
+different basis and the C2 objection is untouched. What it does say is that the *cohort*
+was suppressing the layer-27 signal, not only the basis. Candidate (b) was previously
+described as "weakened — in-window needles read at rank ~800, so the prompt is not fatally
+malformed". That reasoning is now insufficient: a prompt can be well-formed and still
+place the target where the readout cannot reach it. The specific difference remains the
+one flagged when this was wired: `build_niah_prompt` ends at `"What was the special
+word?"` with nothing after it, `load_ruler` appends RULER's own `answer_prefix`, and the
+readout is taken at `pos=-1` in both.
+
+**5. Five caveats, none of them optional when this is quoted.**
+
+- **Logit lens, not the J-lens.** `jlens_qwen25_3b.pt` is gitignored and was not
+  re-downloaded after the box reset, so notebook 04 took its documented fallback. Both
+  cohorts here are logit-lens, so the *comparison* is sound, but the absolute numbers are
+  not the pre-registered instrument — the J-lens beats the logit lens by 8–204× on
+  isolated known-fact prompts (Finding 4, 19–20 Aug). **The layer-27 result must be
+  re-run with the J-lens before it goes anywhere near the paper.**
+- **Not length-matched.** RULER at `16384` is ~15.7K tokens; the homemade evicted rows
+  span distances 64–8192. Eviction distance is a known driver of rank, so cohort and
+  length are confounded in this comparison.
+- **Single-token target.** Only the gold answer's first token is scored, the same
+  convention as the RQ3 join. RULER answers are frequently multi-token, so this measures
+  something weaker than "the answer was retained".
+- **C1-shaped only.** RULER supplies one prompt and one gold answer per example — no
+  distractor pair, no clean way to shuffle just the needle region. There is no C2, C3 or
+  C4 analog here and none should be claimed.
+- **Three layers, no multiplicity correction across them**, and `lens_validated=false`
+  travels on every row.
+
+**6. Process note — two errors caught by the writeup, not by the code.** The first read of
+this run compared RULER's `o_t` numbers against the homemade *J-lens* D-resid numbers and
+concluded the opposite result ("decisive against candidate (b)"). Two separate
+mismatches — wrong basis, wrong readout — pointing the same wrong way. Both were caught
+only when the numbers were put in a table next to their provenance. `ruler_cohort_stats.py`
+exists so these numbers regenerate from the rows with the basis printed next to every
+figure, instead of being transcribed.
