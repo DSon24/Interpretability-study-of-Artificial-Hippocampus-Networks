@@ -41,8 +41,16 @@ one used the wrong basis and the same C2 confound that's now controlled for here
 Full derivation: [7 Sep J-lens repeat](FINDINGS.md#findings-from-the-7-sep-j-lens-repeat-and-placement-check),
 [7 Sep control battery](FINDINGS.md#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery).
 
-**The ask:** accept the homemade `build_niah_prompt` construction as the source of the
-original C1/C2/C3 failure, and re-scope RQ2 around the RULER cohort going forward?
+**Pick one:**
+
+| | Option | What it means |
+|---|---|---|
+| **A** | **Accept and re-scope.** RULER becomes the primary cohort for Table 4/6/RQ2; the homemade construction moves to an appendix as "a construction that hides the effect." RQ2 reframes from "measure the half-life of retention" to "detect and quantify a memory-specific signal against the pre-registered bar." Scope narrows to layer 27; layers 9 and 18 are reported as a negative layer-selection result, not pooled into a retention number. | Smaller, more defensible RQ2 claim. Unblocks DN/M2 merges, Table 7, the 7B call. |
+| **B** | **Report both, don't formally re-scope.** Add the RULER result as a major finding alongside the existing Table 4/6, but keep `build_niah_prompt` as the pre-registered primary cohort and RQ2's original wording. | Preserves the original RQ2 ambition; leaves the "which cohort is ground truth" question for reviewers rather than resolving it here. |
+| **C** | **Not yet — run the length-matched control first.** RULER's evicted rows average ~15.7K tokens; the homemade sweep spans distances 64–8,192 at shorter totals. Match the lengths before treating cohort as the explanatory variable. | Delays Decision 1 by one more GPU run (~1 GPU-h); everything gated on it (DN/M2, Table 7, 7B) stays paused a few more days. |
+| **D** | **Reject — 1.076x/digit is too small to count as evidence for (b).** Keep the standing "C1/C2/C3 fail" verdict; pursue candidate (c) (recency mechanism) or write RQ2 up as a null result. | Treats run 026 as noise despite p<0.0001. Fastest to a paper, weakest claim about AHN. |
+
+**Answer:** Decision 1 — _____
 
 ---
 
@@ -56,10 +64,16 @@ Calling it "C2: FAIL" reads identically to the 20 Aug result (median ratio 1.00,
 noise) — that erases a real finding. Rounding it toward "pass" is the mistake this project
 has already made twice (2 Sep, and run 025 four days ago). Neither default is right.
 
-**The ask:** pick one —
-1. Report as a stated pre-registration deviation, with the real number and why it's reported anyway.
-2. Add a third category to Table 4 — "significant, sub-bar" — distinct from "fails, at chance."
-3. Hold the 10x line as written; C2 fails, full stop, regardless of the p-value.
+**Pick one:**
+
+| | Option | What it means |
+|---|---|---|
+| **A** | **Stated deviation.** Table 4 still reads "C2: FAIL" against the pre-registered bar, but Methods explicitly reports the real effect (1.076x/digit, CI [1.054, 1.098], p<0.0001) and states why it's reported despite failing the bar. | Preserves the clean pre-registered pass/fail table; puts the nuance in prose where a careful reader finds it. |
+| **B** | **New table category.** Table 4 gains a third verdict — "significant, sub-threshold" — distinct from both "fails, at chance" (the 20 Aug result) and "passes." | Bakes the distinction into the table itself, visible without reading Methods; requires re-deriving every existing C1–C4 verdict against the new three-way schema, not just this one. |
+| **C** | **Hold the line.** Table 4 reads "C2: FAIL," full stop. The effect size and p-value go in an appendix or footnote for readers who want them; the headline verdict does not change regardless. | Most conservative; risks a reviewer who reads only Table 4 concluding "no effect" when one was detected. |
+| **D** | **Move it out of the confirmatory battery.** Exclude this result from Table 4 entirely; report it only as a separate exploratory analysis, on the grounds that Table 4's value is a clean binary battery and a graded effect doesn't belong in it. | Keeps Table 4 uncontaminated; demotes a p<0.0001 result to an appendix, which is a substantive framing choice of its own. |
+
+**Answer:** Decision 2 — _____
 
 ---
 
