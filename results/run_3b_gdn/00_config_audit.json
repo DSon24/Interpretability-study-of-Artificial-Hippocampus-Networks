@@ -1,5 +1,5 @@
 {
-  "model_path": "/home/jupyter-dphs-4ca1/AHN/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
+  "model_path": "/home/jupyter-dphs-a263/Interpretability-study-of-Artificial-Hippocampus-Networks/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
   "ahn_implementation": "GatedDeltaNet",
   "n_layers": 36,
   "n_ahn_layers": 36,
@@ -21,7 +21,7 @@
     "num_attn_sinks=128: the first 128 tokens are never compressed and stay losslessly visible to attention. Any needle placed inside that prefix is NOT evicted, whatever the sliding window is. Place needles after it (build_niah_prompt does this)."
   ],
   "cfg": {
-    "model_path": "/home/jupyter-dphs-4ca1/AHN/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
+    "model_path": "/home/jupyter-dphs-a263/Interpretability-study-of-Artificial-Hippocampus-Networks/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
     "cell": "GatedDeltaNet",
     "scale": "3B",
     "sliding_window": 8064,
