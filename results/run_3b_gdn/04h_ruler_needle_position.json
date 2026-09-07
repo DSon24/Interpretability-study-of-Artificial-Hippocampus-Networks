@@ -1,0 +1,629 @@
+{
+  "ruler_cfg": {
+    "config": "16384",
+    "split": "test",
+    "n": 60,
+    "seed": 20260820
+  },
+  "sliding_window": 8064,
+  "num_attn_sinks": 128,
+  "chance_rank": 75968,
+  "counts": {
+    "in_window": 28,
+    "evicted": 32
+  },
+  "layer27_rank_by_verdict": {
+    "in_window": {
+      "n": 28,
+      "median_rank": 54505.5,
+      "frac_beating_chance": 0.7142857142857143
+    },
+    "evicted": {
+      "n": 32,
+      "median_rank": 17250.0,
+      "frac_beating_chance": 0.84375
+    }
+  },
+  "per_example": [
+    {
+      "example": 0,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 8920,
+      "eviction_distance": -1306,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 1,
+      "n_tokens": 15684,
+      "window_start": 7620,
+      "needle_pos": 12162,
+      "eviction_distance": -4542,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 2,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 3784,
+      "eviction_distance": 3830,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 3,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 14680,
+      "eviction_distance": -7066,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 4,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 14680,
+      "eviction_distance": -7066,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 5,
+      "n_tokens": 15681,
+      "window_start": 7617,
+      "needle_pos": 13625,
+      "eviction_distance": -6008,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 6,
+      "n_tokens": 15681,
+      "window_start": 7617,
+      "needle_pos": 13217,
+      "eviction_distance": -5600,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 7,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 2776,
+      "eviction_distance": 4838,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 8,
+      "n_tokens": 15684,
+      "window_start": 7620,
+      "needle_pos": 11178,
+      "eviction_distance": -3558,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 9,
+      "n_tokens": 15681,
+      "window_start": 7617,
+      "needle_pos": 12329,
+      "eviction_distance": -4712,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 10,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 15400,
+      "eviction_distance": -7786,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 11,
+      "n_tokens": 15675,
+      "window_start": 7611,
+      "needle_pos": 14991,
+      "eviction_distance": -7380,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 12,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 4000,
+      "eviction_distance": 3614,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 13,
+      "n_tokens": 15675,
+      "window_start": 7611,
+      "needle_pos": 12039,
+      "eviction_distance": -4428,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 14,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 7576,
+      "eviction_distance": 38,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 15,
+      "n_tokens": 15675,
+      "window_start": 7611,
+      "needle_pos": 13959,
+      "eviction_distance": -6348,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 16,
+      "n_tokens": 15675,
+      "window_start": 7611,
+      "needle_pos": 1719,
+      "eviction_distance": 5892,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 17,
+      "n_tokens": 15675,
+      "window_start": 7611,
+      "needle_pos": 13527,
+      "eviction_distance": -5916,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 18,
+      "n_tokens": 15687,
+      "window_start": 7623,
+      "needle_pos": 14947,
+      "eviction_distance": -7324,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 19,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 7696,
+      "eviction_distance": -82,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 20,
+      "n_tokens": 15681,
+      "window_start": 7617,
+      "needle_pos": 10793,
+      "eviction_distance": -3176,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 21,
+      "n_tokens": 15684,
+      "window_start": 7620,
+      "needle_pos": 5562,
+      "eviction_distance": 2058,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 22,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 14488,
+      "eviction_distance": -6874,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 23,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 208,
+      "eviction_distance": 7406,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 24,
+      "n_tokens": 15675,
+      "window_start": 7611,
+      "needle_pos": 5655,
+      "eviction_distance": 1956,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 25,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 1768,
+      "eviction_distance": 5846,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 26,
+      "n_tokens": 15681,
+      "window_start": 7617,
+      "needle_pos": 5297,
+      "eviction_distance": 2320,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 27,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 5992,
+      "eviction_distance": 1622,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 28,
+      "n_tokens": 15681,
+      "window_start": 7617,
+      "needle_pos": 2345,
+      "eviction_distance": 5272,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 29,
+      "n_tokens": 15684,
+      "window_start": 7620,
+      "needle_pos": 8730,
+      "eviction_distance": -1110,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 30,
+      "n_tokens": 15681,
+      "window_start": 7617,
+      "needle_pos": 1361,
+      "eviction_distance": 6256,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 31,
+      "n_tokens": 15687,
+      "window_start": 7623,
+      "needle_pos": 8371,
+      "eviction_distance": -748,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 32,
+      "n_tokens": 15687,
+      "window_start": 7623,
+      "needle_pos": 4699,
+      "eviction_distance": 2924,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 33,
+      "n_tokens": 15684,
+      "window_start": 7620,
+      "needle_pos": 4530,
+      "eviction_distance": 3090,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 34,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 1888,
+      "eviction_distance": 5726,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 35,
+      "n_tokens": 15681,
+      "window_start": 7617,
+      "needle_pos": 1265,
+      "eviction_distance": 6352,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 36,
+      "n_tokens": 15687,
+      "window_start": 7623,
+      "needle_pos": 4123,
+      "eviction_distance": 3500,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 37,
+      "n_tokens": 15684,
+      "window_start": 7620,
+      "needle_pos": 5274,
+      "eviction_distance": 2346,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 38,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 9352,
+      "eviction_distance": -1738,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 39,
+      "n_tokens": 15681,
+      "window_start": 7617,
+      "needle_pos": 11201,
+      "eviction_distance": -3584,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 40,
+      "n_tokens": 15675,
+      "window_start": 7611,
+      "needle_pos": 3831,
+      "eviction_distance": 3780,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 41,
+      "n_tokens": 15681,
+      "window_start": 7617,
+      "needle_pos": 1457,
+      "eviction_distance": 6160,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 42,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 1264,
+      "eviction_distance": 6350,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 43,
+      "n_tokens": 15684,
+      "window_start": 7620,
+      "needle_pos": 3906,
+      "eviction_distance": 3714,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 44,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 4600,
+      "eviction_distance": 3014,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 45,
+      "n_tokens": 15681,
+      "window_start": 7617,
+      "needle_pos": 5801,
+      "eviction_distance": 1816,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 46,
+      "n_tokens": 15681,
+      "window_start": 7617,
+      "needle_pos": 14249,
+      "eviction_distance": -6632,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 47,
+      "n_tokens": 15684,
+      "window_start": 7620,
+      "needle_pos": 10338,
+      "eviction_distance": -2718,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 48,
+      "n_tokens": 15684,
+      "window_start": 7620,
+      "needle_pos": 7746,
+      "eviction_distance": -126,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 49,
+      "n_tokens": 15681,
+      "window_start": 7617,
+      "needle_pos": 3257,
+      "eviction_distance": 4360,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 50,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 1816,
+      "eviction_distance": 5798,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 51,
+      "n_tokens": 15684,
+      "window_start": 7620,
+      "needle_pos": 1842,
+      "eviction_distance": 5778,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 52,
+      "n_tokens": 15684,
+      "window_start": 7620,
+      "needle_pos": 3282,
+      "eviction_distance": 4338,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 53,
+      "n_tokens": 15681,
+      "window_start": 7617,
+      "needle_pos": 9113,
+      "eviction_distance": -1496,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 54,
+      "n_tokens": 15681,
+      "window_start": 7617,
+      "needle_pos": 13385,
+      "eviction_distance": -5768,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 55,
+      "n_tokens": 15675,
+      "window_start": 7611,
+      "needle_pos": 231,
+      "eviction_distance": 7380,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 56,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 3328,
+      "eviction_distance": 4286,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    },
+    {
+      "example": 57,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 13624,
+      "eviction_distance": -6010,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 58,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 14896,
+      "eviction_distance": -7282,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "in_window"
+    },
+    {
+      "example": 59,
+      "n_tokens": 15678,
+      "window_start": 7614,
+      "needle_pos": 5032,
+      "eviction_distance": 2582,
+      "answer_found": true,
+      "occurrences": 1,
+      "verdict": "evicted"
+    }
+  ]
+}
