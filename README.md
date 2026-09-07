@@ -56,25 +56,20 @@ Sequencing follows Gautam's instruction after the last meeting:
 > curves, and only after that move to the 7B checkpoints and RQ3 correlation with task
 > performance."
 
-| Step | State | Where |
-|---|---|---|
-| One 3B checkpoint running | **done** — Qwen2.5-3B + AHN-GDN merged, A100-40GB | Sơn, 18 Aug |
-| Hooks fire on the AHN module, NOWRITE zeroes the capture | **done** | `notebooks/pilot/` |
-| Hook output verified to be the memory's residual-stream contribution | **done** — Gate A passes: `resid(AHN) − resid(NOWRITE) = o_proj(ahn_raw)` | `results/run_3b_gdn/01_instrumentation_gates.json` |
-| Reproduce the published NOWRITE result (38–42% changed answers) | **done, with a metric correction** — 33.3% changed (first-line), ΔF1 **+6.1 pts** | `results/run_3b_gdn/03_nowrite_reproduction.json` |
-| J-lens fitted for Qwen2.5-3B | **done, map converged** — 500 contexts, layers 9/18/27, 1.92 GPU-h; **Table 3 check 4 (map stability) now passes** (top-10 overlap 0.91/0.87/0.89 across a disjoint second corpus); checks 2 and 3 still fail | `results/run_3b_gdn/02_table3_jlens_validation.json` |
-| NIAH retention with pre-eviction / NOWRITE controls | **done — control battery fails.** C4 passes, **C1, C2, C3 all fail**; readout is at chance | `results/run_3b_gdn/04_table4_controls.json` |
-| RULER NIAH n=60 — the *primary* RQ2 cohort, with C2/C3 | **done 7 Sep, corrected twice.** The first pass scored a space token (all 60 answers are 7-digit numbers whose first BPE token is a shared leading space); rebuilt to score the full 7-digit sequence. C2, cross-example baseline-corrected: layer 27 excludes the null (1.076x per digit, CI [1.054, 1.098], p<0.0001) but stays well under the pre-registered 10x bar. C3-lens **disqualifies layers 9 and 18** (signal survives a permuted map — decoding artefact) and **confirms layer 27** (signal collapses, as it should) | `04i_ruler_controls_stats.json` |
-| Cross-check against the homemade-cohort C2 (Sơn's design) | **done 7 Sep — layer 27's sign is needle-content-dependent, not resolved.** Sơn's own multi-control test on Paris/Tokyo/banana/lantern finds layer 27 significantly NEGATIVE (0.863x, p=0.016); a 20-permutation test confirms this is real, not decoding noise — the real lens sits below the entire null range at layers 9 and 27. RULER's positive layer 27 is separately verified real. Two real, opposite-signed effects, same layer, same checkpoint, different needle content | `04k_c2_multicontrol_permutation_stats.json` |
-| C2 follow-up — is the distractor control measuring anything? | **done, and it reframes C2** — the raw ratio is confounded by pair identity; after baseline correction no layer shows a memory-specific effect | `notebooks/04-C2-debug.ipynb`, Sơn, 28–31 Aug |
-| C3 follow-up — corrected shuffled-context rerun | **done** — needle held at a fixed token position; 96 matched rows. C3 does **not** give the expected order-sensitivity in either direction | `notebooks/04_niah_C3_analyze.ipynb`, Sơn, 29 Aug |
-| Per-layer recomputation of the control battery | **done, no GPU** — layer 9's readout is degenerate and fails C4. The 2 Sep "layer 27 works" claim is **withdrawn**: wrong readout basis, and its C2 ratio vanishes under baseline correction | `04c_per_layer_controls.json`, `04d_c2_baseline_corrected.json`, 2–3 Sep |
-| C1 rank correction + construction ladder + needle-category test | **done, reframes C1** — layers 18/27 show a real, Holm-significant needle-identity effect (12 place names vs. 12 common nouns); the pooled "C1 fails" verdict was an artifact of the original 4-needle sample, not evidence of no retention | `04c1_rank_baseline.json`, `06_construction_ladder.json`, `04f_needle_category_stats.json`, 4–5 Sep |
-| Retention curves (Table 6) | **run, not usable** — exponential fit inadequate at all three layers (R² < 0); nonparametric half-distance ≈ 11 tokens everywhere | `results/run_3b_gdn/05_table6_retention_summary.json` |
-| RQ1 on LongBench-E HotpotQA (Table 5) | **done** — pooled first-line ΔF1 +6.11 pts, but **95% CI [−1.85, +14.42] spans zero** | `results/run_3b_gdn/05_table5_rq1.json` |
-| RQ3 join (`04b`) | **built and run by Sơn** — no significant correlation between memory rank and ΔF1 at any of layers 9/18/27, before or after Holm correction; **result is provisional**, inherits the same C1 chance-level readout | `results/run_3b_gdn/04b_joined_retention_task.json` |
-| 3 cells at 3B → retention curves | **blocked** — GPU_PLAN says do not proceed past a C1 failure until GDN's instrument is fixed; map-stability passing narrows but does not resolve the diagnosis | `configs/run_3b_dn.json`, `run_3b_m2.json` (unrun) |
-| 7B checkpoints, RQ3 correlation | not started (correct) | |
+| Step | State |
+|---|---|
+| One 3B checkpoint running | **done** — Qwen2.5-3B + AHN-GDN merged, A100-40GB — Sơn, 18 Aug |
+| Hooks fire, NOWRITE zeroes the capture | **done** |
+| Hook output = memory's residual-stream contribution | **done** — Gate A passes — [19–20 Aug Finding 1](docs/FINDINGS.md#findings-from-the-1920-aug-run) |
+| Reproduce published NOWRITE result (38–42% changed) | **done, metric-corrected** — 33.3% changed, ΔF1 +6.1 pts — [19–20 Aug Finding 5](docs/FINDINGS.md#findings-from-the-1920-aug-run) |
+| J-lens fitted, Table 3 validation | **done, map converged** (1.92 GPU-h, map-stability passes); 2 of 5 checks fail — [19–20 Aug Findings 2–4](docs/FINDINGS.md#findings-from-the-1920-aug-run), [map-stability check](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
+| NIAH retention + controls, homemade cohort | **done — control battery fails** (C1/C2/C3), then reframed twice: C2 was a pair-identity confound, C1's pooled failure was a 4-needle sampling artifact — [20 Aug run](docs/FINDINGS.md#findings-from-the-20-aug-niah-retention-run), [28–31 Aug C2/C3](docs/FINDINGS.md#findings-from-the-2831-aug-c2-and-c3-investigation), [2–3 Sep correction](docs/FINDINGS.md#findings-from-the-2-sep-per-layer-re-analysis-corrected-3-sep), [4–5 Sep needle-category test](docs/FINDINGS.md#findings-from-the-45-sep-c1-rank-correction-construction-ladder-and-needle-category-test) |
+| NIAH retention on the primary RULER cohort | **done 7 Sep — real effect at layer 27, but needle-content-dependent.** C2 excludes the null, C3-lens verifies it real; the same layer gives a real, opposite-signed effect on the homemade word set — [7 Sep control battery](docs/FINDINGS.md#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery), [7 Sep permutation test](docs/FINDINGS.md#findings-from-the-7-sep-permutation-test-layer-27s-sign-is-needle-content-dependent) |
+| Retention curves (Table 6) | **run, not usable** — exponential fit inadequate at all three layers |
+| RQ1 on LongBench-E HotpotQA (Table 5) | **done** — ΔF1 +6.11 pts, **95% CI spans zero** |
+| RQ3 join (`04b`) | **done, by Sơn** — no significant correlation, provisional — [map-stability + RQ3 join](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
+| 3 cells at 3B → retention curves | **blocked** on the C1 diagnosis — `configs/run_3b_dn.json`, `run_3b_m2.json` (unrun) |
+| 7B checkpoints, RQ3 correlation | not started (correct) |
 
 ## Findings
 
