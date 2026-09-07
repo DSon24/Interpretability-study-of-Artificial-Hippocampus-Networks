@@ -54,6 +54,24 @@ Full derivation: [7 Sep J-lens repeat](FINDINGS.md#findings-from-the-7-sep-j-len
 
 ---
 
+### New since this morning: layer 27's sign is not settled even within RULER's own story
+
+Sơn independently ran a C2 analysis on the *original* 4-needle homemade set (Paris,
+Tokyo, banana, lantern) and found layer 27 significantly **negative** (0.863x [0.768,
+0.969], p=0.016) — the opposite sign from RULER's positive 1.672x above. A 20-permutation
+test confirms his result is real, not decoding noise (same standard applied to RULER's
+result): the real lens sits below all 20 independent permutations at layer 27.
+
+**This does not undermine RULER's result — both are independently verified real.** It
+means layer 27's effect flips sign between common-word needles and digit-sequence
+needles. Whatever candidate (b) turns out to be, "layer 27 retrieves content" is not yet
+a content-general claim, and the packet's Option A framing (re-scope RQ2 around RULER)
+should be read as "RULER's construction, specifically" rather than "layer 27, generally,"
+until this is understood. Full derivation:
+[7 Sep permutation test](FINDINGS.md#findings-from-the-7-sep-permutation-test-layer-27s-sign-is-needle-content-dependent).
+
+---
+
 ## Decision 2: how does a real-but-sub-bar effect get written up?
 
 Expected Tables' C2 criterion is binary — pass at 10x, fail below it — and the

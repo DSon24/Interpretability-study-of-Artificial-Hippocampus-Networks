@@ -7,9 +7,9 @@ hard to reach.
 
 Nothing here is edited. Later entries correct earlier ones rather than replacing them, so
 a claim's history stays visible: read top to bottom and the withdrawals are part of the
-record. The 7 Sep control-battery entry is the most recent state of the C1 question, and it
-withdraws the specific numbers in the entry immediately above it while confirming its
-direction at a smaller magnitude.
+record. The 7 Sep permutation-test entry is the most recent state of the C1 question. It does not
+withdraw the entry above it -- both stand, and now disagree with each other, verified real
+on both sides.
 
 - [Findings from the 19–20 Aug run](#findings-from-the-1920-aug-run)
 - [Findings from the 20 Aug NIAH retention run](#findings-from-the-20-aug-niah-retention-run)
@@ -22,6 +22,7 @@ direction at a smaller magnitude.
 - [Findings from the 7 Sep RULER cohort run](#findings-from-the-7-sep-ruler-cohort-run)
 - [Findings from the 7 Sep J-lens repeat and placement check](#findings-from-the-7-sep-j-lens-repeat-and-placement-check)
 - [Findings from the 7 Sep target-scoring bug and the RULER control battery](#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery)
+- [Findings from the 7 Sep permutation test: layer 27's sign is needle-content-dependent](#findings-from-the-7-sep-permutation-test-layer-27s-sign-is-needle-content-dependent)
 
 ---
 
@@ -844,3 +845,80 @@ planted 50x effect reported as 2500x on synthetic data. Neither would have been 
 from the real RULER numbers alone — a 1.076x-per-digit effect does not look obviously
 wrong the way a space-token rank does. The synthetic-data check is now load-bearing for
 any future control on this cohort, not optional scaffolding.
+
+
+## Findings from the 7 Sep permutation test: layer 27's sign is needle-content-dependent
+
+Sơn told Gautam in Slack: *"I've finished tracing the experiment like you asked — the
+signal is still there... the failures are coming from the control itself, not the code."*
+His notebook (`04-C2-debug.ipynb`) actually contains two conclusions that disagree with
+each other and with that message. This entry resolves which one the data supports, and it
+is neither "no signal" nor Sơn's Slack claim — it is a third thing.
+
+**1. Sơn's own best-designed test already said C2 fails.** Cells 105–110 build a
+multi-control baseline: each target's own readout probability against the mean of 4
+unrelated single-token controls (`river`, `chair`, `window`, `garden`), matched by distance
+and filler, t-tested across 21 conditions per layer. Result: layer 9 significantly
+**negative** (0.921x [0.860, 0.985], p=0.020), layer 18 null (1.057x [0.942, 1.185],
+p=0.329), layer 27 significantly **negative** (0.863x [0.768, 0.969], p=0.016). His own
+written conclusion: *"the expected positive retention-specific effect is therefore not
+reliably supported... C2 debugging is stopped here."*
+
+**2. The Slack claim comes from a different, uncontrolled analysis two cells later.** A
+single example — Paris, layer 27, rank 6,703 — plus a WRITE-vs-NOWRITE check, concluding
+*"the signal does not disappear... memory retains content."* This does not control for
+Paris being a generically favoured completion independent of what is stored — the exact
+confound identified on 28 Aug (*"mango preferred regardless of what was actually
+stored"*). In his own multi-control table, Paris specifically is **−0.204 log-units
+(0.82x) at layer 27** — negative, the same needle and layer used as the positive example.
+
+**3. A single permuted lens was ambiguous in the wrong direction.** Re-running his exact
+168-forward-pass grid, decoding through both the real J-lens and one row-permuted lens
+(the same C3-lens check applied to RULER): layer 27 real = 0.863x (replicates his number),
+shuffled = **1.118x [1.070, 1.168], p<0.0001** — significant, tighter, and the opposite
+sign. A genuine artifact should revert toward the null under permutation, the way RULER's
+C3-lens does (real logP −113.4 → shuffled −152.9, worse, as expected). A permutation that
+flips sign and gets *more* confident is not that pattern, and one arbitrary permutation
+cannot distinguish a real structural artifact from an unlucky draw on n=21 conditions.
+
+**4. Twenty independent permutations settle it: the negative effect is real, not an
+artifact of decoding structure.** At layer 27, the real-lens fold (0.863x) is more extreme
+than **all 20** independently-seeded permutations (null range [0.911, 1.105]); permutation
+p = 0.048 — the best resolution 20 draws allow (1/21), since real ranks most extreme of 21
+values. Layer 9 shows the identical pattern: real (0.921x) below the entire null range
+[0.962, 1.025], same p = 0.048. Layer 18 stays null (real at the 90th percentile of the
+permutation distribution, not extreme). If either negative effect were an artifact of
+"any" linear readout rather than the fitted J-lens specifically, the real value would land
+inside the permutation distribution, not consistently below all of it, at two independent
+layers.
+
+**5. Two independently-verified-real effects, opposite signs, same layer, same
+checkpoint.** RULER's layer 27 (7 Sep control battery, above): 1.672x [1.446, 1.929],
+p<0.0001, verified real via its own C3-lens collapse. Sơn's homemade-cohort layer 27:
+0.863x [0.768, 0.969], p=0.016, now verified real via 20-permutation test. Neither is a
+decoding artifact. The needle content differs completely: common English words and place
+names (Sơn's set) versus 7-digit numeric sequences (RULER). **Layer 27's sign depends on
+what kind of content is stored.** This is a real, open question, not a discrepancy to
+average away or a tiebreak between cohorts.
+
+**6. What this changes and does not change.** It does not change RULER's status as a
+verified result — it stands. It does change what "layer 27 works" can mean: not a
+content-general memory readout, but one whose direction flips with needle type. Whatever
+mechanism produces a positive effect for digit sequences is actively suppressing
+retrieval for common words at the same layer, in the same checkpoint. That is a more
+specific and more interesting claim than either "AHN retains content" or "the control is
+broken," and it is not yet explained by anything in the pre-registration.
+
+**7. Precision caveat.** Twenty permutations cap the achievable p-value at 1/21 ≈ 0.048;
+the test shows real is more extreme than every permutation drawn, not by how much. A
+99-permutation repeat would resolve this to 1/100 if a tighter number is needed before
+this goes in front of a reviewer — the qualitative conclusion (real ranks most extreme at
+two independent layers) does not depend on it.
+
+**8. Process note.** This is the fourth self-caught correction on C2 in three days (the
+space-token target, the squared fold, the single-arbitrary-shuffle ambiguity, and now the
+direction of this finding itself — an initial hope that the negative effect would turn out
+to be an artifact was wrong). Each was caught by testing the statistic against synthetic
+null and planted-effect data before trusting real output, and by refusing to accept a
+result from a single run — one example, one pair, one permutation — as sufficient on its
+own.
