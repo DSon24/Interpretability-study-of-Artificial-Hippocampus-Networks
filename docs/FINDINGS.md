@@ -7,9 +7,8 @@ hard to reach.
 
 Nothing here is edited. Later entries correct earlier ones rather than replacing them, so
 a claim's history stays visible: read top to bottom and the withdrawals are part of the
-record. The 7 Sep permutation-test entry is the most recent state of the C1 question. It does not
-withdraw the entry above it -- both stand, and now disagree with each other, verified real
-on both sides.
+record. The 8 Sep content-swap entry is the most recent state of the C1 question, and it withdraws
+the 7 Sep permutation-test entry's central claim.
 
 - [Findings from the 19–20 Aug run](#findings-from-the-1920-aug-run)
 - [Findings from the 20 Aug NIAH retention run](#findings-from-the-20-aug-niah-retention-run)
@@ -22,7 +21,8 @@ on both sides.
 - [Findings from the 7 Sep RULER cohort run](#findings-from-the-7-sep-ruler-cohort-run)
 - [Findings from the 7 Sep J-lens repeat and placement check](#findings-from-the-7-sep-j-lens-repeat-and-placement-check)
 - [Findings from the 7 Sep target-scoring bug and the RULER control battery](#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery)
-- [Findings from the 7 Sep permutation test: layer 27's sign is needle-content-dependent](#findings-from-the-7-sep-permutation-test-layer-27s-sign-is-needle-content-dependent)
+- [Findings from the 7 Sep permutation test: layer 27's sign is needle-content-dependent](#findings-from-the-7-sep-permutation-test-layer-27s-sign-is-needle-content-dependent) — **WITHDRAWN 8 Sep**
+- [Findings from the 8 Sep content swap: content is not the variable](#findings-from-the-8-sep-content-swap-content-is-not-the-variable)
 
 ---
 
@@ -849,6 +849,12 @@ any future control on this cohort, not optional scaffolding.
 
 ## Findings from the 7 Sep permutation test: layer 27's sign is needle-content-dependent
 
+> **WITHDRAWN 8 Sep.** The central claim — that layer 27's sign depends on needle
+> content — does not survive a direct content swap holding construction and length
+> fixed. Sơn's homemade negative result does not replicate beyond his 4 needles. See
+> [8 Sep content swap](#findings-from-the-8-sep-content-swap-content-is-not-the-variable).
+> The permutation methodology in this entry stands; the interpretation does not.
+
 Sơn told Gautam in Slack: *"I've finished tracing the experiment like you asked — the
 signal is still there... the failures are coming from the control itself, not the code."*
 His notebook (`04-C2-debug.ipynb`) actually contains two conclusions that disagree with
@@ -922,3 +928,74 @@ to be an artifact was wrong). Each was caught by testing the statistic against s
 null and planted-effect data before trusting real output, and by refusing to accept a
 result from a single run — one example, one pair, one permutation — as sufficient on its
 own.
+
+
+## Findings from the 8 Sep content swap: content is not the variable
+
+Run 028. `04l_content_swap_rows.json`, `04m_content_swap_short_rows.json`,
+`04n_content_swap_stats.json`; regenerate with `python content_swap_stats.py`.
+**This withdraws the entry immediately above it.** Layer 27's sign is not
+needle-content-dependent; that claim was made on a comparison that confounded content with
+construction, and it does not survive a direct test.
+
+**1. What Gautam asked, and why it was one experiment.** On 8 Sep: *"I'd do the
+length-matched control first, since that directly tests whether the cohort/construction
+difference is actually driving the result... I'd also prioritize understanding why the
+layer-27 sign flips between digits and common-word needles."* RULER and the homemade cohort
+differ in three tangled ways — construction, length, content — and only content had never
+been varied on its own. Holding `build_niah_prompt` and length fixed and crossing content
+(7 single-token words × 8 seven-digit strings) with eviction distance
+(64/512/2048/4096/8192) tests both at once. Distance 8192 gives 8,064 + 128 + 8,192 =
+16,384 tokens against RULER's 15,679, so the long end is length-matched by construction
+rather than by post-hoc weighting.
+
+**2. Word and digit needles behave the same.** Across 30 layer × distance × content cells,
+the two content types track each other. Where both are significant they agree in sign and
+magnitude (layer 18 at 4096: word 1.136×, digit 1.190×; at 8192: word 0.804×, digit
+0.887×). There is no cell where words and digits point in opposite directions with both
+intervals excluding 1. **The 7 Sep content-dependence claim is withdrawn.**
+
+**3. Layer 27 is null in this construction — every distance, both contents, and pooled.**
+
+| | pooled fold | 95% CI | p |
+|---|---|---|---|
+| layer 27, word (n=7) | 0.973× | [0.885, 1.065] | 0.59 |
+| layer 27, digit (n=8) | 0.995× | [0.966, 1.021] | 0.76 |
+
+**4. Sơn's homemade layer-27 result does not replicate.** His multi-control test
+(`04-C2-debug.ipynb` cells 105–110) gave 0.863×, p=0.016, pooled across distances, on
+**4 hand-picked needles** — Paris, Tokyo, banana, lantern. The same statistic, same
+construction, same aggregation, with **7** word needles gives 0.973×, p=0.59. The effect
+vanishes when the needle set stops being those four. This is the 4–5 Sep needle-category
+lesson again: results computed on that original 4-needle sample keep failing to generalise
+to the needle population, and the sample — not the mechanism — keeps turning out to be the
+explanation.
+
+**5. Layer 18 carries real but incoherent structure.** Five of thirty cells survive Holm at
+0.05, and nine clear an uncorrected 0.05 against ~1.5 expected by chance, so something is
+there. But the sign oscillates with distance — +1.430× at 64, 0.804× at 512, +1.190× at
+4096, 0.804× at 8192 — which is not a monotone decay and not obviously a mechanism. Layer
+18 also fails C3-lens (7 Sep entry), so its readout is a decoding artefact in the first
+place. Recorded as unexplained; not a basis for any claim.
+
+**6. Multiple comparisons are corrected here, not left to the reader.** Thirty cells, Holm
+at 0.05, five survivors. Reporting the nine uncorrected hits would have overstated this
+substantially, and at this grid size the uncorrected count is close to what noise alone
+produces in the first few cells.
+
+**7. What this leaves standing, and what it costs.** RULER's layer-27 positive result (7 Sep
+control battery: 1.076× per digit, CI [1.054, 1.098], p<0.0001, C3-lens verified) is
+untouched — different construction, 60 real examples, its own controls. What is now gone is
+the homemade-side negative it was supposedly in conflict with. So the RULER-vs-homemade
+difference is **not** length (matched here) and **not** content (crossed here); by
+elimination it is construction, or the difference between 60 real RULER items and 7–8
+synthetic needles. That is a narrower and more tractable question than "why does the sign
+flip," and it is the one to put to Gautam.
+
+**8. Process note — the correction that mattered most was to my own hypothesis.** The 7 Sep
+entry proposed content-dependence and wrote it into the README, the tracker and the
+diagnosis packet within the hour. It survived one day. The test that killed it was cheap
+(138 + 207 forward passes, ~13 minutes of GPU) and was only run because Gautam asked for
+the length-matched control first rather than accepting the rescope. Fifth correction in
+four days on this control; the first four were bugs, this one was a hypothesis stated with
+more confidence than one comparison could carry.

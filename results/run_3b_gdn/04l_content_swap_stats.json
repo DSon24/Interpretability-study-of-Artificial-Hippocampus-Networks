@@ -1,3 +1,184 @@
 {
-  "results": []
+  "results": [
+    {
+      "content": "word",
+      "layer": 9,
+      "distance": 4096,
+      "n_targets": 7,
+      "fold": 1.030838915092003,
+      "ci_low": 0.9780022215806295,
+      "ci_high": 1.0957396580880032,
+      "excludes_null": false
+    },
+    {
+      "content": "word",
+      "layer": 9,
+      "distance": 8192,
+      "n_targets": 7,
+      "fold": 0.9841010717991031,
+      "ci_low": 0.9333586514477163,
+      "ci_high": 1.038447928964073,
+      "excludes_null": false
+    },
+    {
+      "content": "word",
+      "layer": 9,
+      "distance": "pooled",
+      "n_targets": 7,
+      "fold": 1.0071989283127065,
+      "ci_low": 0.9667763013454885,
+      "ci_high": 1.0602961240892614,
+      "excludes_null": false
+    },
+    {
+      "content": "digit",
+      "layer": 9,
+      "distance": 4096,
+      "n_targets": 8,
+      "fold": 0.9967117230180285,
+      "ci_low": 0.9401091282566333,
+      "ci_high": 1.060115123781051,
+      "excludes_null": false
+    },
+    {
+      "content": "digit",
+      "layer": 9,
+      "distance": 8192,
+      "n_targets": 8,
+      "fold": 0.9815194834921271,
+      "ci_low": 0.9211690895472335,
+      "ci_high": 1.0472764136599315,
+      "excludes_null": false
+    },
+    {
+      "content": "digit",
+      "layer": 9,
+      "distance": "pooled",
+      "n_targets": 8,
+      "fold": 0.9890864348312555,
+      "ci_low": 0.932434752727394,
+      "ci_high": 1.0473287325499256,
+      "excludes_null": false
+    },
+    {
+      "content": "word",
+      "layer": 18,
+      "distance": 4096,
+      "n_targets": 7,
+      "fold": 1.1360846836727838,
+      "ci_low": 1.0054772874756903,
+      "ci_high": 1.2981473913812656,
+      "excludes_null": true
+    },
+    {
+      "content": "word",
+      "layer": 18,
+      "distance": 8192,
+      "n_targets": 7,
+      "fold": 0.8040781479314716,
+      "ci_low": 0.7183708755285597,
+      "ci_high": 0.9077725984060214,
+      "excludes_null": true
+    },
+    {
+      "content": "word",
+      "layer": 18,
+      "distance": "pooled",
+      "n_targets": 7,
+      "fold": 0.9557723935859017,
+      "ci_low": 0.8685360105886514,
+      "ci_high": 1.0587715256574193,
+      "excludes_null": false
+    },
+    {
+      "content": "digit",
+      "layer": 18,
+      "distance": 4096,
+      "n_targets": 8,
+      "fold": 1.1895646880777095,
+      "ci_low": 1.082081963607837,
+      "ci_high": 1.3033771063921735,
+      "excludes_null": true
+    },
+    {
+      "content": "digit",
+      "layer": 18,
+      "distance": 8192,
+      "n_targets": 8,
+      "fold": 0.8869620671558358,
+      "ci_low": 0.782439273507611,
+      "ci_high": 0.9815395407432751,
+      "excludes_null": true
+    },
+    {
+      "content": "digit",
+      "layer": 18,
+      "distance": "pooled",
+      "n_targets": 8,
+      "fold": 1.0271800011453651,
+      "ci_low": 0.929463716701177,
+      "ci_high": 1.1180283319503668,
+      "excludes_null": false
+    },
+    {
+      "content": "word",
+      "layer": 27,
+      "distance": 4096,
+      "n_targets": 7,
+      "fold": 1.054972806858034,
+      "ci_low": 0.9422488834777734,
+      "ci_high": 1.180535662060033,
+      "excludes_null": false
+    },
+    {
+      "content": "word",
+      "layer": 27,
+      "distance": 8192,
+      "n_targets": 7,
+      "fold": 1.0004466441527986,
+      "ci_low": 0.88177707472452,
+      "ci_high": 1.1408148687441542,
+      "excludes_null": false
+    },
+    {
+      "content": "word",
+      "layer": 27,
+      "distance": "pooled",
+      "n_targets": 7,
+      "fold": 1.0273480443810552,
+      "ci_low": 0.9443909242906346,
+      "ci_high": 1.1122886983961189,
+      "excludes_null": false
+    },
+    {
+      "content": "digit",
+      "layer": 27,
+      "distance": 4096,
+      "n_targets": 8,
+      "fold": 1.0811568517328887,
+      "ci_low": 1.0196003477282236,
+      "ci_high": 1.1439589569575221,
+      "excludes_null": true
+    },
+    {
+      "content": "digit",
+      "layer": 27,
+      "distance": 8192,
+      "n_targets": 8,
+      "fold": 0.9672591432895897,
+      "ci_low": 0.921635620041914,
+      "ci_high": 1.0050287324921168,
+      "excludes_null": false
+    },
+    {
+      "content": "digit",
+      "layer": 27,
+      "distance": "pooled",
+      "n_targets": 8,
+      "fold": 1.0226235134050183,
+      "ci_low": 0.9844863494653316,
+      "ci_high": 1.0601899361795168,
+      "excludes_null": false
+    }
+  ]
 }

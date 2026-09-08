@@ -64,7 +64,8 @@ Sequencing follows Gautam's instruction after the last meeting:
 | Reproduce published NOWRITE result (38–42% changed) | **done, metric-corrected** — 33.3% changed, ΔF1 +6.1 pts — [19–20 Aug Finding 5](docs/FINDINGS.md#findings-from-the-1920-aug-run) |
 | J-lens fitted, Table 3 validation | **done, map converged** (1.92 GPU-h, map-stability passes); 2 of 5 checks fail — [19–20 Aug Findings 2–4](docs/FINDINGS.md#findings-from-the-1920-aug-run), [map-stability check](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
 | NIAH retention + controls, homemade cohort | **done — control battery fails** (C1/C2/C3), then reframed twice: C2 was a pair-identity confound, C1's pooled failure was a 4-needle sampling artifact — [20 Aug run](docs/FINDINGS.md#findings-from-the-20-aug-niah-retention-run), [28–31 Aug C2/C3](docs/FINDINGS.md#findings-from-the-2831-aug-c2-and-c3-investigation), [2–3 Sep correction](docs/FINDINGS.md#findings-from-the-2-sep-per-layer-re-analysis-corrected-3-sep), [4–5 Sep needle-category test](docs/FINDINGS.md#findings-from-the-45-sep-c1-rank-correction-construction-ladder-and-needle-category-test) |
-| NIAH retention on the primary RULER cohort | **done 7 Sep — real effect at layer 27, but needle-content-dependent.** C2 excludes the null, C3-lens verifies it real; the same layer gives a real, opposite-signed effect on the homemade word set — [7 Sep control battery](docs/FINDINGS.md#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery), [7 Sep permutation test](docs/FINDINGS.md#findings-from-the-7-sep-permutation-test-layer-27s-sign-is-needle-content-dependent) |
+| NIAH retention on the primary RULER cohort | **done 7 Sep — real effect at layer 27.** C2 excludes the null, C3-lens verifies it real — [7 Sep control battery](docs/FINDINGS.md#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery) |
+| Content swap at matched length (Gautam's 8 Sep ask) | **done 8 Sep — content is not the variable.** 7 word × 8 digit needles × 5 distances: words and digits agree everywhere; layer 27 pooled null for both (0.973x p=0.59, 0.995x p=0.76). Sơn's opposing 0.863x came from 4 hand-picked needles and does not replicate. RULER's positive untouched — the gap is construction, not length or content — [8 Sep content swap](docs/FINDINGS.md#findings-from-the-8-sep-content-swap-content-is-not-the-variable) |
 | Retention curves (Table 6) | **run, not usable** — exponential fit inadequate at all three layers |
 | RQ1 on LongBench-E HotpotQA (Table 5) | **done** — ΔF1 +6.11 pts, **95% CI spans zero** |
 | RQ3 join (`04b`) | **done, by Sơn** — no significant correlation, provisional — [map-stability + RQ3 join](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
@@ -73,10 +74,11 @@ Sequencing follows Gautam's instruction after the last meeting:
 
 ## Findings
 
-The full findings log lives in **[docs/FINDINGS.md](docs/FINDINGS.md)** -- eleven entries,
+The full findings log lives in **[docs/FINDINGS.md](docs/FINDINGS.md)** -- twelve entries,
 written as an append-only record so that later corrections sit visibly on top of what they
-correct rather than quietly replacing it. **The 7 Sep control-battery entry withdraws the
-specific numbers of the entry before it** and is the current state of the C1 question.
+correct rather than quietly replacing it. **The 8 Sep content-swap entry withdraws the
+central claim of the 7 Sep permutation-test entry** and is the current state of the C1
+question.
 
 | Entry | What it established |
 |---|---|
@@ -91,7 +93,8 @@ specific numbers of the entry before it** and is the current state of the C1 que
 | [7 Sep RULER cohort](docs/FINDINGS.md#findings-from-the-7-sep-ruler-cohort-run) | The primary cohort, run at last -- logit-lens, superseded by the entry below |
 | [7 Sep J-lens repeat + placement check](docs/FINDINGS.md#findings-from-the-7-sep-j-lens-repeat-and-placement-check) | Layer 27 rank 17,250 -- **withdrawn below**, it scored a space token, not the needle |
 | [7 Sep target-scoring bug + control battery](docs/FINDINGS.md#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery) | **Layer 27, corrected: a real but small memory-specific effect.** C2 excludes the null (1.076x/digit, p<0.0001) but falls well short of the pre-registered 10x bar. C3-lens confirms layers 9 and 18 are decoding artefacts; only layer 27 survives the check |
-| [7 Sep permutation test](docs/FINDINGS.md#findings-from-the-7-sep-permutation-test-layer-27s-sign-is-needle-content-dependent) | **Layer 27's sign flips with needle content.** Common-word needles give a verified-real NEGATIVE effect (0.863x, p=0.016, survives 20 independent permutations); RULER's digit sequences give a verified-real POSITIVE effect. Same layer, same checkpoint, both real |
+| [7 Sep permutation test](docs/FINDINGS.md#findings-from-the-7-sep-permutation-test-layer-27s-sign-is-needle-content-dependent) | ~~Layer 27's sign flips with needle content~~ — **WITHDRAWN 8 Sep**, see below |
+| [8 Sep content swap](docs/FINDINGS.md#findings-from-the-8-sep-content-swap-content-is-not-the-variable) | **Content is not the variable.** Words and digits behave the same at every layer × distance cell; layer 27 is null in the homemade construction at every distance and pooled. Sơn's 0.863x does not replicate past his 4 needles (0.973x, p=0.59 with 7). RULER's positive stands; the difference is construction, not content or length |
 
 ## Repository layout
 
@@ -424,7 +427,7 @@ for every row lives in [docs/FINDINGS.md](docs/FINDINGS.md); this is status, not
 | 2. `03_nowrite_reproduction.ipynb` | done, metric-corrected — [19–20 Aug Finding 5](docs/FINDINGS.md#findings-from-the-1920-aug-run) |
 | 3. `02_jlens_fit_and_validate.ipynb` | done, 1.92 GPU-h; Table 3 checks 2/3 fail, check 4 (map stability) passes — [19–20 Aug Findings 2–4](docs/FINDINGS.md#findings-from-the-1920-aug-run), [map-stability check](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
 | 4. `04_niah_retention.ipynb` on GDN 3B | done — **C1, C2, C3 fail** on the homemade cohort — [20 Aug NIAH retention run](docs/FINDINGS.md#findings-from-the-20-aug-niah-retention-run) |
-| 5. **Diagnose the C1 disagreement** | **open, in progress.** Candidate (b) confirmed real at layer 27 on RULER (C2 excludes null, C3-lens verifies it), but the same layer gives a real, opposite-signed effect on the homemade word set — sign is needle-content-dependent, not yet a coherent content-general claim — [7 Sep control battery](docs/FINDINGS.md#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery), [7 Sep permutation test](docs/FINDINGS.md#findings-from-the-7-sep-permutation-test-layer-27s-sign-is-needle-content-dependent) |
+| 5. **Diagnose the C1 disagreement** | **open, narrowed 8 Sep.** Candidate (b) is real at layer 27 on RULER. The apparent conflict with the homemade cohort is resolved — content and length are both ruled out, and Sơn's opposing result does not replicate past his 4 needles. What remains is **construction**: 60 real RULER items vs 7–8 synthetic needles — [7 Sep control battery](docs/FINDINGS.md#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery), [8 Sep content swap](docs/FINDINGS.md#findings-from-the-8-sep-content-swap-content-is-not-the-variable) |
 | 6. `04b` — the RQ3 join | done, by Sơn — no significant correlation, provisional — [map-stability + RQ3 join](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
 | 7. Add the boundary-JS column | not started — Gate B already computes it; not blocked by 5, safe any time |
 | 8. DN + Mamba2 3B merges | **paused**, blocked on 5 — `configs/run_3b_dn.json`, `run_3b_m2.json` correctly unrun |

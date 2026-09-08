@@ -54,21 +54,33 @@ Full derivation: [7 Sep J-lens repeat](FINDINGS.md#findings-from-the-7-sep-j-len
 
 ---
 
-### New since this morning: layer 27's sign is not settled even within RULER's own story
+### Updated 8 Sep — your length-matched control is done, and it simplifies the picture
 
-Sơn independently ran a C2 analysis on the *original* 4-needle homemade set (Paris,
-Tokyo, banana, lantern) and found layer 27 significantly **negative** (0.863x [0.768,
-0.969], p=0.016) — the opposite sign from RULER's positive 1.672x above. A 20-permutation
-test confirms his result is real, not decoding noise (same standard applied to RULER's
-result): the real lens sits below all 20 independent permutations at layer 27.
+You asked for the length-matched control before rescoping, and for the layer-27 sign flip
+to be explained. Those were one experiment: RULER and the homemade cohort differ in
+construction, length **and** needle content, and only content had never been varied alone.
+Crossing 7 word × 8 digit needles with 5 eviction distances in the homemade construction
+(distance 8192 = 16,384 tokens, matched to RULER's 15,679):
 
-**This does not undermine RULER's result — both are independently verified real.** It
-means layer 27's effect flips sign between common-word needles and digit-sequence
-needles. Whatever candidate (b) turns out to be, "layer 27 retrieves content" is not yet
-a content-general claim, and the packet's Option A framing (re-scope RQ2 around RULER)
-should be read as "RULER's construction, specifically" rather than "layer 27, generally,"
-until this is understood. Full derivation:
-[7 Sep permutation test](FINDINGS.md#findings-from-the-7-sep-permutation-test-layer-27s-sign-is-needle-content-dependent).
+- **Content is not the variable.** Words and digits track each other at every layer ×
+  distance cell. Where both are significant they agree in sign and magnitude.
+- **Layer 27 is null in this construction** — every distance, both contents, and pooled
+  (word 0.973× p=0.59, digit 0.995× p=0.76).
+- **Sơn's opposing result does not replicate.** His 0.863× (p=0.016) used 4 hand-picked
+  needles; the same statistic with 7 gives 0.973×, p=0.59 — the same failure mode as the
+  4–5 Sep needle-category finding, where that 4-needle sample also failed to generalise.
+
+**The sign flip flagged yesterday was not real, and it is withdrawn.** RULER's layer-27
+positive is untouched (different construction, 60 real items, its own controls). By
+elimination the RULER-vs-homemade difference is **construction** — 60 real RULER items
+against 7–8 synthetic needles — a narrower question than "why does the sign flip."
+
+Full derivation: [8 Sep content swap](FINDINGS.md#findings-from-the-8-sep-content-swap-content-is-not-the-variable).
+Regenerate with `python content_swap_stats.py`.
+
+**On Decision 1:** running the control before rescoping was the right call — it removed a
+claim rather than confirming one. Option A still needs the "RULER's construction,
+specifically" caveat, but for a narrower reason than yesterday.
 
 ---
 
