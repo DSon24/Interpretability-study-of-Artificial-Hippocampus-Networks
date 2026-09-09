@@ -42,4 +42,3 @@ The H100 environment is available again. It is an unprivileged shared environmen
 Gautam also provided BABILong, NoLiMa, LongBench, and SCROLLS. Their roles and change
 controls are recorded in [the dataset register](DATASET_REGISTER_2026-09-08.md). None of
 them changes the approved RULER n=60 primary run.
-

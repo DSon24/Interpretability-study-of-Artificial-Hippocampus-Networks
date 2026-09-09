@@ -16,4 +16,3 @@ RULER NIAH n=60 remains the primary RQ2 cohort. These links are newly provided r
 not newly authorized experimental cohorts. Results from any added dataset must be labelled
 exploratory unless a pre-run amendment defines its role, metric, sample size, and decision
 rule.
-
