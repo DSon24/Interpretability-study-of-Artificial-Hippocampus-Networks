@@ -33,6 +33,7 @@ decision immediately after it records how that evidence changes execution.
 - [Findings from the r29 evicted-vs-in-window J-lens re-run (9 Sep)](#findings-from-the-r29-evicted-vs-in-window-j-lens-re-run-9-sep)
 - [Findings from the no-AHN floor run (r54, 9 Sep)](#findings-from-the-no-ahn-floor-run-r54-9-sep)
 - [Findings from the RULER retention curve on corrected scoring (Run 025 redone, 9 Sep)](#findings-from-the-ruler-retention-curve-on-corrected-scoring-run-025-redone-9-sep)
+- [Findings from the RULER needle-placement check on corrected scoring (04q, 9 Sep)](#findings-from-the-ruler-needle-placement-check-on-corrected-scoring-04q-9-sep)
 
 ---
 
@@ -1511,3 +1512,45 @@ CIs (L9 bin 1: [50,001, 94,793]). The distances are RULER's own random needle de
 not a designed sweep. The window is 8,064 and RULER-16384 is ~15.7k tokens, so the
 deepest evicted needle is only ~7.4k past the boundary — this says nothing about
 eviction distances beyond that. `lens_validated=False` on every row.
+
+
+## Findings from the RULER needle-placement check on corrected scoring (04q, 9 Sep)
+
+`results/run_3b_gdn/04q_ruler_placement_check.json`; `ruler_placement_check.py`
+(CPU-only, reprocesses `04i_ruler_controls_rows.json`). `ruler_needle_position.py` /
+`04h` asked whether layer 27's below-chance RULER read is carried by needles that were
+never evicted — an attention artefact rather than evidence about AHN. It ran on `04g`,
+whose target was a leading-space token identical across all 60 examples (the Run 026
+scoring bug). `04i` already carries `needle_pos` / `placement` / `needle_is_evicted` and
+the corrected `mean_digit_rank` per row, so this re-does the split with no GPU: median
+digit rank by placement verdict and by fractional needle depth (terciles), ordered
+context, jlens readout, layer 27 the analysis layer.
+
+**1. Layer 27's evicted signal is real, not an in-window artefact.** Evicted subset
+alone (n=32): median digit rank **49,776**, 88% of examples beat chance (75,968),
+bootstrap CI [42,273, 54,797] — excludes chance. In-window (n=28): median 37,619, 93%
+beat chance. Both below chance; the below-chance read does not depend on the in-window
+examples. The 49,776 matches Run 026's C1 figure exactly, cross-validating the two
+scripts.
+
+**2. The "evicted beats the pre-eviction ceiling" anomaly was a scoring artefact.**
+`04h` on the buggy rows had evicted at median 17,250 *better* than in-window at 54,506 —
+a supposedly-compressed read outperforming the directly-visible one, which was the
+reason this check existed. Corrected, the order is the mechanically sensible one:
+in-window (37,619) ≤ evicted (49,776). Nothing to explain.
+
+**3. Needle depth does not matter at layer 27.** Median digit rank across
+front / middle / back depth terciles: 48,202 / 43,809 / 42,709 (beat-chance 0.85 / 0.95
+/ 0.90). Flat — consistent with the retention curve's finding of no eviction-distance
+dependence.
+
+**4. Layers 9 and 18 as expected.** L9 in-window median 113,176, 0% beating chance
+(evicted 87,259, 31%) — the ceiling below the floor, the degeneracy signature. L18
+evicted 6,254 / in-window 22,406, both 100% beating chance, but L18 is the C3-lens
+artefact layer (Run 026 point 3): these low ranks are a decoding-path property, not
+retention.
+
+**5. Caveats.** n=32 evicted / n=28 in-window at one layer, one cell (GDN), one RULER
+config. `in_sink_region` had too few examples to report. `mean_digit_rank` on the jlens
+readout, `lens_validated=False`. `multi_occurrence_examples` is empty — no needle-string
+ambiguity in this cohort.
