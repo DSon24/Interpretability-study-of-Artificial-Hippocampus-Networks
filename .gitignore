@@ -190,6 +190,9 @@ merged_ckpt/
 artifacts/deprecated/
 results/**/*.png
 !results/pilot_2026-08-18/*.png
+# top-level paper figures (Fig 2, Fig 3, ...) are tracked so they can be pulled up
+# for weekly meetings; per-run decay figures under results/run_*/figures/ stay ignored
+!results/figures/*.png
 .ipynb_checkpoints/
 _to_delete/
 # HF snapshot cache written beside restored J-lens checkpoints
