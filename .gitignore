@@ -192,6 +192,10 @@ results/**/*.png
 !results/pilot_2026-08-18/*.png
 .ipynb_checkpoints/
 _to_delete/
+# HF snapshot cache written beside restored J-lens checkpoints
+**/.cache/
+# local clone used for J-lens work, not part of this repo
+jacobian-lens/
 
 # macOS
 .DS_Store
