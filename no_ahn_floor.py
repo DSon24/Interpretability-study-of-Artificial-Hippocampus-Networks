@@ -36,19 +36,24 @@ import ahn_interp as ai
 # --------------------------------------------------------------------------------------
 # model
 # --------------------------------------------------------------------------------------
-def load_floor_model(cfg: dict):
+def load_floor_model(cfg: dict, force_window: bool = True):
     """Stock Qwen2.5-3B-Instruct, SWA forced on for EVERY layer, no AHN, no sinks.
 
     Stock config ships use_sliding_window=false and max_window_layers=70 (> 36 layers),
     so all three fields have to be overridden or the window never actually applies.
+
+    force_window=False is the control: stock config untouched (full ~32K context). Used
+    to tell "the 8064 clip legitimately kills retrieval" apart from "the load path is
+    broken" -- if in-window RULER accuracy is low in BOTH, the prompt/format is wrong.
     """
     from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer
 
     mp = cfg["model_path"]
     hf_cfg = AutoConfig.from_pretrained(mp)
-    hf_cfg.use_sliding_window = True
-    hf_cfg.sliding_window = int(cfg["sliding_window"])
-    hf_cfg.max_window_layers = int(cfg.get("max_window_layers", 0))
+    if force_window:
+        hf_cfg.use_sliding_window = True
+        hf_cfg.sliding_window = int(cfg["sliding_window"])
+        hf_cfg.max_window_layers = int(cfg.get("max_window_layers", 0))
 
     dtype = getattr(torch, cfg.get("dtype", "bfloat16"))
     attn = cfg.get("attn_impl", "flash_attention_2")
@@ -68,23 +73,26 @@ def load_floor_model(cfg: dict):
     tok = AutoTokenizer.from_pretrained(mp)
 
     n_layers = model.config.num_hidden_layers
-    win_ok = (
-        getattr(model.config, "use_sliding_window", False)
-        and int(getattr(model.config, "sliding_window", 0)) == int(cfg["sliding_window"])
-        and int(getattr(model.config, "max_window_layers", n_layers)) == 0
-    )
     print(f"loaded {mp}")
     print(f"  attn_impl           : {attn}")
     print(f"  n_layers            : {n_layers}")
     print(f"  use_sliding_window  : {getattr(model.config, 'use_sliding_window', None)}")
     print(f"  sliding_window      : {getattr(model.config, 'sliding_window', None)}")
     print(f"  max_window_layers   : {getattr(model.config, 'max_window_layers', None)}")
-    if not win_ok:
-        raise RuntimeError(
-            "sliding window is NOT active on every layer -- the floor would not evict. "
-            "Check the transformers version honours use_sliding_window + max_window_layers=0."
+    if force_window:
+        win_ok = (
+            getattr(model.config, "use_sliding_window", False)
+            and int(getattr(model.config, "sliding_window", 0)) == int(cfg["sliding_window"])
+            and int(getattr(model.config, "max_window_layers", n_layers)) == 0
         )
-    print("  -> SWA active on all layers, no AHN, no attention sinks")
+        if not win_ok:
+            raise RuntimeError(
+                "sliding window is NOT active on every layer -- the floor would not evict. "
+                "Check the transformers version honours use_sliding_window + max_window_layers=0."
+            )
+        print("  -> SWA active on all layers, no AHN, no attention sinks")
+    else:
+        print("  -> CONTROL: stock config, no window override (full context)")
     return model, tok, attn
 
 
@@ -167,6 +175,10 @@ def run_ruler(model, tok, sliding_window: int, n: int, ruler_config: str, seed: 
             "f1_first_line": float(np.mean([r["f1_first_line"] for r in subset])),
         }
 
+    by_task = {}
+    for t in sorted({r["task"] for r in rows}):
+        by_task[t] = _agg([r for r in rows if r["task"] == t])
+
     summary = {
         "n_scored": len(rows),
         "n_evicted": len(ev),
@@ -174,10 +186,12 @@ def run_ruler(model, tok, sliding_window: int, n: int, ruler_config: str, seed: 
         "all": _agg(rows),
         "evicted": _agg(ev),
         "in_window": _agg(iw),
+        "by_task": by_task,
         "ruler_config": ruler_config,
         "wall_min": (time.time() - t0) / 60,
     }
     print(f"RULER done: {len(rows)} scored ({len(ev)} evicted) in {summary['wall_min']:.1f} min")
+    print("  task mix:", {t: v["n"] for t, v in by_task.items()})
     if summary["evicted"]:
         print(f"  EVICTED substring-acc = {summary['evicted']['substring_match']:.3f}  "
               f"(this is the floor number for RQ2)")
@@ -273,6 +287,10 @@ def main():
     ap.add_argument("--max-input", type=int, default=32000)
     ap.add_argument("--skip-ruler", action="store_true")
     ap.add_argument("--skip-hotpot", action="store_true")
+    ap.add_argument("--no-window", action="store_true",
+                    help="control: do not force SWA, use stock full context. Writes "
+                         "06_no_ahn_floor_nowindow.json. Compare its in-window RULER "
+                         "accuracy to the windowed run to check the load path.")
     ap.add_argument("--allow-overwrite", action="store_true")
     args = ap.parse_args()
 
@@ -282,7 +300,8 @@ def main():
     results_dir = os.path.join("results", cfg["run_name"])
     os.makedirs(results_dir, exist_ok=True)
     ai.set_results_dir(results_dir)
-    out_path = os.path.join(results_dir, "06_no_ahn_floor.json")
+    out_name = "06_no_ahn_floor_nowindow.json" if args.no_window else "06_no_ahn_floor.json"
+    out_path = os.path.join(results_dir, out_name)
 
     if os.path.exists(out_path) and not args.allow_overwrite:
         raise SystemExit(
@@ -294,13 +313,14 @@ def main():
     if not torch.cuda.is_available():
         raise SystemExit("no CUDA device visible -- set CUDA_VISIBLE_DEVICES to a MIG slice")
 
-    model, tok, attn = load_floor_model(cfg)
+    model, tok, attn = load_floor_model(cfg, force_window=not args.no_window)
     sw = int(cfg["sliding_window"])
 
     payload = {
         "config": cfg,
         "attn_impl_used": attn,
         "seed": seed,
+        "window_forced": not args.no_window,
         "generated": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "note": "Table 1 Primary no-AHN floor (r54). Stock Qwen2.5-3B-Instruct, SWA at "
                 "8064 on every layer, no AHN, no attention sinks. RULER evicted "
@@ -308,11 +328,11 @@ def main():
     }
     if not args.skip_ruler:
         payload["ruler_niah"] = run_ruler(model, tok, sw, args.n, args.ruler_config, seed)
-        ai.save_json(payload, "06_no_ahn_floor.json")  # checkpoint after the long cohort
+        ai.save_json(payload, out_name)  # checkpoint after the long cohort
     if not args.skip_hotpot:
         payload["hotpot_qa"] = run_hotpot(model, tok, sw, args.n, args.max_input, seed)
 
-    ai.save_json(payload, "06_no_ahn_floor.json")
+    ai.save_json(payload, out_name)
     print(f"\nsaved -> {out_path}")
 
     r = payload.get("ruler_niah", {}).get("summary", {})
