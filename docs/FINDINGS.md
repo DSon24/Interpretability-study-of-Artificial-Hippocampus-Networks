@@ -27,6 +27,8 @@ decision immediately after it records how that evidence changes execution.
 - [Mentor decision after the 8 Sep checks](#mentor-decision-after-the-8-sep-checks)
 - [Findings from the DeltaNet RULER control battery (8 Sep)](#findings-from-the-deltanet-ruler-control-battery-8-sep)
 - [Findings from the DeltaNet RQ1 rerun (nb03, 9 Sep)](#findings-from-the-deltanet-rq1-rerun-nb03-9-sep)
+- [Findings from the Mamba2 RULER control battery (9 Sep)](#findings-from-the-mamba2-ruler-control-battery-9-sep)
+- [Findings from the Mamba2 RQ1 run (nb03, 9 Sep)](#findings-from-the-mamba2-rq1-run-nb03-9-sep)
 
 ---
 
@@ -1142,3 +1144,117 @@ than a distractor.
 CI [0.095, 0.154]), which is what Table 8 row 2 needs — the JS-vs-ΔF1 correlation, not the
 JS magnitude. GDN's nb03 rerun (`363e996`) carries the same field; Mamba2's comes from
 Modal.
+
+
+## Findings from the Mamba2 RULER control battery (9 Sep)
+
+Run: `results/run_3b_m2/04i_ruler_controls_rows.json`, `04i_ruler_controls_stats.json`;
+regenerate with `python ruler_controls.py --run-config run_3b_m2`. Same corrected
+digit-sequence scoring as GDN run 026 and DeltaNet, the same RULER NIAH cohort (config
+16384, n=60, seed 20260820), the same shared Qwen2.5-3B J-lens (`lens_validated=False`).
+32 of 60 needles are evicted at every layer; every statistic below is restricted to those.
+
+**Executed on real Mamba2 kernels.** The shared H100 box is rootless and cannot build the
+`yuweihao/mamba` fork's custom CUDA kernels, so an in-repo M2 run falls back to fla's
+naive scan. This battery ran on Modal (`modal_m2.py`, a `pytorch/pytorch:2.5.1-cuda12.4
+-cudnn9-devel` image with flash-attn, the Seerkfang FLA fork and the Mamba fork compiled
+from source), where `is_fast_path_available` is True. The fallback-vs-kernel fidelity
+question is therefore closed for these numbers; it stays open only for any future run done
+on the box, so M2 re-runs go through Modal.
+
+**1. L9 and L18 are rejected on two independent grounds, same as GDN and DeltaNet.**
+C3-lens: the signal *survives* the row-permuted J-lens at both layers (Δ +104.1 log-nats
+[+89.4, +111.2] at L9, +53.1 [+38.8, +63.9] at L18 — CIs on the wrong side of zero), so
+those readouts are decoding artefacts. **C4 layer-permutation** agrees: routing L9/L18
+state through the wrong layer's Jacobian barely moves the readout (Δ +57.2 [+50.2, +62.7]
+and +36.7 [+32.8, +43.9]) rather than degrading it. Both diagnostics disqualify 9 and 18.
+
+**2. L27 is the analysis layer by C4, but its C3-lens does not cleanly collapse — the
+first cell where the two "is L27 real" checks disagree.**
+
+| control | Mamba2 | DeltaNet | GDN run 026 |
+|---|---|---|---|
+| C1, mean digit rank | 76,951 [71,390, 92,924] — **spans chance** (75,968) | 38,581 [31,751, 45,479] — below chance | 49,776 [41,803, 54,797] — below chance |
+| C2, per-digit effect | 1.013× — n/a | 0.969× [0.952, 0.988], p = 0.0006 | 1.076× [1.054, 1.098], p < 0.0001 |
+| C2, per-example effect | **1.095× [0.886, 1.356], permutation p = 0.399 — null** | 0.805× [0.706, 0.917], p = 0.0006 (low side) | 1.672× [1.446, 1.929], p < 0.0001 (high side) |
+| C2 vs pre-registered 10× bar | fails (no directional effect at all) | fails (points low) | fails (points high) |
+| C3-context | no order sensitivity (Δ −9,121 [−22,347, +3,937]) | order sensitive (Δ +21,739 [+8,352, +25,258]) | no order sensitivity |
+| C3-lens | **borderline — Δ +2.14 log-nats, CI [−2.85, +10.26] crosses zero**, neither a clean collapse nor a clean survival | collapses, Δ −86.2 [−89.7, −80.3] | collapses, Δ −39.2 [−46.1, −34.4] |
+| C4 layer-permutation | **degrades**, Δ −116.3 log-nats [−125.4, −111.8] — layer-specific | degrades, Δ −83.2 [−92.0, −77.7] | degrades, Δ −43.8 [−58.0, −38.4] |
+
+**3. Layer 27's C2 is null in both directions.** GDN reads the stored digit string out
+~1.076× *more* probable than a matched cross-example distractor (per digit, p < 0.0001);
+DeltaNet reads it ~0.969× *less* probable (p = 0.0006); Mamba2's per-example effect is
+1.095× with CI [0.886, 1.356] and permutation p = 0.399 — it does not exclude 1.0 on
+either side. Whatever L27 does in Mamba2, it does not make the exact stored string more or
+less probable than another example's.
+
+**4. Layer 27 barely retains recoverable answer information at all.** M2's L27 mean digit
+rank is 76,951 against a chance rank of 75,968 — its bootstrap CI [71,390, 92,924] spans
+chance. GDN (49,776) and DeltaNet (38,581) both sit clearly below chance, i.e. the correct
+digits are ranked meaningfully better than random after eviction. In Mamba2 they are not.
+This is the weakest layer-27 C1 of the three cells by a wide margin.
+
+**5. C4 is the only control that says L27 is doing anything layer-specific.** The
+layer-permutation delta (−116.3 log-nats, the sharpest of the three cells) is unambiguous
+that the L27 readout is tied to L27's own state. But C1 is at chance, C2 is null, and
+C3-lens does not collapse — so "layer-specific" here describes a decoding path that
+carries almost no retention signal, rather than a working content readout.
+
+**6. C3-context matches GDN, not DeltaNet.** Shuffling the context words does not change
+the L27 digit rank (Δ −9,121, CI includes zero). DeltaNet was order sensitive; GDN and the
+29 Aug homemade cohort were not. Two of the three cells show no order effect at the
+analysis layer.
+
+**7. What Table 7 / RQ2 now has to accommodate.** All three cells have the RULER control
+battery on the primary pre-registered cohort, and the analysis layer tells a different
+story in each: GDN — positive, significant C2 (p < 0.0001), C3-lens collapses; DeltaNet —
+negative, significant C2 (p = 0.0006), order sensitive, C3-lens collapses; Mamba2 — null
+C2, C1 at chance, C3-lens does not collapse, only C4 marks it layer-specific. The
+instrument's artefact rejection is still unanimous (L9/L18 out in all three cells by both
+C3-lens and C4), but the cross-cell RQ2 comparison at L27 is now a three-way divergence,
+not a two-way sign flip. Mamba2 is the cell where the layer-27 memory shows the least
+evidence of holding the needle's content.
+
+**8. C4 status.** This completes the pre-registration's Table 4 C4 layer-permutation half
+for all three cells (Amendment 1 recorded it as unrun). GDN and DeltaNet landed 8–9 Sep;
+Mamba2 here, via the same `JacobianLens.permuted_layers()` wired into `measure_ruler_seq`
+and scored in `ruler_controls.py`. The in-window / pre-eviction ceiling half of C4 is
+unchanged.
+
+
+## Findings from the Mamba2 RQ1 run (nb03, 9 Sep)
+
+`results/run_3b_m2/03_nowrite_reproduction.json`; `notebooks/03_nowrite_reproduction.ipynb`
+with `RUN_CONFIG=configs/run_3b_m2.json`, run on Modal alongside the RULER battery (same
+real-kernel image). LongBench-E HotpotQA, n=60, first-line scoring, AHN vs NOWRITE. This
+is the Mamba2 RQ1 row and carries per-example `boundary_js`.
+
+**1. Answer-change rate lands squarely in the published band; F1 does not move.**
+First-line answer-change rate **41.7%**, CI [30.0%, 53.3%] — inside the published
+38–42% (GDN 33.3%, DeltaNet 36.7%). First-line ΔF1 **−0.31 points**, bootstrap CI
+[−8.33, +7.46] (mean F1 0.336 with AHN vs 0.339 under NOWRITE). The notebook's
+`reproduction_ok` gate returns **True** — change-rate in [0.30, 0.50] and |ΔF1| ≤ 5.0
+points both hold — unlike DeltaNet, which tripped the magnitude term with +6.7 points.
+**Week-6 milestone: PASS.**
+
+**2. No F1 benefit at any context length.**
+
+| stratum | n | ΔF1 (first-line) | 95% CI | change rate |
+|---|---|---|---|---|
+| short | 20 | +0.028 | [−0.133, +0.192] | 0.40 |
+| mid | 20 | +0.010 | [−0.140, +0.150] | 0.40 |
+| long | 20 | −0.047 | [−0.158, +0.025] | 0.45 |
+
+Every stratum's ΔF1 CI spans zero; long is flat-to-slightly-negative, the same shape
+DeltaNet showed. Mamba2's AHN changes roughly two answers in five without improving them.
+
+**3. Per-example `boundary_js`** is on disk for Mamba2 (bootstrap mean 0.129,
+CI [0.100, 0.160]), so Table 8 row 2 — the JS-vs-ΔF1 correlation — now has all three
+cells (GDN `363e996`, DeltaNet `6296e5c`, Mamba2 here).
+
+**4. Behavioural counterpart to the RQ2 null.** Mamba2 suppresses-writes-changes-answers
+at the published rate but produces no measurable F1 shift, matching the RULER battery's
+finding that its layer-27 memory shows no significant retention effect in either
+direction. Of the three cells, Mamba2 is the one where AHN's compressed memory is hardest
+to detect — behaviourally (ΔF1 ≈ 0) and in the readout (C2 null, C1 at chance).
