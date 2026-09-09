@@ -1,0 +1,67 @@
+{
+  "gate_a_isolation": {
+    "layer": 0,
+    "is_first_ahn_layer": true,
+    "n_tokens": 9252,
+    "ahn_active": true,
+    "nowrite_o_t_is_zero": true,
+    "ahn_raw_norm": 1.672765851020813,
+    "o_t_norm": 1.7407855987548828,
+    "residual_norm": 10.530733108520508,
+    "relative_error": 0.015505688288001288,
+    "cosine": 0.9998800754547119,
+    "passed": true
+  },
+  "gate_a_deep_layer_contrast": {
+    "layer": 18,
+    "is_first_ahn_layer": false,
+    "n_tokens": 9252,
+    "ahn_active": true,
+    "nowrite_o_t_is_zero": true,
+    "ahn_raw_norm": 1.3651610612869263,
+    "o_t_norm": 1.686515212059021,
+    "residual_norm": 62.31272888183594,
+    "relative_error": 0.1389404605685168,
+    "cosine": 0.9905999898910522,
+    "passed": false
+  },
+  "gate_b_behavioural": {
+    "kl_ahn_vs_nowrite": 0.3601628243923187,
+    "js_ahn_vs_nowrite": 0.07162865996360779,
+    "top1_ahn": " The",
+    "top1_nowrite": " The",
+    "top1_changed": false,
+    "n_tokens": 9252,
+    "passed": true
+  },
+  "gate_c_task": {
+    "needle": "Paris",
+    "eviction_distance": 1040,
+    "answer_ahn": "The special word in this text is \"Here we go.\"",
+    "answer_nowrite": "It seems like you're referring to a pattern or rhyme that",
+    "ahn_correct": false,
+    "nowrite_correct": false
+  },
+  "prompt_spec": {
+    "needle": "Paris",
+    "n_tokens": 9252,
+    "needle_pos": 148,
+    "compression_boundary": 1188,
+    "actual_eviction_distance": 1040,
+    "needle_is_evicted": true,
+    "needle_in_sink_region": false,
+    "ahn_will_activate": true,
+    "in_window": false,
+    "filler_idx": 0
+  },
+  "cfg": {
+    "model_path": "/home/jupyter-dphs-8080/Interpretability-study-of-Artificial-Hippocampus-Networks/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-Mamba2",
+    "cell": "Mamba2",
+    "scale": "3B",
+    "sliding_window": 8064,
+    "num_attn_sinks": 128,
+    "attn_impl": "flash_attention_2",
+    "dtype": "bfloat16",
+    "results_dir": "results/run_3b_m2"
+  }
+}
