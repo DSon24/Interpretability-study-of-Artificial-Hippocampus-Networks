@@ -1,5 +1,10 @@
 # Diagnosis packet for Gautam — 7 Sep 2026
 
+> **RESOLVED 8 Sep 2026.** Gautam selected Decision 1 Option A and Decision 2 Option A,
+> kept the pre-registered RULER n=60 cohort, and cleared DeltaNet/Mamba2 to start. The
+> length/content/construction checks are supporting/limitations analysis, not blockers.
+> See the [operative decision record](DECISION_RECORD_2026-09-08.md).
+
 **Purpose.** Committed to the Meetings tab on 1 Sep — "Hannah sends the diagnosis packet
 (C1 + C2 confound + corrected C3) ahead of the meeting; Gautam makes the call" — and never
 sent. Everything it was meant to contain has since been superseded by stronger evidence.
@@ -125,7 +130,9 @@ has already made twice (2 Sep, and run 025 four days ago). Neither default is ri
 - Undersampling (candidate a) — ruled out, map stability passes at all three layers.
 - The 2 Sep layer-27 claim — withdrawn on its own terms (wrong basis, C2 confound), independent of anything here.
 - RQ1's headline ΔF1 (+6.11 pts) — its own 95% CI spans zero at n=60; your published effect sits inside that interval, so "our effect is 3x yours" was a cohort-size artifact, not a real gap.
-- The 4–5 Sep needle-category test (place names vs. common nouns) — real, Holm-significant, and a separate open item (does it change what needle set is of record) that doesn't block Decisions 1–2 above.
+- The 4–5 Sep needle-category result does **not** generalize beyond the original four
+  Paris/Tokyo/banana/lantern needles. It is retained as a needle-set limitation, not as a
+  population-level content effect or open gate.
 
 ---
 

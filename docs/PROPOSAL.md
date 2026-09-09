@@ -7,31 +7,41 @@ decisions depend on, so a notebook can be understood without opening them.
 
 - **`Proposal_AHN_Compressive_Memory.docx`** — Draft 1, 16 Aug 2026. Research questions,
   methods, controls, compute budget, timeline, open questions.
-- **`Expected_Tables_and_Figures_rev2.docx`** — the current pre-registration of record.
-  Prepared 18 Aug 2026; Amendment 1 filed 25 Aug, Amendment 2 filed 3 Sep. Ten tables
+- **`Expected_Tables_and_Figures_rev3.docx`** — the current pre-registration of record.
+  Prepared 18 Aug 2026; Amendment 1 filed 25 Aug, Amendment 2 filed 3 Sep, and Amendment 3
+  filed 8 Sep. Ten tables
   (plus Table 1b) and eight figures with placeholder values, validation gates, and a
   per-RQ null-result plan. `_rev1` and the unsuffixed original are kept for the audit
-  trail — read `_rev2`.
+  trail — read `_rev3`.
 
 > **`PROPOSAL.pdf` in Drive is a render of this file and is now stale.** It predates
-> Amendment 2 and still shows the pre-audit C3 wording. Re-render before circulating.
+> Amendment 3 and still shows the pre-audit C3 wording. Re-render before circulating.
+
+## Amendment 3 decision — 8 Sep 2026
+
+Gautam approved the RULER re-scope at the pre-registered n=60 and cleared DeltaNet and
+Mamba2 to start. C2 remains a formal Table 4 FAIL against the 10x bar, while Methods must
+report the statistically significant sub-threshold effect (1.076x per digit, 95% CI
+[1.054, 1.098], p<0.0001). Length/content/construction checks are supporting and
+limitations analyses, not blockers. The original four-needle result is explicitly
+non-generalizing. See the [decision record](DECISION_RECORD_2026-09-08.md) and the
+[register of datasets Gautam provided](DATASET_REGISTER_2026-09-08.md).
 
 ## Deviations of record (audit, 3 Sep 2026)
 
 The repo was audited against both documents on 3 Sep. Direction is on plan — RQ framing,
 sequencing, settings of record, cut order and null-result discipline all match. Six
-divergences and one artefact bug are open; each is a task in the Execution Tracker under
-goal **G2 Instrument validation** (or G3/G7 where noted), and all are recorded in
-Amendment 2.
+divergences and one artefact bug were recorded in Amendment 2 and the Execution Tracker;
+the table below now reflects their status after Amendment 3.
 
 | # | Deviation | Where it bites |
 |---|---|---|
 | 1 | **Readout basis.** Expected Tables §1 specifies the Δ-readout (residual stream, AHN − NOWRITE). The battery reports the `o_t` readout instead. Both are stored per row in `04_retention_rows.json` (`rank` vs `rank_c1_residual`). | The 2 Sep "layer 27 is a working instrument" conclusion holds only in the `o_t` basis. Evicted medians at L27: 68,132 (`o_t`) vs 109,793 (Δ-resid) against chance 75,968. Declare the basis of record. |
-| 2 | **RULER unused.** `ai.load_ruler()` ([`ahn_interp.py:784`](../ahn_interp.py)) has zero call sites; all NIAH work uses the homemade `build_niah_prompt`. | RULER is Table 2's *primary* RQ2 cohort and the reason ground truth is known by construction. Running it is the cheapest test of C1 candidate (b). |
-| 3 | **Two controls unrun.** The proposal defines C3 as the shuffled *lens*; the Expected Tables doc redefined it as shuffled *context*, and only that version has been run. `JacobianLens.shuffled()` and `.permuted_layers()` exist with zero call sites. | The decoding-artefact control and C4's layer-permutation half both bear directly on the open C1 question. Both are CPU-only. |
+| 2 | **RULER was unused at audit; resolved 7–8 Sep.** Run 026 populated the pre-registered n=60 cohort and Amendment 3 makes it primary for the re-scoped RQ2. | The homemade cohort is supporting/limitations analysis. DN/Mamba2 now repeat the RULER protocol. |
+| 3 | **One control remains unrun.** C3-lens was completed in the RULER battery and disqualified layers 9 and 18; C4's layer-permutation half remains unrun. | Complete C4 during the now-unblocked three-cell sequence; it no longer gates starting DN/M2. |
 | 4 | **No-AHN floor unrun.** Table 1 marks it *Primary — floor*; zero references in the repo. NOWRITE ≠ no-AHN. | No retention claim yet has the baseline the proposal requires it to exceed. |
 | 5 | **Missing artefacts.** Figure 2 (never-cut set) absent from `05_`; Table 10 has no file; Tables 1–2 have no artefact. | Figure 2 is explicitly protected by §8's cut order. |
-| 6 | **Gate crossed.** "C1–C3 must pass before RQ2 or RQ3 is populated" — they failed; Table 6 and `04b` were populated anyway, labelled provisional. | Report as a stated deviation in Methods, not as a caveat. |
+| 6 | **Gate crossed; framing decided 8 Sep.** C2 is significant but below its 10x bar, and Table 6/`04b` were populated after the original binary gate failed. | Amendment 3 records Gautam's approved deviation: Table 4 says FAIL; Methods reports the 1.076x effect and rationale. |
 | 🔴 | **Artefact bug.** `03_nowrite_reproduction.json`'s summary and `05_table5_rq1.json` still hold full-generation metrics; the first-line headline lives only in README prose, and recomputing it from the saved `_fl` fields does not reproduce the README. | Change rate 35.0% vs 33.3%; pooled ΔF1 +3.34 vs +6.11 pts. Short and mid match to the decimal — the **long stratum flips sign** (−2.61 vs +5.72). One of README or JSON is stale. |
 
 ## The artefact set (Expected Tables and Figures)

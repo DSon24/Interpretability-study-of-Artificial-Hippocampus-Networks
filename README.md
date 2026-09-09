@@ -47,6 +47,13 @@ Meetings (decisions and action items). This README carries the technical state; 
 carries who is doing what by when. Keep the Experiment Log tab updated as runs land -- it is
 the only place a run's config, seed and conclusion sit together.
 
+**Decision update — 8 Sep.** Gautam approved the RULER re-scope at the pre-registered
+**n=60**, approved Decision 2 Option A for C2, and cleared DeltaNet/Mamba2 to start. The
+length/content/construction checks now support the Limitations analysis rather than block
+the next runs. H100 access is restored in an unprivileged environment (no root/sudo). See
+the [decision record](docs/DECISION_RECORD_2026-09-08.md) and
+[dataset register](docs/DATASET_REGISTER_2026-09-08.md).
+
 Sequencing follows Gautam's instruction after the last meeting:
 
 > "Get one 3B checkpoint running, reproduce the existing NOWRITE result, and make sure we
@@ -69,16 +76,16 @@ Sequencing follows Gautam's instruction after the last meeting:
 | Retention curves (Table 6) | **run, not usable** — exponential fit inadequate at all three layers |
 | RQ1 on LongBench-E HotpotQA (Table 5) | **done** — ΔF1 +6.11 pts, **95% CI spans zero** |
 | RQ3 join (`04b`) | **done, by Sơn** — no significant correlation, provisional — [map-stability + RQ3 join](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
-| 3 cells at 3B → retention curves | **blocked** on the C1 diagnosis — `configs/run_3b_dn.json`, `run_3b_m2.json` (unrun) |
-| 7B checkpoints, RQ3 correlation | not started (correct) |
+| 3 cells at 3B → retention curves | **approved and unblocked 8 Sep** — merge DeltaNet/Mamba2 and run RULER n=60 next; `configs/run_3b_dn.json`, `run_3b_m2.json` are still unrun |
+| 7B checkpoints, RQ3 correlation | not started — gated on the three-cell/Table 7 result, not on further construction diagnosis |
 
 ## Findings
 
-The full findings log lives in **[docs/FINDINGS.md](docs/FINDINGS.md)** -- twelve entries,
+The full findings log lives in **[docs/FINDINGS.md](docs/FINDINGS.md)** as a dated,
 written as an append-only record so that later corrections sit visibly on top of what they
 correct rather than quietly replacing it. **The 8 Sep content-swap entry withdraws the
-central claim of the 7 Sep permutation-test entry** and is the current state of the C1
-question.
+central claim of the 7 Sep permutation-test entry.** Gautam's subsequent decision makes
+that construction question supporting analysis, not an execution blocker.
 
 | Entry | What it established |
 |---|---|
@@ -122,6 +129,8 @@ notebooks/
   pilot/                             Sơn's 18 Aug notebooks, kept for provenance
 docs/
   FINDINGS.md                        the findings log — split out of this README, 6 Sep
+  DECISION_RECORD_2026-09-08.md      Gautam's approved RULER/C2/DN-M2 decisions
+  DATASET_REGISTER_2026-09-08.md     roles for BABILong, NoLiMa, LongBench, and SCROLLS
   UPSTREAM_README.md                 ByteDance's original README
   PROPOSAL.md                        pointer to the proposal + expected-artefacts docs
   GPU_PLAN_2026-08-20.md             direction audit + 10 GPU-h plan; source for the 20 Aug findings
@@ -417,9 +426,10 @@ Keep `merged_ckpt/` out of git (it already is).
 
 ## Next steps
 
-Steps 1–4 are done. Gautam's own instruction says not to scale past a failed control
-battery, so steps 5, 8 and 9 are **paused**, not skipped, pending step 5. Full reasoning
-for every row lives in [docs/FINDINGS.md](docs/FINDINGS.md); this is status, not narrative.
+Steps 1–6 are resolved or complete. On 8 Sep Gautam explicitly approved the RULER re-scope,
+kept n=60, and unblocked DeltaNet/Mamba2. Full reasoning lives in
+[docs/FINDINGS.md](docs/FINDINGS.md); the operative decision is in the
+[8 Sep decision record](docs/DECISION_RECORD_2026-09-08.md).
 
 | Step | Status |
 |---|---|
@@ -427,20 +437,16 @@ for every row lives in [docs/FINDINGS.md](docs/FINDINGS.md); this is status, not
 | 2. `03_nowrite_reproduction.ipynb` | done, metric-corrected — [19–20 Aug Finding 5](docs/FINDINGS.md#findings-from-the-1920-aug-run) |
 | 3. `02_jlens_fit_and_validate.ipynb` | done, 1.92 GPU-h; Table 3 checks 2/3 fail, check 4 (map stability) passes — [19–20 Aug Findings 2–4](docs/FINDINGS.md#findings-from-the-1920-aug-run), [map-stability check](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
 | 4. `04_niah_retention.ipynb` on GDN 3B | done — **C1, C2, C3 fail** on the homemade cohort — [20 Aug NIAH retention run](docs/FINDINGS.md#findings-from-the-20-aug-niah-retention-run) |
-| 5. **Diagnose the C1 disagreement** | **open, narrowed 8 Sep.** Candidate (b) is real at layer 27 on RULER. The apparent conflict with the homemade cohort is resolved — content and length are both ruled out, and Sơn's opposing result does not replicate past his 4 needles. What remains is **construction**: 60 real RULER items vs 7–8 synthetic needles — [7 Sep control battery](docs/FINDINGS.md#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery), [8 Sep content swap](docs/FINDINGS.md#findings-from-the-8-sep-content-swap-content-is-not-the-variable) |
+| 5. **Diagnose the C1 disagreement** | **resolved for execution 8 Sep.** RULER is primary; length/content are ruled out, construction is a supporting/limitations question, and the original 4-needle result is non-generalizing — [decision record](docs/DECISION_RECORD_2026-09-08.md) |
 | 6. `04b` — the RQ3 join | done, by Sơn — no significant correlation, provisional — [map-stability + RQ3 join](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
 | 7. Add the boundary-JS column | not started — Gate B already computes it; not blocked by 5, safe any time |
-| 8. DN + Mamba2 3B merges | **paused**, blocked on 5 — `configs/run_3b_dn.json`, `run_3b_m2.json` correctly unrun |
-| 9. 7B checkpoints | **blocked** on 5 and Table 10 row 2 (J-lens map cost) |
+| 8. DN + Mamba2 3B merges and RULER runs | **next — approved and unblocked**; use RULER n=60 on the restored H100 |
+| 9. 7B checkpoints | **blocked only on the three-cell/Table 7 result**; make this call after step 8 |
 
-**Current asks for Gautam — with lettered options he can answer in one line — live in
-[docs/DIAGNOSIS_PACKET_2026-09-07.md](docs/DIAGNOSIS_PACKET_2026-09-07.md).** Two smaller,
-already-resolved items that predate the packet and aren't in it: Open Question 4 (the AHN
-combination is a plain sum before `o_proj`, confirmed by Gate A) and Open Question 6 (he
-uses 8,064 on LongBench-E himself — get it confirmed in writing for Methods). Question 1
-(compute reimbursement) is resolved — work has run continuously on the box Algoverse
-provided. Question 3 (a free-T4 fallback) is open, not blocking, and notebook 00 tests it
-directly.
+The two asks in the 7 Sep diagnosis packet are now closed: Decision 1 = Option A and
+Decision 2 = Option A. Gautam also provided four public dataset resources; their intended
+roles and the requirement for a new amendment before any added compute are in the
+[dataset register](docs/DATASET_REGISTER_2026-09-08.md).
 
 ## Citation
 

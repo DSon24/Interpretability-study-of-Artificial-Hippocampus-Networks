@@ -7,8 +7,9 @@ hard to reach.
 
 Nothing here is edited. Later entries correct earlier ones rather than replacing them, so
 a claim's history stays visible: read top to bottom and the withdrawals are part of the
-record. The 8 Sep content-swap entry is the most recent state of the C1 question, and it withdraws
-the 7 Sep permutation-test entry's central claim.
+record. The 8 Sep content-swap entry is the most recent experimental state of the C1
+question, and it withdraws the 7 Sep permutation-test entry's central claim. The mentor
+decision immediately after it records how that evidence changes execution.
 
 - [Findings from the 19–20 Aug run](#findings-from-the-1920-aug-run)
 - [Findings from the 20 Aug NIAH retention run](#findings-from-the-20-aug-niah-retention-run)
@@ -23,6 +24,7 @@ the 7 Sep permutation-test entry's central claim.
 - [Findings from the 7 Sep target-scoring bug and the RULER control battery](#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery)
 - [Findings from the 7 Sep permutation test: layer 27's sign is needle-content-dependent](#findings-from-the-7-sep-permutation-test-layer-27s-sign-is-needle-content-dependent) — **WITHDRAWN 8 Sep**
 - [Findings from the 8 Sep content swap: content is not the variable](#findings-from-the-8-sep-content-swap-content-is-not-the-variable)
+- [Mentor decision after the 8 Sep checks](#mentor-decision-after-the-8-sep-checks)
 
 ---
 
@@ -999,3 +1001,28 @@ diagnosis packet within the hour. It survived one day. The test that killed it w
 the length-matched control first rather than accepting the rescope. Fifth correction in
 four days on this control; the first four were bugs, this one was a hypothesis stated with
 more confidence than one comparison could carry.
+
+---
+
+## Mentor decision after the 8 Sep checks
+
+This is a decision record, not a new experimental finding. After reviewing the
+length-matched and content-swap results, Gautam approved the following:
+
+- RULER NIAH is the primary RQ2 cohort at the pre-registered n=60.
+- DeltaNet and Mamba2 are unblocked and should start now.
+- C2 remains a formal Table 4 **FAIL** against the pre-registered 10x threshold, while
+  Methods reports the statistically significant 1.076x-per-digit effect (95% CI
+  [1.054, 1.098], p<0.0001) as sub-threshold.
+- Length, content, and construction checks belong in supporting/limitations analysis and
+  do not block the next runs.
+- The original Paris/Tokyo/banana/lantern four-needle issue must be stated explicitly so
+  its non-generalizing effects are not overclaimed.
+- RULER stays at n=60; no sample-size change is warranted without a specific reason.
+
+Gautam also provided [BABILong](https://github.com/booydar/babilong),
+[NoLiMa](https://github.com/adobe-research/NoLiMa),
+[LongBench](https://github.com/THUDM/LongBench), and
+[SCROLLS](https://github.com/tau-nlp/scrolls). They are catalogued with intended roles and
+change controls in the [dataset register](DATASET_REGISTER_2026-09-08.md); none changes the
+approved RULER n=60 run.
