@@ -46,21 +46,27 @@ context.
 Every statistic is restricted to placement == "evicted" by default: the claim is about
 what survives compression, and 28 of 60 RULER needles sit inside the local window.
 
-    python ruler_controls.py
+    python ruler_controls.py --run-config run_3b_gdn
+    python ruler_controls.py --run-config run_3b_dn
+    python ruler_controls.py --run-config run_3b_m2
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import math
 import os
 import random
 import statistics as st
+from pathlib import Path
 from typing import Dict, List, Sequence, Tuple
 
-RESULTS_DIR = os.path.join("results", "run_3b_gdn")
-ROWS_PATH = os.path.join(RESULTS_DIR, "04i_ruler_controls_rows.json")
-OUT_PATH = os.path.join(RESULTS_DIR, "04i_ruler_controls_stats.json")
+REPO_ROOT = Path(__file__).resolve().parent
+CONFIGS_DIR = REPO_ROOT / "configs"
+DEFAULT_RUN_CONFIG = "run_3b_gdn"
+ROWS_NAME = "04i_ruler_controls_rows.json"
+OUT_NAME = "04i_ruler_controls_stats.json"
 
 CHANCE = 75968
 N_BOOT = 10000
@@ -68,6 +74,72 @@ SEED = 20260820
 EPS = 1e-12
 # Pre-registered C2 bar, from Expected Tables Table 4.
 C2_BAR = 10.0
+
+
+def resolve_config_path(value: str) -> Path:
+    """Resolve a run name, config filename, or explicit config path."""
+    requested = Path(value)
+    names = [requested]
+    if requested.suffix != ".json":
+        names.append(requested.with_suffix(".json"))
+
+    candidates = []
+    for name in names:
+        if name.is_absolute():
+            candidates.append(name)
+        else:
+            candidates.extend((Path.cwd() / name, CONFIGS_DIR / name.name))
+
+    for candidate in candidates:
+        if candidate.is_file():
+            return candidate.resolve()
+    tried = "\n".join(f"    {p}" for p in candidates)
+    raise FileNotFoundError(f"run config not found: {value}\n  tried:\n{tried}")
+
+
+def repo_relative_path(value: str) -> Path:
+    path = Path(value)
+    return path if path.is_absolute() else REPO_ROOT / path
+
+
+def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Summarise one cell's corrected RULER C1/C2/C3 battery."
+    )
+    parser.add_argument(
+        "--run-config", default=DEFAULT_RUN_CONFIG,
+        help="run name or JSON path (run_3b_gdn, run_3b_dn, or run_3b_m2)",
+    )
+    parser.add_argument(
+        "--results-dir",
+        help="override results/<run_name>; relative paths are resolved from the repo root",
+    )
+    parser.add_argument("--rows-path", help=f"override the input {ROWS_NAME} path")
+    parser.add_argument("--output-path", help=f"override the output {OUT_NAME} path")
+    parser.add_argument(
+        "--allow-logit-lens", action="store_true",
+        help="allow exploratory logit-lens rows; production analysis refuses them",
+    )
+    parser.add_argument(
+        "--force", action="store_true", help="replace an existing output file",
+    )
+    return parser.parse_args(argv)
+
+
+def resolve_run(args: argparse.Namespace) -> tuple[dict, Path, Path, Path]:
+    config_path = resolve_config_path(args.run_config)
+    with config_path.open() as f:
+        run_config = json.load(f)
+    missing = sorted({"run_name", "cell", "scale"} - run_config.keys())
+    if missing:
+        raise ValueError(f"{config_path} is missing required fields: {missing}")
+
+    results_dir = repo_relative_path(
+        args.results_dir or os.path.join("results", run_config["run_name"])
+    )
+    rows_path = repo_relative_path(args.rows_path) if args.rows_path else results_dir / ROWS_NAME
+    out_path = repo_relative_path(args.output_path) if args.output_path else results_dir / OUT_NAME
+    return run_config, rows_path, out_path, config_path
 
 
 def geo_mean(xs: Sequence[float]) -> float:
@@ -122,18 +194,50 @@ def permutation_p(folds: Sequence[float], n_boot: int = N_BOOT, seed: int = SEED
     return hits / n_boot
 
 
-def main() -> None:
-    with open(ROWS_PATH) as f:
+def main(argv: Sequence[str] | None = None) -> None:
+    args = parse_args(argv)
+    run_config, rows_path, out_path, config_path = resolve_run(args)
+    if out_path.exists() and not args.force:
+        raise FileExistsError(
+            f"refusing to overwrite {out_path}; pass --force for a deliberate replacement"
+        )
+
+    with rows_path.open() as f:
         blob = json.load(f)
     rows = blob["rows"]
+    if not rows:
+        raise ValueError(f"no rows found in {rows_path}")
+
+    saved_cfg = blob.get("cfg", {})
+    for key in ("cell", "scale"):
+        expected, actual = run_config[key], saved_cfg.get(key)
+        if actual is not None and actual != expected:
+            raise ValueError(
+                f"{rows_path} says {key}={actual!r}, but {config_path.name} "
+                f"requires {expected!r}; refusing cross-cell analysis"
+            )
+
+    readouts = {r.get("readout") for r in rows}
+    if readouts != {"jlens"} and not args.allow_logit_lens:
+        found = sorted(str(value) for value in readouts)
+        raise ValueError(
+            f"production RULER analysis requires readout='jlens'; found {found}. "
+            "Use --allow-logit-lens only for an explicitly exploratory result."
+        )
+
     answer_seqs = blob["answer_digit_seqs"]
     layers = sorted({int(r["layer"]) for r in rows})
 
+    print(f"run={run_config['run_name']}  cell={run_config['cell']}  scale={run_config['scale']}")
+    print(f"rows={rows_path}")
     print(f"RULER control battery — {len(rows)} rows, config={blob['ruler_cfg']}")
     print(f"readout={rows[0]['readout']}  lens_validated={rows[0]['lens_validated']}")
     print(f"chance rank = {CHANCE}; C2 pre-registered bar = {C2_BAR}x\n")
 
-    out: dict = {"chance_rank": CHANCE, "c2_bar": C2_BAR, "n_boot": N_BOOT,
+    source_rows = os.path.relpath(rows_path, REPO_ROOT)
+    out: dict = {"run_name": run_config["run_name"], "cell": run_config["cell"],
+                 "scale": run_config["scale"], "source_rows": source_rows,
+                 "chance_rank": CHANCE, "c2_bar": C2_BAR, "n_boot": N_BOOT,
                  "seed": SEED, "ruler_cfg": blob["ruler_cfg"],
                  "readout": rows[0]["readout"],
                  "lens_validated": rows[0]["lens_validated"], "layers": {}}
@@ -242,9 +346,10 @@ def main() -> None:
         out["layers"][str(L)] = rec
         print()
 
-    with open(OUT_PATH, "w") as f:
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with out_path.open("w") as f:
         json.dump(out, f, indent=2)
-    print(f"saved -> {OUT_PATH}")
+    print(f"saved -> {out_path}")
 
 
 if __name__ == "__main__":
