@@ -68,15 +68,16 @@ Sequencing follows Gautam's instruction after the last meeting:
 | One 3B checkpoint running | **done** — Qwen2.5-3B + AHN-GDN merged, A100-40GB — Sơn, 18 Aug |
 | Hooks fire, NOWRITE zeroes the capture | **done** |
 | Hook output = memory's residual-stream contribution | **done** — Gate A passes — [19–20 Aug Finding 1](docs/FINDINGS.md#findings-from-the-1920-aug-run) |
-| Reproduce published NOWRITE result (38–42% changed) | **done, metric-corrected** — 33.3% changed, ΔF1 +6.1 pts — [19–20 Aug Finding 5](docs/FINDINGS.md#findings-from-the-1920-aug-run) |
+| Reproduce published NOWRITE result (38–42% changed) | **done, metric-corrected** — 33.3% changed, ΔF1 +3.34 pts (first-line, regenerated from the saved per-example rows) — [19–20 Aug Finding 5](docs/FINDINGS.md#findings-from-the-1920-aug-run) |
 | J-lens fitted, Table 3 validation | **done, map converged** (1.92 GPU-h, map-stability passes); 2 of 5 checks fail — [19–20 Aug Findings 2–4](docs/FINDINGS.md#findings-from-the-1920-aug-run), [map-stability check](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
 | NIAH retention + controls, homemade cohort | **done — control battery fails** (C1/C2/C3), then reframed twice: C2 was a pair-identity confound, C1's pooled failure was a 4-needle sampling artifact — [20 Aug run](docs/FINDINGS.md#findings-from-the-20-aug-niah-retention-run), [28–31 Aug C2/C3](docs/FINDINGS.md#findings-from-the-2831-aug-c2-and-c3-investigation), [2–3 Sep correction](docs/FINDINGS.md#findings-from-the-2-sep-per-layer-re-analysis-corrected-3-sep), [4–5 Sep needle-category test](docs/FINDINGS.md#findings-from-the-45-sep-c1-rank-correction-construction-ladder-and-needle-category-test) |
 | NIAH retention on the primary RULER cohort | **done 7 Sep — real effect at layer 27.** C2 excludes the null, C3-lens verifies it real — [7 Sep control battery](docs/FINDINGS.md#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery) |
 | Content swap at matched length (Gautam's 8 Sep ask) | **done 8 Sep — content is not the variable.** 7 word × 8 digit needles × 5 distances: words and digits agree everywhere; layer 27 pooled null for both (0.973x p=0.59, 0.995x p=0.76). Sơn's opposing 0.863x came from 4 hand-picked needles and does not replicate. RULER's positive untouched — the gap is construction, not length or content — [8 Sep content swap](docs/FINDINGS.md#findings-from-the-8-sep-content-swap-content-is-not-the-variable) |
 | Retention curves (Table 6) | **run, not usable** — exponential fit inadequate at all three layers |
-| RQ1 on LongBench-E HotpotQA (Table 5) | **done** — ΔF1 +6.11 pts, **95% CI spans zero** |
+| RQ1 on LongBench-E HotpotQA (Table 5) | **done** — ΔF1 +3.34 pts, **95% CI [−4.70, +11.10] spans zero**; long stratum negative (regenerated from saved rows, 9 Sep; the earlier +6.11 was the stale prose figure) |
 | RQ3 join (`04b`) | **done, by Sơn** — no significant correlation, provisional — [map-stability + RQ3 join](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
-| 3 cells at 3B → retention curves | **approved and unblocked 8 Sep** — merge DeltaNet/Mamba2 and run RULER n=60 next; `configs/run_3b_dn.json`, `run_3b_m2.json` are still unrun |
+| 3 cells at 3B → RULER control battery | **done 8–9 Sep — all three cells run, C1–C4 incl. layer-permutation.** DeltaNet merged 8 Sep and Mamba2 9 Sep (`configs/run_3b_dn.json`, `run_3b_m2.json`); M2 ran on Modal with the real mamba kernels. Layer 27 disagrees three ways: GDN +1.076x/digit (p<1e-4), DN 0.969x/digit (p=6e-4), M2 1.095x (p=0.40, null). L9/L18 rejected as decoding artefacts in all three — [DeltaNet battery](docs/FINDINGS.md#findings-from-the-deltanet-ruler-control-battery-8-sep), [Mamba2 battery](docs/FINDINGS.md#findings-from-the-mamba2-ruler-control-battery-9-sep) |
+| No-AHN floor (Table 1 Primary) | **harness written 9 Sep, run pending.** `no_ahn_floor.py` + `configs/run_3b_floor.json` — stock Qwen2.5-3B + SWA forced on every layer at 8064, no AHN, no sinks; RULER NIAH n=60 (evicted substring accuracy = the number RQ2 must exceed) + LongBench-E HotpotQA n=60. Not yet executed; no `results/run_3b_floor/` and no FINDINGS entry |
 | 7B checkpoints, RQ3 correlation | not started — gated on the three-cell/Table 7 result, not on further construction diagnosis |
 
 ## Findings
@@ -102,17 +103,23 @@ that construction question supporting analysis, not an execution blocker.
 | [7 Sep target-scoring bug + control battery](docs/FINDINGS.md#findings-from-the-7-sep-target-scoring-bug-and-the-ruler-control-battery) | **Layer 27, corrected: a real but small memory-specific effect.** C2 excludes the null (1.076x/digit, p<0.0001) but falls well short of the pre-registered 10x bar. C3-lens confirms layers 9 and 18 are decoding artefacts; only layer 27 survives the check |
 | [7 Sep permutation test](docs/FINDINGS.md#findings-from-the-7-sep-permutation-test-layer-27s-sign-is-needle-content-dependent) | ~~Layer 27's sign flips with needle content~~ — **WITHDRAWN 8 Sep**, see below |
 | [8 Sep content swap](docs/FINDINGS.md#findings-from-the-8-sep-content-swap-content-is-not-the-variable) | **Content is not the variable.** Words and digits behave the same at every layer × distance cell; layer 27 is null in the homemade construction at every distance and pooled. Sơn's 0.863x does not replicate past his 4 needles (0.973x, p=0.59 with 7). RULER's positive stands; the difference is construction, not content or length |
+| [DeltaNet RULER battery](docs/FINDINGS.md#findings-from-the-deltanet-ruler-control-battery-8-sep) | L27 C2 = 0.969x/digit (p=6e-4) — significant, sub-threshold, **opposite sign to GDN**; C3-context order-sensitive; L9/L18 are decoding artefacts (C3-lens + C4-layers) |
+| [Mamba2 RULER battery](docs/FINDINGS.md#findings-from-the-mamba2-ruler-control-battery-9-sep) | Weakest of the three cells: L27 C2 = 1.095x (p=0.40, **null**), C1 spans chance; only L27 passes C4-layers. GDN +/ DN − / M2 null at the same layer, same checkpoint family. Real mamba kernels via Modal |
+| [DeltaNet RQ1 rerun](docs/FINDINGS.md#findings-from-the-deltanet-rq1-rerun-nb03-9-sep) · [Mamba2 RQ1 run](docs/FINDINGS.md#findings-from-the-mamba2-rq1-run-nb03-9-sep) | NOWRITE change rate inside the published 38–42% band for both (DN, M2 41.7%); no significant ΔF1 at n=60. Week-6 milestone passes for all three cells |
+| [1000-context J-lens refit](docs/FINDINGS.md#findings-from-the-1000-context-j-lens-map-stability-refit-9-sep) · [r29 J-lens re-run](docs/FINDINGS.md#findings-from-the-r29-evicted-vs-in-window-j-lens-re-run-9-sep) | Map stability holds at 1000 contexts; the 21 Aug logit-lens caveat re-run through the fitted J-lens — 21 Aug reading survives, L18 in-window ceiling ~2.6x better through the J-lens, evicted still not read below chance, no L27 separation on the homemade construction |
 
 ## Repository layout
 
 ```
 ahn_interp.py                 shared instrumentation — imported by every notebook
+no_ahn_floor.py               standalone GPU run: Table 1 Primary no-AHN floor — stock Qwen + forced SWA, RULER + HotpotQA n=60 (not yet run)
 per_layer_controls.py         CPU-only: recompute Table 4 within layer, both readout bases
 extract_c2_corrected.py       CPU-only: pull Son's baseline-corrected C2 out of the notebook
 probe_construction.py         CPU-only: the NIAH construction ladder — Findings, 4–5 Sep
 probe_prompt_format.py        CPU-only: prompt-format probe behind the same findings
 configs/
-  run_3b_gdn.json                    the run of record; run_3b_dn / run_3b_m2 exist, unrun
+  run_3b_gdn.json                    the run of record; run_3b_dn / run_3b_m2 run 8–9 Sep
+  run_3b_floor.json                  no-AHN floor — stock Qwen2.5-3B, SWA at 8064, no AHN, no sinks
 merged_ckpt/                  merged checkpoints (gitignored; rebuilt on every box)
 notebooks/
   00_setup_and_config_audit.ipynb    load a checkpoint; record window / sinks / router
@@ -155,6 +162,10 @@ results/
     05_table6_retention_summary.json   per-layer half-life fit — inadequate, see Findings
     05_table8_rq3.json                 RQ3 table; 05_table9_variance.json — variance decomposition
     06_construction_ladder.json        NIAH construction ladder; 06_prompt_format_probe.json
+    04o_r29_evicted_vs_inwindow_jlens.json  21 Aug logit-lens caveat re-run through the fitted J-lens (9 Sep)
+  run_3b_dn/                        DeltaNet 3B — nb03 RQ1 + RULER control battery (04g/04i), 8–9 Sep
+  run_3b_m2/                        Mamba2 3B — nb03 RQ1 + RULER control battery, Modal real kernels, 9 Sep
+  run_3b_floor/                     no-AHN floor — 06_no_ahn_floor.json (run pending, dir not yet created)
   pilot_2026-08-18/                  superseded — see Findings above
 src/ahn/                       upstream AHN implementation (unmodified)
 eval/, examples/               upstream harnesses (unmodified)
@@ -439,9 +450,11 @@ kept n=60, and unblocked DeltaNet/Mamba2. Full reasoning lives in
 | 4. `04_niah_retention.ipynb` on GDN 3B | done — **C1, C2, C3 fail** on the homemade cohort — [20 Aug NIAH retention run](docs/FINDINGS.md#findings-from-the-20-aug-niah-retention-run) |
 | 5. **Diagnose the C1 disagreement** | **resolved for execution 8 Sep.** RULER is primary; length/content are ruled out, construction is a supporting/limitations question, and the original 4-needle result is non-generalizing — [decision record](docs/DECISION_RECORD_2026-09-08.md) |
 | 6. `04b` — the RQ3 join | done, by Sơn — no significant correlation, provisional — [map-stability + RQ3 join](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
-| 7. Add the boundary-JS column | not started — Gate B already computes it; not blocked by 5, safe any time |
-| 8. DN + Mamba2 3B merges and RULER runs | **next — approved and unblocked**; use RULER n=60 on the restored H100 |
-| 9. 7B checkpoints | **blocked only on the three-cell/Table 7 result**; make this call after step 8 |
+| 7. Add the boundary-JS column | done — logged per example in nb03 for all three cells (commit bc2a61f + reruns) |
+| 8. DN + Mamba2 3B merges and RULER runs | **done 8–9 Sep** — DN merged 8 Sep, M2 merged 9 Sep and run on Modal with real mamba kernels; full C1–C4 battery for all three, results under `results/run_3b_dn/` and `results/run_3b_m2/` |
+| 9. No-AHN floor (Table 1 Primary) | **next — harness ready, run pending.** `no_ahn_floor.py --config configs/run_3b_floor.json` on a MIG slice; stock Qwen2.5-3B + forced SWA at 8064, no AHN, no sinks; RULER NIAH n=60 evicted substring accuracy is the number every retention claim must clear. Then commit `results/run_3b_floor/`, add an Experiment Log row, write the FINDINGS entry. Blocks Table 7 and the data freeze |
+| 10. Table 7 — cross-cell half-life ratios | blocked only on step 9 and the Table 10 compute file; RULER retention is flat vs distance, so expect the pre-registered non-parametric fallback |
+| 11. 7B checkpoints | **blocked only on the three-cell/Table 7 result**; make this call after steps 9–10 |
 
 The two asks in the 7 Sep diagnosis packet are now closed: Decision 1 = Option A and
 Decision 2 = Option A. Gautam also provided four public dataset resources; their intended

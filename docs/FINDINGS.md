@@ -111,6 +111,16 @@ of a null result. Both metrics are kept in the saved JSON (`*_fl` fields alongsi
 originals) because the discrepancy is itself a finding: the prompt template is not
 eliciting terse answers.
 
+> **Corrected 3–9 Sep.** The **+6.11 pts** ΔF1 in the table above was recomputed by hand
+> from the first-line means, not regenerated from the saved per-example `_fl` rows. The
+> 3 Sep pre-registration audit (Experiment Log run 022) and the 9 Sep regeneration
+> (`results/run_3b_gdn/03_nowrite_reproduction.json`, commit 363e996 — its `metric_note`
+> now states the headline is generated from the first-line fields only) give **+3.34 pts**
+> pooled, with the answer-change rate unchanged at 33.3%. Short and mid match to the
+> decimal; the **long stratum flips sign** (+5.72 → **−2.61**). The `03`/`05` JSON
+> summaries and the README now carry +3.34; this table row is left as first written per
+> the append-only convention.
+
 ## Findings from the 20 Aug NIAH retention run
 
 Full detail and the reasoning behind every patch is in
@@ -154,6 +164,12 @@ already treats as the expected setup for RQ3 rather than a bad outcome; and Gaut
 published +0.4 to +2.3 pts sits comfortably inside our interval, so the earlier "our ΔF1 is
 3× his" gap (Finding 5, 19–20 Aug) is not a real effect-size discrepancy — it's noise at
 this cohort size.
+
+> **Superseded 9 Sep.** The +6.11 / [−1.85, +14.42] figures here came from the by-hand
+> first-line means. Regenerated from the saved `_fl` rows: pooled first-line ΔF1
+> **+3.34 pts, 95% CI [−4.70, +11.10]**; short +9.17 and mid +3.45 unchanged, long
+> **−2.61 [−18.00, +11.72]** (sign flip). The n=60 reading is unchanged — no significant
+> behavioural effect, every per-stratum interval spans zero.
 
 > **Read this section with the 2 Sep per-layer re-analysis in hand.** Every number in the
 > table above is pooled across layers 9, 18 and 27. Layer 9's readout is degenerate and
