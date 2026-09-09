@@ -1,0 +1,201 @@
+{
+  "source_rows": "results/run_3b_gdn/04i_ruler_controls_rows.json",
+  "note": "RULER NIAH retention vs eviction distance, corrected digit-sequence scoring (Run 026). Evicted examples only, ordered context, jlens readout. Replaces the 7 Sep two-bin split on the buggy space-token rows.",
+  "prior_twobin_on_buggy_rows": {
+    "near_median_rank": 15844,
+    "far_median_rank": 17250,
+    "verdict": "flat"
+  },
+  "chance_rank": 75968,
+  "n_bins": 4,
+  "lens_validated": false,
+  "ruler_config": "16384",
+  "layers": {
+    "9": {
+      "n": 32,
+      "eviction_distance_range": [
+        46.0,
+        7414.0
+      ],
+      "overall_median_rank": 87258.71428571429,
+      "spearman_rho": -0.015029325513196481,
+      "perm_p": 0.9327067293270673,
+      "ols_slope_rank_per_token": 0.13851593384729044,
+      "verdict": "flat -- no distance dependence over the range measured",
+      "bins": [
+        {
+          "dist_lo": 46.0,
+          "dist_hi": 2846.5,
+          "n": 8,
+          "mean_eviction_distance": 1850.25,
+          "median_rank": 89627.92857142858,
+          "ci95": [
+            50001.28571428572,
+            94793.14285714286
+          ],
+          "frac_beating_chance": 0.25
+        },
+        {
+          "dist_lo": 2846.5,
+          "dist_hi": 4066.0,
+          "n": 8,
+          "mean_eviction_distance": 3441.25,
+          "median_rank": 88487.35714285714,
+          "ci95": [
+            76594.42857142857,
+            98378.14285714286
+          ],
+          "frac_beating_chance": 0.125
+        },
+        {
+          "dist_lo": 4066.0,
+          "dist_hi": 5818.0,
+          "n": 8,
+          "mean_eviction_distance": 5057.5,
+          "median_rank": 87094.28571428571,
+          "ci95": [
+            68201.85714285714,
+            107655.14285714286
+          ],
+          "frac_beating_chance": 0.375
+        },
+        {
+          "dist_lo": 5818.0,
+          "dist_hi": 7415.0,
+          "n": 8,
+          "mean_eviction_distance": 6463.25,
+          "median_rank": 71989.35714285713,
+          "ci95": [
+            61594.0,
+            99053.28571428571
+          ],
+          "frac_beating_chance": 0.5
+        }
+      ]
+    },
+    "18": {
+      "n": 32,
+      "eviction_distance_range": [
+        46.0,
+        7414.0
+      ],
+      "overall_median_rank": 6254.285714285714,
+      "spearman_rho": -0.21737536656891496,
+      "perm_p": 0.22347765223477653,
+      "ols_slope_rank_per_token": -0.6262565088982689,
+      "verdict": "flat -- no distance dependence over the range measured",
+      "bins": [
+        {
+          "dist_lo": 46.0,
+          "dist_hi": 2846.5,
+          "n": 8,
+          "mean_eviction_distance": 1850.25,
+          "median_rank": 6254.285714285714,
+          "ci95": [
+            4145.428571428572,
+            9420.0
+          ],
+          "frac_beating_chance": 1.0
+        },
+        {
+          "dist_lo": 2846.5,
+          "dist_hi": 4066.0,
+          "n": 8,
+          "mean_eviction_distance": 3441.25,
+          "median_rank": 14283.642857142857,
+          "ci95": [
+            5520.571428571428,
+            23434.285714285714
+          ],
+          "frac_beating_chance": 1.0
+        },
+        {
+          "dist_lo": 4066.0,
+          "dist_hi": 5818.0,
+          "n": 8,
+          "mean_eviction_distance": 5057.5,
+          "median_rank": 5234.214285714286,
+          "ci95": [
+            4947.0,
+            7833.857142857143
+          ],
+          "frac_beating_chance": 1.0
+        },
+        {
+          "dist_lo": 5818.0,
+          "dist_hi": 7415.0,
+          "n": 8,
+          "mean_eviction_distance": 6463.25,
+          "median_rank": 5092.214285714286,
+          "ci95": [
+            3593.5714285714284,
+            8537.57142857143
+          ],
+          "frac_beating_chance": 1.0
+        }
+      ]
+    },
+    "27": {
+      "n": 32,
+      "eviction_distance_range": [
+        46.0,
+        7414.0
+      ],
+      "overall_median_rank": 49775.857142857145,
+      "spearman_rho": 0.0656158357771261,
+      "perm_p": 0.724027597240276,
+      "ols_slope_rank_per_token": 1.4170064574680132,
+      "verdict": "flat -- no distance dependence over the range measured",
+      "bins": [
+        {
+          "dist_lo": 46.0,
+          "dist_hi": 2846.5,
+          "n": 8,
+          "mean_eviction_distance": 1850.25,
+          "median_rank": 47240.857142857145,
+          "ci95": [
+            41803.142857142855,
+            54732.71428571428
+          ],
+          "frac_beating_chance": 1.0
+        },
+        {
+          "dist_lo": 2846.5,
+          "dist_hi": 4066.0,
+          "n": 8,
+          "mean_eviction_distance": 3441.25,
+          "median_rank": 61841.28571428572,
+          "ci95": [
+            38977.71428571428,
+            65716.71428571429
+          ],
+          "frac_beating_chance": 0.875
+        },
+        {
+          "dist_lo": 4066.0,
+          "dist_hi": 5818.0,
+          "n": 8,
+          "mean_eviction_distance": 5057.5,
+          "median_rank": 42040.5,
+          "ci95": [
+            38311.0,
+            51062.71428571428
+          ],
+          "frac_beating_chance": 1.0
+        },
+        {
+          "dist_lo": 5818.0,
+          "dist_hi": 7415.0,
+          "n": 8,
+          "mean_eviction_distance": 6463.25,
+          "median_rank": 60195.5,
+          "ci95": [
+            36541.0,
+            83014.28571428571
+          ],
+          "frac_beating_chance": 0.625
+        }
+      ]
+    }
+  }
+}
