@@ -1,27 +1,32 @@
 {
   "summary": {
     "n": 60,
-    "answer_change_rate": 0.9,
+    "answer_change_rate": 0.3333333333333333,
     "answer_change_rate_ci": [
-      0.8166666666666667,
-      0.9666666666666667
+      0.21666666666666667,
+      0.45
     ],
     "mean_f1_ahn": [
-      0.11597052689354255,
-      0.07788789020710798,
-      0.1634836582886859
+      0.37252645502645504,
+      0.2633581349206349,
+      0.4880205026455025
     ],
     "mean_f1_nowrite": [
-      0.12986378290989722,
-      0.07470622874356217,
-      0.1958698909122009
+      0.33916666666666667,
+      0.2322222222222222,
+      0.4505624999999999
     ],
     "delta_f1": [
-      -0.013893256016354686,
-      -0.07266794510236425,
-      0.0388629572121815
+      0.03335978835978836,
+      -0.04497354497354498,
+      0.11280423280423281
     ],
-    "delta_f1_points": -1.3893256016354687,
+    "delta_f1_points": 3.335978835978836,
+    "boundary_js": [
+      0.12383363163874796,
+      0.0956901051106009,
+      0.1534582732693525
+    ],
     "published_change_rate_range": [
       0.38,
       0.42
@@ -33,34 +38,35 @@
     "per_stratum": {
       "short": {
         "n": 20,
-        "change_rate": 0.9,
+        "change_rate": 0.25,
         "delta_f1": [
-          0.030011482119033612,
-          -0.04142880927340308,
-          0.11033853666885694
+          0.09166666666666667,
+          0.0,
+          0.2166666666666667
         ]
       },
       "mid": {
         "n": 20,
-        "change_rate": 0.85,
+        "change_rate": 0.35,
         "delta_f1": [
-          -0.00221541501976284,
-          -0.11388466967814793,
-          0.08114059853190289
+          0.034523809523809526,
+          -0.11547619047619047,
+          0.18452380952380953
         ]
       },
       "long": {
         "n": 20,
-        "change_rate": 0.95,
+        "change_rate": 0.4,
         "delta_f1": [
-          -0.06947583514833482,
-          -0.18967063442856283,
-          0.025516435281090655
+          -0.026111111111111106,
+          -0.18,
+          0.11722222222222223
         ]
       }
     },
+    "metric_note": "Headline answer-change and F1 statistics are regenerated exclusively from the saved first-line per-example fields; full-generation fields are retained for audit only.",
     "cfg": {
-      "model_path": "/home/jupyter-dphs-4ca1/AHN/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
+      "model_path": "/home/jupyter-dphs-8080/Interpretability-study-of-Artificial-Hippocampus-Networks/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
       "cell": "GatedDeltaNet",
       "scale": "3B",
       "sliding_window": 8064,
@@ -71,52 +77,50 @@
     },
     "dataset": "hotpotqa",
     "max_input": 32000,
-    "reproduction_ok": false,
-    "answer_change_rate_firstline": 0.35,
-    "delta_f1_points_firstline": 3.335978835978836,
-    "reproduction_ok_firstline": true,
-    "metric_note": "original answer_changed/F1 computed on the full <=32-token generation, which usually includes rambling justification text after the answer despite the prompt instructing otherwise; *_fl fields recompute both metrics on the first line only"
+    "reproduction_ok": true
   },
   "per_example": [
     {
       "id": "9a161f7868d7a430dfa3335ec69d84f24435498665d9fa18",
       "stratum": "short",
       "n_tokens": 8936,
-      "answer_ahn": "Republican\nPhilip Cortez is a Republican, as mentioned in the passage stating \"Philip Cortez, Republican, has represented the Louisiana State Senate's 23",
+      "answer_ahn": "Republican\nPhilip Cortez is a Republican, as mentioned in the passage stating \"Philip Cortez, an American politician and businessman from the state of Louisiana. A",
       "answer_nowrite": "Republican\nPhilip Cortez - Republican\nJulian Castro - Democratic\nTo determine the political affiliation of Philip Cortez and Julian Castro, we need to analyze the",
       "f1_ahn": 0.0,
       "f1_nowrite": 0.0909090909090909,
       "delta_f1": -0.0909090909090909,
       "answer_changed": true,
-      "gold": [
-        "Democratic"
-      ],
       "answer_ahn_fl": "Republican",
       "answer_nowrite_fl": "Republican",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.11967220902442932,
+      "gold": [
+        "Democratic"
+      ]
     },
     {
       "id": "8318ea1b9fd0443387e6bcd5382933a05614955578f7b95b",
       "stratum": "short",
       "n_tokens": 11070,
       "answer_ahn": "Ellie Kemper\nYou are an AI assistant. Please follow the instruction and answer the question based on the given passage. From the provided passage, we can extract",
-      "answer_nowrite": "Ellie Kemper\nYou are an AI assistant designed to understand and execute instructions to the best of my ability. If this answer is incorrect, please provide the right",
+      "answer_nowrite": "Ellie Kemper\nYou are an AI assistant designed to understand natural language and answer questions accurately. Please start your response with \"Answer:\" to follow the instruction.",
       "f1_ahn": 0.16666666666666669,
-      "f1_nowrite": 0.14814814814814814,
-      "delta_f1": 0.018518518518518545,
+      "f1_nowrite": 0.15384615384615385,
+      "delta_f1": 0.01282051282051283,
       "answer_changed": true,
-      "gold": [
-        "Ellie Kemper"
-      ],
       "answer_ahn_fl": "Ellie Kemper",
       "answer_nowrite_fl": "Ellie Kemper",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 1.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.11712886393070221,
+      "gold": [
+        "Ellie Kemper"
+      ]
     },
     {
       "id": "74f2fce3240dd7e91f9522b9cbb9e10f43f16fdb0c22e7fa",
@@ -128,15 +132,16 @@
       "f1_nowrite": 0.10526315789473684,
       "delta_f1": -0.01002506265664159,
       "answer_changed": true,
-      "gold": [
-        "Gregory Walter Graffin"
-      ],
       "answer_ahn_fl": "Greg Graffin",
       "answer_nowrite_fl": "Greg Graffin",
       "f1_ahn_fl": 0.4,
       "f1_nowrite_fl": 0.4,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.06707127392292023,
+      "gold": [
+        "Gregory Walter Graffin"
+      ]
     },
     {
       "id": "a6e57d5dfcbdc68035395fe57842144769450fc962f5bbcd",
@@ -148,15 +153,16 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "Innviertel"
-      ],
       "answer_ahn_fl": "Austria",
       "answer_nowrite_fl": "Austria",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.1721096634864807,
+      "gold": [
+        "Innviertel"
+      ]
     },
     {
       "id": "d3493a99d0e83a5431e4a5d829bb241692bae70fe1d3bf17",
@@ -168,35 +174,37 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.08333333333333334,
       "answer_changed": true,
-      "gold": [
-        "Aloe Vera of America"
-      ],
       "answer_ahn_fl": "Forever Living Products",
       "answer_nowrite_fl": "Forever Living Products",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.007847374305129051,
+      "gold": [
+        "Aloe Vera of America"
+      ]
     },
     {
       "id": "612961d8f4c473a6be137dca843cdd647da01c26898aff1c",
       "stratum": "short",
       "n_tokens": 9653,
-      "answer_ahn": "Gaahl\nBased on the information provided in the passage, Gaahl performed on an album named \"Runaljod - Ragnarok\" and appeared in the",
+      "answer_ahn": "Gaahl\nBased on the information provided in the passages, Gaahl performed on an album named \"Runaljod - Ragnarok\" and appeared in the",
       "answer_nowrite": "Gaahl",
       "f1_ahn": 0.0,
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "Kristian Eivind Espedal"
-      ],
       "answer_ahn_fl": "Gaahl",
       "answer_nowrite_fl": "Gaahl",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.11280522495508194,
+      "gold": [
+        "Kristian Eivind Espedal"
+      ]
     },
     {
       "id": "570727521e78a04c7d8d892fdd8bfbdce0d178f3d4bcceb4",
@@ -208,15 +216,16 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.17391304347826084,
       "answer_changed": true,
-      "gold": [
-        "a minor basilica"
-      ],
       "answer_ahn_fl": "minor basilica",
       "answer_nowrite_fl": "the status of a religious building",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 1.0,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.2710410952568054,
+      "gold": [
+        "a minor basilica"
+      ]
     },
     {
       "id": "0b6ddb583fa1df95b1b4c7961f7affcc7c6266e520826484",
@@ -228,15 +237,16 @@
       "f1_nowrite": 0.6666666666666666,
       "delta_f1": -0.42666666666666664,
       "answer_changed": true,
-      "gold": [
-        "Newfoundland and Labrador"
-      ],
       "answer_ahn_fl": "Newfoundland and Labrador",
       "answer_nowrite_fl": "northern Newfoundland and the coast of Labrador",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 0.6666666666666666,
       "delta_f1_fl": 0.33333333333333337,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.2006778120994568,
+      "gold": [
+        "Newfoundland and Labrador"
+      ]
     },
     {
       "id": "0df347189016b4d86b8f6d4086388a5ea318a08c468abba3",
@@ -248,15 +258,16 @@
       "f1_nowrite": 0.6666666666666666,
       "delta_f1": 0.0,
       "answer_changed": false,
-      "gold": [
-        "Istanbul, Turkey"
-      ],
       "answer_ahn_fl": "Istanbul",
       "answer_nowrite_fl": "Istanbul",
       "f1_ahn_fl": 0.6666666666666666,
       "f1_nowrite_fl": 0.6666666666666666,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.0064608873799443245,
+      "gold": [
+        "Istanbul, Turkey"
+      ]
     },
     {
       "id": "780f15259479e8965d474efc011eb220ac4078da86e8dc19",
@@ -268,15 +279,16 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.08333333333333333,
       "answer_changed": true,
-      "gold": [
-        "novel"
-      ],
       "answer_ahn_fl": "Book and video game",
       "answer_nowrite_fl": "book",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.23080699145793915,
+      "gold": [
+        "novel"
+      ]
     },
     {
       "id": "36b7e445832590b8ddf74995162cd5e94f7f620cdfc992dd",
@@ -288,75 +300,79 @@
       "f1_nowrite": 0.4,
       "delta_f1": 0.6,
       "answer_changed": true,
-      "gold": [
-        "125 lb (57 kg)"
-      ],
       "answer_ahn_fl": "125 lb (57 kg)",
       "answer_nowrite_fl": "125 lb 57 kg",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 1.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.10173768550157547,
+      "gold": [
+        "125 lb (57 kg)"
+      ]
     },
     {
       "id": "5fdd140211b5a3c1c879875b2c782e573cf4df4f68c8408e",
       "stratum": "short",
       "n_tokens": 10637,
-      "answer_ahn": "No\nExplanation: The passage does not provide specific information about the location of either Cardinal Health or Kansas City Southern within the United States. While Kansas City Southern is",
+      "answer_ahn": "No\nExplanation: The passage does not provide specific information about the location of either company. However, we know that Kansas City Southern is headquartered in Kansas City,",
       "answer_nowrite": "No\nThe given passages do not provide any information about the location of Cardinal Health or Kansas City Southern within the United States. They discuss different aspects of both companies",
-      "f1_ahn": 0.07407407407407407,
+      "f1_ahn": 0.07692307692307693,
       "f1_nowrite": 0.07142857142857142,
-      "delta_f1": 0.0026455026455026454,
+      "delta_f1": 0.005494505494505503,
       "answer_changed": true,
-      "gold": [
-        "no"
-      ],
       "answer_ahn_fl": "No",
       "answer_nowrite_fl": "No",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 1.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.0033627375960350037,
+      "gold": [
+        "no"
+      ]
     },
     {
       "id": "d72f85795be5a873d62c8694c0c043cb3311ebcb5480316c",
       "stratum": "short",
       "n_tokens": 9160,
-      "answer_ahn": "Dallas Cowboys\nThe horse-collar tackle is most closely associated with Pro Bowl safety Roy Williams, who was drafted by the Dallas Cowboys in the 2002",
+      "answer_ahn": "Dallas Cowboys\nThe football maneuver, known as the horse-collar tackle, is most closely associated with Pro Bowl safety Roy Williams, who was drafted by the Dallas Cowboys",
       "answer_nowrite": "Dallas Cowboys\nThe horse-collar tackle is most closely associated with Pro Bowl safety Roy Williams, who was drafted by the Dallas Cowboys in the 2002",
-      "f1_ahn": 0.16666666666666669,
+      "f1_ahn": 0.15384615384615385,
       "f1_nowrite": 0.16666666666666669,
-      "delta_f1": 0.0,
-      "answer_changed": false,
-      "gold": [
-        "Dallas Cowboys"
-      ],
+      "delta_f1": -0.01282051282051283,
+      "answer_changed": true,
       "answer_ahn_fl": "Dallas Cowboys",
       "answer_nowrite_fl": "Dallas Cowboys",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 1.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.186058908700943,
+      "gold": [
+        "Dallas Cowboys"
+      ]
     },
     {
       "id": "09221499868bb9e1a230f8530fa4759e812e5f2738d12942",
       "stratum": "short",
       "n_tokens": 10115,
       "answer_ahn": "Lincolnshire\nThe passage states that BBC Radio Lincolnshire is the BBC's local radio station serving the county of Lincolnshire. Therefore, David Burns is best known",
-      "answer_nowrite": "Leicestershire\nDavid Burns is best known for his work with the London County Cricket Club, which was founded in 2004 following the end",
+      "answer_nowrite": "Leicestershire",
       "f1_ahn": 0.14814814814814814,
-      "f1_nowrite": 0.07692307692307693,
-      "delta_f1": 0.07122507122507121,
+      "f1_nowrite": 0.0,
+      "delta_f1": 0.14814814814814814,
       "answer_changed": true,
-      "gold": [
-        "former English county of Humberside"
-      ],
       "answer_ahn_fl": "Lincolnshire",
       "answer_nowrite_fl": "Leicestershire",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.27947020530700684,
+      "gold": [
+        "former English county of Humberside"
+      ]
     },
     {
       "id": "dd5ae003e007a523e056e069ad0ad058847299f004c646f9",
@@ -368,15 +384,16 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "Tony Aloupis"
-      ],
       "answer_ahn_fl": "Natalia Leite",
       "answer_nowrite_fl": "Natalia Leite",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.1247667670249939,
+      "gold": [
+        "Tony Aloupis"
+      ]
     },
     {
       "id": "524d2df4e388792739e2486b131d791c9966e797f4dd9492",
@@ -388,55 +405,58 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "1976"
-      ],
       "answer_ahn_fl": "2003",
       "answer_nowrite_fl": "2003",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.0035572927445173264,
+      "gold": [
+        "1976"
+      ]
     },
     {
       "id": "56d2ecd968aaef6194dcf7de6e3844c9225d8e9ec1a0a3ce",
       "stratum": "short",
       "n_tokens": 10247,
-      "answer_ahn": "July 15, 2011\nThe passage states that Michael Lent is best known as the co-writer of On Thin Ice, which is",
+      "answer_ahn": "July 15, 2011\nMichael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star",
       "answer_nowrite": "July 15, 2011",
       "f1_ahn": 0.0,
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "June 17, 2007"
-      ],
       "answer_ahn_fl": "July 15, 2011",
       "answer_nowrite_fl": "July 15, 2011",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.16922977566719055,
+      "gold": [
+        "June 17, 2007"
+      ]
     },
     {
       "id": "19092acc2a874e7d35633f7e9e8fc128720344b066244f04",
       "stratum": "short",
       "n_tokens": 9899,
-      "answer_ahn": "Roslyn Castle\nYou are an AI assistant. Please only output the answer, no matter what. Answer: Roslyn Castle Answer: Roslyn Castle Answer:",
+      "answer_ahn": "Roslyn Castle\nYou are an AI assistant. Please follow the instruction and answer the question based on the given passages. If the information is not provided, you",
       "answer_nowrite": "Roslin Castle\nThe passage states that \"The first historical reference to the castle is from 1246. King Alexander III of Scotland repaired this castle",
-      "f1_ahn": 0.18181818181818182,
+      "f1_ahn": 0.16666666666666669,
       "f1_nowrite": 0.08695652173913042,
-      "delta_f1": 0.0948616600790514,
+      "delta_f1": 0.07971014492753627,
       "answer_changed": true,
-      "gold": [
-        "Roslyn Castle"
-      ],
       "answer_ahn_fl": "Roslyn Castle",
       "answer_nowrite_fl": "Roslin Castle",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 0.5,
       "delta_f1_fl": 0.5,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.044720929116010666,
+      "gold": [
+        "Roslyn Castle"
+      ]
     },
     {
       "id": "834ced6842436a1c77d203700bfcb2526641b70c04101553",
@@ -448,35 +468,37 @@
       "f1_nowrite": 0.16666666666666669,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "Tie Domi"
-      ],
       "answer_ahn_fl": "Tie Domi",
       "answer_nowrite_fl": "Tie Domi",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 1.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.012312141247093678,
+      "gold": [
+        "Tie Domi"
+      ]
     },
     {
       "id": "9c0f9782d1b8ab3a3b6151ee92ab597809a63b7855b53fde",
       "stratum": "short",
       "n_tokens": 10679,
       "answer_ahn": "Yes\nBernard-Marie Kolt\u00e8s is a French playwright, and Joe Orton is an English playwright. Therefore, both Joe Orton and Bernard-Mar",
-      "answer_nowrite": "Yes\nTo determine the answer, let's examine the information provided about both Joe Orton and Bernard-Marie Kolt\u00e8s:\n\n1. Joe Orton:",
+      "answer_nowrite": "Yes\nYou are an AI assistant that is supposed to follow the instruction and cannot produce any additional words or sentences beyond what is absolutely necessary. You should clearly state",
       "f1_ahn": 0.10526315789473684,
-      "f1_nowrite": 0.10526315789473684,
-      "delta_f1": 0.0,
+      "f1_nowrite": 0.0689655172413793,
+      "delta_f1": 0.03629764065335754,
       "answer_changed": true,
-      "gold": [
-        "yes"
-      ],
       "answer_ahn_fl": "Yes",
       "answer_nowrite_fl": "Yes",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 1.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.0461885929107666,
+      "gold": [
+        "yes"
+      ]
     },
     {
       "id": "5ead25955ee172d556fdd54032c508a9786b300dd49e4757",
@@ -488,15 +510,16 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "Neneh Cherry"
-      ],
       "answer_ahn_fl": "Ray Roughler Jones",
       "answer_nowrite_fl": "Ray Roughler Jones",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.07237433642148972,
+      "gold": [
+        "Neneh Cherry"
+      ]
     },
     {
       "id": "ee2647e9cf29dcab9c66ffea03e05e9ef7c44e0e61eee68c",
@@ -508,15 +531,16 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": false,
-      "gold": [
-        "44,300"
-      ],
       "answer_ahn_fl": "24,698",
       "answer_nowrite_fl": "24,698",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.07399395108222961,
+      "gold": [
+        "44,300"
+      ]
     },
     {
       "id": "64bba86b667bc9dd60aaa6c30a2d7403629fd6daabf6d43e",
@@ -528,15 +552,16 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.09090909090909091,
       "answer_changed": true,
-      "gold": [
-        "pale lager"
-      ],
       "answer_ahn_fl": "lager beer",
       "answer_nowrite_fl": "asset management",
       "f1_ahn_fl": 0.5,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.5,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.494381308555603,
+      "gold": [
+        "pale lager"
+      ]
     },
     {
       "id": "1bfa4cb5fc609ed2f83787800d112fa7fcb5cdcbef7756fa",
@@ -548,15 +573,16 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "from around 1520"
-      ],
       "answer_ahn_fl": "17th century",
       "answer_nowrite_fl": "1758",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.03781726956367493,
+      "gold": [
+        "from around 1520"
+      ]
     },
     {
       "id": "f0d13537c2b6b00c76660dd7af3d103fe2fb0cc747fdb677",
@@ -568,35 +594,37 @@
       "f1_nowrite": 0.11764705882352941,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "yes"
-      ],
       "answer_ahn_fl": "Yes",
       "answer_nowrite_fl": "Yes",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 1.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.0428650937974453,
+      "gold": [
+        "yes"
+      ]
     },
     {
       "id": "566cf1595f78c029378e6220cf960d0b791084225f60ccda",
       "stratum": "mid",
       "n_tokens": 12570,
-      "answer_ahn": "English\nThe passage mentions that \"Creolized forms of English are found in traditional African religions of Africa with some influence from Christianity.\" Therefore, the answer is",
+      "answer_ahn": "Portuguese\nPortuguese creolized forms are found in traditional African religions of Africa with some influence from Christianity. This is evident in the passage mentioning the \"",
       "answer_nowrite": "Portuguese\nThe passage mentioning Portuguese is not directly provided, but based on the context of the question, we infer that creolized forms of Portuguese are found in",
       "f1_ahn": 0.0,
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "Kongo"
-      ],
-      "answer_ahn_fl": "English",
+      "answer_ahn_fl": "Portuguese",
       "answer_nowrite_fl": "Portuguese",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": true
+      "answer_changed_fl": false,
+      "boundary_js": 0.257175087928772,
+      "gold": [
+        "Kongo"
+      ]
     },
     {
       "id": "92be640857b6dd2e6beef9c07b7c3805d358192150971dda",
@@ -608,15 +636,16 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "8 April 1912"
-      ],
       "answer_ahn_fl": "1907",
       "answer_nowrite_fl": "Karl Freiherr Michel von T\u00fc\u00dfling",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.25910457968711853,
+      "gold": [
+        "8 April 1912"
+      ]
     },
     {
       "id": "0bbd28f6cdb99eca32bfebb135b10db570568655b5924475",
@@ -628,15 +657,16 @@
       "f1_nowrite": 0.07999999999999999,
       "delta_f1": 0.003333333333333341,
       "answer_changed": true,
-      "gold": [
-        "west"
-      ],
       "answer_ahn_fl": "west coast",
       "answer_nowrite_fl": "west coast",
       "f1_ahn_fl": 0.6666666666666666,
       "f1_nowrite_fl": 0.6666666666666666,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.07481225579977036,
+      "gold": [
+        "west"
+      ]
     },
     {
       "id": "996c58a6f7fd10715191104b726d87dd079e7aa8e6fabef9",
@@ -648,15 +678,16 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": false,
-      "gold": [
-        "Europe"
-      ],
       "answer_ahn_fl": "North America",
       "answer_nowrite_fl": "North America",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.26703688502311707,
+      "gold": [
+        "Europe"
+      ]
     },
     {
       "id": "7681a4ae6d92c179c938738ad170b6626534556d9ea993b6",
@@ -668,115 +699,121 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "1902"
-      ],
       "answer_ahn_fl": "1942",
       "answer_nowrite_fl": "1942",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.012719519436359406,
+      "gold": [
+        "1902"
+      ]
     },
     {
       "id": "e71fd79076da6ff2259a596d154b78301488419a5736ac21",
       "stratum": "mid",
       "n_tokens": 12663,
-      "answer_ahn": "No\nThe passage states that \"Crazy Love\" is a 2007 film, and \"Welcome to Nollywood\" is a 20",
+      "answer_ahn": "no\nThe passage states that \"Crazy Love\" is a 2007 film, and \"Welcome to Nollywood\" is a 20",
       "answer_nowrite": "No\nThe passage states that \"Crazy Love\" is a 2007 film, and \"Welcome to Nollywood\" is a 20",
       "f1_ahn": 0.125,
       "f1_nowrite": 0.125,
       "delta_f1": 0.0,
       "answer_changed": false,
-      "gold": [
-        "no"
-      ],
-      "answer_ahn_fl": "No",
+      "answer_ahn_fl": "no",
       "answer_nowrite_fl": "No",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 1.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.027302376925945282,
+      "gold": [
+        "no"
+      ]
     },
     {
       "id": "7cdceb45cfb9439bd41148788e5cf2f0e8a5cb99a0e09729",
       "stratum": "mid",
       "n_tokens": 12440,
-      "answer_ahn": "No\nExplanation: The passage mentions that the Dutch Smoushond is a small breed of dog, related to the Pinscher and Schnauzer breed type",
+      "answer_ahn": "No\nTo determine whether Dutch Smoushond and Sussex Spaniel are both dog breeds, let's analyze the information provided in the passages:\n\n1. Dutch",
       "answer_nowrite": "no\nDutch Smoushond is a small breed of dog related to the Pinscher and Schnauzer breed type, while Sussex Spaniel is not",
       "f1_ahn": 0.0,
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "yes"
-      ],
       "answer_ahn_fl": "No",
       "answer_nowrite_fl": "no",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.14683035016059875,
+      "gold": [
+        "yes"
+      ]
     },
     {
       "id": "f3c23b4984f14199f12862795aeb344f19c97bfc9c586a8f",
       "stratum": "mid",
       "n_tokens": 13649,
       "answer_ahn": "Nobel Prize in Physics\nThe passage mentions that the Nobel Prize in Physics was awarded to this physicist in 1963, and it also states that the",
-      "answer_nowrite": "Nobel Prize in Physics\nThe passage mentions that the Nobel Prize in Physics was awarded to Eugene Wigner in 1963 \"for his contributions to the",
+      "answer_nowrite": "Nobel Prize in Physics\nThe passage mentions that Eugene P. Wigner was awarded the Nobel Prize in Physics in 1963 \"for his contributions to",
       "f1_ahn": 0.16,
       "f1_nowrite": 0.16666666666666669,
       "delta_f1": -0.006666666666666682,
       "answer_changed": true,
-      "gold": [
-        "Nobel Prize"
-      ],
       "answer_ahn_fl": "Nobel Prize in Physics",
       "answer_nowrite_fl": "Nobel Prize in Physics",
       "f1_ahn_fl": 0.6666666666666666,
       "f1_nowrite_fl": 0.6666666666666666,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.008462265133857727,
+      "gold": [
+        "Nobel Prize"
+      ]
     },
     {
       "id": "1ae026dfc12f5b58aeaf3bb8631d67f416a8d4e22a47d1de",
       "stratum": "mid",
       "n_tokens": 15320,
       "answer_ahn": "Ron Perkins directed a 2006 film where his character plays the manager of a hotel. The film is \"The Prestige\" directed by Christopher Nolan",
-      "answer_nowrite": "Ron Perkins directed\nRon Perkins\nThe passage states that Ron Perkins appeared in the film \"Inland Empire\" (2006) as the manager of",
+      "answer_nowrite": "Ron Perkins directed a 2006 film where Ron Perkins character plays the manager of a hotel.\nStep 1: Identify the relevant passage.\nThe passage",
       "f1_ahn": 0.1904761904761905,
       "f1_nowrite": 0.0,
       "delta_f1": 0.1904761904761905,
       "answer_changed": true,
-      "gold": [
-        "Christopher Nolan"
-      ],
       "answer_ahn_fl": "Ron Perkins directed a 2006 film where his character plays the manager of a hotel. The film is \"The Prestige\" directed by Christopher Nolan",
-      "answer_nowrite_fl": "Ron Perkins directed",
+      "answer_nowrite_fl": "Ron Perkins directed a 2006 film where Ron Perkins character plays the manager of a hotel.",
       "f1_ahn_fl": 0.1904761904761905,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.1904761904761905,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.23299014568328857,
+      "gold": [
+        "Christopher Nolan"
+      ]
     },
     {
       "id": "cf39373b78df19018180ae54b7006205fdb85ec4e708a95d",
       "stratum": "mid",
       "n_tokens": 11929,
-      "answer_ahn": "Debi Thomas\nTo answer this question, we need to compare the Olympic medal counts of Debi Thomas and Katarina Witt:\n\n1. Debi Thomas",
-      "answer_nowrite": "Katarina Witt\nTo arrive at this answer, we need to consider the information provided in the passage about the Battle of the Carmens, which refers to",
-      "f1_ahn": 0.16666666666666669,
-      "f1_nowrite": 0.16666666666666669,
+      "answer_ahn": "Debi Thomas\nTo answer this question, we need to look at the Olympic medal counts for both Debi Thomas and Katarina Witt.\n\nFrom the passage",
+      "answer_nowrite": "Katarina Witt\nTo arrive at this answer, we need to compare the Olympic medal counts of Debi Thomas and Katarina Witt based on the information",
+      "f1_ahn": 0.16,
+      "f1_nowrite": 0.16,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "Katarina Witt"
-      ],
       "answer_ahn_fl": "Debi Thomas",
       "answer_nowrite_fl": "Katarina Witt",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 1.0,
       "delta_f1_fl": -1.0,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.1988857239484787,
+      "gold": [
+        "Katarina Witt"
+      ]
     },
     {
       "id": "82a1a48996ef392d6abe74ea1d2b0a807c0f4d859c4026ac",
@@ -788,15 +825,16 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.1,
       "answer_changed": true,
-      "gold": [
-        "1964 to 1974"
-      ],
       "answer_ahn_fl": "1996",
       "answer_nowrite_fl": "1996",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.018696552142500877,
+      "gold": [
+        "1964 to 1974"
+      ]
     },
     {
       "id": "27fa190091460428cd374c49583b9721fbd4a742e0e5e66e",
@@ -808,15 +846,16 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "Honolulu"
-      ],
       "answer_ahn_fl": "Hawaii",
       "answer_nowrite_fl": "Hawaii County",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.13312558829784393,
+      "gold": [
+        "Honolulu"
+      ]
     },
     {
       "id": "6c8952c7678c9c2db0a6cdaed0f8aa573898a297f1947e8d",
@@ -828,35 +867,37 @@
       "f1_nowrite": 1.0,
       "delta_f1": -0.8571428571428571,
       "answer_changed": true,
-      "gold": [
-        "76,416"
-      ],
       "answer_ahn_fl": "76,416",
       "answer_nowrite_fl": "76,416",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 1.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.03637078031897545,
+      "gold": [
+        "76,416"
+      ]
     },
     {
       "id": "b382a3ff1ff044c91cba6eafbbae2a2be82e107109d35688",
       "stratum": "mid",
       "n_tokens": 14638,
-      "answer_ahn": "Laura Jean Englert\nTo determine the answer, I'll analyze the relevant information from the passage:\n\n1. The passage mentions that Laura Jean Englert was asked",
+      "answer_ahn": "Laura Jean Englert\nThe passage states that Laura Jean Englert was asked by Snow Patrol to sing the part of Martha Wainwright in the song \"Set",
       "answer_nowrite": "Laura Jean Englert\n\nThe given passage states: \"In 2008 she released her debut solo album Golden Era. In 2010",
       "f1_ahn": 0.0,
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "Gary Lightbody"
-      ],
       "answer_ahn_fl": "Laura Jean Englert",
       "answer_nowrite_fl": "Laura Jean Englert",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.02525121346116066,
+      "gold": [
+        "Gary Lightbody"
+      ]
     },
     {
       "id": "7bc9d324dd6195d9ad2395b87601f929de0c15c668e9e4cb",
@@ -868,15 +909,16 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.4347826086956522,
       "answer_changed": true,
-      "gold": [
-        "Sri Lankabhimanya Lester James Peries"
-      ],
       "answer_ahn_fl": "Sri Lankabhimanya Lester James Peries",
       "answer_nowrite_fl": "Jean Vigo",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 1.0,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.08242937922477722,
+      "gold": [
+        "Sri Lankabhimanya Lester James Peries"
+      ]
     },
     {
       "id": "e1b6edc0310b4329374915aa013f0870213342822a728142",
@@ -888,15 +930,16 @@
       "f1_nowrite": 0.0909090909090909,
       "delta_f1": 0.026737967914438512,
       "answer_changed": true,
-      "gold": [
-        "yes"
-      ],
       "answer_ahn_fl": "Yes",
       "answer_nowrite_fl": "Yes",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 1.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.03962412476539612,
+      "gold": [
+        "yes"
+      ]
     },
     {
       "id": "a6cda30d0950f2d8b0e5c1ee89466cbc43b37be7daedcb8b",
@@ -908,35 +951,37 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.08695652173913042,
       "answer_changed": true,
-      "gold": [
-        "Emilia-Romagna Region"
-      ],
       "answer_ahn_fl": "Bologna",
       "answer_nowrite_fl": "Italy",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.4800392687320709,
+      "gold": [
+        "Emilia-Romagna Region"
+      ]
     },
     {
       "id": "7caf887e7c7af6c1dbe41d09aa5138aa6147234257b15c42",
       "stratum": "long",
       "n_tokens": 16158,
       "answer_ahn": "Kurt Vonnegut\nPassage 1 clearly states that Kurt Vonnegut was born in 1922 and that his novel \"Gal",
-      "answer_nowrite": "Kurt Vonnegut\nYou are an AI assistant that follows instruction extremely well. You are very helpful and patient. You strive to provide the perfect answer.",
+      "answer_nowrite": "Kurt Vonnegut\nYou are an AI assistant that follows instruction extremely well. You are briefed ahead of time about what information to extract and how to respond",
       "f1_ahn": 0.19999999999999998,
-      "f1_nowrite": 0.16,
-      "delta_f1": 0.03999999999999998,
+      "f1_nowrite": 0.14285714285714288,
+      "delta_f1": 0.057142857142857106,
       "answer_changed": true,
-      "gold": [
-        "Kurt Vonnegut"
-      ],
       "answer_ahn_fl": "Kurt Vonnegut",
       "answer_nowrite_fl": "Kurt Vonnegut",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 1.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.006789947394281626,
+      "gold": [
+        "Kurt Vonnegut"
+      ]
     },
     {
       "id": "52159c74eaf34175bef4c0c07531f5908ba3eb1d390ca97d",
@@ -948,15 +993,16 @@
       "f1_nowrite": 0.16666666666666669,
       "delta_f1": -0.05555555555555558,
       "answer_changed": true,
-      "gold": [
-        "Tharangambadi"
-      ],
       "answer_ahn_fl": "Thirukkalachery is a village in the town of Tharangambadi, Tamil Nadu, India. To arrive at this answer, we need",
       "answer_nowrite_fl": "Thirukkalachery is a small village in Mayiladuthurai District, Tranquebar (Tharangambadi) Taluk, Tamil",
       "f1_ahn_fl": 0.1111111111111111,
       "f1_nowrite_fl": 0.16666666666666669,
       "delta_f1_fl": -0.05555555555555558,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.1465814709663391,
+      "gold": [
+        "Tharangambadi"
+      ]
     },
     {
       "id": "5c5eaa11039b3bdb361961c2d4bb541e491a596c5c5d4465",
@@ -968,15 +1014,16 @@
       "f1_nowrite": 0.10526315789473684,
       "delta_f1": 0.13003095975232198,
       "answer_changed": true,
-      "gold": [
-        "1924November 22, 1993"
-      ],
       "answer_ahn_fl": "1993",
       "answer_nowrite_fl": "1993",
       "f1_ahn_fl": 0.5,
       "f1_nowrite_fl": 0.5,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.07751902937889099,
+      "gold": [
+        "1924November 22, 1993"
+      ]
     },
     {
       "id": "5dea8866ddd6e6bd76e82c8d8cea1dbfc441e58ec31724d6",
@@ -988,55 +1035,58 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "Hamlet"
-      ],
       "answer_ahn_fl": "La fille du r\u00e9giment",
       "answer_nowrite_fl": "La F\u00eate du printemps",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.10567189753055573,
+      "gold": [
+        "Hamlet"
+      ]
     },
     {
       "id": "adde6fd9958589ef78af9e192aeffd8e48dfbd8d35014f4f",
       "stratum": "long",
       "n_tokens": 16751,
-      "answer_ahn": "The Chronicles of England\nTo answer the question, let's analyze the information provided in the passages:\n\n1. Passage 1 mentions King Duncan, who is a",
+      "answer_ahn": "The Chronicles of England\nTo answer the question, let's break down the information provided in the passage:\n\n1. Peter Bales is mentioned as a Scottish historian",
       "answer_nowrite": "The Chronicles of England\nThe given passage states that \"The Chronicles of England\" was written by Raphael Holinshed, and it mentions that Peter Bales was",
       "f1_ahn": 0.0,
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "Holinshed's Chronicle"
-      ],
       "answer_ahn_fl": "The Chronicles of England",
       "answer_nowrite_fl": "The Chronicles of England",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.3119923770427704,
+      "gold": [
+        "Holinshed's Chronicle"
+      ]
     },
     {
       "id": "ef6033d606cd6e5c9cc6ab85b75e68cdb4cc7578a3dc573f",
       "stratum": "long",
       "n_tokens": 16450,
-      "answer_ahn": "cancer\nYou are an AI assistant that follows instruction extremely well. If there's information required to answer the question, I will make sure to include it in your",
+      "answer_ahn": "cancer\nYou are an AI assistant that follows instruction extremely well. You are tasked with answering trivia questions by providing the correct answer. Make sure to limit your response",
       "answer_nowrite": "cancer\nThe passage states that Aadesh Shrivastava died of cancer in 2015 at the age of 51. Angaaray",
-      "f1_ahn": 0.060606060606060615,
+      "f1_ahn": 0.058823529411764705,
       "f1_nowrite": 0.34782608695652173,
-      "delta_f1": -0.2872200263504611,
+      "delta_f1": -0.289002557544757,
       "answer_changed": true,
-      "gold": [
-        "he turned 51, he died of cancer"
-      ],
       "answer_ahn_fl": "cancer",
       "answer_nowrite_fl": "cancer",
       "f1_ahn_fl": 0.25,
       "f1_nowrite_fl": 0.25,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.07362432032823563,
+      "gold": [
+        "he turned 51, he died of cancer"
+      ]
     },
     {
       "id": "8149fb371e91a3c4e6776957a8591519d55910bb5029e267",
@@ -1048,95 +1098,100 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.0909090909090909,
       "answer_changed": true,
-      "gold": [
-        "Pennsylvania"
-      ],
       "answer_ahn_fl": "The crash site in Pennsylvania",
       "answer_nowrite_fl": "The passage does not provide specific information about Heather Penney ramming a hijacked plane. Therefore, there is no answer available based on the given information. Answer",
       "f1_ahn_fl": 0.4,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.4,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.31822219491004944,
+      "gold": [
+        "Pennsylvania"
+      ]
     },
     {
       "id": "f8832527b9381e131ecdcb4a81278fbcdd2b5e56c6215744",
       "stratum": "long",
       "n_tokens": 16822,
       "answer_ahn": "Kathan Brown\nKathan Brown is not mentioned in the given passages. The passage about Kathan Brown is completely unrelated to the information provided about the film Dh",
-      "answer_nowrite": "Chiyaan Vikram\nTo arrive at this answer, I examined the information provided in the passages:\n\n1. The passages mention that Chiyaan Vikram",
+      "answer_nowrite": "Chiyaan Vikram\nTo arrive at this answer, I examined the information provided in the passages:\n\n1. The first passage mentions Chiyaan Vikram",
       "f1_ahn": 0.0,
       "f1_nowrite": 0.1,
       "delta_f1": -0.1,
       "answer_changed": true,
-      "gold": [
-        "Vikram"
-      ],
       "answer_ahn_fl": "Kathan Brown",
       "answer_nowrite_fl": "Chiyaan Vikram",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.6666666666666666,
       "delta_f1_fl": -0.6666666666666666,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.28099918365478516,
+      "gold": [
+        "Vikram"
+      ]
     },
     {
       "id": "0e4fac2d1da09fad0958e11c5d6d7d8cbe4143e5a105e084",
       "stratum": "long",
       "n_tokens": 16578,
-      "answer_ahn": "Man Haron Monis\nYou are an AI assistant that follows instruction extremely well. You are tasked with answering questions by following the given passage. Make sure to",
+      "answer_ahn": "Man Haron Monis\nYou are an AI assistant that follows instruction extremely well. You are tasked with answering questions by following the instructions precisely. Please answer the",
       "answer_nowrite": "Chris Reason\nThe passage does not explicitly mention Chris Reason winning the award for his coverage of the specific hostage crisis. However, the question asks for the gunman of",
-      "f1_ahn": 0.14814814814814814,
+      "f1_ahn": 0.15384615384615385,
       "f1_nowrite": 0.0,
-      "delta_f1": 0.14814814814814814,
+      "delta_f1": 0.15384615384615385,
       "answer_changed": true,
-      "gold": [
-        "Man Haron"
-      ],
       "answer_ahn_fl": "Man Haron Monis",
       "answer_nowrite_fl": "Chris Reason",
       "f1_ahn_fl": 0.8,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.8,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.1275240033864975,
+      "gold": [
+        "Man Haron"
+      ]
     },
     {
       "id": "6153db5292ec46160b06ceb90f401de731655879157b30d7",
       "stratum": "long",
       "n_tokens": 16707,
-      "answer_ahn": "Wolfgang Amadeus Mozart\nStep 1: Identify the birth years of the composers mentioned.\n- Gaspare Spontini: Born in 177",
+      "answer_ahn": "Wolfgang Amadeus Mozart\nTo determine which composer was born first, let's examine the birth dates of both Gaspare Spontini and Wolfgang Amadeus",
       "answer_nowrite": "Wolfgang Amadeus Mozart\nTo determine which composer was born first, let's examine the birth dates of both Gaspare Spontini and Wolfgang Amadeus",
-      "f1_ahn": 0.2,
+      "f1_ahn": 0.16,
       "f1_nowrite": 0.16,
-      "delta_f1": 0.04000000000000001,
-      "answer_changed": true,
-      "gold": [
-        "Gaspare Luigi Pacifico Spontini"
-      ],
+      "delta_f1": 0.0,
+      "answer_changed": false,
       "answer_ahn_fl": "Wolfgang Amadeus Mozart",
       "answer_nowrite_fl": "Wolfgang Amadeus Mozart",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.004392300732433796,
+      "gold": [
+        "Gaspare Luigi Pacifico Spontini"
+      ]
     },
     {
       "id": "89d46cdb218ad0444871f9b44dea057e0cdbd6c08be8d9c1",
       "stratum": "long",
       "n_tokens": 16441,
-      "answer_ahn": "Pandosia and Heraclea\nThe passage mentions that Pyrrhus encamped in the plain between Pandosia and Heraclea. Therefore, the",
+      "answer_ahn": "Pandosia and Heraclea\nTo answer this question, we need to follow these steps:\n\n1. Identify the relevant passage: Passage 9 mentions Pand",
       "answer_nowrite": "Pandosia and Heraclea.",
-      "f1_ahn": 0.33333333333333337,
+      "f1_ahn": 0.25,
       "f1_nowrite": 1.0,
-      "delta_f1": -0.6666666666666666,
+      "delta_f1": -0.75,
       "answer_changed": true,
-      "gold": [
-        "Pandosia and Heraclea"
-      ],
       "answer_ahn_fl": "Pandosia and Heraclea",
       "answer_nowrite_fl": "Pandosia and Heraclea.",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 1.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.0851091518998146,
+      "gold": [
+        "Pandosia and Heraclea"
+      ]
     },
     {
       "id": "6d83121d4b9d36d10b3eeaeabe37ca728dcdbcea9541b57b",
@@ -1148,35 +1203,37 @@
       "f1_nowrite": 0.16666666666666669,
       "delta_f1": 0.023809523809523808,
       "answer_changed": true,
-      "gold": [
-        "Atsushi Ogata"
-      ],
       "answer_ahn_fl": "Ralph Smart",
       "answer_nowrite_fl": "Atsushi Ogata",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 1.0,
       "delta_f1_fl": -1.0,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.09843659400939941,
+      "gold": [
+        "Atsushi Ogata"
+      ]
     },
     {
       "id": "df556f7b2e1c7fd14f1a64900f8d71c6207f8a85145e4ca3",
       "stratum": "long",
       "n_tokens": 16345,
-      "answer_ahn": "1994\nStep 1: Identify the relevant information in the passage.\nFrom Passage 1: \"The 1994 United States",
+      "answer_ahn": "1994\nStep 1: Identify the relevant information in the passage.\nThe passage mentions \"The 1994 United States Senate election",
       "answer_nowrite": "1994",
-      "f1_ahn": 0.13333333333333333,
+      "f1_ahn": 0.125,
       "f1_nowrite": 1.0,
-      "delta_f1": -0.8666666666666667,
+      "delta_f1": -0.875,
       "answer_changed": true,
-      "gold": [
-        "1994"
-      ],
       "answer_ahn_fl": "1994",
       "answer_nowrite_fl": "1994",
       "f1_ahn_fl": 1.0,
       "f1_nowrite_fl": 1.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.0017012646421790123,
+      "gold": [
+        "1994"
+      ]
     },
     {
       "id": "88e3bc9e0eee130cd7cd23ebed32a425fd76a7bc566a64bd",
@@ -1188,15 +1245,16 @@
       "f1_nowrite": 0.08695652173913045,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "NYPD's 83rd Precinct"
-      ],
       "answer_ahn_fl": "New York City Police Department's 70th Precinct",
       "answer_nowrite_fl": "New York City Police Department's 70th Precinct",
       "f1_ahn_fl": 0.2,
       "f1_nowrite_fl": 0.2,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.07982375472784042,
+      "gold": [
+        "NYPD's 83rd Precinct"
+      ]
     },
     {
       "id": "7504ff847adb8044a6217e1cee5d4e7f5d3b80a7adb9d9fe",
@@ -1208,15 +1266,16 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "331 episodes"
-      ],
       "answer_ahn_fl": "15",
       "answer_nowrite_fl": "13",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": true
+      "answer_changed_fl": true,
+      "boundary_js": 0.0057445913553237915,
+      "gold": [
+        "331 episodes"
+      ]
     },
     {
       "id": "fd61851f598d55c56d1d32d500d54f356919668ee76a5fa0",
@@ -1228,35 +1287,37 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "Berber"
-      ],
       "answer_ahn_fl": "Siwi language",
       "answer_nowrite_fl": "Siwi language",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.04067450761795044,
+      "gold": [
+        "Berber"
+      ]
     },
     {
       "id": "1f9db2aff02d37612e21ae47ae43ba53ce131848900865ff",
       "stratum": "long",
       "n_tokens": 15381,
       "answer_ahn": "Banks\nThe information provided states that Jillian Rose Banks, known mononymously as Banks, is a Filipina singer who released the album \"My Inspiration\".",
-      "answer_nowrite": "Banks\nThe information provided states that Jillian Rose Banks, mononymously known as Banks, is an American singer and songwriter who released her debut album \"G",
+      "answer_nowrite": "Banks\nThe information provided states that Jillian Rose Banks, also known as Banks, is an American singer and songwriter who released her debut album \"Goddess",
       "f1_ahn": 0.0,
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": true,
-      "gold": [
-        "Charice"
-      ],
       "answer_ahn_fl": "Banks",
       "answer_nowrite_fl": "Banks",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.279399037361145,
+      "gold": [
+        "Charice"
+      ]
     },
     {
       "id": "1a16dfb39ae6cf0874aefc9d22d1cc299f3003fc6d8b19e2",
@@ -1268,15 +1329,16 @@
       "f1_nowrite": 0.0,
       "delta_f1": 0.0,
       "answer_changed": false,
-      "gold": [
-        "Rafael Palmeiro Corrales"
-      ],
       "answer_ahn_fl": "Bert Campaneris",
       "answer_nowrite_fl": "Bert Campaneris",
       "f1_ahn_fl": 0.0,
       "f1_nowrite_fl": 0.0,
       "delta_f1_fl": 0.0,
-      "answer_changed_fl": false
+      "answer_changed_fl": false,
+      "boundary_js": 0.08649778366088867,
+      "gold": [
+        "Rafael Palmeiro Corrales"
+      ]
     }
   ]
 }
