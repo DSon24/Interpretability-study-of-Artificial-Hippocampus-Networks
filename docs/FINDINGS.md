@@ -25,6 +25,7 @@ decision immediately after it records how that evidence changes execution.
 - [Findings from the 7 Sep permutation test: layer 27's sign is needle-content-dependent](#findings-from-the-7-sep-permutation-test-layer-27s-sign-is-needle-content-dependent) — **WITHDRAWN 8 Sep**
 - [Findings from the 8 Sep content swap: content is not the variable](#findings-from-the-8-sep-content-swap-content-is-not-the-variable)
 - [Mentor decision after the 8 Sep checks](#mentor-decision-after-the-8-sep-checks)
+- [Findings from the DeltaNet RULER control battery (8 Sep)](#findings-from-the-deltanet-ruler-control-battery-8-sep)
 
 ---
 
@@ -1026,3 +1027,63 @@ Gautam also provided [BABILong](https://github.com/booydar/babilong),
 [SCROLLS](https://github.com/tau-nlp/scrolls). They are catalogued with intended roles and
 change controls in the [dataset register](DATASET_REGISTER_2026-09-08.md); none changes the
 approved RULER n=60 run.
+
+
+## Findings from the DeltaNet RULER control battery (8 Sep)
+
+Run: `results/run_3b_dn/04i_ruler_controls_rows.json`, `04i_ruler_controls_stats.json`;
+regenerate with `python ruler_controls.py --run-config run_3b_dn`. Same corrected
+digit-sequence scoring as GDN run 026, the same RULER NIAH cohort (config 16384, n=60,
+seed 20260820), and the same shared Qwen2.5-3B J-lens (`lens_validated=False`, unchanged
+from run 026). 32 of 60 needles are evicted at every layer; every statistic below is
+restricted to those.
+
+**1. The layer structure matches GDN.** C3-lens is decisive again. At layers 9 and 18 the
+signal *survives* the row-permuted J-lens (Δ +64.8 and +79.0 log-nats, CIs excluding zero
+on the wrong side), so those layers are decoding artefacts, not memory. Layer 27's signal
+*collapses* under the permuted map (Δ −86.2 log-nats [−89.7, −80.3]) — it is a real,
+layer-specific decoding. Same verdict as run 026: 9 and 18 are out, 27 is the analysis
+layer.
+
+**2. Layer 27 — C1 and C3-lens behave like GDN; C2 and C3-context do not.**
+
+| control | DeltaNet | GDN run 026 |
+|---|---|---|
+| C1 | median mean-digit-rank 38,581 [31,751, 45,479] — below chance (75,968) | 49,776 [41,803, 54,797] — below chance |
+| C2, per-digit effect | **0.969× [0.952, 0.988]**, permutation p = 0.0006 | 1.076× [1.054, 1.098], p < 0.0001 |
+| C2, per-example effect | 0.805× [0.706, 0.917] — excludes 1.0 on the **low** side | 1.672× [1.446, 1.929] — excludes 1.0 on the high side |
+| C2 vs pre-registered 10× bar | fails (and points the other way) | fails |
+| C3-context | **order sensitive** — shuffling the context raises mean rank by 21,739 [8,352, 25,258] | no order sensitivity (Δ −1,004 [−7,946, +18,689]) |
+| C3-lens | collapses, Δ −86.2 log-nats [−89.7, −80.3] | collapses, Δ −39.2 [−46.1, −34.4] |
+
+**3. The C2 sign is opposite to GDN, and it is significant.** In GDN, at layer 27, the
+stored needle reads out ~1.076× *more* probable than a matched cross-example distractor
+(per digit). In DeltaNet the same measurement puts the stored needle ~0.969× *less*
+probable — the exact digit string is *suppressed* relative to other examples' digit
+strings. `effect_per_example` 0.805×, CI [0.706, 0.917], permutation p = 0.0006: a
+directional effect, not noise, pointing the other way. `passes_preregistered_bar` is False
+for both cells (the 10× bar was written for a single-token needle). `excludes_null` — the
+script's one-sided `eff_lo > 1.0` test for a *retention-favouring* effect — is False for
+DeltaNet because the effect sits below 1.0; that is a statement about direction, not an
+absence of effect.
+
+**4. C3-context diverges too.** DeltaNet layer 27 *is* order sensitive: shuffling the
+context words worsens the digit rank by ~21,700 (CI excludes zero). GDN and the 29 Aug
+homemade cohort both showed no clean order effect. Under the pre-registration's reading of
+Table 4's C3 note, an order-sensitive readout is the content-memory outcome rather than
+the recency one — but here it coincides with a *negative* C2, so "DeltaNet layer 27
+encodes the digit string's position/order while suppressing its identity" is the shape to
+investigate, not a clean retention result.
+
+**5. C1 is where the three signals could still agree.** DeltaNet's layer-27 mean digit
+rank (38,581) is further below chance than GDN's (49,776) — the correct answer's digits
+are ranked roughly 2× better than a random token after eviction. Whatever layer 27 is
+doing in DeltaNet, it retains *some* recoverable information about the answer; the C2
+result says that information is not "this specific string is more likely than that one."
+
+**6. Open for Gautam / Table 7.** The cross-cell RQ2 comparison now has to accommodate a
+sign disagreement at the analysis layer between GDN (positive, p < 0.0001) and DeltaNet
+(negative, p = 0.0006), both on the primary pre-registered cohort, both sub-threshold.
+Mamba2 is still pending. This does not weaken the instrument — L9/L18 artefact rejection
+and L27 lens-collapse are consistent across cells — it is a substantive architectural
+difference in what the layer-27 memory does.
