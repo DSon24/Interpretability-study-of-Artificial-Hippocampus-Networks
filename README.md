@@ -77,7 +77,7 @@ Sequencing follows Gautam's instruction after the last meeting:
 | RQ1 on LongBench-E HotpotQA (Table 5) | **done** — ΔF1 +3.34 pts, **95% CI [−4.70, +11.10] spans zero**; long stratum negative (regenerated from saved rows, 9 Sep; the earlier +6.11 was the stale prose figure) |
 | RQ3 join (`04b`) | **done, by Sơn** — no significant correlation, provisional — [map-stability + RQ3 join](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
 | 3 cells at 3B → RULER control battery | **done 8–9 Sep — all three cells run, C1–C4 incl. layer-permutation.** DeltaNet merged 8 Sep and Mamba2 9 Sep (`configs/run_3b_dn.json`, `run_3b_m2.json`); M2 ran on Modal with the real mamba kernels. Layer 27 disagrees three ways: GDN +1.076x/digit (p<1e-4), DN 0.969x/digit (p=6e-4), M2 1.095x (p=0.40, null). L9/L18 rejected as decoding artefacts in all three — [DeltaNet battery](docs/FINDINGS.md#findings-from-the-deltanet-ruler-control-battery-8-sep), [Mamba2 battery](docs/FINDINGS.md#findings-from-the-mamba2-ruler-control-battery-9-sep) |
-| No-AHN floor (Table 1 Primary) | **harness written 9 Sep, run pending.** `no_ahn_floor.py` + `configs/run_3b_floor.json` — stock Qwen2.5-3B + SWA forced on every layer at 8064, no AHN, no sinks; RULER NIAH n=60 (evicted substring accuracy = the number RQ2 must exceed) + LongBench-E HotpotQA n=60. Not yet executed; no `results/run_3b_floor/` and no FINDINGS entry |
+| No-AHN floor (Table 1 Primary) | **done 9 Sep.** Stock Qwen2.5-3B + forced SWA at 8064, no AHN, no sinks (`no_ahn_floor.py`, `configs/run_3b_floor.json`). RULER NIAH evicted substring acc **0.000** (n=32) — a hard floor, so every evicted-needle retention result is attributable to AHN; in-window 0.393; LongBench-E HotpotQA first-line F1 **0.076**. `--no-window` control 1.000 confirms the load path is fine. The true no-AHN floor (0.076) is well below nb03's NOWRITE-proxy F1 (~0.34), so NOWRITE ≠ module removal — [no-AHN floor run](docs/FINDINGS.md#findings-from-the-no-ahn-floor-run-r54-9-sep) |
 | 7B checkpoints, RQ3 correlation | not started — gated on the three-cell/Table 7 result, not on further construction diagnosis |
 
 ## Findings
@@ -107,12 +107,13 @@ that construction question supporting analysis, not an execution blocker.
 | [Mamba2 RULER battery](docs/FINDINGS.md#findings-from-the-mamba2-ruler-control-battery-9-sep) | Weakest of the three cells: L27 C2 = 1.095x (p=0.40, **null**), C1 spans chance; only L27 passes C4-layers. GDN +/ DN − / M2 null at the same layer, same checkpoint family. Real mamba kernels via Modal |
 | [DeltaNet RQ1 rerun](docs/FINDINGS.md#findings-from-the-deltanet-rq1-rerun-nb03-9-sep) · [Mamba2 RQ1 run](docs/FINDINGS.md#findings-from-the-mamba2-rq1-run-nb03-9-sep) | NOWRITE change rate inside the published 38–42% band for both (DN, M2 41.7%); no significant ΔF1 at n=60. Week-6 milestone passes for all three cells |
 | [1000-context J-lens refit](docs/FINDINGS.md#findings-from-the-1000-context-j-lens-map-stability-refit-9-sep) · [r29 J-lens re-run](docs/FINDINGS.md#findings-from-the-r29-evicted-vs-in-window-j-lens-re-run-9-sep) | Map stability holds at 1000 contexts; the 21 Aug logit-lens caveat re-run through the fitted J-lens — 21 Aug reading survives, L18 in-window ceiling ~2.6x better through the J-lens, evicted still not read below chance, no L27 separation on the homemade construction |
+| [No-AHN floor (r54)](docs/FINDINGS.md#findings-from-the-no-ahn-floor-run-r54-9-sep) | **Table 1 Primary baseline.** Stock Qwen + forced SWA, no AHN: RULER NIAH evicted substring acc 0.000 (hard floor), in-window 0.393, HotpotQA first-line F1 0.076; `--no-window` control 1.000. Every AHN evicted-retention number is attributable to AHN; NOWRITE-proxy ≠ module removal |
 
 ## Repository layout
 
 ```
 ahn_interp.py                 shared instrumentation — imported by every notebook
-no_ahn_floor.py               standalone GPU run: Table 1 Primary no-AHN floor — stock Qwen + forced SWA, RULER + HotpotQA n=60 (not yet run)
+no_ahn_floor.py               standalone GPU run: Table 1 Primary no-AHN floor — stock Qwen + forced SWA, RULER + HotpotQA n=60 (r54, run 9 Sep)
 per_layer_controls.py         CPU-only: recompute Table 4 within layer, both readout bases
 extract_c2_corrected.py       CPU-only: pull Son's baseline-corrected C2 out of the notebook
 probe_construction.py         CPU-only: the NIAH construction ladder — Findings, 4–5 Sep
@@ -165,7 +166,7 @@ results/
     04o_r29_evicted_vs_inwindow_jlens.json  21 Aug logit-lens caveat re-run through the fitted J-lens (9 Sep)
   run_3b_dn/                        DeltaNet 3B — nb03 RQ1 + RULER control battery (04g/04i), 8–9 Sep
   run_3b_m2/                        Mamba2 3B — nb03 RQ1 + RULER control battery, Modal real kernels, 9 Sep
-  run_3b_floor/                     no-AHN floor — 06_no_ahn_floor.json (run pending, dir not yet created)
+  run_3b_floor/                     no-AHN floor (r54, 9 Sep) — 06_no_ahn_floor.json + 06_no_ahn_floor_nowindow.json control
   pilot_2026-08-18/                  superseded — see Findings above
 src/ahn/                       upstream AHN implementation (unmodified)
 eval/, examples/               upstream harnesses (unmodified)
@@ -452,8 +453,8 @@ kept n=60, and unblocked DeltaNet/Mamba2. Full reasoning lives in
 | 6. `04b` — the RQ3 join | done, by Sơn — no significant correlation, provisional — [map-stability + RQ3 join](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
 | 7. Add the boundary-JS column | done — logged per example in nb03 for all three cells (commit bc2a61f + reruns) |
 | 8. DN + Mamba2 3B merges and RULER runs | **done 8–9 Sep** — DN merged 8 Sep, M2 merged 9 Sep and run on Modal with real mamba kernels; full C1–C4 battery for all three, results under `results/run_3b_dn/` and `results/run_3b_m2/` |
-| 9. No-AHN floor (Table 1 Primary) | **next — harness ready, run pending.** `no_ahn_floor.py --config configs/run_3b_floor.json` on a MIG slice; stock Qwen2.5-3B + forced SWA at 8064, no AHN, no sinks; RULER NIAH n=60 evicted substring accuracy is the number every retention claim must clear. Then commit `results/run_3b_floor/`, add an Experiment Log row, write the FINDINGS entry. Blocks Table 7 and the data freeze |
-| 10. Table 7 — cross-cell half-life ratios | blocked only on step 9 and the Table 10 compute file; RULER retention is flat vs distance, so expect the pre-registered non-parametric fallback |
+| 9. No-AHN floor (Table 1 Primary) | **done 9 Sep** — RULER NIAH evicted substring acc 0.000 (n=32), in-window 0.393; HotpotQA first-line F1 0.076; `--no-window` control 1.000. Every evicted-needle retention result is now measured against a base-model floor of zero; NOWRITE-proxy (~0.34 F1) is confirmed *not* equivalent to module removal — [no-AHN floor run](docs/FINDINGS.md#findings-from-the-no-ahn-floor-run-r54-9-sep) |
+| 10. Table 7 — cross-cell half-life ratios | blocked only on the Table 10 compute-accounting file (step 9 cleared 9 Sep); RULER retention is flat vs distance, so expect the pre-registered non-parametric fallback |
 | 11. 7B checkpoints | **blocked only on the three-cell/Table 7 result**; make this call after steps 9–10 |
 
 The two asks in the 7 Sep diagnosis packet are now closed: Decision 1 = Option A and
