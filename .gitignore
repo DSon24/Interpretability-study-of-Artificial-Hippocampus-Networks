@@ -199,3 +199,6 @@ jacobian-lens/
 
 # macOS
 .DS_Store
+
+# local Modal job scripts (run off-repo, not part of the study code)
+modal_*.py
