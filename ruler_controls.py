@@ -1,4 +1,4 @@
-"""CPU-only: C2, C3-context and C3-lens for the RULER cohort.
+"""CPU-only: C2, C3-context, C3-lens and C4-layers for the RULER cohort.
 
 Run 025 put layer 27 at median rank 17,250 on evicted RULER needles, but that is a
 C1-shaped result. C2 is the control that withdrew the 2 Sep layer-27 claim -- its raw
@@ -42,6 +42,12 @@ C3-lens (DIVERGENCE 3a). Own-answer rank decoded through a row-permuted J-lens m
 Structure that survives this is an artefact of the decoding procedure. This is the control
 the proposal's Table 4 actually specifies; the repo had only ever implemented shuffled
 context.
+
+C4-layers. Own-answer log-probability decoded through the J-lens with each layer's
+Jacobian rolled onto a different layer's index (JacobianLens.permuted_layers). A
+layer-specific map should decode worse through the wrong layer's Jacobian, so the delta
+(permuted - real) should be negative. Only present when the rows carry
+answer_logprob_permuted_layers (notebook 04 writes it when lens_perm is available).
 
 Every statistic is restricted to placement == "evicted" by default: the claim is about
 what survives compression, and 28 of 60 RULER needles sit inside the local window.
@@ -340,6 +346,29 @@ def main(argv: Sequence[str] | None = None) -> None:
                        else "signal SURVIVES the permuted map — DECODING ARTEFACT")
             print(f"  C3-lens    real logP {st.median([o for o,_ in lens_pairs]):+8.2f} -> "
                   f"permuted {st.median([s for _,s in lens_pairs]):+8.2f}   "
+                  f"delta {st.median(deltas):+7.2f} [{lo:+.2f}, {hi:+.2f}]")
+            print(f"     -> {verdict}")
+
+        # ---- C4-layers ----------------------------------------------------------
+        c4_pairs = [(ordered[i]["answer_logprob"], ordered[i]["answer_logprob_permuted_layers"])
+                    for i in evicted if "answer_logprob_permuted_layers" in ordered[i]]
+        if c4_pairs:
+            # a layer-specific map should beat one rolled onto the wrong layer, so
+            # delta (permuted - real) should be negative
+            deltas = [s - o for o, s in c4_pairs]
+            lo, hi = boot_ci(deltas, st.median)
+            rec["C4_layer_permutation"] = {
+                "n": len(c4_pairs),
+                "median_answer_logprob_real": st.median([o for o, _ in c4_pairs]),
+                "median_answer_logprob_permuted": st.median([s for _, s in c4_pairs]),
+                "median_delta": st.median(deltas),
+                "ci95_delta": [lo, hi],
+                "map_is_layer_specific": bool(hi < 0),
+            }
+            verdict = ("readout DEGRADES on the wrong layer's map, as it should" if hi < 0
+                       else "readout SURVIVES the wrong layer's map — NOT LAYER-SPECIFIC")
+            print(f"  C4-layers  real logP {st.median([o for o,_ in c4_pairs]):+8.2f} -> "
+                  f"permuted {st.median([s for _,s in c4_pairs]):+8.2f}   "
                   f"delta {st.median(deltas):+7.2f} [{lo:+.2f}, {hi:+.2f}]")
             print(f"     -> {verdict}")
 
