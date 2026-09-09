@@ -94,6 +94,7 @@ def generate(model, tok, prompt: str, max_new_tokens: int):
     n_in = int(ins["input_ids"].shape[1])
     out = model.generate(
         **ins, max_new_tokens=max_new_tokens, do_sample=False,
+        temperature=None, top_p=None, top_k=None,
         pad_token_id=tok.eos_token_id,
     )
     text = tok.decode(out[0, n_in:], skip_special_tokens=True).strip()
@@ -142,9 +143,14 @@ def run_ruler(model, tok, sliding_window: int, n: int, ruler_config: str, seed: 
             "f1": ai.qa_f1_score(pred, gold),
             "f1_first_line": ai.qa_f1_score(first_line(pred), gold),
         })
+        r = rows[-1]
+        tag = "EVICT" if r["needle_is_evicted"] else "inwin"
+        print(f"  [{i+1:2d}/{len(ex)}] {tag} nt={r['n_tokens']:6d} "
+              f"evd={r['eviction_distance']:6d} hit={r['substring_match']:.0f} "
+              f"gold={r['gold']!r:16.16} pred={r['prediction']!r:.40}")
         if (i + 1) % 10 == 0:
-            acc = np.mean([r["substring_match"] for r in rows])
-            print(f"  [{i+1}/{len(ex)}] substr-acc={acc:.3f}  ({(time.time()-t0)/60:.1f} min)")
+            acc = np.mean([rr["substring_match"] for rr in rows])
+            print(f"  -- [{i+1}/{len(ex)}] running substr-acc={acc:.3f}  ({(time.time()-t0)/60:.1f} min)")
         ai.free_cuda()
 
     ev = [r for r in rows if r["needle_is_evicted"]]
@@ -210,7 +216,7 @@ def run_hotpot(model, tok, sliding_window: int, n: int, max_input: int, seed: in
     third = max(1, len(eligible) // 3)
     buckets = {"short": eligible[:third], "mid": eligible[third:2 * third], "long": eligible[2 * third:]}
     rng = np.random.default_rng(seed)
-    cohort, per = [], n // 3
+    cohort, per = [], max(1, n // 3)
     for name, b in buckets.items():
         idx = rng.choice(len(b), size=min(per, len(b)), replace=False)
         for j in idx:
@@ -251,8 +257,10 @@ def run_hotpot(model, tok, sliding_window: int, n: int, max_input: int, seed: in
         "f1_first_line_by_stratum": _by("f1_first_line"),
         "wall_min": (time.time() - t0) / 60,
     }
+    f1fl = summary["f1_first_line"]
     print(f"HotpotQA done: {len(rows)} scored in {summary['wall_min']:.1f} min  "
-          f"mean first-line F1 = {summary['f1_first_line']:.3f}")
+          f"mean first-line F1 = {f1fl:.3f}" if f1fl is not None else
+          f"HotpotQA done: {len(rows)} scored -- no rows to score")
     return {"rows": rows, "summary": summary}
 
 
@@ -316,7 +324,7 @@ def main():
     if r.get("in_window"):
         print(f"RULER NIAH in-window : substr-acc {r['in_window']['substring_match']:.3f}  "
               f"F1 {r['in_window']['f1']:.3f}  (n={r['in_window']['n']})")
-    if h:
+    if h and h.get("f1_first_line") is not None:
         print(f"HotpotQA first-line  : F1 {h['f1_first_line']:.3f}  "
               f"EM {h['exact_match_first_line']:.3f}  (n={h['n_scored']})")
 
