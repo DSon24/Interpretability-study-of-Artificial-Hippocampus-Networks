@@ -1,0 +1,220 @@
+{
+  "source_rows": "results/run_3b_gdn/04i_ruler_controls_rows.json",
+  "note": "Layer-wise RULER digit rank split by needle placement, corrected digit-sequence scoring (Run 026). Redo of 04h, which ran on the space-token-buggy 04g rows. ordered context, jlens readout.",
+  "chance_rank": 75968,
+  "multi_occurrence_examples": [],
+  "old_04h_layer27_by_verdict": {
+    "in_window": {
+      "n": 28,
+      "median_rank": 54505.5,
+      "frac_beating_chance": 0.7142857142857143
+    },
+    "evicted": {
+      "n": 32,
+      "median_rank": 17250.0,
+      "frac_beating_chance": 0.84375
+    }
+  },
+  "by_placement": {
+    "9": {
+      "evicted": {
+        "n": 32,
+        "median_rank": 87258.71428571429,
+        "ci95": [
+          76134.28571428571,
+          91571.71428571429
+        ],
+        "mean_rank": 82104.65178571429,
+        "frac_beating_chance": 0.3125
+      },
+      "in_window": {
+        "n": 28,
+        "median_rank": 113176.21428571429,
+        "ci95": [
+          98717.0,
+          123450.21428571429
+        ],
+        "mean_rank": 111350.88775510201,
+        "frac_beating_chance": 0.0
+      }
+    },
+    "18": {
+      "evicted": {
+        "n": 32,
+        "median_rank": 6254.285714285714,
+        "ci95": [
+          5075.428571428572,
+          8737.714285714286
+        ],
+        "mean_rank": 8629.959821428572,
+        "frac_beating_chance": 1.0
+      },
+      "in_window": {
+        "n": 28,
+        "median_rank": 22406.142857142855,
+        "ci95": [
+          16968.071428571428,
+          32943.21428571429
+        ],
+        "mean_rank": 26468.255102040817,
+        "frac_beating_chance": 1.0
+      }
+    },
+    "27": {
+      "evicted": {
+        "n": 32,
+        "median_rank": 49775.857142857145,
+        "ci95": [
+          42272.642857142855,
+          54797.0
+        ],
+        "mean_rank": 51899.236607142855,
+        "frac_beating_chance": 0.875
+      },
+      "in_window": {
+        "n": 28,
+        "median_rank": 37619.357142857145,
+        "ci95": [
+          32886.42857142857,
+          48310.57142857143
+        ],
+        "mean_rank": 42081.7193877551,
+        "frac_beating_chance": 0.9285714285714286
+      }
+    }
+  },
+  "by_depth_tercile": {
+    "9": {
+      "t1": {
+        "n": 20,
+        "median_rank": 85298.28571428571,
+        "ci95": [
+          68943.5,
+          94825.35714285714
+        ],
+        "mean_rank": 82484.69285714286,
+        "frac_beating_chance": 0.35,
+        "depth_frac_range": [
+          0.013260232054060945,
+          0.26013157141686744
+        ]
+      },
+      "t2": {
+        "n": 20,
+        "median_rank": 89877.71428571429,
+        "ci95": [
+          81158.07142857142,
+          93522.92857142858
+        ],
+        "mean_rank": 84594.55000000002,
+        "frac_beating_chance": 0.15,
+        "depth_frac_range": [
+          0.26013157141686744,
+          0.6685160974310537
+        ]
+      },
+      "t3": {
+        "n": 20,
+        "median_rank": 121901.5,
+        "ci95": [
+          113176.21428571429,
+          128468.71428571429
+        ],
+        "mean_rank": 120179.44285714286,
+        "frac_beating_chance": 0.0,
+        "depth_frac_range": [
+          0.6685160974310537,
+          0.9817671819256661
+        ]
+      }
+    },
+    "18": {
+      "t1": {
+        "n": 20,
+        "median_rank": 5938.571428571428,
+        "ci95": [
+          4960.357142857143,
+          8737.714285714286
+        ],
+        "mean_rank": 7896.121428571426,
+        "frac_beating_chance": 1.0,
+        "depth_frac_range": [
+          0.013260232054060945,
+          0.26013157141686744
+        ]
+      },
+      "t2": {
+        "n": 20,
+        "median_rank": 16430.428571428572,
+        "ci95": [
+          6254.285714285714,
+          25522.214285714286
+        ],
+        "mean_rank": 19291.214285714283,
+        "frac_beating_chance": 1.0,
+        "depth_frac_range": [
+          0.26013157141686744,
+          0.6685160974310537
+        ]
+      },
+      "t3": {
+        "n": 20,
+        "median_rank": 20084.071428571428,
+        "ci95": [
+          13538.285714285714,
+          30439.785714285714
+        ],
+        "mean_rank": 23676.157142857144,
+        "frac_beating_chance": 1.0,
+        "depth_frac_range": [
+          0.6685160974310537,
+          0.9817671819256661
+        ]
+      }
+    },
+    "27": {
+      "t1": {
+        "n": 20,
+        "median_rank": 48202.357142857145,
+        "ci95": [
+          38855.57142857143,
+          65354.0
+        ],
+        "mean_rank": 53125.807142857135,
+        "frac_beating_chance": 0.85,
+        "depth_frac_range": [
+          0.013260232054060945,
+          0.26013157141686744
+        ]
+      },
+      "t2": {
+        "n": 20,
+        "median_rank": 43809.21428571429,
+        "ci95": [
+          35423.642857142855,
+          51508.07142857143
+        ],
+        "mean_rank": 45031.95,
+        "frac_beating_chance": 0.95,
+        "depth_frac_range": [
+          0.26013157141686744,
+          0.6685160974310537
+        ]
+      },
+      "t3": {
+        "n": 20,
+        "median_rank": 42709.357142857145,
+        "ci95": [
+          31101.071428571428,
+          50375.57142857143
+        ],
+        "mean_rank": 43795.428571428565,
+        "frac_beating_chance": 0.9,
+        "depth_frac_range": [
+          0.6685160974310537,
+          0.9817671819256661
+        ]
+      }
+    }
+  }
+}
