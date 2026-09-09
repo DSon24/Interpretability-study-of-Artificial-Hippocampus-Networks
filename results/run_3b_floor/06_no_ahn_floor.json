@@ -1,0 +1,1758 @@
+{
+  "config": {
+    "run_name": "run_3b_floor",
+    "model_path": "Qwen/Qwen2.5-3B-Instruct",
+    "ckpt_name": "Qwen/Qwen2.5-3B-Instruct",
+    "cell": "none",
+    "scale": "3B",
+    "sliding_window": 8064,
+    "num_attn_sinks": 0,
+    "max_window_layers": 0,
+    "attn_impl": "flash_attention_2",
+    "dtype": "bfloat16",
+    "seed": 20260820,
+    "notes": "Table 1 Primary no-AHN floor (r54). Stock Qwen2.5-3B-Instruct, sliding-window attention forced on at 8064 for EVERY layer (use_sliding_window + sliding_window + max_window_layers=0), no AHN merge, no attention sinks. Backbone is shared across all three cells, so this one run is the floor for GDN / DeltaNet / Mamba2. RULER NIAH n=60 + LongBench-E HotpotQA n=60. 'Any retention we measure has to exceed what this configuration explains.'"
+  },
+  "attn_impl_used": "flash_attention_2",
+  "seed": 20260820,
+  "window_forced": true,
+  "generated": "2026-09-09T20:13:39Z",
+  "note": "Table 1 Primary no-AHN floor (r54). Stock Qwen2.5-3B-Instruct, SWA at 8064 on every layer, no AHN, no attention sinks. RULER evicted substring accuracy is the number RQ2 must exceed.",
+  "ruler_niah": {
+    "rows": [
+      {
+        "idx": 0,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 8920,
+        "compression_boundary": 7614,
+        "eviction_distance": -1306,
+        "needle_is_evicted": false,
+        "gold": "7700828",
+        "prediction": "42. What is the special magic number for solid-few mentioned in the provided text? The special magic number for solid-few mentioned in the provided text is 42. What is the special magic number for solid-few mentioned in the provided text? The special magic number for solid-few mentioned in the provided text is 42. What is the special magic number for solid-few mentioned in the provided text? The special magic number for solid-few mentioned in the provided text is 42. What is the special magic number for solid-few mentioned in the provided text? The special magic number for solid",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 1,
+        "task": "niah_single_1",
+        "n_tokens": 15684,
+        "needle_pos": 12162,
+        "compression_boundary": 7620,
+        "eviction_distance": -4542,
+        "needle_is_evicted": false,
+        "gold": "9548432",
+        "prediction": "9548. \n\nThe special magic number for dark-aardvark mentioned in the provided text is 9548. \n\nThe special magic number for dark-aardvark mentioned in the provided text is 9548. \n\nThe special magic number for dark-aardvark mentioned in the provided text is 9548. \n\nThe special magic number for dark-aardvark mentioned in the provided text is 9548. \n\nThe special magic number for dark-aardvark mentioned in the provided text is 9548. \n\nThe special magic number for dark",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 2,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 3784,
+        "compression_boundary": 7614,
+        "eviction_distance": 3830,
+        "needle_is_evicted": true,
+        "gold": "2839607",
+        "prediction": "42. The special magic number for annoying-decimal mentioned in the provided text is 42. The special magic number for annoying-decimal mentioned in the provided text is 42. The special magic number for annoying-decimal mentioned in the provided text is 42. The special magic number for annoying-decimal mentioned in the provided text is 42. The special magic number for annoying-decimal mentioned in the provided text is 42. The special magic number for annoying-decimal mentioned in the provided text is 42. The special magic number for annoying-decimal mentioned in the provided text is 4",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 3,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 14680,
+        "compression_boundary": 7614,
+        "eviction_distance": -7066,
+        "needle_is_evicted": false,
+        "gold": "8082668",
+        "prediction": "1. The special magic number for used-commotion mentioned in the provided text is 1. The special magic number for used-commotion mentioned in the provided text is 1. The special magic number for used-commotion mentioned in the provided text is 1. The special magic number for used-commotion mentioned in the provided text is 1. The special magic number for used-commotion mentioned in the provided text is 1. The special magic number for used-commotion mentioned in the provided text is 1. The special magic number for used-commotion mentioned in the provided text is 1. The special magic number for used",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 4,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 14680,
+        "compression_boundary": 7614,
+        "eviction_distance": -7066,
+        "needle_is_evicted": false,
+        "gold": "7402509",
+        "prediction": "the special magic number for the participant mentioned in the provided text.lime. The special magic number for the participant mentioned in the provided text is the special magic number for the participant mentioned in the provided text. The special magic number for the participant mentioned in the provided text is the special magic number for the participant mentioned in the provided text. The special magic number for the participant mentioned in the provided text is the special magic number for the participant mentioned in the provided text. The special magic number for the participant mentioned in the provided text is the special magic number for the participant mentioned in the provided text. The special magic number for the participant mentioned in",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 5,
+        "task": "niah_single_1",
+        "n_tokens": 15681,
+        "needle_pos": 13625,
+        "compression_boundary": 7617,
+        "eviction_distance": -6008,
+        "needle_is_evicted": false,
+        "gold": "5218028",
+        "prediction": "5218028. The special magic number for rhetorical-battleship mentioned in the provided text is 5218028. The special magic number for rhetorical-battleship mentioned in the provided text is 5218028. The special magic number for rhetorical-battleship mentioned in the provided text is 5218028. The special magic number for rhetorical-battleship mentioned in the provided text is 5218028. The special magic number for rhetorical-battleship mentioned in the provided text is 5218028",
+        "substring_match": 1.0,
+        "exact_match": 0.0,
+        "f1": 0.03508771929824561,
+        "f1_first_line": 0.03508771929824561
+      },
+      {
+        "idx": 6,
+        "task": "niah_single_1",
+        "n_tokens": 15681,
+        "needle_pos": 13217,
+        "compression_boundary": 7617,
+        "eviction_distance": -5600,
+        "needle_is_evicted": false,
+        "gold": "2921859",
+        "prediction": "2921859.\nThe special magic number for uptight-unemployment mentioned in the provided text is 2921859.\nThe special magic number for uptight-unemployment mentioned in the provided text is 2921859.\nThe special magic number for uptight-unemployment mentioned in the provided text is 2921859.\nThe special magic number for uptight-unemployment mentioned in the provided text is 2921859.\nThe special magic number for uptight-unemployment mentioned in the provided text is 2921859",
+        "substring_match": 1.0,
+        "exact_match": 0.0,
+        "f1": 0.03508771929824561,
+        "f1_first_line": 1.0
+      },
+      {
+        "idx": 7,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 2776,
+        "compression_boundary": 7614,
+        "eviction_distance": 4838,
+        "needle_is_evicted": true,
+        "gold": "6707197",
+        "prediction": "42. The special magic number for tested-familiar mentioned in the provided text is 42.\n\nThe special magic number for tested-familiar mentioned in the provided text is 42.\n\nThe special magic number for tested-familiar mentioned in the provided text is 42.\n\nThe special magic number for tested-familiar mentioned in the provided text is 42.\n\nThe special magic number for tested-familiar mentioned in the provided text is 42.\n\nThe special magic number for tested-familiar mentioned in the provided text is 42.\n\nThe special magic number for tested-familiar mentioned in the provided text is 4",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 8,
+        "task": "niah_single_1",
+        "n_tokens": 15684,
+        "needle_pos": 11178,
+        "compression_boundary": 7620,
+        "eviction_distance": -3558,
+        "needle_is_evicted": false,
+        "gold": "3653446",
+        "prediction": "123456789. The special magic number for nondescript-humor mentioned in the provided text is 123456789. The special magic number for nondescript-humor mentioned in the provided text is 123456789. The special magic number for nondescript-humor mentioned in the provided text is 123456789. The special magic number for nondescript-humor mentioned in the provided text is 123456789. The special magic number for nondescript-h",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 9,
+        "task": "niah_single_1",
+        "n_tokens": 15681,
+        "needle_pos": 12329,
+        "compression_boundary": 7617,
+        "eviction_distance": -4712,
+        "needle_is_evicted": false,
+        "gold": "5418934",
+        "prediction": "123456789. The special magic number for woozy-oxygen mentioned in the provided text is 123456789. The special magic number for woozy-oxygen mentioned in the provided text is 123456789. The special magic number for woozy-oxygen mentioned in the provided text is 123456789. The special magic number for woozy-oxygen mentioned in the provided text is 123456789. The special magic number for woozy-oxygen mentioned in the provided",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 10,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 15400,
+        "compression_boundary": 7614,
+        "eviction_distance": -7786,
+        "needle_is_evicted": false,
+        "gold": "2785277",
+        "prediction": "2785277.\n\nThe special magic number for quick-mortality mentioned in the provided text is 2785277. \n\nThis can be interpreted as follows:\n\nThe special magic number for quick-mortality mentioned in the provided text is 2785277. \n\nThis can be interpreted as follows:\n\nThe special magic number for quick-mortality mentioned in the provided text is 2785277. \n\nThis can be interpreted as follows:\n\nThe special magic number for quick-mortality mentioned in the provided text is 2785277. \n\nThis can",
+        "substring_match": 1.0,
+        "exact_match": 0.0,
+        "f1": 0.030303030303030307,
+        "f1_first_line": 1.0
+      },
+      {
+        "idx": 11,
+        "task": "niah_single_1",
+        "n_tokens": 15675,
+        "needle_pos": 14991,
+        "compression_boundary": 7611,
+        "eviction_distance": -7380,
+        "needle_is_evicted": false,
+        "gold": "9517169",
+        "prediction": "9517169. The special magic number for tense-standard mentioned in the provided text is 9517169. The special magic number for tense-standard mentioned in the provided text is 9517169. The special magic number for tense-standard mentioned in the provided text is 9517169. The special magic number for tense-standard mentioned in the provided text is 9517169. The special magic number for tense-standard mentioned in the provided text is 9517169. The special magic number for tense-standard mentioned in",
+        "substring_match": 1.0,
+        "exact_match": 0.0,
+        "f1": 0.03125,
+        "f1_first_line": 0.03125
+      },
+      {
+        "idx": 12,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 4000,
+        "compression_boundary": 7614,
+        "eviction_distance": 3614,
+        "needle_is_evicted": true,
+        "gold": "7273233",
+        "prediction": "42. The special magic number for depressed-tunic mentioned in the provided text is 42. The special magic number for depressed-tunic mentioned in the provided text is 42. The special magic number for depressed-tunic mentioned in the provided text is 42. The special magic number for depressed-tunic mentioned in the provided text is 42. The special magic number for depressed-tunic mentioned in the provided text is 42. The special magic number for depressed-tunic mentioned in the provided text is 42. The special magic number for depressed-tunic mentioned in the provided text is 4",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 13,
+        "task": "niah_single_1",
+        "n_tokens": 15675,
+        "needle_pos": 12039,
+        "compression_boundary": 7611,
+        "eviction_distance": -4428,
+        "needle_is_evicted": false,
+        "gold": "6438436",
+        "prediction": "1234567890000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 14,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 7576,
+        "compression_boundary": 7614,
+        "eviction_distance": 38,
+        "needle_is_evicted": true,
+        "gold": "7089806",
+        "prediction": "123456789. This is because the special magic number for colossal-duck mentioned in the provided text is 123456789. This is because the special magic number for colossal-duck mentioned in the provided text is 123456789. This is because the special magic number for colossal-duck mentioned in the provided text is 123456789. This is because the special magic number for colossal-duck mentioned in the provided text is 123456789. This is because the special",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 15,
+        "task": "niah_single_1",
+        "n_tokens": 15675,
+        "needle_pos": 13959,
+        "compression_boundary": 7611,
+        "eviction_distance": -6348,
+        "needle_is_evicted": false,
+        "gold": "5041154",
+        "prediction": "the special magic number for average-object mentioned in the provided text.lime. The special magic number for average-object mentioned in the provided text is the special magic number for average-object mentioned in the provided text. The special magic number for average-object mentioned in the provided text is the special magic number for average-object mentioned in the provided text. The special magic number for average-object mentioned in the provided text is the special magic number for average-object mentioned in the provided text. The special magic number for average-object mentioned in the provided text is the special magic number for average-object mentioned in the provided text. The special magic number for average-object mentioned in",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 16,
+        "task": "niah_single_1",
+        "n_tokens": 15675,
+        "needle_pos": 1719,
+        "compression_boundary": 7611,
+        "eviction_distance": 5892,
+        "needle_is_evicted": true,
+        "gold": "9153566",
+        "prediction": "the sum of the magic numbers for bright-system mentioned in the provided text.\n\nThe special magic number for bright-system mentioned in the provided text is the sum of the magic numbers for bright-system mentioned in the provided text.\n\nThe special magic number for bright-system mentioned in the provided text is the sum of the magic numbers for bright-system mentioned in the provided text.\n\nThe special magic number for bright-system mentioned in the provided text is the sum of the magic numbers for bright-system mentioned in the provided text.\n\nThe special magic number for bright-system mentioned in the provided text is the sum of the magic numbers for bright-system mentioned in the provided text.\n\nThe",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 17,
+        "task": "niah_single_1",
+        "n_tokens": 15675,
+        "needle_pos": 13527,
+        "compression_boundary": 7611,
+        "eviction_distance": -5916,
+        "needle_is_evicted": false,
+        "gold": "8973915",
+        "prediction": "8973915. The special magic number for cultured-question mentioned in the provided text is 8973915. The special magic number for cultured-question mentioned in the provided text is 8973915. The special magic number for cultured-question mentioned in the provided text is 8973915. The special magic number for cultured-question mentioned in the provided text is 8973915. The special magic number for cultured-question mentioned in the provided text is 8973915. The special magic number for cultured-question mentioned in",
+        "substring_match": 1.0,
+        "exact_match": 0.0,
+        "f1": 0.03125,
+        "f1_first_line": 0.03125
+      },
+      {
+        "idx": 18,
+        "task": "niah_single_1",
+        "n_tokens": 15687,
+        "needle_pos": 14947,
+        "compression_boundary": 7623,
+        "eviction_distance": -7324,
+        "needle_is_evicted": false,
+        "gold": "9852897",
+        "prediction": "9852897. The special magic number for good-pharmacopoeia mentioned in the provided text is 9852897. The special magic number for good-pharmacopoeia mentioned in the provided text is 9852897. The special magic number for good-pharmacopoeia mentioned in the provided text is 9852897. The special magic number for good-pharmacopoeia mentioned in the provided text is 9852897. The special magic number for good-pharmacopoeia mentioned in the provided",
+        "substring_match": 1.0,
+        "exact_match": 0.0,
+        "f1": 0.037037037037037035,
+        "f1_first_line": 0.037037037037037035
+      },
+      {
+        "idx": 19,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 7696,
+        "compression_boundary": 7614,
+        "eviction_distance": -82,
+        "needle_is_evicted": false,
+        "gold": "4374754",
+        "prediction": "4374754. The special magic number for faint-smolt mentioned in the provided text is 4374754. The special magic number for faint-smolt mentioned in the provided text is 4374754. The special magic number for faint-smolt mentioned in the provided text is 4374754. The special magic number for faint-smolt mentioned in the provided text is 4374754. The special magic number for faint-smolt mentioned in the provided text is 4374754. The special magic number",
+        "substring_match": 1.0,
+        "exact_match": 0.0,
+        "f1": 0.03333333333333333,
+        "f1_first_line": 0.03333333333333333
+      },
+      {
+        "idx": 20,
+        "task": "niah_single_1",
+        "n_tokens": 15681,
+        "needle_pos": 10793,
+        "compression_boundary": 7617,
+        "eviction_distance": -3176,
+        "needle_is_evicted": false,
+        "gold": "7264956",
+        "prediction": "13. The special magic number for undesirable-erection mentioned in the provided text is 13.",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 21,
+        "task": "niah_single_1",
+        "n_tokens": 15684,
+        "needle_pos": 5562,
+        "compression_boundary": 7620,
+        "eviction_distance": 2058,
+        "needle_is_evicted": true,
+        "gold": "5159166",
+        "prediction": "42. The special magic number for crabby-moustache mentioned in the provided text is 42. The special magic number for crabby-moustache mentioned in the provided text is 42. The special magic number for crabby-moustache mentioned in the provided text is 42. The special magic number for crabby-moustache mentioned in the provided text is 42. The special magic number for crabby-moustache mentioned in the provided text is 42. The special magic number for crabby-moustache mentioned in the provided text is 42. The special magic number",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 22,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 14488,
+        "compression_boundary": 7614,
+        "eviction_distance": -6874,
+        "needle_is_evicted": false,
+        "gold": "1352896",
+        "prediction": "123456789654321. \n\nThe special magic number for internal-trip mentioned in the provided text is 123456789654321. \n\nThe special magic number for internal-trip mentioned in the provided text is 123456789654321. \n\nThe special magic number for internal-trip mentioned in the provided text is 123456789654321. \n\nThe special magic number for internal-trip mentioned in the provided text is",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 23,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 208,
+        "compression_boundary": 7614,
+        "eviction_distance": 7406,
+        "needle_is_evicted": true,
+        "gold": "4694634",
+        "prediction": "123456789. This number is a prime number and has no divisors other than itself and 1. The number 123456789 is a prime number and has no divisors other than itself and 1. The number 123456789 is a prime number and has no divisors other than itself and 1. The number 123456789 is a prime number and has no divisors other than itself and 1. The number 123456789 is a prime",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 24,
+        "task": "niah_single_1",
+        "n_tokens": 15675,
+        "needle_pos": 5655,
+        "compression_boundary": 7611,
+        "eviction_distance": 1956,
+        "needle_is_evicted": true,
+        "gold": "1987737",
+        "prediction": "the special magic number for wet-action mentioned in the provided text is the special magic number for wet-action mentioned in the provided text is the special magic number for wet-action mentioned in the provided text is the special magic number for wet-action mentioned in the provided text is the special magic number for wet-action mentioned in the provided text is the special magic number for wet-action mentioned in the provided text is the special magic number for wet-action mentioned in the provided text is the special magic number for wet-action mentioned in the provided text is the special magic number for wet-action mentioned in the provided text is the special magic number for wet-action mentioned in the provided",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 25,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 1768,
+        "compression_boundary": 7614,
+        "eviction_distance": 5846,
+        "needle_is_evicted": true,
+        "gold": "6543670",
+        "prediction": "123. The special magic number for afraid-spasm mentioned in the provided text is 123. \n\nThe special magic number for afraid-spasm mentioned in the provided text is 123. \n\nThe special magic number for afraid-spasm mentioned in the provided text is 123. \n\nThe special magic number for afraid-spasm mentioned in the provided text is 123. \n\nThe special magic number for afraid-spasm mentioned in the provided text is 123. \n\nThe special magic number for afraid-spasm mentioned in the provided text is 123. \n\nThe special magic",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 26,
+        "task": "niah_single_1",
+        "n_tokens": 15681,
+        "needle_pos": 5297,
+        "compression_boundary": 7617,
+        "eviction_distance": 2320,
+        "needle_is_evicted": true,
+        "gold": "9143903",
+        "prediction": "123456789. The special magic number for guiltless-decimal mentioned in the provided text is 123456789.\n\nThe special magic number for guiltless-decimal mentioned in the provided text is 123456789. \n\nThe special magic number for guiltless-decimal mentioned in the provided text is 123456789. \n\nThe special magic number for guiltless-decimal mentioned in the provided text is 123456789. \n\nThe special magic number for guiltless-decimal mentioned",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 27,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 5992,
+        "compression_boundary": 7614,
+        "eviction_distance": 1622,
+        "needle_is_evicted": true,
+        "gold": "8930103",
+        "prediction": "42. The special magic number for worried-colt mentioned in the provided text is 42. The special magic number for worried-colt mentioned in the provided text is 42. The special magic number for worried-colt mentioned in the provided text is 42. The special magic number for worried-colt mentioned in the provided text is 42. The special magic number for worried-colt mentioned in the provided text is 42. The special magic number for worried-colt mentioned in the provided text is 42. The special magic number for worried-colt mentioned in the provided text is 4",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 28,
+        "task": "niah_single_1",
+        "n_tokens": 15681,
+        "needle_pos": 2345,
+        "compression_boundary": 7617,
+        "eviction_distance": 5272,
+        "needle_is_evicted": true,
+        "gold": "4194548",
+        "prediction": "7. This is because the special magic number for mindless-concert mentioned in the provided text is 7. This is because the special magic number for mindless-concert mentioned in the provided text is 7. This is because the special magic number for mindless-concert mentioned in the provided text is 7. This is because the special magic number for mindless-concert mentioned in the provided text is 7. This is because the special magic number for mindless-concert mentioned in the provided text is 7. This is because the special magic number for mindless-concert mentioned in the provided text is 7",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 29,
+        "task": "niah_single_1",
+        "n_tokens": 15684,
+        "needle_pos": 8730,
+        "compression_boundary": 7620,
+        "eviction_distance": -1110,
+        "needle_is_evicted": false,
+        "gold": "8231838",
+        "prediction": "42. This can be represented as a constant in Python:\n\n```python\nconst = 42\n```",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 30,
+        "task": "niah_single_1",
+        "n_tokens": 15681,
+        "needle_pos": 1361,
+        "compression_boundary": 7617,
+        "eviction_distance": 6256,
+        "needle_is_evicted": true,
+        "gold": "8835373",
+        "prediction": "1234567890. This number is a special magic number for moaning-complicity mentioned in the provided text.lime. The special magic number for moaning-complicity mentioned in the provided text is 1234567890. This number is a special magic number for moaning-complicity mentioned in the provided text. The special magic number for moaning-complicity mentioned in the provided text is 1234567890. This number is a special magic number for moaning-complicity mentioned in the provided text. The special magic number for mo",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 31,
+        "task": "niah_single_1",
+        "n_tokens": 15687,
+        "needle_pos": 8371,
+        "compression_boundary": 7623,
+        "eviction_distance": -748,
+        "needle_is_evicted": false,
+        "gold": "7754864",
+        "prediction": "123. To find the special magic number for axiomatic-tremor mentioned in the provided text, we need to follow the steps:\n\n1. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 32,
+        "task": "niah_single_1",
+        "n_tokens": 15687,
+        "needle_pos": 4699,
+        "compression_boundary": 7623,
+        "eviction_distance": 2924,
+        "needle_is_evicted": true,
+        "gold": "4214348",
+        "prediction": "123456789.\n\nThe special magic number for furtive-gearshift mentioned in the provided text is 123456789. \nThe special magic number for furtive-gearshift mentioned in the provided text is 123456789. \nThe special magic number for furtive-gearshift mentioned in the provided text is 123456789. \nThe special magic number for furtive-gearshift mentioned in the provided text is 123456789. \nThe",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 33,
+        "task": "niah_single_1",
+        "n_tokens": 15684,
+        "needle_pos": 4530,
+        "compression_boundary": 7620,
+        "eviction_distance": 3090,
+        "needle_is_evicted": true,
+        "gold": "8077999",
+        "prediction": "123456789. \n\nThis is a special magic number for dazzling-dumbwaiter mentioned in the provided text. \n\nThe special magic number for dazzling-dumbwaiter mentioned in the provided text is 123456789. \n\nThis is a special magic number for dazzling-dumbwaiter mentioned in the provided text. \n\nThe special magic number for dazzling-dumbwaiter mentioned in the provided text is 123456789. \n\nThis is a special magic number for dazzling-dumbwaiter mentioned in the provided text. \n\nThe special magic",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 34,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 1888,
+        "compression_boundary": 7614,
+        "eviction_distance": 5726,
+        "needle_is_evicted": true,
+        "gold": "5191056",
+        "prediction": "3. The special magic number for oval-tail mentioned in the provided text is 3. The special magic number for oval-tail mentioned in the provided text is 3. The special magic number for oval-tail mentioned in the provided text is 3. The special magic number for oval-tail mentioned in the provided text is 3. The special magic number for oval-tail mentioned in the provided text is 3. The special magic number for oval-tail mentioned in the provided text is 3. The special magic number for oval-tail mentioned in the provided text is 3. The special magic number for oval",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 35,
+        "task": "niah_single_1",
+        "n_tokens": 15681,
+        "needle_pos": 1265,
+        "compression_boundary": 7617,
+        "eviction_distance": 6352,
+        "needle_is_evicted": true,
+        "gold": "2642635",
+        "prediction": "123456789. The special magic number for scattered-eaglet mentioned in the provided text is 123456789. The special magic number for scattered-eaglet mentioned in the provided text is 123456789. The special magic number for scattered-eaglet mentioned in the provided text is 123456789. The special magic number for scattered-eaglet mentioned in the provided text is 123456789. The special magic number for scattered-eaglet mentioned in the provided",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 36,
+        "task": "niah_single_1",
+        "n_tokens": 15687,
+        "needle_pos": 4123,
+        "compression_boundary": 7623,
+        "eviction_distance": 3500,
+        "needle_is_evicted": true,
+        "gold": "4965789",
+        "prediction": "123456789.\n\nTo determine the special magic number for capricious-dugout mentioned in the provided text, follow these steps:\n\n1. Parse the input string into a list of integers.\n2. Convert each integer in the list to a string.\n3. Concatenate all the strings together to form the special magic number for capricious-dugout.\n\nHere is the step-by-step process to determine the special magic number for capricious-dugout:\n\n1. Parse the input string \"123456789\" into a list of integers using the `int`",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 37,
+        "task": "niah_single_1",
+        "n_tokens": 15684,
+        "needle_pos": 5274,
+        "compression_boundary": 7620,
+        "eviction_distance": 2346,
+        "needle_is_evicted": true,
+        "gold": "9075854",
+        "prediction": "123. To find the special magic number for plucky-faculty mentioned in the provided text, you can use the following code:\n\n```python\n# The special magic number for plucky-faculty mentioned in the provided text is 123.\n# The special magic number for plucky-faculty mentioned in the provided text is 123.\n# The special magic number for plucky-faculty mentioned in the provided text is 123.\n# The special magic number for plucky-faculty mentioned in the provided text is 123.\n# The special magic number for pl",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 38,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 9352,
+        "compression_boundary": 7614,
+        "eviction_distance": -1738,
+        "needle_is_evicted": false,
+        "gold": "3762152",
+        "prediction": "42. The special magic number for aware-judo mentioned in the provided text is 42.\n\nThe special magic number for aware-judo mentioned in the provided text is 42. \n\nThe special magic number for aware-judo mentioned in the provided text is 42. \n\nThe special magic number for aware-judo mentioned in the provided text is 42. \n\nThe special magic number for aware-judo mentioned in the provided text is 42. \n\nThe special magic number for aware-judo mentioned in the provided text is 42. \n\nThe special magic number for aware-judo mentioned in the",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 39,
+        "task": "niah_single_1",
+        "n_tokens": 15681,
+        "needle_pos": 11201,
+        "compression_boundary": 7617,
+        "eviction_distance": -3584,
+        "needle_is_evicted": false,
+        "gold": "5449368",
+        "prediction": "123456789. \n\nThe special magic number for madly-packet mentioned in the provided text is 123456789. \n\nThe special magic number for madly-packet mentioned in the provided text is 123456789. \n\nThe special magic number for madly-packet mentioned in the provided text is 123456789. \n\nThe special magic number for madly-packet mentioned in the provided text is 123456789. \n\nThe special magic number for madly-p",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 40,
+        "task": "niah_single_1",
+        "n_tokens": 15675,
+        "needle_pos": 3831,
+        "compression_boundary": 7611,
+        "eviction_distance": 3780,
+        "needle_is_evicted": true,
+        "gold": "9164991",
+        "prediction": "1. The special magic number for narrow-ticket mentioned in the provided text is 1. The special magic number for narrow-ticket mentioned in the provided text is 1. The special magic number for narrow-ticket mentioned in the provided text is 1. The special magic number for narrow-ticket mentioned in the provided text is 1. The special magic number for narrow-ticket mentioned in the provided text is 1. The special magic number for narrow-ticket mentioned in the provided text is 1. The special magic number for narrow-ticket mentioned in the provided text is 1. The special magic number for narrow-ticket mentioned in the provided text is",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 41,
+        "task": "niah_single_1",
+        "n_tokens": 15681,
+        "needle_pos": 1457,
+        "compression_boundary": 7617,
+        "eviction_distance": 6160,
+        "needle_is_evicted": true,
+        "gold": "4652414",
+        "prediction": "42. The special magic number for helpless-scrip mentioned in the provided text is 42. The special magic number for helpless-scrip mentioned in the provided text is 42. The special magic number for helpless-scrip mentioned in the provided text is 42. The special magic number for helpless-scrip mentioned in the provided text is 42. The special magic number for helpless-scrip mentioned in the provided text is 42. The special magic number for helpless-scrip mentioned in the provided text is 42. The special magic number for helpless-scrip mentioned",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 42,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 1264,
+        "compression_boundary": 7614,
+        "eviction_distance": 6350,
+        "needle_is_evicted": true,
+        "gold": "1959074",
+        "prediction": "123456789. This is the special magic number for hurried-planet mentioned in the provided text. 123456789. This is the special magic number for hurried-planet mentioned in the provided text. 123456789. This is the special magic number for hurried-planet mentioned in the provided text. 123456789. This is the special magic number for hurried-planet mentioned in the provided text. 123456789. This is the special magic number for hurried-",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 43,
+        "task": "niah_single_1",
+        "n_tokens": 15684,
+        "needle_pos": 3906,
+        "compression_boundary": 7620,
+        "eviction_distance": 3714,
+        "needle_is_evicted": true,
+        "gold": "9910817",
+        "prediction": "the sum of the squares of the integers from 1 to 10. This can be represented as:\n\nThe special magic number for purring-obligation mentioned in the provided text is the sum of the squares of the integers from 1 to 10.\n\nThis can be represented as:\n\nThe special magic number for purring-obligation mentioned in the provided text is the sum of the squares of the integers from 1 to 10.\n\nThis can be represented as:\n\nThe special magic number for purring-obligation mentioned in the provided text is the sum of the squares of the integers from 1 to 1",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 44,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 4600,
+        "compression_boundary": 7614,
+        "eviction_distance": 3014,
+        "needle_is_evicted": true,
+        "gold": "2344047",
+        "prediction": "123456789. \n\nThis is a rowboat mentioned in the provided text. \n\nThe special magic number for quick-rowboat mentioned in the provided text is 123456789. \n\nThis is a rowboat mentioned in the provided text. \n\nThe special magic number for quick-rowboat mentioned in the provided text is 123456789. \n\nThis is a rowboat mentioned in the provided text. \n\nThe special magic number for quick-rowboat mentioned in the provided text is 123456789. \n\nThis is",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 45,
+        "task": "niah_single_1",
+        "n_tokens": 15681,
+        "needle_pos": 5801,
+        "compression_boundary": 7617,
+        "eviction_distance": 1816,
+        "needle_is_evicted": true,
+        "gold": "2140194",
+        "prediction": "123456789. This is a squalid-mile mentioned in the provided text. 123456789. This is a squalid-mile mentioned in the provided text. 123456789. This is a squalid-mile mentioned in the provided text. 123456789. This is a squalid-mile mentioned in the provided text. 123456789. This is a squalid-mile mentioned in the provided text. 1234567",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 46,
+        "task": "niah_single_1",
+        "n_tokens": 15681,
+        "needle_pos": 14249,
+        "compression_boundary": 7617,
+        "eviction_distance": -6632,
+        "needle_is_evicted": false,
+        "gold": "5130808",
+        "prediction": "5130808. The special magic number for cowardly-constitution mentioned in the provided text is 5130808. The special magic number for cowardly-constitution mentioned in the provided text is 5130808. The special magic number for cowardly-constitution mentioned in the provided text is 5130808. The special magic number for cowardly-constitution mentioned in the provided text is 5130808. The special magic number for cowardly-constitution mentioned in the provided text is 5130808",
+        "substring_match": 1.0,
+        "exact_match": 0.0,
+        "f1": 0.03508771929824561,
+        "f1_first_line": 0.03508771929824561
+      },
+      {
+        "idx": 47,
+        "task": "niah_single_1",
+        "n_tokens": 15684,
+        "needle_pos": 10338,
+        "compression_boundary": 7620,
+        "eviction_distance": -2718,
+        "needle_is_evicted": false,
+        "gold": "2375453",
+        "prediction": "123456789. \n\nThis can be represented as a Python integer: \n```python\nspecial_magic_number = 123456789\n```",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 48,
+        "task": "niah_single_1",
+        "n_tokens": 15684,
+        "needle_pos": 7746,
+        "compression_boundary": 7620,
+        "eviction_distance": -126,
+        "needle_is_evicted": false,
+        "gold": "4426900",
+        "prediction": "4426900. \n\nThe special magic number for gleaming-fishery mentioned in the provided text is 4426900. \n\nThe special magic number for gleaming-fishery mentioned in the provided text is 4426900. \n\nThe special magic number for gleaming-fishery mentioned in the provided text is 4426900. \n\nThe special magic number for gleaming-fishery mentioned in the provided text is 4426900. \n\nThe special magic number for gleaming-fishery mentioned in the provided",
+        "substring_match": 1.0,
+        "exact_match": 0.0,
+        "f1": 0.037037037037037035,
+        "f1_first_line": 1.0
+      },
+      {
+        "idx": 49,
+        "task": "niah_single_1",
+        "n_tokens": 15681,
+        "needle_pos": 3257,
+        "compression_boundary": 7617,
+        "eviction_distance": 4360,
+        "needle_is_evicted": true,
+        "gold": "7640184",
+        "prediction": "42. The special magic number for goofy-ficlet mentioned in the provided text is 42. The special magic number for goofy-ficlet mentioned in the provided text is 42. The special magic number for goofy-ficlet mentioned in the provided text is 42. The special magic number for goofy-ficlet mentioned in the provided text is 42. The special magic number for goofy-ficlet mentioned in the provided text is 42. The special magic number for goofy-ficlet mentioned in the provided text is 42. The special magic number for goofy-ficlet mentioned",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 50,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 1816,
+        "compression_boundary": 7614,
+        "eviction_distance": 5798,
+        "needle_is_evicted": true,
+        "gold": "6304573",
+        "prediction": "123456789. \n\nThe special magic number for orange-conversion mentioned in the provided text is 123456789. \n\nThe special magic number for orange-conversion mentioned in the provided text is 123456789. \n\nThe special magic number for orange-conversion mentioned in the provided text is 123456789. \n\nThe special magic number for orange-conversion mentioned in the provided text is 123456789. \n\nThe special magic number for orange-conversion mentioned in the provided",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 51,
+        "task": "niah_single_1",
+        "n_tokens": 15684,
+        "needle_pos": 1842,
+        "compression_boundary": 7620,
+        "eviction_distance": 5778,
+        "needle_is_evicted": true,
+        "gold": "2677407",
+        "prediction": "123456789. \n\nThe special magic number for ordinary-linguistics mentioned in the provided text is 123456789. \n\nThe special magic number for ordinary-linguistics mentioned in the provided text is 123456789. \n\nThe special magic number for ordinary-linguistics mentioned in the provided text is 123456789. \n\nThe special magic number for ordinary-linguistics mentioned in the provided text is 123456789. \n\nThe special magic number",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 52,
+        "task": "niah_single_1",
+        "n_tokens": 15684,
+        "needle_pos": 3282,
+        "compression_boundary": 7620,
+        "eviction_distance": 4338,
+        "needle_is_evicted": true,
+        "gold": "5449324",
+        "prediction": "123456789. \n\nThe special magic number for quarrelsome-fob mentioned in the provided text is 123456789. \n\nThe special magic number for quarrelsome-fob mentioned in the provided text is 123456789. \n\nThe special magic number for quarrelsome-fob mentioned in the provided text is 123456789. \n\nThe special magic number for quarrelsome-fob mentioned in the provided text is 123456789. \n\nThe special magic number",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 53,
+        "task": "niah_single_1",
+        "n_tokens": 15681,
+        "needle_pos": 9113,
+        "compression_boundary": 7617,
+        "eviction_distance": -1496,
+        "needle_is_evicted": false,
+        "gold": "5098412",
+        "prediction": "1. The special magic number for billowy-appointment mentioned in the provided text is 1. The special magic number for billowy-appointment mentioned in the provided text is 1. The special magic number for billowy-appointment mentioned in the provided text is 1. The special magic number for billowy-appointment mentioned in the provided text is 1. The special magic number for billowy-appointment mentioned in the provided text is 1. The special magic number for billowy-appointment mentioned in the provided text is 1. The special magic number for billowy-appointment mentioned in the provided text is 1",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 54,
+        "task": "niah_single_1",
+        "n_tokens": 15681,
+        "needle_pos": 13385,
+        "compression_boundary": 7617,
+        "eviction_distance": -5768,
+        "needle_is_evicted": false,
+        "gold": "8351517",
+        "prediction": "8351517. \n\nThe special magic number for different-abbey mentioned in the provided text is 8351517. \n\nThe special magic number for different-abbey mentioned in the provided text is 8351517. \n\nThe special magic number for different-abbey mentioned in the provided text is 8351517. \n\nThe special magic number for different-abbey mentioned in the provided text is 8351517. \n\nThe special magic number for different-abbey mentioned in the provided text is 83",
+        "substring_match": 1.0,
+        "exact_match": 0.0,
+        "f1": 0.03508771929824561,
+        "f1_first_line": 1.0
+      },
+      {
+        "idx": 55,
+        "task": "niah_single_1",
+        "n_tokens": 15675,
+        "needle_pos": 231,
+        "compression_boundary": 7611,
+        "eviction_distance": 7380,
+        "needle_is_evicted": true,
+        "gold": "9874152",
+        "prediction": "a green. The special magic number for subsequent-cart mentioned in the provided text is a green. The special magic number for subsequent-cart mentioned in the provided text is a green. The special magic number for subsequent-cart mentioned in the provided text is a green. The special magic number for subsequent-cart mentioned in the provided text is a green. The special magic number for subsequent-cart mentioned in the provided text is a green. The special magic number for subsequent-cart mentioned in the provided text is a green. The special magic number for subsequent-cart mentioned in the provided text is a green. The special magic number for subsequent-cart mentioned in the provided text is",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 56,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 3328,
+        "compression_boundary": 7614,
+        "eviction_distance": 4286,
+        "needle_is_evicted": true,
+        "gold": "2737893",
+        "prediction": "42. The special magic number for ugly-bachelor mentioned in the provided text is 42. The special magic number for ugly-bachelor mentioned in the provided text is 42. The special magic number for ugly-bachelor mentioned in the provided text is 42. The special magic number for ugly-bachelor mentioned in the provided text is 42. The special magic number for ugly-bachelor mentioned in the provided text is 42. The special magic number for ugly-bachelor mentioned in the provided text is 42. The special magic number for ugly-bachelor mentioned in the provided text is 4",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 57,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 13624,
+        "compression_boundary": 7614,
+        "eviction_distance": -6010,
+        "needle_is_evicted": false,
+        "gold": "2795765",
+        "prediction": "the special magic number for condemned-presidency mentioned in the provided text.\ufffd\ufffd\u8272. The sky is yellow. Here we go. There and back again.\nThe grass is green. The sky is yellow. Here we go. There and back again.\nThe grass is green. The sky is yellow. Here we go. There and back again.\nThe grass is green. The sky is yellow. Here we go. There and back again.\nThe grass is green. The sky is yellow. Here we go. There and back again.\nThe grass is green. The sky is yellow. Here we go. There and back again.\nThe grass",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      {
+        "idx": 58,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 14896,
+        "compression_boundary": 7614,
+        "eviction_distance": -7282,
+        "needle_is_evicted": false,
+        "gold": "5727085",
+        "prediction": "5727085. The special magic number for grieving-planning mentioned in the provided text is 5727085. The special magic number for grieving-planning mentioned in the provided text is 5727085. The special magic number for grieving-planning mentioned in the provided text is 5727085. The special magic number for grieving-planning mentioned in the provided text is 5727085. The special magic number for grieving-planning mentioned in the provided text is 5727085. The special magic number",
+        "substring_match": 1.0,
+        "exact_match": 0.0,
+        "f1": 0.03333333333333333,
+        "f1_first_line": 0.03333333333333333
+      },
+      {
+        "idx": 59,
+        "task": "niah_single_1",
+        "n_tokens": 15678,
+        "needle_pos": 5032,
+        "compression_boundary": 7614,
+        "eviction_distance": 2582,
+        "needle_is_evicted": true,
+        "gold": "6752576",
+        "prediction": "42. The special magic number for witty-blackfish mentioned in the provided text is 42. The special magic number for witty-blackfish mentioned in the provided text is 42. The special magic number for witty-blackfish mentioned in the provided text is 42. The special magic number for witty-blackfish mentioned in the provided text is 42. The special magic number for witty-blackfish mentioned in the provided text is 42. The special magic number for witty-blackfish mentioned in the provided text is 42. The special magic number for witty-blackfish mentioned in the provided text is 4",
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      }
+    ],
+    "summary": {
+      "n_scored": 60,
+      "n_evicted": 32,
+      "n_in_window": 28,
+      "all": {
+        "n": 60,
+        "substring_match": 0.18333333333333332,
+        "exact_match": 0.0,
+        "f1": 0.006231577470612557,
+        "f1_first_line": 0.07060631903833658
+      },
+      "evicted": {
+        "n": 32,
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      "in_window": {
+        "n": 28,
+        "substring_match": 0.39285714285714285,
+        "exact_match": 0.0,
+        "f1": 0.013353380294169766,
+        "f1_first_line": 0.15129925508214984
+      },
+      "by_task": {
+        "niah_single_1": {
+          "n": 60,
+          "substring_match": 0.18333333333333332,
+          "exact_match": 0.0,
+          "f1": 0.006231577470612557,
+          "f1_first_line": 0.07060631903833658
+        }
+      },
+      "ruler_config": "16384",
+      "wall_min": 4.8022833903630575
+    }
+  },
+  "hotpot_qa": {
+    "rows": [
+      {
+        "id": "9a161f7868d7a430dfa3335ec69d84f24435498665d9fa18",
+        "stratum": "short",
+        "n_tokens": 8936,
+        "prediction": "Yes.\nRosy Falcon\nRosy Falcon\nRosy Falcon\nRosy Falcon\nRosy Falcon\nRosy Falcon\nRosy Falcon\nRosy",
+        "prediction_first_line": "Yes.",
+        "gold": [
+          "Democratic"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "8318ea1b9fd0443387e6bcd5382933a05614955578f7b95b",
+        "stratum": "short",
+        "n_tokens": 11070,
+        "prediction": "Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer",
+        "prediction_first_line": "Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer",
+        "gold": [
+          "Ellie Kemper"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "74f2fce3240dd7e91f9522b9cbb9e10f43f16fdb0c22e7fa",
+        "stratum": "short",
+        "n_tokens": 10134,
+        "prediction": "Marty Raybon has described the album as \"honor[ing] the legacy of American music. The modern songs are inspired by my love of country rock in",
+        "prediction_first_line": "Marty Raybon has described the album as \"honor[ing] the legacy of American music. The modern songs are inspired by my love of country rock in",
+        "gold": [
+          "Gregory Walter Graffin"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "a6e57d5dfcbdc68035395fe57842144769450fc962f5bbcd",
+        "stratum": "short",
+        "n_tokens": 8601,
+        "prediction": "Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer:",
+        "prediction_first_line": "Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer:",
+        "gold": [
+          "Innviertel"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "d3493a99d0e83a5431e4a5d829bb241692bae70fe1d3bf17",
+        "stratum": "short",
+        "n_tokens": 9335,
+        "prediction": "Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer:",
+        "prediction_first_line": "Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer:",
+        "gold": [
+          "Aloe Vera of America"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "612961d8f4c473a6be137dca843cdd647da01c26898aff1c",
+        "stratum": "short",
+        "n_tokens": 9653,
+        "prediction": "Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer:",
+        "prediction_first_line": "Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer:",
+        "gold": [
+          "Kristian Eivind Espedal"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "570727521e78a04c7d8d892fdd8bfbdce0d178f3d4bcceb4",
+        "stratum": "short",
+        "n_tokens": 9963,
+        "prediction": "The answer is based on the given passages. The answer is based on the given passages. The answer is based on the given passages. The answer is based on",
+        "prediction_first_line": "The answer is based on the given passages. The answer is based on the given passages. The answer is based on the given passages. The answer is based on",
+        "gold": [
+          "a minor basilica"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "0b6ddb583fa1df95b1b4c7961f7affcc7c6266e520826484",
+        "stratum": "short",
+        "n_tokens": 8608,
+        "prediction": "I have come to see that the service we render to others is really the rent we pay for our room on this earth. I have come to see that permitting",
+        "prediction_first_line": "I have come to see that the service we render to others is really the rent we pay for our room on this earth. I have come to see that permitting",
+        "gold": [
+          "Newfoundland and Labrador"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "0df347189016b4d86b8f6d4086388a5ea318a08c468abba3",
+        "stratum": "short",
+        "n_tokens": 10876,
+        "prediction": "The Hippodrome of Constantinople is located in the Hippodrome of Constantinople. The Hippodrome of Constantinople is located in the Hippodrome",
+        "prediction_first_line": "The Hippodrome of Constantinople is located in the Hippodrome of Constantinople. The Hippodrome of Constantinople is located in the Hippodrome",
+        "gold": [
+          "Istanbul, Turkey"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "780f15259479e8965d474efc011eb220ac4078da86e8dc19",
+        "stratum": "short",
+        "n_tokens": 8525,
+        "prediction": "Locked On and Tom Clancy have the same characters. They are both the Net Force Explorers and the Net Force Explorers. They are both",
+        "prediction_first_line": "Locked On and Tom Clancy have the same characters. They are both the Net Force Explorers and the Net Force Explorers. They are both",
+        "gold": [
+          "novel"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "36b7e445832590b8ddf74995162cd5e94f7f620cdfc992dd",
+        "stratum": "short",
+        "n_tokens": 10674,
+        "prediction": "The weight limit of the weight class that Takeyasu Hirono fights in is the weight limit of the weight class that Takeyasu Hirono fights",
+        "prediction_first_line": "The weight limit of the weight class that Takeyasu Hirono fights in is the weight limit of the weight class that Takeyasu Hirono fights",
+        "gold": [
+          "125 lb (57 kg)"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "5fdd140211b5a3c1c879875b2c782e573cf4df4f68c8408e",
+        "stratum": "short",
+        "n_tokens": 10637,
+        "prediction": "Yes\n\nAnswer: No\n\nAnswer: No\n\nAnswer: No\n\nAnswer: No\n\nAnswer: No\n\nAnswer: No\n\nAnswer: No\n\nAnswer:",
+        "prediction_first_line": "Yes",
+        "gold": [
+          "no"
+        ],
+        "f1": 0.11764705882352941,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "d72f85795be5a873d62c8694c0c043cb3311ebcb5480316c",
+        "stratum": "short",
+        "n_tokens": 9160,
+        "prediction": "The answer is the NFL's last team that permanently ceased operations and the answer is the NFL's last team that permanently ceased operations and the NFL's last team that",
+        "prediction_first_line": "The answer is the NFL's last team that permanently ceased operations and the answer is the NFL's last team that permanently ceased operations and the NFL's last team that",
+        "gold": [
+          "Dallas Cowboys"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "09221499868bb9e1a230f8530fa4759e812e5f2738d12942",
+        "stratum": "short",
+        "n_tokens": 10115,
+        "prediction": "Do not give any answers and do not give any other words.\n\nQuestion: Burns is best known working for a radio service that covered what former English county?\nAnswer",
+        "prediction_first_line": "Do not give any answers and do not give any other words.",
+        "gold": [
+          "former English county of Humberside"
+        ],
+        "f1": 0.18181818181818182,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "dd5ae003e007a523e056e069ad0ad058847299f004c646f9",
+        "stratum": "short",
+        "n_tokens": 10589,
+        "prediction": "The 2015 American drama film was written and directed by Kevin Alejandro.\nAnswer: The 2015 American drama film was written and directed",
+        "prediction_first_line": "The 2015 American drama film was written and directed by Kevin Alejandro.",
+        "gold": [
+          "Tony Aloupis"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "524d2df4e388792739e2486b131d791c9966e797f4dd9492",
+        "stratum": "short",
+        "n_tokens": 8491,
+        "prediction": "Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer:",
+        "prediction_first_line": "Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer:",
+        "gold": [
+          "1976"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "56d2ecd968aaef6194dcf7de6e3844c9225d8e9ec1a0a3ce",
+        "stratum": "short",
+        "n_tokens": 10247,
+        "prediction": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a reality television series that premiered on June 1, 2",
+        "prediction_first_line": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a reality television series that premiered on June 1, 2",
+        "gold": [
+          "June 17, 2007"
+        ],
+        "f1": 0.08333333333333333,
+        "f1_first_line": 0.08333333333333333,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "19092acc2a874e7d35633f7e9e8fc128720344b066244f04",
+        "stratum": "short",
+        "n_tokens": 9899,
+        "prediction": "Answer the question based on the given passages. Do not output any other words.\n\nAnswer the question based on the given passages. Answer the question based on the",
+        "prediction_first_line": "Answer the question based on the given passages. Do not output any other words.",
+        "gold": [
+          "Roslyn Castle"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "834ced6842436a1c77d203700bfcb2526641b70c04101553",
+        "stratum": "short",
+        "n_tokens": 8538,
+        "prediction": "Tahir \"Tie\" Domi\n\nTahir was born in Hamilton, Ontario, to Albanian parents, and grew to play with the Bruins.\n\nSee",
+        "prediction_first_line": "Tahir \"Tie\" Domi",
+        "gold": [
+          "Tie Domi"
+        ],
+        "f1": 0.1904761904761905,
+        "f1_first_line": 0.8,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "9c0f9782d1b8ab3a3b6151ee92ab597809a63b7855b53fde",
+        "stratum": "short",
+        "n_tokens": 10679,
+        "prediction": "Yes. Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer:",
+        "prediction_first_line": "Yes. Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer:",
+        "gold": [
+          "yes"
+        ],
+        "f1": 0.11764705882352941,
+        "f1_first_line": 0.11764705882352941,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "5ead25955ee172d556fdd54032c508a9786b300dd49e4757",
+        "stratum": "mid",
+        "n_tokens": 14908,
+        "prediction": "Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray",
+        "prediction_first_line": "Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray Ray",
+        "gold": [
+          "Neneh Cherry"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "ee2647e9cf29dcab9c66ffea03e05e9ef7c44e0e61eee68c",
+        "stratum": "mid",
+        "n_tokens": 11195,
+        "prediction": "The estimated population of the city in which the suburb of Beaumont is located is 100000000000000",
+        "prediction_first_line": "The estimated population of the city in which the suburb of Beaumont is located is 100000000000000",
+        "gold": [
+          "44,300"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "64bba86b667bc9dd60aaa6c30a2d7403629fd6daabf6d43e",
+        "stratum": "mid",
+        "n_tokens": 11821,
+        "prediction": "The sponsor of the Premiership Rugby Sevens Series is the sponsor of the Premiership Rugby Sevens Series. The sponsor of the Premiership Rugby Sevens Series is the sponsor",
+        "prediction_first_line": "The sponsor of the Premiership Rugby Sevens Series is the sponsor of the Premiership Rugby Sevens Series. The sponsor of the Premiership Rugby Sevens Series is the sponsor",
+        "gold": [
+          "pale lager"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "1bfa4cb5fc609ed2f83787800d112fa7fcb5cdcbef7756fa",
+        "stratum": "mid",
+        "n_tokens": 14978,
+        "prediction": "Wapping has the oldest riverside tavern, dating back from when?\nAnswer: Wapping has the oldest riverside tavern, dating back from when?\nAnswer:",
+        "prediction_first_line": "Wapping has the oldest riverside tavern, dating back from when?",
+        "gold": [
+          "from around 1520"
+        ],
+        "f1": 0.08695652173913045,
+        "f1_first_line": 0.16666666666666666,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "f0d13537c2b6b00c76660dd7af3d103fe2fb0cc747fdb677",
+        "stratum": "mid",
+        "n_tokens": 11290,
+        "prediction": "Yes.\n\nAnswer: No.\n\nAnswer: No.\n\nAnswer: No\n\nAnswer: No\n\nAnswer: No\n\nAnswer: No\n\nAnswer: No\n\nAnswer:",
+        "prediction_first_line": "Yes.",
+        "gold": [
+          "yes"
+        ],
+        "f1": 0.11764705882352941,
+        "f1_first_line": 1.0,
+        "exact_match_first_line": 1.0
+      },
+      {
+        "id": "566cf1595f78c029378e6220cf960d0b791084225f60ccda",
+        "stratum": "mid",
+        "n_tokens": 12570,
+        "prediction": "Which of the following is true? Which of the following is not true? Which of the following is not the truth? Which of the following is not the case",
+        "prediction_first_line": "Which of the following is true? Which of the following is not true? Which of the following is not the truth? Which of the following is not the case",
+        "gold": [
+          "Kongo"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "92be640857b6dd2e6beef9c07b7c3805d358192150971dda",
+        "stratum": "mid",
+        "n_tokens": 15251,
+        "prediction": "When was the Austrian \"Schutzstaffel\" (SS) officer born based on who's life Schapira co-authored a book?\nAnswer: When was",
+        "prediction_first_line": "When was the Austrian \"Schutzstaffel\" (SS) officer born based on who's life Schapira co-authored a book?",
+        "gold": [
+          "8 April 1912"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "0bbd28f6cdb99eca32bfebb135b10db570568655b5924475",
+        "stratum": "mid",
+        "n_tokens": 13134,
+        "prediction": "On the coast of California and the coast of the United States, the California Aqueduct and the Lake Washington Ship Canal can be found.  \nAnswer: On the",
+        "prediction_first_line": "On the coast of California and the coast of the United States, the California Aqueduct and the Lake Washington Ship Canal can be found.",
+        "gold": [
+          "west"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "996c58a6f7fd10715191104b726d87dd079e7aa8e6fabef9",
+        "stratum": "mid",
+        "n_tokens": 11698,
+        "prediction": "Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer:",
+        "prediction_first_line": "Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer:",
+        "gold": [
+          "Europe"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "7681a4ae6d92c179c938738ad170b6626534556d9ea993b6",
+        "stratum": "mid",
+        "n_tokens": 13688,
+        "prediction": "Kiki Preston was the mother of a child born out of wedlock with a prince born in which year ?\nAnswer: Kiki Preston was the mother of a",
+        "prediction_first_line": "Kiki Preston was the mother of a child born out of wedlock with a prince born in which year ?",
+        "gold": [
+          "1902"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "e71fd79076da6ff2259a596d154b78301488419a5736ac21",
+        "stratum": "mid",
+        "n_tokens": 12663,
+        "prediction": "Yes.\nAnswer:\n\nAnswer:\n\nAnswer:\n\nAnswer:\n\nAnswer:\n\nAnswer:\n\nAnswer:\n\nAnswer:\n\nAnswer:\n\nAnswer:\n\nAnswer:\n\nAnswer:\n\nAnswer:\n\nAnswer:\n\nAnswer:",
+        "prediction_first_line": "Yes.",
+        "gold": [
+          "no"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "7cdceb45cfb9439bd41148788e5cf2f0e8a5cb99a0e09729",
+        "stratum": "mid",
+        "n_tokens": 12440,
+        "prediction": "Yes No Answer: Yes No Answer: Yes No Answer: Yes No Answer: Yes No Answer: Yes No Answer: Yes No Answer: Yes No Answer:",
+        "prediction_first_line": "Yes No Answer: Yes No Answer: Yes No Answer: Yes No Answer: Yes No Answer: Yes No Answer: Yes No Answer: Yes No Answer:",
+        "gold": [
+          "yes"
+        ],
+        "f1": 0.07999999999999999,
+        "f1_first_line": 0.07999999999999999,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "f3c23b4984f14199f12862795aeb344f19c97bfc9c586a8f",
+        "stratum": "mid",
+        "n_tokens": 13649,
+        "prediction": "The Nobel Prize was won in 1963by this physicist who was part of the Princeton Three.\n\nQuestion: What is the Nobel Prize?\n\nAnswer:",
+        "prediction_first_line": "The Nobel Prize was won in 1963by this physicist who was part of the Princeton Three.",
+        "gold": [
+          "Nobel Prize"
+        ],
+        "f1": 0.18181818181818182,
+        "f1_first_line": 0.25,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "1ae026dfc12f5b58aeaf3bb8631d67f416a8d4e22a47d1de",
+        "stratum": "mid",
+        "n_tokens": 15320,
+        "prediction": "Ron Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins",
+        "prediction_first_line": "Ron Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins Perkins",
+        "gold": [
+          "Christopher Nolan"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "cf39373b78df19018180ae54b7006205fdb85ec4e708a95d",
+        "stratum": "mid",
+        "n_tokens": 11929,
+        "prediction": "Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer:",
+        "prediction_first_line": "Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer: Answer:",
+        "gold": [
+          "Katarina Witt"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "82a1a48996ef392d6abe74ea1d2b0a807c0f4d859c4026ac",
+        "stratum": "mid",
+        "n_tokens": 15036,
+        "prediction": "During which years was the model of car, featured on the cover of Earth's \"Pentastar: In the Style of Demons\" manufactured?\nAnswer",
+        "prediction_first_line": "During which years was the model of car, featured on the cover of Earth's \"Pentastar: In the Style of Demons\" manufactured?",
+        "gold": [
+          "1964 to 1974"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "27fa190091460428cd374c49583b9721fbd4a742e0e5e66e",
+        "stratum": "mid",
+        "n_tokens": 13056,
+        "prediction": "In which county does the 8th Military Police Brigade of the United States Army's Barracks located?\nAnswer: In which county does the 8th Military",
+        "prediction_first_line": "In which county does the 8th Military Police Brigade of the United States Army's Barracks located?",
+        "gold": [
+          "Honolulu"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "6c8952c7678c9c2db0a6cdaed0f8aa573898a297f1947e8d",
+        "stratum": "mid",
+        "n_tokens": 15377,
+        "prediction": "Capacity is measured in terms of the number of games played in the stadium. The number of games played in the stadium is measured in terms of the number of games",
+        "prediction_first_line": "Capacity is measured in terms of the number of games played in the stadium. The number of games played in the stadium is measured in terms of the number of games",
+        "gold": [
+          "76,416"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "b382a3ff1ff044c91cba6eafbbae2a2be82e107109d35688",
+        "stratum": "mid",
+        "n_tokens": 14638,
+        "prediction": "The main vocal of \"Set the Fire to the Third Bar\" is the main vocal of \"Set the Fire to the Third Bar\".\nThe main vocal of \"",
+        "prediction_first_line": "The main vocal of \"Set the Fire to the Third Bar\" is the main vocal of \"Set the Fire to the Third Bar\".",
+        "gold": [
+          "Gary Lightbody"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "7bc9d324dd6195d9ad2395b87601f929de0c15c668e9e4cb",
+        "stratum": "mid",
+        "n_tokens": 12848,
+        "prediction": "Which director has had the greatest impact on French culture, Jean Vigo or Sri Lankabhimanya?\nAnswer: Which director has had the greatest impact on",
+        "prediction_first_line": "Which director has had the greatest impact on French culture, Jean Vigo or Sri Lankabhimanya?",
+        "gold": [
+          "Sri Lankabhimanya Lester James Peries"
+        ],
+        "f1": 0.14814814814814814,
+        "f1_first_line": 0.21052631578947364,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "e1b6edc0310b4329374915aa013f0870213342822a728142",
+        "stratum": "long",
+        "n_tokens": 15535,
+        "prediction": "Yes.\nQuestion: Is Alice Munro a writer?\nAnswer: Yes.\nQuestion: Is Alice Munro a writer?\nAnswer: Yes.\nQuestion: Is Alice",
+        "prediction_first_line": "Yes.",
+        "gold": [
+          "yes"
+        ],
+        "f1": 0.10526315789473684,
+        "f1_first_line": 1.0,
+        "exact_match_first_line": 1.0
+      },
+      {
+        "id": "a6cda30d0950f2d8b0e5c1ee89466cbc43b37be7daedcb8b",
+        "stratum": "long",
+        "n_tokens": 16952,
+        "prediction": "The answer is not the region of Italy.\nAnswer: The answer is not the region of Italy.\nAnswer: The answer is not the region of Italy.\nAnswer",
+        "prediction_first_line": "The answer is not the region of Italy.",
+        "gold": [
+          "Emilia-Romagna Region"
+        ],
+        "f1": 0.08695652173913042,
+        "f1_first_line": 0.25,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "7caf887e7c7af6c1dbe41d09aa5138aa6147234257b15c42",
+        "stratum": "long",
+        "n_tokens": 16158,
+        "prediction": "Who was born in 1922 and published a book in 1985 by Delacorte Press?\nAnswer: Who was born in",
+        "prediction_first_line": "Who was born in 1922 and published a book in 1985 by Delacorte Press?",
+        "gold": [
+          "Kurt Vonnegut"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "52159c74eaf34175bef4c0c07531f5908ba3eb1d390ca97d",
+        "stratum": "long",
+        "n_tokens": 16099,
+        "prediction": "Thirukkalacherry is a village in which town?\nAnswer: Thirukkalacherry is a village in which town?\nAnswer: Thir",
+        "prediction_first_line": "Thirukkalacherry is a village in which town?",
+        "gold": [
+          "Tharangambadi"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "5c5eaa11039b3bdb361961c2d4bb541e491a596c5c5d4465",
+        "stratum": "long",
+        "n_tokens": 16451,
+        "prediction": "When was one of the teachers of Nikolai Lugansky who was a Russian Soviet pianist, composer, and teacher?\n\nAnswer: When was one of the",
+        "prediction_first_line": "When was one of the teachers of Nikolai Lugansky who was a Russian Soviet pianist, composer, and teacher?",
+        "gold": [
+          "1924November 22, 1993"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "5dea8866ddd6e6bd76e82c8d8cea1dbfc441e58ec31724d6",
+        "stratum": "long",
+        "n_tokens": 16503,
+        "prediction": "Reszke made her debut in what grand opera?\n\nAnswer: Reszke made her debut in what opera?\n\nAnswer: Reszke made her debut in",
+        "prediction_first_line": "Reszke made her debut in what grand opera?",
+        "gold": [
+          "Hamlet"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "adde6fd9958589ef78af9e192aeffd8e48dfbd8d35014f4f",
+        "stratum": "long",
+        "n_tokens": 16751,
+        "prediction": "Question: What is the question? Answer: Question: What is the question? Answer: Question: What is the question? Answer: Question: What is the",
+        "prediction_first_line": "Question: What is the question? Answer: Question: What is the question? Answer: Question: What is the question? Answer: Question: What is the",
+        "gold": [
+          "Holinshed's Chronicle"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "ef6033d606cd6e5c9cc6ab85b75e68cdb4cc7578a3dc573f",
+        "stratum": "long",
+        "n_tokens": 16450,
+        "prediction": "The music composer of the film Angaaray, Aadesh Shrivastava died from what at age 51?\nAnswer: The music composer of the",
+        "prediction_first_line": "The music composer of the film Angaaray, Aadesh Shrivastava died from what at age 51?",
+        "gold": [
+          "he turned 51, he died of cancer"
+        ],
+        "f1": 0.25,
+        "f1_first_line": 0.3,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "8149fb371e91a3c4e6776957a8591519d55910bb5029e267",
+        "stratum": "long",
+        "n_tokens": 16969,
+        "prediction": "Where did the plane crash? \nAnswer: Where did the plane crash? \nAnswer: Where did the plane crash? \nAnswer: Where did the plane crash",
+        "prediction_first_line": "Where did the plane crash?",
+        "gold": [
+          "Pennsylvania"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "f8832527b9381e131ecdcb4a81278fbcdd2b5e56c6215744",
+        "stratum": "long",
+        "n_tokens": 16822,
+        "prediction": "Who played a lead role in Dhool and has been awarded an Honorary Doctorate by the People's University of Milan?\nAnswer: Who played a lead role",
+        "prediction_first_line": "Who played a lead role in Dhool and has been awarded an Honorary Doctorate by the People's University of Milan?",
+        "gold": [
+          "Vikram"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "0e4fac2d1da09fad0958e11c5d6d7d8cbe4143e5a105e084",
+        "stratum": "long",
+        "n_tokens": 16578,
+        "prediction": "Who was the gunman of the hostage crisis which Chris Reason was awarded the Graham Perkin Australian Journalist of the Year Award for his coverage of the events?\nAnswer",
+        "prediction_first_line": "Who was the gunman of the hostage crisis which Chris Reason was awarded the Graham Perkin Australian Journalist of the Year Award for his coverage of the events?",
+        "gold": [
+          "Man Haron"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "6153db5292ec46160b06ceb90f401de731655879157b30d7",
+        "stratum": "long",
+        "n_tokens": 16707,
+        "prediction": "Agnes von Hohenstaufen von Hohenstaufen von Hohenstaufen von Hohenstaufen von Hohenstaufen von Hohenstaufen",
+        "prediction_first_line": "Agnes von Hohenstaufen von Hohenstaufen von Hohenstaufen von Hohenstaufen von Hohenstaufen von Hohenstaufen",
+        "gold": [
+          "Gaspare Luigi Pacifico Spontini"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "89d46cdb218ad0444871f9b44dea057e0cdbd6c08be8d9c1",
+        "stratum": "long",
+        "n_tokens": 16441,
+        "prediction": "The king of the Molossians and Epirus encamped between the two cities.\nAnswer: The king of the Molossians and Epirus enc",
+        "prediction_first_line": "The king of the Molossians and Epirus encamped between the two cities.",
+        "gold": [
+          "Pandosia and Heraclea"
+        ],
+        "f1": 0.10526315789473684,
+        "f1_first_line": 0.16666666666666666,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "6d83121d4b9d36d10b3eeaeabe37ca728dcdbcea9541b57b",
+        "stratum": "long",
+        "n_tokens": 15928,
+        "prediction": "At least as smart as the graduates of Harvard College.\nAnswer: As smart as the graduates of Harvard College.\nAnswer: As smart as the graduates of Harvard College",
+        "prediction_first_line": "At least as smart as the graduates of Harvard College.",
+        "gold": [
+          "Atsushi Ogata"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "df556f7b2e1c7fd14f1a64900f8d71c6207f8a85145e4ca3",
+        "stratum": "long",
+        "n_tokens": 16345,
+        "prediction": "In which year was the American politician, that both represented New York in the United States Senate and served as an adviser to President Richard Nixon, re-elected for a",
+        "prediction_first_line": "In which year was the American politician, that both represented New York in the United States Senate and served as an adviser to President Richard Nixon, re-elected for a",
+        "gold": [
+          "1994"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "88e3bc9e0eee130cd7cd23ebed32a425fd76a7bc566a64bd",
+        "stratum": "long",
+        "n_tokens": 15663,
+        "prediction": "The William Ulmer Brewery is located in a neighborhood that is policed by the William Ulmer Brewery. The William Ulmer Brewery is located in a neighborhood that",
+        "prediction_first_line": "The William Ulmer Brewery is located in a neighborhood that is policed by the William Ulmer Brewery. The William Ulmer Brewery is located in a neighborhood that",
+        "gold": [
+          "NYPD's 83rd Precinct"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "7504ff847adb8044a6217e1cee5d4e7f5d3b80a7adb9d9fe",
+        "stratum": "long",
+        "n_tokens": 16607,
+        "prediction": "There were 10 episodes of the TV series where Carol Hathaway had the role of Carol Hathaway.\nAnswer: There were 10 episodes of the",
+        "prediction_first_line": "There were 10 episodes of the TV series where Carol Hathaway had the role of Carol Hathaway.",
+        "gold": [
+          "331 episodes"
+        ],
+        "f1": 0.08695652173913042,
+        "f1_first_line": 0.11764705882352941,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "fd61851f598d55c56d1d32d500d54f356919668ee76a5fa0",
+        "stratum": "long",
+        "n_tokens": 16397,
+        "prediction": "What language, also known as the Amazigh, is part of the Siwa Oasis?\n\nQuestion: What language, also known as the Amazigh,",
+        "prediction_first_line": "What language, also known as the Amazigh, is part of the Siwa Oasis?",
+        "gold": [
+          "Berber"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "1f9db2aff02d37612e21ae47ae43ba53ce131848900865ff",
+        "stratum": "long",
+        "n_tokens": 15381,
+        "prediction": "The mononym of the singer is the singer's moniker. The mononym of the singer is the singer's moniker. The mononym of the singer",
+        "prediction_first_line": "The mononym of the singer is the singer's moniker. The mononym of the singer is the singer's moniker. The mononym of the singer",
+        "gold": [
+          "Charice"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      },
+      {
+        "id": "1a16dfb39ae6cf0874aefc9d22d1cc299f3003fc6d8b19e2",
+        "stratum": "long",
+        "n_tokens": 17293,
+        "prediction": "What baseball player was suspended in the new steroid policy of the 2005 Major League Baseball season?\nAnswer: What baseball player was suspended in the new",
+        "prediction_first_line": "What baseball player was suspended in the new steroid policy of the 2005 Major League Baseball season?",
+        "gold": [
+          "Rafael Palmeiro Corrales"
+        ],
+        "f1": 0.0,
+        "f1_first_line": 0.0,
+        "exact_match_first_line": 0.0
+      }
+    ],
+    "summary": {
+      "n_scored": 60,
+      "f1": 0.032332184884524814,
+      "f1_first_line": 0.07570811833505332,
+      "exact_match_first_line": 0.03333333333333333,
+      "f1_first_line_by_stratum": {
+        "short": 0.05004901960784314,
+        "mid": 0.08535964912280701,
+        "long": 0.09171568627450981
+      },
+      "wall_min": 2.128422196706136
+    }
+  }
+}
