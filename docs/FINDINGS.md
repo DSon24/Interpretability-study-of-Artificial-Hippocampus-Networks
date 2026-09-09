@@ -1424,10 +1424,14 @@ GDN / DeltaNet / Mamba2 cells, so this one run is the Table 1 Primary floor for 
 | cohort | n | metric | value |
 |---|---:|---|---:|
 | RULER NIAH, needle **evicted** (past the 8064 window) | 32 | substring acc | **0.000** |
+| RULER NIAH, needle **evicted** | 32 | first-line F1 | 0.000 |
 | RULER NIAH, needle in-window | 28 | substring acc | 0.393 |
-| RULER NIAH, needle in-window | 28 | F1 | 0.013 |
-| LongBench-E HotpotQA, first line | 60 | F1 | **0.076** |
-| LongBench-E HotpotQA, first line | 60 | exact match | 0.033 |
+| RULER NIAH, needle in-window | 28 | first-line F1 | 0.151 |
+| LongBench-E HotpotQA | 60 | first-line F1 | **0.076** |
+| LongBench-E HotpotQA | 60 | first-line EM | 0.033 |
+
+(All F1/EM rows are first-line, matching the metric of record for the readout cohorts;
+the full-generation RULER in-window F1 is 0.013.)
 
 Chance on a 7-digit answer is effectively zero, so `evicted = 0.000` is a hard floor, not
 a small number: with no AHN and the needle outside the attention window, the information
