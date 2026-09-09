@@ -32,6 +32,7 @@ decision immediately after it records how that evidence changes execution.
 - [Findings from the 1000-context J-lens map-stability refit (9 Sep)](#findings-from-the-1000-context-j-lens-map-stability-refit-9-sep)
 - [Findings from the r29 evicted-vs-in-window J-lens re-run (9 Sep)](#findings-from-the-r29-evicted-vs-in-window-j-lens-re-run-9-sep)
 - [Findings from the no-AHN floor run (r54, 9 Sep)](#findings-from-the-no-ahn-floor-run-r54-9-sep)
+- [Findings from the RULER retention curve on corrected scoring (Run 025 redone, 9 Sep)](#findings-from-the-ruler-retention-curve-on-corrected-scoring-run-025-redone-9-sep)
 
 ---
 
@@ -1478,3 +1479,35 @@ means the HotpotQA F1 comparison to NOWRITE is not sink-matched. One backbone, o
 (3B), one RULER config (16384 ≈ 15.7K tokens), one QA dataset. `attn_impl=flash_attention_2`.
 Substring match on the full 32-token generation, not first-token rank — a different (and
 more lenient) metric than the readout cohorts use.
+
+
+## Findings from the RULER retention curve on corrected scoring (Run 025 redone, 9 Sep)
+
+`results/run_3b_gdn/04p_ruler_retention_curve.json`; `ruler_retention_curve.py`
+(CPU-only, reprocesses `04i_ruler_controls_rows.json`). The 7 Sep "retention does not
+decay across the range measured" point sat in the J-lens repeat section, whose rank
+numbers (15,844 / 17,250) were then withdrawn as the rank of a space token by the
+target-scoring bug fix. `04i` (Run 026) already carries per-example `eviction_distance`
+and `mean_digit_rank` on the corrected digit-sequence scoring, so the curve re-runs with
+no GPU: bin the 32 evicted examples per layer by how far past the compression boundary
+the needle sat, bootstrap the median digit rank per bin, test rank-vs-distance with a
+Spearman rho and a permutation p.
+
+**1. Flat at every layer — the "no decay" reading survives the scoring fix.**
+
+| layer | ρ (rank vs eviction distance) | perm p | median rank across bins | reading |
+|---:|---:|---:|---|---|
+| 9 | −0.015 | .93 | ~72k–90k | flat, at/near chance (75,968) — the degenerate layer |
+| 18 | −0.217 | .22 | ~5k–14k | flat, but this is the C3-lens artefact layer (Run 026 pt 3), not retention |
+| 27 | +0.066 | .72 | ~42k–62k | flat, below chance — the analysis layer |
+
+Eviction distance spans 46 to 7,414 tokens past the boundary, four equal-count bins of 8.
+No layer shows a monotone rank–distance relationship; every permutation p is far from
+significance. Table 6's exponential fit failing (R² < 0 at all three layers) is therefore
+a "nothing to fit" result, not a mis-specified model.
+
+**2. Caveats.** n=32 evicted examples per layer, 8 per bin — thin, with wide bootstrap
+CIs (L9 bin 1: [50,001, 94,793]). The distances are RULER's own random needle depths,
+not a designed sweep. The window is 8,064 and RULER-16384 is ~15.7k tokens, so the
+deepest evicted needle is only ~7.4k past the boundary — this says nothing about
+eviction distances beyond that. `lens_validated=False` on every row.
