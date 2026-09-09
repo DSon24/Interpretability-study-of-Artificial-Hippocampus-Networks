@@ -1,0 +1,92 @@
+{
+  "table": "Table 1 -- ablation grid",
+  "source": "Expected_Tables_and_Figures / PROPOSAL.md; status derived from results/ tree",
+  "generated": "2026-09-09T22:33:58Z",
+  "axes": {
+    "condition": "no-AHN floor | NOWRITE | AHN active",
+    "cell": "GatedDeltaNet | DeltaNet | Mamba2",
+    "scale": "3B (Primary) | 7B (Secondary)",
+    "backbone_family": "Qwen2.5 (Primary) | Llama | Mistral (Secondary)"
+  },
+  "primary_row": "AHN active -- GatedDeltaNet, Qwen2.5, 3B (settings of record)",
+  "never_cut": "n/a -- Table 1 is a spec table; Tables 3, 4 and Figure 2 are the never-cut validation set",
+  "conditions": [
+    {
+      "condition": "no-AHN floor",
+      "description": "stock Qwen2.5-3B-Instruct, sliding-window attention forced on at 8064 for every layer, no AHN merge, no attention sinks",
+      "role": "Primary -- floor",
+      "backbone_family": "Qwen2.5",
+      "scale": "3B",
+      "cell": "n/a (no memory module)",
+      "purpose": "the baseline every retention claim must exceed; replaces NOWRITE as the true module-removal control (rows 35/36)",
+      "artefact": "run_3b_floor/06_no_ahn_floor.json",
+      "status": "run"
+    },
+    {
+      "condition": "NOWRITE (zero-state)",
+      "description": "AHN checkpoint with the memory write hooked to zero",
+      "role": "Control C1",
+      "backbone_family": "Qwen2.5",
+      "scale": "3B",
+      "cell": "GatedDeltaNet / DeltaNet / Mamba2",
+      "purpose": "C1 zero-state control and the RQ1 comparison arm; NOWRITE != no-AHN (see the no-AHN floor)",
+      "artefact": "run_3b_gdn/03_nowrite_reproduction.json, run_3b_gdn/04i_ruler_controls_stats.json",
+      "status": "run"
+    },
+    {
+      "condition": "AHN active -- GatedDeltaNet",
+      "description": "merged Qwen2.5-3B + AHN-GDN, sliding_window=8064, num_attn_sinks=128",
+      "role": "Primary",
+      "backbone_family": "Qwen2.5",
+      "scale": "3B",
+      "cell": "GatedDeltaNet",
+      "purpose": "settings of record; the reference cell for RQ2",
+      "artefact": "run_3b_gdn/04i_ruler_controls_stats.json",
+      "status": "run"
+    },
+    {
+      "condition": "AHN active -- DeltaNet",
+      "description": "merged Qwen2.5-3B + AHN-DN, same window/sinks",
+      "role": "Primary (RQ2 cell-family axis)",
+      "backbone_family": "Qwen2.5",
+      "scale": "3B",
+      "cell": "DeltaNet",
+      "purpose": "RQ2: does retention behaviour differ by recurrent cell?",
+      "artefact": "run_3b_dn/04i_ruler_controls_stats.json",
+      "status": "run"
+    },
+    {
+      "condition": "AHN active -- Mamba2",
+      "description": "merged Qwen2.5-3B + AHN-Mamba2, same window/sinks; run on Modal with real CUDA kernels",
+      "role": "Primary (RQ2 cell-family axis)",
+      "backbone_family": "Qwen2.5",
+      "scale": "3B",
+      "cell": "Mamba2",
+      "purpose": "RQ2: third architecturally distinct cell",
+      "artefact": "run_3b_m2/04i_ruler_controls_stats.json",
+      "status": "run"
+    },
+    {
+      "condition": "AHN active -- 7B tier",
+      "description": "Qwen2.5-7B + AHN, all three cells",
+      "role": "Secondary (cut-first under \u00a78 cut order)",
+      "backbone_family": "Qwen2.5",
+      "scale": "7B",
+      "cell": "GatedDeltaNet / DeltaNet / Mamba2",
+      "purpose": "scale generality; gated on the 3B result and the map-cost budget (Table 10)",
+      "artefact": "run_7b_*/",
+      "status": "not run"
+    },
+    {
+      "condition": "Multi-family -- Llama / Mistral",
+      "description": "{Llama, Mistral} x {DeltaNet, GatedDeltaNet, Mamba2} at 7B",
+      "role": "Secondary (generality check on RQ2/RQ3, not a fourth primary cell)",
+      "backbone_family": "Llama, Mistral",
+      "scale": "7B",
+      "cell": "GatedDeltaNet / DeltaNet / Mamba2",
+      "purpose": "show the readout describes AHN compressive memory, not Qwen2.5+AHN; reintroduces the backbone confound so reported as a generality check",
+      "artefact": "run_7b_llama_*/, run_7b_mistral_*/",
+      "status": "planned, not started"
+    }
+  ]
+}

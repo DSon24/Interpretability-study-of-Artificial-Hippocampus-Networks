@@ -1,0 +1,92 @@
+{
+  "table": "Table 2 -- evaluation cohorts and sizes",
+  "source": "PROPOSAL.md, DATASET_REGISTER_2026-09-08.md; status derived from results/ tree",
+  "generated": "2026-09-09T22:33:58Z",
+  "standing_rule": "RULER NIAH n=60 is the primary RQ2 cohort. Any added dataset (BABILong / NoLiMa / SCROLLS) is exploratory unless a pre-run amendment defines its role, metric, size and decision rule.",
+  "cohorts": [
+    {
+      "cohort": "RULER NIAH",
+      "dataset": "simonjegou/ruler, config 16384",
+      "n": 60,
+      "composition": "niah_single_1, 7-digit answers; ~32 evicted / ~28 in-window at the 8064 window (needle depth is random)",
+      "role": "Primary RQ2 cohort (Run 026)",
+      "metric": "mean digit rank of the answer sequence in the J-lens readout; substring accuracy for the behavioural floor",
+      "seed": 20260820,
+      "primary": true,
+      "artefact": "run_3b_gdn/04g_ruler_niah_rows.json, run_3b_gdn/04i_ruler_controls_rows.json",
+      "status": "run"
+    },
+    {
+      "cohort": "Homemade NIAH sweep",
+      "dataset": "build_niah_prompt (synthetic)",
+      "n": "10 needles x 7 eviction distances x 3 filler variants",
+      "composition": "single-token needles, controlled eviction distance 64..8192",
+      "role": "Supporting / limitations analysis (under-reads L27 vs RULER)",
+      "metric": "target-token rank (o_t and D-resid bases)",
+      "seed": 20260820,
+      "primary": false,
+      "artefact": "run_3b_gdn/04_retention_rows.json",
+      "status": "run"
+    },
+    {
+      "cohort": "LongBench-E HotpotQA",
+      "dataset": "THUDM/LongBench, hotpotqa_e (v1)",
+      "n": 60,
+      "composition": "length-stratified: 20 short / 20 mid / 20 long; eligible prompts only (> window + sinks, <= 32000 tokens)",
+      "role": "RQ1 behavioural effect (AHN vs NOWRITE), first-line scoring",
+      "metric": "QA F1 per example; answer-change rate; per-example boundary JS",
+      "seed": 20260820,
+      "primary": true,
+      "artefact": "run_3b_gdn/03_nowrite_reproduction.json",
+      "status": "run"
+    },
+    {
+      "cohort": "RQ3 join",
+      "dataset": "LongBench-E HotpotQA (same 60 as RQ1)",
+      "n": 60,
+      "composition": "gold-answer first-token rank at layers 9/18/27 joined to delta_f1",
+      "role": "RQ3 headline: rho(retention half-life, delta_f1) vs rho(JS, F1) ~ 0",
+      "metric": "Spearman rho, Holm-corrected across layers, bootstrap CI",
+      "seed": 20260820,
+      "primary": true,
+      "artefact": "run_3b_gdn/04b_joined_retention_task.json",
+      "status": "run"
+    },
+    {
+      "cohort": "J-lens averaging corpus",
+      "dataset": "Salesforce/wikitext, wikitext-103-raw-v1 (train)",
+      "n": "2 x 1000 contexts (disjoint halves; skip 0 vs skip 20000)",
+      "composition": "generic English, strictly disjoint from RULER / LongBench / LV-Eval",
+      "role": "Table 3 map fit + map-stability check (r17, 1000-context refit)",
+      "metric": "top-10 token overlap between the two disjoint-corpus maps",
+      "seed": 20260820,
+      "primary": true,
+      "artefact": "run_3b_gdn/02_table3_jlens_validation_1000ctx.json",
+      "status": "run"
+    },
+    {
+      "cohort": "Known-fact prompts",
+      "dataset": "hand-written (\"The capital of France is\", ...)",
+      "n": 8,
+      "composition": "single-token answers with a leading space",
+      "role": "Table 3 check 3 (known-fact recall) + lens diagnostics",
+      "metric": "rank of the answer token from ~layer 20",
+      "seed": null,
+      "primary": true,
+      "artefact": "run_3b_gdn/02_table3_jlens_validation_1000ctx.json",
+      "status": "run"
+    },
+    {
+      "cohort": "Needle-category test",
+      "dataset": "hand-picked single-token needles",
+      "n": "24 (12 place names / 12 common nouns)",
+      "composition": "matched to the CONTROL_CANDIDATES format",
+      "role": "Limitations: needle-identity / category-dependent retention at L18/L27",
+      "metric": "needle-level mean rank, two-sample permutation test, Holm-corrected",
+      "seed": 20260820,
+      "primary": false,
+      "artefact": "run_3b_gdn/04e_needle_category_extended.json, run_3b_gdn/04f_needle_category_stats.json",
+      "status": "run"
+    }
+  ]
+}
