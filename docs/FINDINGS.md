@@ -30,6 +30,7 @@ decision immediately after it records how that evidence changes execution.
 - [Findings from the Mamba2 RULER control battery (9 Sep)](#findings-from-the-mamba2-ruler-control-battery-9-sep)
 - [Findings from the Mamba2 RQ1 run (nb03, 9 Sep)](#findings-from-the-mamba2-rq1-run-nb03-9-sep)
 - [Findings from the 1000-context J-lens map-stability refit (9 Sep)](#findings-from-the-1000-context-j-lens-map-stability-refit-9-sep)
+- [Findings from the r29 evicted-vs-in-window J-lens re-run (9 Sep)](#findings-from-the-r29-evicted-vs-in-window-j-lens-re-run-9-sep)
 
 ---
 
@@ -1323,3 +1324,66 @@ strengthens the stability row of Table 3, not the whole battery. Overlap is meas
 layers, one corpus source (wikitext-103-raw). The `.pt` and `.ckpt` maps are ~50 MB each
 and live only on the box + HuggingFace until LFS/Hub storage is settled; the 1.4 KB
 result JSON is the artefact of record.
+
+
+## Findings from the r29 evicted-vs-in-window J-lens re-run (9 Sep)
+
+`results/run_3b_gdn/04o_r29_evicted_vs_inwindow_jlens.json`;
+`notebooks/04_niah_retention.ipynb`, the `# r29 --` cell (reuses the notebook's
+`bundle`/`tok`/`probe`/`needles`/`measure`, writes its own file, does not touch
+`04_retention_rows.json`). GDN 3B, homemade `build_niah_prompt`, eviction distance 1024,
+8 single-token needles × 3 filler variants per condition (n=24 rows per layer×condition),
+readout through the 1000-context backbone J-lens
+(`jlens_qwen25_3b_1000ctx.pt`, `lens_validated=False`). This closes the caveat on the
+[21 Aug C1 diagnosis](#findings-from-the-21-aug-c1-diagnosis) — that comparison used the
+plain logit lens because no J-lens was on the box — by re-running it like-for-like.
+
+**1. Median rank by condition, both readout bases (chance 75,968; lower is better).**
+
+| layer | condition | `o_t` median | `d_resid` median (pre-registered) |
+|---:|---|---:|---:|
+| 9 | evicted | 87,917 | 90,910 |
+| 9 | in-window | 126,262 | 117,796 |
+| 18 | evicted | 114,277 | 103,707 |
+| 18 | in-window | **36,676** | 92,530 |
+| 27 | evicted | 68,437 | 113,971 |
+| 27 | in-window | 68,875 | 94,006 |
+
+**2. The J-lens rescues the layer-18 pre-eviction ceiling the logit lens was hiding.**
+21 Aug (logit lens) read L18 in-window at 95,949 — barely better than its evicted 108,733,
+which is why that diagnosis leaned toward "the prompt construction is wrong." Through the
+J-lens, L18 in-window drops to **36,676** against evicted 114,277 (`o_t` basis): the
+ceiling is now well above the floor, the direction C4 requires. That gap is a J-lens
+effect — the plain logit lens flattened it. Consistent with the 8–204× J-lens-over-logit
+advantage on isolated known-fact prompts (Finding 4, 19–20 Aug).
+
+**3. Evicted content is still not read below chance anywhere, in either basis.** L9
+87,917 / L18 114,277 / L27 68,437 (`o_t`); L9 90,910 / L18 103,707 / L27 113,971
+(`d_resid`). L27's `o_t` 68,437 is modestly below chance, matching the homemade-cohort
+L27 numbers from the 4–5 Sep sweep, but there is no in-window/evicted separation at L27
+at all (68,437 vs 68,875) — the pre-eviction ceiling is not above the evicted floor. The
+J-lens does not rescue evicted retention on this construction.
+
+**4. Pre-registered basis: conclusion unchanged.** In `d_resid`, L18 evicted 103,707 vs
+in-window 92,530 — an ~11k gap with the in-window ceiling itself near chance. This is the
+2 Sep reading ("not 'the needle reads well until it is compressed'") holding up: the
+ceiling-vs-floor separation that appears at L18 is in the `o_t` basis, not the
+pre-registered one.
+
+**5. Layers 9 and 27 behave as their prior records predict.** L9 in-window (126,262 `o_t`)
+is *worse* than evicted (87,917) — ceiling below floor, C4 fails, the same degeneracy
+signature flagged since the 18 Aug pilot, now confirmed through the fitted J-lens. L27
+shows no order-of-magnitude gap either way on the homemade construction, consistent with
+the 7 Sep finding that `build_niah_prompt` suppresses the L27 signal that RULER surfaces.
+
+**6. Net.** The 21 Aug reading — the C1 failure points at NIAH prompt construction, not at
+AHN's memory — survives the like-for-like re-run. The one thing that changes: the L18
+in-window ceiling is ~2.6× better through the J-lens than the 21 Aug logit-lens number
+(36,676 vs 95,949), so part of what looked like "the prompt places the needle where
+nothing can read it" was the logit lens, not the prompt.
+
+**7. Caveats.** `lens_validated=False` on every row — Table 3 checks 2 and 3 still fail.
+One eviction distance (1024; the 21 Aug diagnosis was at ~515), one construction
+(homemade, known to under-read L27 vs RULER), one cell (GDN), n=24 per layer×condition
+after the `ahn_will_activate` / `needle_is_evicted` filters drop 2 of 10 needles. No C2 /
+C3 analog — this is a C1/C4-shaped check only.
