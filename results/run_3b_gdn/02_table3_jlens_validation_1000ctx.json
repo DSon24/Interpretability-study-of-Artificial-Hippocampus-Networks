@@ -1,0 +1,73 @@
+{
+  "known_fact_recall": {
+    "rows": [
+      {
+        "layer": 9,
+        "rank_Paris": 671,
+        "top5": [
+          " $",
+          " :\n",
+          " *",
+          " .\n",
+          " [*"
+        ]
+      },
+      {
+        "layer": 18,
+        "rank_Paris": 68,
+        "top5": [
+          ".[",
+          "?\\",
+          "![",
+          "?[",
+          ").["
+        ]
+      },
+      {
+        "layer": 27,
+        "rank_Paris": 7,
+        "top5": [
+          "____",
+          "________",
+          ":**",
+          "____________",
+          "**\n"
+        ]
+      }
+    ],
+    "passed": false
+  },
+  "logit_lens_agreement": {
+    "9": 0.0,
+    "18": 0.0,
+    "27": 0.05,
+    "passed": false
+  },
+  "final_layer_identity": {
+    "skipped": true,
+    "note": "layer 35 not in source_layers; add it to run this check"
+  },
+  "map_stability": {
+    "9": 0.9433333333333334,
+    "18": 0.9066666666666665,
+    "27": 0.9433333333333332,
+    "passed": true,
+    "fit_b_gpu_hours": 5.880245396494866,
+    "checkpoint_path": "results/run_3b_gdn/jlens_corpusB_1000ctx.ckpt"
+  },
+  "map_cost_gpu_hours": 2.1852319276995127,
+  "config": {
+    "backbone": "Qwen/Qwen2.5-3B-Instruct",
+    "source_layers": [
+      9,
+      18,
+      27
+    ],
+    "n_prompts": 1000,
+    "max_seq_len": 256,
+    "skip_first": 4,
+    "dim_batch": 8,
+    "out_path": "results/run_3b_gdn/jlens_qwen25_3b_1000ctx.pt"
+  },
+  "TABLE_3_PASSED": false
+}
