@@ -1,0 +1,227 @@
+{
+  "run_name": "run_3b_m2",
+  "cell": "Mamba2",
+  "scale": "3B",
+  "source_rows": "results/run_3b_m2/04i_ruler_controls_rows.json",
+  "chance_rank": 75968,
+  "c2_bar": 10.0,
+  "n_boot": 10000,
+  "seed": 20260820,
+  "ruler_cfg": {
+    "config": "16384",
+    "split": "test",
+    "n": 60,
+    "seed": 20260820
+  },
+  "readout": "jlens",
+  "lens_validated": false,
+  "layers": {
+    "9": {
+      "n_evicted": 32,
+      "C1_sequence": {
+        "n": 32,
+        "median_mean_digit_rank": 101605.85714285714,
+        "ci95": [
+          95261.42857142858,
+          115161.07142857142
+        ],
+        "below_chance": false,
+        "median_answer_logprob": -224.65104389190674
+      },
+      "C2_cross_example": {
+        "n_pairs": 496,
+        "pairs_dropped": 0,
+        "corrected_fold_geomean": 1.2693742566972748,
+        "ci95_fold": [
+          1.0408705560338398,
+          1.5476354985057972
+        ],
+        "effect_per_example": 1.1266651040558924,
+        "ci95_effect_per_example": [
+          1.0202306386468893,
+          1.2440399907180626
+        ],
+        "answer_digits_scored": 7,
+        "effect_per_digit": 1.017183398259146,
+        "ci95_effect_per_digit": [
+          1.0028653427061593,
+          1.0316865365222911
+        ],
+        "permutation_p": 0.0208,
+        "passes_preregistered_bar": false,
+        "excludes_null": true
+      },
+      "C3_context": {
+        "n": 32,
+        "median_rank_ordered": 101605.85714285714,
+        "median_rank_shuffled": 64715.57142857143,
+        "median_delta_shuffled_minus_ordered": -44710.92857142857,
+        "ci95_delta": [
+          -51410.99999999999,
+          -31178.0
+        ],
+        "order_sensitive": true
+      },
+      "C3_lens": {
+        "n": 32,
+        "median_answer_logprob_real": -224.65104389190674,
+        "median_answer_logprob_shuffled": -125.57404136657715,
+        "median_delta": 104.10020303726196,
+        "ci95_delta": [
+          89.3452959060669,
+          111.14663124084473
+        ],
+        "signal_collapses": false
+      },
+      "C4_layer_permutation": {
+        "n": 32,
+        "median_answer_logprob_real": -224.65104389190674,
+        "median_answer_logprob_permuted": -167.93797302246094,
+        "median_delta": 57.226009368896484,
+        "ci95_delta": [
+          50.169779777526855,
+          62.71776008605957
+        ],
+        "map_is_layer_specific": false
+      }
+    },
+    "18": {
+      "n_evicted": 32,
+      "C1_sequence": {
+        "n": 32,
+        "median_mean_digit_rank": 68264.35714285714,
+        "ci95": [
+          57395.92857142857,
+          75432.28571428571
+        ],
+        "below_chance": true,
+        "median_answer_logprob": -190.41973066329956
+      },
+      "C2_cross_example": {
+        "n_pairs": 496,
+        "pairs_dropped": 0,
+        "corrected_fold_geomean": 0.7067003475034113,
+        "ci95_fold": [
+          0.5009563210524568,
+          0.984254250482204
+        ],
+        "effect_per_example": 0.8406547136032791,
+        "ci95_effect_per_example": [
+          0.7077826792543435,
+          0.9920958877458388
+        ],
+        "answer_digits_scored": 7,
+        "effect_per_digit": 0.9755085792332285,
+        "ci95_effect_per_digit": [
+          0.9518250557105353,
+          0.9988669972850086
+        ],
+        "permutation_p": 0.049,
+        "passes_preregistered_bar": false,
+        "excludes_null": false
+      },
+      "C3_context": {
+        "n": 32,
+        "median_rank_ordered": 68264.35714285714,
+        "median_rank_shuffled": 54962.07142857143,
+        "median_delta_shuffled_minus_ordered": -17103.785714285717,
+        "ci95_delta": [
+          -29238.78571428571,
+          -7970.714285714275
+        ],
+        "order_sensitive": true
+      },
+      "C3_lens": {
+        "n": 32,
+        "median_answer_logprob_real": -190.41973066329956,
+        "median_answer_logprob_shuffled": -141.98225021362305,
+        "median_delta": 53.10744667053223,
+        "ci95_delta": [
+          38.83705520629883,
+          63.8656702041626
+        ],
+        "signal_collapses": false
+      },
+      "C4_layer_permutation": {
+        "n": 32,
+        "median_answer_logprob_real": -190.41973066329956,
+        "median_answer_logprob_permuted": -157.5700168609619,
+        "median_delta": 36.66441488265991,
+        "ci95_delta": [
+          32.83377265930176,
+          43.91250228881836
+        ],
+        "map_is_layer_specific": false
+      }
+    },
+    "27": {
+      "n_evicted": 32,
+      "C1_sequence": {
+        "n": 32,
+        "median_mean_digit_rank": 76951.21428571429,
+        "ci95": [
+          71389.57142857142,
+          92924.21428571429
+        ],
+        "below_chance": false,
+        "median_answer_logprob": -140.7399663925171
+      },
+      "C2_cross_example": {
+        "n_pairs": 496,
+        "pairs_dropped": 0,
+        "corrected_fold_geomean": 1.1985489369594267,
+        "ci95_fold": [
+          0.7856817538036978,
+          1.8391538061782768
+        ],
+        "effect_per_example": 1.0947825980346173,
+        "ci95_effect_per_example": [
+          0.8863869097655367,
+          1.3561540495748545
+        ],
+        "answer_digits_scored": 7,
+        "effect_per_digit": 1.0130205823551341,
+        "ci95_effect_per_digit": [
+          0.9829187487021332,
+          1.0444827919811714
+        ],
+        "permutation_p": 0.3987,
+        "passes_preregistered_bar": false,
+        "excludes_null": false
+      },
+      "C3_context": {
+        "n": 32,
+        "median_rank_ordered": 76951.21428571429,
+        "median_rank_shuffled": 72807.35714285713,
+        "median_delta_shuffled_minus_ordered": -9121.0,
+        "ci95_delta": [
+          -22346.571428571428,
+          3937.0714285714275
+        ],
+        "order_sensitive": false
+      },
+      "C3_lens": {
+        "n": 32,
+        "median_answer_logprob_real": -140.7399663925171,
+        "median_answer_logprob_shuffled": -137.7650055885315,
+        "median_delta": 2.1387715339660645,
+        "ci95_delta": [
+          -2.8481388092041016,
+          10.264861106872559
+        ],
+        "signal_collapses": false
+      },
+      "C4_layer_permutation": {
+        "n": 32,
+        "median_answer_logprob_real": -140.7399663925171,
+        "median_answer_logprob_permuted": -256.24485874176025,
+        "median_delta": -116.33526515960693,
+        "ci95_delta": [
+          -125.36143684387207,
+          -111.77212524414062
+        ],
+        "map_is_layer_specific": true
+      }
+    }
+  }
+}
