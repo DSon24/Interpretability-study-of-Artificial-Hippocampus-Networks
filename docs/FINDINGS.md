@@ -29,6 +29,7 @@ decision immediately after it records how that evidence changes execution.
 - [Findings from the DeltaNet RQ1 rerun (nb03, 9 Sep)](#findings-from-the-deltanet-rq1-rerun-nb03-9-sep)
 - [Findings from the Mamba2 RULER control battery (9 Sep)](#findings-from-the-mamba2-ruler-control-battery-9-sep)
 - [Findings from the Mamba2 RQ1 run (nb03, 9 Sep)](#findings-from-the-mamba2-rq1-run-nb03-9-sep)
+- [Findings from the 1000-context J-lens map-stability refit (9 Sep)](#findings-from-the-1000-context-j-lens-map-stability-refit-9-sep)
 
 ---
 
@@ -1258,3 +1259,67 @@ at the published rate but produces no measurable F1 shift, matching the RULER ba
 finding that its layer-27 memory shows no significant retention effect in either
 direction. Of the three cells, Mamba2 is the one where AHN's compressed memory is hardest
 to detect — behaviourally (ΔF1 ≈ 0) and in the readout (C2 null, C1 at chance).
+
+
+## Findings from the 1000-context J-lens map-stability refit (9 Sep)
+
+`results/run_3b_gdn/02_table3_jlens_validation_1000ctx.json`;
+`notebooks/02-duplicate.ipynb` (the n=1000 variant of `02_jlens_fit_and_validate.ipynb`),
+`jlens-venv`, on the shared H100 MIG box. Maps saved as
+`jlens_qwen25_3b_1000ctx.pt` (corpus A) and `jlens_qwen25_3b_corpusB_1000ctx.pt`. This is
+a robustness pass on the map-stability row only — it extends the 9–20 Aug 500-context
+result (["Findings from the map-stability check and the RQ3 join"](#findings-from-the-map-stability-check-and-the-rq3-join))
+and writes to a separate JSON so that entry's numbers are left intact.
+
+**1. Map stability holds at n=1000, and tightens at every layer.** Two J-lenses fitted on
+disjoint 1000-context wikitext corpora (skip 0 vs skip 20000, zero overlap asserted),
+layers 9/18/27, `max_seq_len=256`, `skip_first=4`, top-10 token overlap on 30 held-out
+contexts:
+
+| layer | 500-context | 1000-context | Δ |
+|---:|---:|---:|---:|
+| 9 | 0.910 | **0.943** | +0.033 |
+| 18 | 0.873 | **0.907** | +0.033 |
+| 27 | 0.893 | **0.943** | +0.050 |
+| min | 0.873 | **0.907** | |
+
+All three layers clear the 0.80 bar with more margin than at n=500. Doubling the
+averaging corpus moves the map closer to a fixed point — the two independent draws agree
+more, not less — so undersampling is ruled out more firmly than the 500-context pass
+already ruled it out. `map_stability.passed = true`.
+
+**2. Convergence, not correctness — the readout checks do not move.** Checks 2 and 3 were
+re-run on the n=1000 corpus-A map and land where they did at n=500:
+
+| check | 500-context | 1000-context |
+|---|---|---|
+| known-fact recall, `rank_Paris` @ 9/18/27 | 805 / 59 / 8 | 671 / 68 / **7** |
+| logit-lens agreement @ 9/18/27 | 0.00 / 0.00 / 0.05 | 0.00 / 0.00 / 0.05 |
+
+Layer-27 `rank_Paris` is 7 vs 8 — noise, still not top-1. Agreement is byte-identical.
+L27 top-5 is still `____`, `________`, `:**`. `TABLE_3_PASSED` stays `false` on checks 2
+and 3, exactly as at n=500. More contexts made the map more self-consistent without
+making it decode residuals to sensible tokens.
+
+**3. What this does for the downstream negative.** The RULER control battery's reading —
+that L9/L18 are decoding artefacts and L27 carries at best a modest, cell-dependent
+retention signal — now rests on a map whose stability is confirmed at 2× the
+pre-registered corpus size. A weak or backwards signal in that battery is a property of
+what AHN retains (or of the cohort), not a fitting artefact of an under-converged lens.
+This is the "stronger evidence for dropping to RQ1" the notebook's check-4 cell describes,
+made stronger.
+
+**4. Map cost for Table 10.** Corpus-B fresh fit: **5.88 GPU-h** at n=1000 (logged
+`fit_b_gpu_hours`), against 1.25 GPU-h at n=500 — ~4.7× for 2× the contexts, well above
+linear, most likely MIG-slice contention on the shared box (four users). Corpus-A shows
+2.19 GPU-h but that run resumed from a partial checkpoint, so it understates the fresh
+cost. Even at the higher figure a full two-corpus refit is ~12 GPU-h, still far under the
+proposal's 40 h RQ2 abort threshold, but the superlinear scaling is worth re-measuring on
+an uncontended slice before it feeds the 7B decision.
+
+**5. Caveats.** `lens_validated=false` still travels on every downstream row — this pass
+strengthens the stability row of Table 3, not the whole battery. Overlap is measured on
+30 contexts at top-10, same as the 500-context check. Single backbone (Qwen2.5-3B), three
+layers, one corpus source (wikitext-103-raw). The `.pt` and `.ckpt` maps are ~50 MB each
+and live only on the box + HuggingFace until LFS/Hub storage is settled; the 1.4 KB
+result JSON is the artefact of record.
