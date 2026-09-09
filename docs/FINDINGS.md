@@ -26,6 +26,7 @@ decision immediately after it records how that evidence changes execution.
 - [Findings from the 8 Sep content swap: content is not the variable](#findings-from-the-8-sep-content-swap-content-is-not-the-variable)
 - [Mentor decision after the 8 Sep checks](#mentor-decision-after-the-8-sep-checks)
 - [Findings from the DeltaNet RULER control battery (8 Sep)](#findings-from-the-deltanet-ruler-control-battery-8-sep)
+- [Findings from the DeltaNet RQ1 rerun (nb03, 9 Sep)](#findings-from-the-deltanet-rq1-rerun-nb03-9-sep)
 
 ---
 
@@ -813,6 +814,7 @@ not be reported as evidence of anything.
 | C2, per-example effect | 1.672x [1.446, 1.929] — excludes 1.0, does not clear the pre-registered 10x bar |
 | C3-context | no order sensitivity (Δ −1,004 [−7,946, +18,689]) |
 | C3-lens | **collapses**, Δ −39.2 log-nats [−46.1, −34.4], signal depends on the real map |
+| C4 layer-permutation *(added 9 Sep)* | **degrades**, Δ −43.8 log-nats [−58.0, −38.4], readout is layer-specific |
 
 C2's CI excludes the null about as unambiguously as this kind of test produces. It also
 does not come close to the magnitude that would count as a clean pass. Both of those are
@@ -1038,12 +1040,18 @@ seed 20260820), and the same shared Qwen2.5-3B J-lens (`lens_validated=False`, u
 from run 026). 32 of 60 needles are evicted at every layer; every statistic below is
 restricted to those.
 
-**1. The layer structure matches GDN.** C3-lens is decisive again. At layers 9 and 18 the
-signal *survives* the row-permuted J-lens (Δ +64.8 and +79.0 log-nats, CIs excluding zero
-on the wrong side), so those layers are decoding artefacts, not memory. Layer 27's signal
-*collapses* under the permuted map (Δ −86.2 log-nats [−89.7, −80.3]) — it is a real,
-layer-specific decoding. Same verdict as run 026: 9 and 18 are out, 27 is the analysis
-layer.
+**1. The layer structure matches GDN, and C4 now backs it independently.** C3-lens is
+decisive again: at layers 9 and 18 the signal *survives* the row-permuted J-lens
+(Δ +64.8 and +79.0 log-nats, CIs excluding zero on the wrong side), so those layers are
+decoding artefacts, not memory. Layer 27's signal *collapses* under the permuted map
+(Δ −86.2 log-nats [−89.7, −80.3]) — a real, layer-specific decoding. **C4
+layer-permutation** (each layer's Jacobian rolled onto the next layer's index, run 9 Sep
+for GDN and DN together) tells the same story from the other direction: routing L9/L18
+state through the wrong layer's Jacobian leaves the readout intact (DN Δ +88.1 and +28.3,
+GDN Δ +55.4 and +173.5, all CIs positive), while L27 degrades sharply (DN Δ −83.2
+[−92.0, −77.7]; GDN Δ −43.8 [−58.0, −38.4]). L27 is the only readout in either cell that
+is tied to its own layer's state. Same verdict as run 026: 9 and 18 are out, 27 is the
+analysis layer.
 
 **2. Layer 27 — C1 and C3-lens behave like GDN; C2 and C3-context do not.**
 
@@ -1055,6 +1063,7 @@ layer.
 | C2 vs pre-registered 10× bar | fails (and points the other way) | fails |
 | C3-context | **order sensitive** — shuffling the context raises mean rank by 21,739 [8,352, 25,258] | no order sensitivity (Δ −1,004 [−7,946, +18,689]) |
 | C3-lens | collapses, Δ −86.2 log-nats [−89.7, −80.3] | collapses, Δ −39.2 [−46.1, −34.4] |
+| C4 layer-permutation | **degrades**, Δ −83.2 log-nats [−92.0, −77.7] — layer-specific | **degrades**, Δ −43.8 [−58.0, −38.4] — layer-specific |
 
 **3. The C2 sign is opposite to GDN, and it is significant.** In GDN, at layer 27, the
 stored needle reads out ~1.076× *more* probable than a matched cross-example distractor
@@ -1084,6 +1093,52 @@ result says that information is not "this specific string is more likely than th
 **6. Open for Gautam / Table 7.** The cross-cell RQ2 comparison now has to accommodate a
 sign disagreement at the analysis layer between GDN (positive, p < 0.0001) and DeltaNet
 (negative, p = 0.0006), both on the primary pre-registered cohort, both sub-threshold.
-Mamba2 is still pending. This does not weaken the instrument — L9/L18 artefact rejection
-and L27 lens-collapse are consistent across cells — it is a substantive architectural
-difference in what the layer-27 memory does.
+Mamba2 is pending on Modal (the H100 box is rootless and the Mamba2 fork's custom CUDA
+kernels will not build there; Modal's CUDA-devel image compiles them, so the recurrent
+scan runs on real kernels rather than the naive PyTorch fallback, and fallback-vs-kernel
+fidelity is itself the open M2 question). The sign disagreement does not weaken the
+instrument — L9/L18 artefact rejection is unanimous across C3-lens and C4, and L27
+lens-collapse and layer-specificity hold in both cells — it is a substantive
+architectural difference in what the layer-27 memory does.
+
+**7. DeltaNet C4 status.** This closes the pre-registration's Table 4 C4 for two of the
+three cells. Amendment 1 recorded that "the layer-permutation half has not yet been run";
+it has now, for GDN (run 026 rows, reprocessed) and DeltaNet, via
+`JacobianLens.permuted_layers()` wired into `measure_ruler_seq` and scored in
+`ruler_controls.py`. The in-window / pre-eviction ceiling half of C4 is unchanged.
+
+
+## Findings from the DeltaNet RQ1 rerun (nb03, 9 Sep)
+
+`results/run_3b_dn/03_nowrite_reproduction.json`; `notebooks/03_nowrite_reproduction.ipynb`
+with `RUN_CONFIG=configs/run_3b_dn.json`. LongBench-E HotpotQA, n=60, first-line scoring,
+AHN vs NOWRITE. This is the DeltaNet RQ1 row and the first DeltaNet artefact carrying
+per-example `boundary_js`.
+
+**1. DeltaNet's AHN helps RQ1 more than the published GDN range.** First-line ΔF1
+**+6.7 points**, bootstrap CI [+0.2, +13.7] (mean F1 0.406 with AHN vs 0.339 under
+NOWRITE). Answer-change rate 0.367, CI [0.25, 0.50]. The published GatedDeltaNet
+write-attrition study reported F1 shifts of 0.4–2.3 points, so the notebook's
+`reproduction_ok` gate — `|ΔF1| ≤ 5.0` points and change-rate in [0.30, 0.50], both
+GDN-calibrated — returns **False** on the magnitude term. The run itself is clean (60/60
+rows, `boundary_js` present); the flag is a GDN yardstick applied to a different cell, not
+a failed reproduction. Whether that 5-point bound should gate DN/M2 at all is a question
+for Gautam.
+
+**2. The benefit is not uniform across context length.**
+
+| stratum | n | ΔF1 (first-line) | 95% CI |
+|---|---|---|---|
+| short | 20 | +0.095 | [+0.017, +0.195] |
+| mid | 20 | **+0.160** | [+0.035, +0.310] |
+| long | 20 | **−0.053** | [−0.156, 0.000] |
+
+Mid- and short-context examples drive the aggregate gain; at long context DeltaNet's AHN
+is flat to slightly negative. This is the behavioural-side counterpart to RQ2's finding
+that L27 retains recoverable information but does not make the stored string more probable
+than a distractor.
+
+**3. Per-example `boundary_js`** is now on disk for DeltaNet (bootstrap mean 0.124,
+CI [0.095, 0.154]), which is what Table 8 row 2 needs — the JS-vs-ΔF1 correlation, not the
+JS magnitude. GDN's nb03 rerun (`363e996`) carries the same field; Mamba2's comes from
+Modal.
