@@ -1,0 +1,14 @@
+{
+  "run_name": "run_3b_floor",
+  "model_path": "Qwen/Qwen2.5-3B-Instruct",
+  "ckpt_name": "Qwen/Qwen2.5-3B-Instruct",
+  "cell": "none",
+  "scale": "3B",
+  "sliding_window": 8064,
+  "num_attn_sinks": 0,
+  "max_window_layers": 0,
+  "attn_impl": "flash_attention_2",
+  "dtype": "bfloat16",
+  "seed": 20260820,
+  "notes": "Table 1 Primary no-AHN floor (r54). Stock Qwen2.5-3B-Instruct, sliding-window attention forced on at 8064 for EVERY layer (use_sliding_window + sliding_window + max_window_layers=0), no AHN merge, no attention sinks. Backbone is shared across all three cells, so this one run is the floor for GDN / DeltaNet / Mamba2. RULER NIAH n=60 + LongBench-E HotpotQA n=60. 'Any retention we measure has to exceed what this configuration explains.'"
+}
