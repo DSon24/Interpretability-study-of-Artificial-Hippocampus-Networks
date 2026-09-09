@@ -1,4 +1,8 @@
 {
+  "run_name": "run_3b_gdn",
+  "cell": "GatedDeltaNet",
+  "scale": "3B",
+  "source_rows": "results/run_3b_gdn/04i_ruler_controls_rows.json",
   "chance_rank": 75968,
   "c2_bar": 10.0,
   "n_boot": 10000,
@@ -68,6 +72,17 @@
           106.08118677139282
         ],
         "signal_collapses": false
+      },
+      "C4_layer_permutation": {
+        "n": 32,
+        "median_answer_logprob_real": -222.1025333404541,
+        "median_answer_logprob_permuted": -163.31766033172607,
+        "median_delta": 55.39366149902344,
+        "ci95_delta": [
+          51.680484771728516,
+          69.33893013000488
+        ],
+        "map_is_layer_specific": false
       }
     },
     "18": {
@@ -126,6 +141,17 @@
           243.69848823547363
         ],
         "signal_collapses": false
+      },
+      "C4_layer_permutation": {
+        "n": 32,
+        "median_answer_logprob_real": -361.4706449508667,
+        "median_answer_logprob_permuted": -190.43346500396729,
+        "median_delta": 173.53311729431152,
+        "ci95_delta": [
+          158.6148819923401,
+          181.7357940673828
+        ],
+        "map_is_layer_specific": false
       }
     },
     "27": {
@@ -184,6 +210,17 @@
           -34.399359703063965
         ],
         "signal_collapses": true
+      },
+      "C4_layer_permutation": {
+        "n": 32,
+        "median_answer_logprob_real": -113.3736801147461,
+        "median_answer_logprob_permuted": -157.00289058685303,
+        "median_delta": -43.824716567993164,
+        "ci95_delta": [
+          -58.030978202819824,
+          -38.430577754974365
+        ],
+        "map_is_layer_specific": true
       }
     }
   }
