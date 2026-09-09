@@ -1463,8 +1463,8 @@ proxy, and the RQ tables can be reported against it without the caveat.
 Mamba2 alike (shared backbone). The RULER control battery's L27 retention signals (GDN
 positive C2, DeltaNet negative, Mamba2 null) are all measured above a base-model floor of
 zero on the same cohort. HotpotQA first-line F1 floor = 0.076; the GDN nb03 AHN run
-(~0.40) and DeltaNet (~0.41) both clear it comfortably, Mamba2 (~0.34) by less but still
-well above.
+(~0.37, regenerated from the saved `_fl` rows) and DeltaNet (~0.41) both clear it
+comfortably, Mamba2 (~0.34) by less but still well above.
 
 **6. Caveats.** n=32 evicted / n=28 in-window — RULER-16384 places the needle at random
 depth, so the evicted/in-window split (~53/47) is a property of the cohort, not a design
