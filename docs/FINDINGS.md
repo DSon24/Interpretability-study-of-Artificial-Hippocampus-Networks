@@ -31,6 +31,7 @@ decision immediately after it records how that evidence changes execution.
 - [Findings from the Mamba2 RQ1 run (nb03, 9 Sep)](#findings-from-the-mamba2-rq1-run-nb03-9-sep)
 - [Findings from the 1000-context J-lens map-stability refit (9 Sep)](#findings-from-the-1000-context-j-lens-map-stability-refit-9-sep)
 - [Findings from the r29 evicted-vs-in-window J-lens re-run (9 Sep)](#findings-from-the-r29-evicted-vs-in-window-j-lens-re-run-9-sep)
+- [Findings from the no-AHN floor run (r54, 9 Sep)](#findings-from-the-no-ahn-floor-run-r54-9-sep)
 
 ---
 
@@ -1387,3 +1388,73 @@ One eviction distance (1024; the 21 Aug diagnosis was at ~515), one construction
 (homemade, known to under-read L27 vs RULER), one cell (GDN), n=24 per layer×condition
 after the `ahn_will_activate` / `needle_is_evicted` filters drop 2 of 10 needles. No C2 /
 C3 analog — this is a C1/C4-shaped check only.
+
+
+## Findings from the no-AHN floor run (r54, 9 Sep)
+
+`results/run_3b_floor/06_no_ahn_floor.json` (+ `_nowindow.json` control);
+`configs/run_3b_floor.json`, `no_ahn_floor.py`. Stock `Qwen/Qwen2.5-3B-Instruct`,
+**no AHN merge**, sliding-window attention forced on at 8064 for every layer
+(`use_sliding_window=True`, `sliding_window=8064`, `max_window_layers=0`), **no attention
+sinks** (`num_attn_sinks=0`). Behavioural: greedy generation + task metric, not a lens
+readout. RULER NIAH n=60 (`simonjegou/ruler` config 16384, 60/60 `niah_single_1`,
+7-digit answers, substring match) and LongBench-E HotpotQA n=60 (same length-stratified
+cohort construction and eligibility gate as notebook 03). Backbone is shared across the
+GDN / DeltaNet / Mamba2 cells, so this one run is the Table 1 Primary floor for all three.
+~7 GPU-minutes total.
+
+**1. The floor.**
+
+| cohort | n | metric | value |
+|---|---:|---|---:|
+| RULER NIAH, needle **evicted** (past the 8064 window) | 32 | substring acc | **0.000** |
+| RULER NIAH, needle in-window | 28 | substring acc | 0.393 |
+| RULER NIAH, needle in-window | 28 | F1 | 0.013 |
+| LongBench-E HotpotQA, first line | 60 | F1 | **0.076** |
+| LongBench-E HotpotQA, first line | 60 | exact match | 0.033 |
+
+Chance on a 7-digit answer is effectively zero, so `evicted = 0.000` is a hard floor, not
+a small number: with no AHN and the needle outside the attention window, the information
+is simply not in the model's context. **Every evicted-needle retention result AHN
+produces, at any layer, is therefore attributable to AHN** — there is no base-model
+retrieval to subtract.
+
+**2. The control rules out a broken load path.** Same script, `--no-window` (stock config,
+full ~32K context), n=20: substring accuracy **1.000** on both the evicted-labelled and
+in-window subsets, predictions exact (`pred='7700828.'`). Base Qwen2.5-3B is a perfect
+NIAH retriever at 16K when it can see the whole context. The collapse to 0.000 / 0.393 is
+the 8064 window doing exactly what the floor is meant to isolate, confirmed rather than
+assumed.
+
+**3. The window degrades retrieval even when the needle is nominally visible.** In-window
+substring accuracy is 0.393, not ~1.0 — SWA disrupts the retrieval path for needles that
+sit inside the last 8064 tokens, not only for evicted ones. So the sliding window is a
+retrieval bottleneck in its own right, which is the gap AHN's memory pathway exists to
+close. (The `_nowindow` control at 1.000 is the ceiling this 0.393 is measured against.)
+
+**4. This removes the rows 35/36 blocker.** Rows 35/36 were held on the "NOWRITE-proxy vs
+true module-removal" question — is zeroing the AHN write a valid stand-in for removing the
+module? The floor answers it by running the real thing. Against notebook 03's GDN
+**NOWRITE** first-line F1 (~0.339), the true no-AHN floor is **0.076** — a 0.26 F1 gap, so
+NOWRITE-proxy is **not** equivalent to module removal. Part of that gap is the 128
+attention sinks NOWRITE keeps and this floor drops (sinks sit at the sequence start, far
+from any evicted needle, so they do not touch the RULER-evicted 0.000 result, but they do
+help HotpotQA); isolating the sink contribution would need a floor-with-sinks run. Either
+way, RQ1 and RQ2 now have a Table 1 Primary baseline that is a real configuration, not a
+proxy, and the RQ tables can be reported against it without the caveat.
+
+**5. Per-cell consequence.** RULER NIAH evicted floor = 0.000 for GDN, DeltaNet and
+Mamba2 alike (shared backbone). The RULER control battery's L27 retention signals (GDN
+positive C2, DeltaNet negative, Mamba2 null) are all measured above a base-model floor of
+zero on the same cohort. HotpotQA first-line F1 floor = 0.076; the GDN nb03 AHN run
+(~0.40) and DeltaNet (~0.41) both clear it comfortably, Mamba2 (~0.34) by less but still
+well above.
+
+**6. Caveats.** n=32 evicted / n=28 in-window — RULER-16384 places the needle at random
+depth, so the evicted/in-window split (~53/47) is a property of the cohort, not a design
+choice; the evicted n is smaller than 60. `num_attn_sinks=0` here vs 128 in every nb03 /
+nb04 AHN run — deliberate (the floor is stock Qwen, which has no sink mechanism), but it
+means the HotpotQA F1 comparison to NOWRITE is not sink-matched. One backbone, one scale
+(3B), one RULER config (16384 ≈ 15.7K tokens), one QA dataset. `attn_impl=flash_attention_2`.
+Substring match on the full 32-token generation, not first-token rank — a different (and
+more lenient) metric than the readout cohorts use.
