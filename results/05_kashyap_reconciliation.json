@@ -1,0 +1,322 @@
+{
+  "source": "results/run_3b_*/03_nowrite_reproduction.json (saved generations, no GPU)",
+  "comparison_target": {
+    "citation": "Kashyap (2026), write-attrition study, under review ACL",
+    "f1_shift_points": [
+      0.4,
+      2.3
+    ],
+    "change_rate": [
+      0.38,
+      0.42
+    ]
+  },
+  "scoring_note": "LongBench-E `scorer_e` truncates the prediction to its first line ONLY for trec / triviaqa / samsum / lsht. hotpotqa is not in that list, so official LongBench-E scoring reads the FULL generation. Our primary metric of record is first-line, which is therefore NOT the official convention.",
+  "cells": {
+    "GatedDeltaNet": {
+      "run_dir": "results/run_3b_gdn",
+      "n": 60,
+      "delta_f1_by_scoring": {
+        "first_line": {
+          "delta_f1_points": 3.335978835978836,
+          "ci_points": [
+            -4.497354497354498,
+            11.280423280423282
+          ],
+          "excludes_zero": false,
+          "magnitude_in_kashyap_band": false
+        },
+        "full_generation": {
+          "delta_f1_points": -1.4363400154099615,
+          "ci_points": [
+            -7.428589861680594,
+            3.9923627159910318
+          ],
+          "excludes_zero": false,
+          "magnitude_in_kashyap_band": true
+        },
+        "longbench_e_official": {
+          "delta_f1_points": -1.4363400154099615,
+          "ci_points": [
+            -7.428589861680594,
+            3.9923627159910318
+          ],
+          "excludes_zero": false,
+          "magnitude_in_kashyap_band": true
+        },
+        "longbench_nonE_official": {
+          "delta_f1_points": -1.4363400154099615,
+          "ci_points": [
+            -7.428589861680594,
+            3.9923627159910318
+          ],
+          "excludes_zero": false,
+          "magnitude_in_kashyap_band": true
+        },
+        "longbench_official_first_line": {
+          "delta_f1_points": 3.335978835978836,
+          "ci_points": [
+            -4.497354497354498,
+            11.280423280423282
+          ],
+          "excludes_zero": false,
+          "magnitude_in_kashyap_band": false
+        }
+      },
+      "change_rate_by_definition": {
+        "raw_exact_full_generation": {
+          "change_rate": 0.9166666666666666,
+          "in_kashyap_band": false
+        },
+        "raw_exact_first_line": {
+          "change_rate": 0.4,
+          "in_kashyap_band": true
+        },
+        "normalized_em_full_generation": {
+          "change_rate": 0.9,
+          "in_kashyap_band": false
+        },
+        "normalized_em_first_line": {
+          "change_rate": 0.3333333333333333,
+          "in_kashyap_band": false
+        },
+        "nonE_prepped_normalized": {
+          "change_rate": 0.9,
+          "in_kashyap_band": false
+        },
+        "f1_changed_full_generation": {
+          "change_rate": 0.5333333333333333,
+          "in_kashyap_band": false
+        },
+        "f1_changed_first_line": {
+          "change_rate": 0.2,
+          "in_kashyap_band": false
+        }
+      }
+    },
+    "DeltaNet": {
+      "run_dir": "results/run_3b_dn",
+      "n": 60,
+      "delta_f1_by_scoring": {
+        "first_line": {
+          "delta_f1_points": 6.715121136173767,
+          "ci_points": [
+            0.17543859649122787,
+            13.651012949039263
+          ],
+          "excludes_zero": true,
+          "magnitude_in_kashyap_band": false
+        },
+        "full_generation": {
+          "delta_f1_points": -2.369644811508091,
+          "ci_points": [
+            -8.143983936533056,
+            2.6996282411380124
+          ],
+          "excludes_zero": false,
+          "magnitude_in_kashyap_band": false
+        },
+        "longbench_e_official": {
+          "delta_f1_points": -2.369644811508091,
+          "ci_points": [
+            -8.143983936533056,
+            2.6996282411380124
+          ],
+          "excludes_zero": false,
+          "magnitude_in_kashyap_band": false
+        },
+        "longbench_nonE_official": {
+          "delta_f1_points": -2.369644811508091,
+          "ci_points": [
+            -8.143983936533056,
+            2.6996282411380124
+          ],
+          "excludes_zero": false,
+          "magnitude_in_kashyap_band": false
+        },
+        "longbench_official_first_line": {
+          "delta_f1_points": 6.715121136173767,
+          "ci_points": [
+            0.17543859649122787,
+            13.651012949039263
+          ],
+          "excludes_zero": true,
+          "magnitude_in_kashyap_band": false
+        }
+      },
+      "change_rate_by_definition": {
+        "raw_exact_full_generation": {
+          "change_rate": 0.9333333333333333,
+          "in_kashyap_band": false
+        },
+        "raw_exact_first_line": {
+          "change_rate": 0.4,
+          "in_kashyap_band": true
+        },
+        "normalized_em_full_generation": {
+          "change_rate": 0.9333333333333333,
+          "in_kashyap_band": false
+        },
+        "normalized_em_first_line": {
+          "change_rate": 0.36666666666666664,
+          "in_kashyap_band": false
+        },
+        "nonE_prepped_normalized": {
+          "change_rate": 0.9333333333333333,
+          "in_kashyap_band": false
+        },
+        "f1_changed_full_generation": {
+          "change_rate": 0.4666666666666667,
+          "in_kashyap_band": false
+        },
+        "f1_changed_first_line": {
+          "change_rate": 0.18333333333333332,
+          "in_kashyap_band": false
+        }
+      }
+    },
+    "Mamba2": {
+      "run_dir": "results/run_3b_m2",
+      "n": 60,
+      "delta_f1_by_scoring": {
+        "first_line": {
+          "delta_f1_points": -0.31216931216931215,
+          "ci_points": [
+            -8.328108465608466,
+            7.455224867724865
+          ],
+          "excludes_zero": false,
+          "magnitude_in_kashyap_band": false
+        },
+        "full_generation": {
+          "delta_f1_points": 2.633415506995469,
+          "ci_points": [
+            -2.724829715456804,
+            8.161020184578033
+          ],
+          "excludes_zero": false,
+          "magnitude_in_kashyap_band": false
+        },
+        "longbench_e_official": {
+          "delta_f1_points": 2.633415506995469,
+          "ci_points": [
+            -2.724829715456804,
+            8.161020184578033
+          ],
+          "excludes_zero": false,
+          "magnitude_in_kashyap_band": false
+        },
+        "longbench_nonE_official": {
+          "delta_f1_points": 2.633415506995469,
+          "ci_points": [
+            -2.724829715456804,
+            8.161020184578033
+          ],
+          "excludes_zero": false,
+          "magnitude_in_kashyap_band": false
+        },
+        "longbench_official_first_line": {
+          "delta_f1_points": -0.31216931216931215,
+          "ci_points": [
+            -8.328108465608466,
+            7.455224867724865
+          ],
+          "excludes_zero": false,
+          "magnitude_in_kashyap_band": false
+        }
+      },
+      "change_rate_by_definition": {
+        "raw_exact_full_generation": {
+          "change_rate": 0.9166666666666666,
+          "in_kashyap_band": false
+        },
+        "raw_exact_first_line": {
+          "change_rate": 0.45,
+          "in_kashyap_band": false
+        },
+        "normalized_em_full_generation": {
+          "change_rate": 0.9,
+          "in_kashyap_band": false
+        },
+        "normalized_em_first_line": {
+          "change_rate": 0.4166666666666667,
+          "in_kashyap_band": true
+        },
+        "nonE_prepped_normalized": {
+          "change_rate": 0.9,
+          "in_kashyap_band": false
+        },
+        "f1_changed_full_generation": {
+          "change_rate": 0.5,
+          "in_kashyap_band": false
+        },
+        "f1_changed_first_line": {
+          "change_rate": 0.21666666666666667,
+          "in_kashyap_band": false
+        }
+      }
+    }
+  },
+  "jackknife_first_line": {
+    "GatedDeltaNet": {
+      "n": 60,
+      "full_sample": {
+        "mean_points": 3.335978835978836,
+        "ci_points": [
+          -4.278042328042328,
+          11.150793650793652
+        ],
+        "excludes_zero": false
+      },
+      "leave_one_out": {
+        "min_mean_points": 1.6976055959106808,
+        "max_mean_points": 5.087436104385256,
+        "n_deletions_that_lose_significance": null
+      },
+      "greedy_deletion": {
+        "k_to_lose_significance": null,
+        "note": "examples dropped, most-supportive-first, before the 95% CI stops excluding zero. null => the full sample was not significant, so there is nothing to break."
+      }
+    },
+    "DeltaNet": {
+      "n": 60,
+      "full_sample": {
+        "mean_points": 6.715121136173767,
+        "ci_points": [
+          0.4285714285714285,
+          13.422044695071014
+        ],
+        "excludes_zero": true
+      },
+      "leave_one_out": {
+        "min_mean_points": 5.134021494414001,
+        "max_mean_points": 8.523852002888576,
+        "n_deletions_that_lose_significance": 17
+      },
+      "greedy_deletion": {
+        "k_to_lose_significance": 1,
+        "note": "examples dropped, most-supportive-first, before the 95% CI stops excluding zero. null => the full sample was not significant, so there is nothing to break."
+      }
+    },
+    "Mamba2": {
+      "n": 60,
+      "full_sample": {
+        "mean_points": -0.31216931216931215,
+        "ci_points": [
+          -8.142923280423279,
+          7.389021164021164
+        ],
+        "excludes_zero": false
+      },
+      "leave_one_out": {
+        "min_mean_points": -2.0123755716976053,
+        "max_mean_points": 1.3774549367769708,
+        "n_deletions_that_lose_significance": null
+      },
+      "greedy_deletion": {
+        "k_to_lose_significance": null,
+        "note": "examples dropped, most-supportive-first, before the 95% CI stops excluding zero. null => the full sample was not significant, so there is nothing to break."
+      }
+    }
+  }
+}

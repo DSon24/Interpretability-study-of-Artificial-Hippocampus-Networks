@@ -34,6 +34,7 @@ decision immediately after it records how that evidence changes execution.
 - [Findings from the no-AHN floor run (r54, 9 Sep)](#findings-from-the-no-ahn-floor-run-r54-9-sep)
 - [Findings from the RULER retention curve on corrected scoring (Run 025 redone, 9 Sep)](#findings-from-the-ruler-retention-curve-on-corrected-scoring-run-025-redone-9-sep)
 - [Findings from the RULER needle-placement check on corrected scoring (04q, 9 Sep)](#findings-from-the-ruler-needle-placement-check-on-corrected-scoring-04q-9-sep)
+- [Findings from the Kashyap scoring-convention reconciliation (9 Sep)](#findings-from-the-kashyap-scoring-convention-reconciliation-9-sep)
 
 ---
 
@@ -1554,3 +1555,87 @@ retention.
 config. `in_sink_region` had too few examples to report. `mean_digit_rank` on the jlens
 readout, `lens_validated=False`. `multi_occurrence_examples` is empty — no needle-string
 ambiguity in this cohort.
+
+
+## Findings from the Kashyap scoring-convention reconciliation (9 Sep)
+
+`results/05_kashyap_reconciliation.json`; `kashyap_reconciliation.py` (CPU-only,
+re-scores the saved generations in `results/run_3b_*/03_nowrite_reproduction.json`;
+no GPU, no model). Two of our RQ1 numbers appeared to conflict with the concurrent
+write-attrition submission (Kashyap 2026): mean F1 moves 0.4–2.3 points there, 38–42%
+of answers change. Our DeltaNet ΔF1 was +6.7 points with a CI excluding zero, and our
+GDN change rate was 33.3%. This entry tests whether either conflict is real. Neither is.
+
+**1. Official LongBench-E scoring reads the full generation, and our metric of record
+does not.** `scorer_e` in `eval/longbench/eval.py` truncates a prediction to its first
+line **only** for `trec` / `triviaqa` / `samsum` / `lsht`. `hotpotqa` is not in that
+list, so the official LongBench-E score for our cohort is computed on the whole
+generation. Our primary metric since the 19–20 Aug correction has been first-line. The
+two are not the same convention, and the difference is not small:
+
+| cell | first-line (ours) | official LongBench-E | in Kashyap's 0.4–2.3 band |
+|---|---:|---:|---|
+| GatedDeltaNet | +3.34 pts | **−1.44** [−7.43, +3.99] | yes |
+| DeltaNet | **+6.72** [+0.18, +13.65] | **−2.37** [−8.14, +2.70] | 0.07 pts outside |
+| Mamba2 | −0.31 pts | **+2.63** [−2.72, +8.16] | 0.33 pts outside |
+
+Re-scoring with the vendored official metric reproduces our `full_generation` column
+exactly, and the non-E `scorer` path (its prefix-split chain never fires on these
+generations) gives the same numbers again. So the existing full-generation column *is*
+the official number; it was simply not the one being reported.
+
+**2. The DeltaNet contradiction is withdrawn.** +6.7 points was a first-line artefact.
+Under the convention Kashyap's band is stated in, DeltaNet is −2.37 points with a CI
+spanning zero — the same "answers change, quality does not" shape he reports. No cell
+contradicts his band once the conventions are matched; all three CIs span zero and all
+three magnitudes land within 0.33 points of it.
+
+**3. The scoring convention flips the sign of the RQ1 headline in all three cells.**
+GDN +3.34 → −1.44, DeltaNet +6.72 → −2.37, Mamba2 −0.31 → +2.63. This is a larger
+methodological exposure than the Kashyap comparison it was run to settle: Table 5's
+headline direction is a function of a scoring choice, not of the data. Table 5 must
+state which convention it reports and why, and the 19–20 Aug argument for first-line
+(that it matches the published *direction* and change-rate band) has to be restated now
+that the direction it matches is the opposite one.
+
+**4. His 38–42% change rate is raw first-line string equality.** Sweeping every
+plausible definition on the same saved generations:
+
+| definition | GDN | DeltaNet | Mamba2 |
+|---|---:|---:|---:|
+| raw exact, full generation | 91.7% | 93.3% | 91.7% |
+| **raw exact, first line** | **40.0%** | **40.0%** | 45.0% |
+| normalised-EM, first line *(our headline)* | 33.3% | 36.7% | 41.7% |
+| F1 changed, full generation | 53.3% | 46.7% | 50.0% |
+
+Two of three cells land dead-centre in 38–42% under raw first-line equality. Our
+headline 33.3% is the same comparison after `normalize_answer`, which folds away case,
+punctuation and articles. The mild change-rate tension was a normalisation step.
+
+**5. DeltaNet's ΔF1 significance was one example deep.** Of the three cells, only
+DeltaNet's first-line CI excluded zero ([+0.43, +13.42] at n_boot=4000). Jackknifing:
+**17 of 60 single-example deletions lose significance**, and dropping the single most
+supportive example is enough (greedy k = 1). Leave-one-out means range +5.13 to +8.52
+points. Even on its own metric that result could not have carried a claim against a
+published band. GDN and Mamba2 were not significant to begin with, so there was nothing
+to break.
+
+**6. What this changes.** Both apparent conflicts with the concurrent submission are
+withdrawn, and they had a single cause. What replaces them is a sharper internal
+question — which scoring convention Table 5 reports — and a specific ask for Gautam:
+which scorer produced his band, over which LongBench tasks, at what n, and whether
+"removing all writes" keeps the 128 attention sinks (our no-AHN floor already shows
+NOWRITE-proxy at F1 ~0.34 is not module removal at F1 0.076, so the two conditions may
+not be the same contrast).
+
+**7. Caveats.** One dataset (LongBench-E HotpotQA), n=60 per cell, one backbone, 3B
+only. Kashyap's band is quoted from the proposal's related-work section, not read off
+his artefacts; item 6's questions are exactly the ones that would let this comparison
+be stated precisely rather than approximately. The normalisation order in
+`ahn_interp.normalize_answer` differs subtly from the official one (articles before
+punctuation rather than after); it made no difference on these generations, and the
+official implementation is transcribed faithfully in `kashyap_reconciliation.py`.
+
+**8. Process note.** This was reachable from data that had been on disk since 20 August.
+The two numbers were compared against a published band for a month without checking
+that they were measured the same way. The check cost no GPU and ran in seconds.
