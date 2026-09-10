@@ -368,9 +368,13 @@ condition-level observations per layer):
 | 27 | 0.991× | [0.962, 1.021] | .546 |
 
 Layer 18's small positive effect then **fails its own scrambled-needle control** — with
-scrambled content the same analysis gives 1.009× [0.974, 1.045], p = .594 at layer 18
-(and 0.961× [0.937, 0.985], p = .0029 at layer 9, i.e. significant in the *wrong*
+scrambled content the same analysis gives 1.011× [0.978, 1.045], p = .511 at layer 18
+(and 0.960× [0.938, 0.982], p = .0012 at layer 9, i.e. significant in the *wrong*
 direction). A prompt-contamination check came back clean: 0 cases across all 84 prompts.
+
+<sub>Scrambled-control folds are the 9 Sep regeneration from `04_niah_C3_analyze.ipynb`
+cell 52 on the cleaned notebook (commit a02c878), now the run of record. The 28 Aug
+values (1.009× / 0.961×) differ only in the third decimal; conclusion unchanged.</sub>
 
 So the honest reading is that **C2 as specified was never a valid selectivity measure**,
 and the corrected version finds no token-level, memory-specific retention signal on this
@@ -455,14 +459,17 @@ retention. Layer 9 should not be pooled with the others.
 
 | layer | raw C2 | baseline-corrected | 95% CI | permutation p | scrambled control |
 |---:|---:|---:|---|---:|---:|
-| 9 | 0.71× | 0.9953× | [0.9816, 1.0092] | .579 | 0.958× |
-| 18 | 0.56× | 1.0463× | [1.0201, 1.0732] | **.0054** | 1.010× |
-| 27 | **5.03×** | **0.9911×** | [0.9657, 1.0173] | .662 | 0.991× |
+| 9 | 0.71× | 0.9953× | [0.9816, 1.0092] | .579 | 0.960× |
+| 18 | 0.56× | 1.0463× | [1.0201, 1.0732] | **.0054** | 1.011× |
+| 27 | **5.03×** | **0.9911×** | [0.9657, 1.0173] | .662 | 0.996× |
 
 Layer 27's apparent 5× advantage is **entirely baseline preference**. Layer 18 is the only
 layer with a corrected effect, it is tiny (+4.6%), and it does not survive the
-scrambled-needle content control (1.010×, p = .548). Sơn's robustness battery backs this
+scrambled-needle content control (1.011×, p = .511). Sơn's robustness battery backs this
 up: leave-one-distance-out, leave-one-filler-out and a blocked permutation test all agree.
+
+<sub>Scrambled-control column regenerated 9 Sep from `04_niah_C3_analyze.ipynb` cell 52
+(commit a02c878); 28 Aug values were 0.958× / 1.010× / 0.991×, p = .548 at layer 18.</sub>
 
 **4. Revised — in-window vs evicted is basis-dependent.** In the `o_t` basis the gap looked
 decisive (layer 18: 40,644 in-window vs 114,104 evicted). In the pre-registered basis it
