@@ -116,9 +116,16 @@ def first_line(text: str) -> str:
 # --------------------------------------------------------------------------------------
 # RULER NIAH
 # --------------------------------------------------------------------------------------
-def run_ruler(model, tok, sliding_window: int, n: int, ruler_config: str, seed: int):
+def run_ruler(model, tok, sliding_window: int, n: int, ruler_config: str, seed: int,
+              num_attn_sinks: int = 0):
+    """num_attn_sinks: 0 for the stock floor (no sink mechanism); 128 for an AHN
+    checkpoint. It shifts the evicted/in-window split -- a needle in the first
+    `num_attn_sinks` tokens is never compressed, so it is neither evicted nor a fair
+    in-window example. RULER-16384 places the needle at random depth, so in practice
+    almost nothing lands in a 128-token prefix, but the bucket is kept for correctness."""
     ex = ai.load_ruler(config=ruler_config, split="test", n=n, seed=seed)
-    print(f"\nRULER NIAH: {len(ex)} examples, config={ruler_config}")
+    print(f"\nRULER NIAH: {len(ex)} examples, config={ruler_config}, "
+          f"num_attn_sinks={num_attn_sinks}")
     rows, t0 = [], time.time()
     for i, e in enumerate(ex):
         prompt, gold = e["prompt"], e["answer"]
@@ -134,7 +141,9 @@ def run_ruler(model, tok, sliding_window: int, n: int, ruler_config: str, seed: 
             print(f"  ! OOM at example {i}, skipping: {err}")
             continue
         window_start = n_in - sliding_window
-        evicted = needle_pos < window_start  # no attention sinks in the floor
+        in_sink = needle_pos < num_attn_sinks
+        evicted = (not in_sink) and (needle_pos < window_start)
+        placement = "in_sink_region" if in_sink else ("evicted" if evicted else "in_window")
         gold_n, pred_n = ai.normalize_answer(gold), ai.normalize_answer(pred)
         rows.append({
             "idx": i,
@@ -144,6 +153,7 @@ def run_ruler(model, tok, sliding_window: int, n: int, ruler_config: str, seed: 
             "compression_boundary": window_start,
             "eviction_distance": window_start - needle_pos,
             "needle_is_evicted": bool(evicted),
+            "placement": placement,
             "gold": gold,
             "prediction": pred,
             "substring_match": float(gold_n in pred_n) if gold_n else 0.0,
@@ -161,8 +171,9 @@ def run_ruler(model, tok, sliding_window: int, n: int, ruler_config: str, seed: 
             print(f"  -- [{i+1}/{len(ex)}] running substr-acc={acc:.3f}  ({(time.time()-t0)/60:.1f} min)")
         ai.free_cuda()
 
-    ev = [r for r in rows if r["needle_is_evicted"]]
-    iw = [r for r in rows if not r["needle_is_evicted"]]
+    ev = [r for r in rows if r["placement"] == "evicted"]
+    iw = [r for r in rows if r["placement"] == "in_window"]
+    sk = [r for r in rows if r["placement"] == "in_sink_region"]
 
     def _agg(subset):
         if not subset:
@@ -183,9 +194,12 @@ def run_ruler(model, tok, sliding_window: int, n: int, ruler_config: str, seed: 
         "n_scored": len(rows),
         "n_evicted": len(ev),
         "n_in_window": len(iw),
+        "n_in_sink_region": len(sk),
+        "num_attn_sinks": num_attn_sinks,
         "all": _agg(rows),
         "evicted": _agg(ev),
         "in_window": _agg(iw),
+        "in_sink_region": _agg(sk),
         "by_task": by_task,
         "ruler_config": ruler_config,
         "wall_min": (time.time() - t0) / 60,
@@ -279,6 +293,75 @@ def run_hotpot(model, tok, sliding_window: int, n: int, max_input: int, seed: in
 
 
 # --------------------------------------------------------------------------------------
+# AHN-on behavioural RULER  (row 70) -- the AHN counterpart to the no-AHN floor
+# --------------------------------------------------------------------------------------
+def run_ahn_on_ruler(args):
+    """Load a merged AHN checkpoint and run RULER NIAH behaviourally (greedy generation),
+    on the same cohort and with the same substring metric as run_ruler produces for the
+    floor. Every AHN RULER number the project holds so far is a J-lens readout; this is
+    the behavioural one. Compare summary['evicted']['substring_match'] to the floor's
+    0.000 (results/run_3b_floor/06_no_ahn_floor.json)."""
+    acfg = ai.load_run_config(args.ahn_config)
+    seed = int(acfg.get("seed", ai.SEED))
+    ai.set_seed(seed)
+    results_dir = os.path.join("results", acfg["run_name"])
+    os.makedirs(results_dir, exist_ok=True)
+    ai.set_results_dir(results_dir)
+    out_name = "06_ahn_on_ruler.json"
+    out_path = os.path.join(results_dir, out_name)
+    if os.path.exists(out_path) and not args.allow_overwrite:
+        raise SystemExit(f"{out_path} already exists. Pass --allow-overwrite for a rerun.")
+
+    print(json.dumps(acfg, indent=2))
+    print("CUDA_VISIBLE_DEVICES =", os.environ.get("CUDA_VISIBLE_DEVICES", "(unset)"))
+    if not torch.cuda.is_available():
+        raise SystemExit("no CUDA device visible -- set CUDA_VISIBLE_DEVICES to a MIG slice")
+
+    sw = int(acfg["sliding_window"])
+    sinks = int(acfg["num_attn_sinks"])
+    bundle = ai.load_ahn_model(
+        acfg["model_path"],
+        attn_implementation=acfg.get("attn_impl", "flash_attention_2"),
+        device_map="auto",
+        sliding_window=sw,
+        num_attn_sinks=sinks,
+    )
+    audit = ai.audit_config(bundle)
+    print(json.dumps(audit, indent=2, default=str))
+    if not bundle.ahn_layers:
+        raise SystemExit("no AHN layers found on this checkpoint -- wrong config?")
+
+    payload = {
+        "config": acfg,
+        "seed": seed,
+        "sliding_window": sw,
+        "num_attn_sinks": sinks,
+        "ahn_impl": bundle.ahn_impl,
+        "config_audit": audit,
+        "generated": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "note": "AHN-on behavioural RULER NIAH (row 70). Greedy generation, same cohort "
+                "and substring metric as the no-AHN floor (results/run_3b_floor/"
+                "06_no_ahn_floor.json: evicted substring-acc 0.000 n=32, in-window 0.393 "
+                "n=28). Evicted acc ~0 => the J-lens readout is correct and the RQ2 null "
+                "is real; evicted acc >> 0 => the model uses answer information the lens "
+                "reports as absent, and the instrument is the problem.",
+        "ruler_niah": run_ruler(bundle.model, bundle.tokenizer, sw, args.n,
+                                args.ruler_config, seed, num_attn_sinks=sinks),
+    }
+    ai.save_json(payload, out_name)
+    print(f"\nsaved -> {out_path}")
+
+    r = payload["ruler_niah"]["summary"]
+    print("\n=== AHN-ON RULER vs FLOOR ===")
+    for k, floor in (("evicted", "0.000 (n=32)"), ("in_window", "0.393 (n=28)")):
+        if r.get(k):
+            print(f"{k:10s}: AHN substr-acc {r[k]['substring_match']:.3f}  F1 {r[k]['f1']:.3f}  "
+                  f"(n={r[k]['n']})   |  floor {floor}")
+    if r.get("in_sink_region"):
+        print(f"in_sink   : n={r['in_sink_region']['n']} (excluded from the evicted/in-window split)")
+
+
+# --------------------------------------------------------------------------------------
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/run_3b_floor.json")
@@ -292,7 +375,20 @@ def main():
                          "06_no_ahn_floor_nowindow.json. Compare its in-window RULER "
                          "accuracy to the windowed run to check the load path.")
     ap.add_argument("--allow-overwrite", action="store_true")
+    ap.add_argument("--ahn-config",
+                    help="Load a merged AHN checkpoint (e.g. configs/run_3b_gdn.json) and run "
+                         "the RULER NIAH cohort behaviourally with AHN ACTIVE -- greedy "
+                         "generation, same cohort/metric as the no-AHN floor. Answers row 70: "
+                         "is the floor's evicted substring-acc 0.000 also where AHN lands "
+                         "(readout correct, RQ2 null real) or does AHN read meaningfully "
+                         "above it (the J-lens is the problem). Skips HotpotQA (nb03 already "
+                         "has the behavioural RQ1 number). Writes 06_ahn_on_ruler.json under "
+                         "that config's run dir. All other flags except --n/--ruler-config/"
+                         "--allow-overwrite are ignored.")
     args = ap.parse_args()
+
+    if args.ahn_config:
+        return run_ahn_on_ruler(args)
 
     cfg = ai.load_run_config(args.config)
     seed = int(cfg.get("seed", ai.SEED))
