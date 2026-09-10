@@ -1,0 +1,14 @@
+{
+  "summary": {
+    "task": "LV-Eval FactRecall RQ1 behavioural",
+    "cohort": "factrecall_en_128k",
+    "n": 30,
+    "official_eval_f1": 0.0,
+    "scorer": "eval/lveval/eval.py (qa_f1_score, full generation)",
+    "method": "ahn",
+    "sliding_window": 8064,
+    "num_attn_sinks": 128,
+    "model_name_used": "qwen2_gdn_3b",
+    "note": "model_name MUST contain 'qwen2' or build_chat skips the chat template. First run used 'gdn_3b' (no template) -> 2.42; corrected run with template -> official eval.py F1 = 0.0. Planted fact confirmed present in truncated prompt, so 0.0 is genuine retrieval failure, not truncation. Open question: compression loss vs strong Einstein prior not yet separated (31k-context retest still returned Einstein)."
+  }
+}
