@@ -1646,3 +1646,17 @@ official implementation is transcribed faithfully in `kashyap_reconciliation.py`
 **8. Process note.** This was reachable from data that had been on disk since 20 August.
 The two numbers were compared against a published band for a month without checking
 that they were measured the same way. The check cost no GPU and ran in seconds.
+
+## Findings from the 10 Sep LV-Eval FactRecall run
+
+**Run.** factrecall_en_128k, n=30, run-of-record checkpoint (merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN) through eval/lveval/. Window 8064, sinks 128, AHN active, greedy, prompt truncated to 15,500 tokens, torch.compile disabled. Scored with eval/lveval/eval.py.
+
+**Result.** Official eval.py F1 = 0.0 (n=30). Reproduced twice. Saved: results/run_3b_gdn/factrecall_en_rq1.json (committed 5474549).
+
+**Chat-template bug (not yet fixed).** build_chat() in eval/lveval/utils.py only applies the Qwen template when model_name contains qwen2/qwen3; other names (e.g. gdn_3b) silently use the raw prompt. First run used gdn_3b, no template, model rambled -> 2.42. With qwen2_gdn_3b the template applies -> 0.0.
+
+**Two further harness bugs (deferred).** pred.py single_processing() and the id=-1 path load the model without method/start_size/recent_size (silently bare Qwen); id=-1 also sets device="auto" which crashes model.to. This run used id=0, method="ahn" directly.
+
+**0.0 verified.** Template applied; needle present after truncation; not a truncation artefact (31k retest same answer); planted fact is real (gold "Ludwig Beethoven", model said "Albert Einstein" 30/30). Model had the fact in-context and did not use it. Does NOT separate compression-loss from strong-prior (A-vs-B) -- left open.
+
+**Caveats.** n=30 (first 30, not stratified); paper reports 12.51 on full 200 -- not directly comparable yet. Metric of record = official full-generation eval.py.
