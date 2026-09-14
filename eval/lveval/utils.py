@@ -154,14 +154,14 @@ def build_chat(tokenizer, prompt, model_name):
         prompt = f"<s>[INST] {prompt} [/INST]"
     elif "internlm" in model_name:
         prompt = f"<|User|>:{prompt}<eoh>\n<|Bot|>:"
-    elif "qwen2" in model_name:
+    elif "qwen2" in model_name.lower() or "qwen-2" in model_name.lower():
         messages = [{"role": "user", "content": prompt}]
         prompt = tokenizer.apply_chat_template(
             messages,
             tokenize=False,
             add_generation_prompt=True
         )
-    elif "qwen3" in model_name:
+    elif "qwen3" in model_name.lower() or "qwen-3" in model_name.lower():
         messages = [{"role": "user", "content": prompt}]
         prompt = tokenizer.apply_chat_template(
             messages,
