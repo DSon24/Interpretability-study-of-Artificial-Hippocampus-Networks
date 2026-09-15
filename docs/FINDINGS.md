@@ -1660,3 +1660,23 @@ that they were measured the same way. The check cost no GPU and ran in seconds.
 **0.0 verified.** Template applied; needle present after truncation; not a truncation artefact (31k retest same answer); planted fact is real (gold "Ludwig Beethoven", model said "Albert Einstein" 30/30). Model had the fact in-context and did not use it. Does NOT separate compression-loss from strong-prior (A-vs-B) -- left open.
 
 **Caveats.** n=30 (first 30, not stratified); paper reports 12.51 on full 200 -- not directly comparable yet. Metric of record = official full-generation eval.py.
+
+
+## Findings from the 15 Sep LV-Eval FactRecall validation
+
+1. The earlier FactRecall `F1 = 0.0` reproduction used a mismatched evaluation setup: `recent_size=8064`, `max_length=15500`, and the first 30 dataset examples. The official AHN LV-Eval configuration is `model_max_len=256000`, `start_size=128`, and `recent_size=32640`.
+
+2. The corrected pipeline was checked against upstream before scaling. The local AHN implementation matches ByteDance upstream apart from Python cache directories, and the AHN tensors in the merged Qwen2.5-3B + AHN-GDN checkpoint exactly match the released ByteDance AHN-GDN checkpoint.
+
+3. A 50-example evenly spaced validation across `factrecall_en_128k` produced:
+   - nonzero F1: 11/50
+   - mean raw F1: 0.16076
+   - reported F1 × 100: 16.08
+
+   This is a validation subset, not the official full 200-example benchmark score.
+
+4. A strong position dependence appears in this subset. The planted fact is outside the 32,640-token recent window for the first 36 sampled cases, and all 36 score zero. Once the fact enters the recent window, 11/14 sampled cases receive nonzero F1, including several exact `Ludwig Beethoven` answers with F1=1.0.
+
+5. The position effect is recorded as an observation only. No mechanistic claim is made yet about AHN compressed-memory failure; further interpretation is deferred until the team decides whether this should take priority over the current execution tasks.
+
+Notebook: `notebooks/06_factrecall_reproduction.ipynb`.
