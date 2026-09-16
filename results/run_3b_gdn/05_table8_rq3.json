@@ -11,36 +11,39 @@
     "n": 0
   },
   {
-    "predictor": "target rank @8K",
+    "predictor": "target rank @ prompt end",
     "outcome": "per-example dF1",
-    "rho": NaN,
-    "p": NaN,
+    "rho": -0.09971581885175808,
+    "p": 0.44842733654140526,
+    "n": 60,
     "ci": [
-      NaN,
-      NaN
+      -0.315693811880211,
+      0.12181031301174602
     ],
-    "n": 0
+    "excludes_zero": false
   },
   {
-    "predictor": "target mass @8K",
+    "predictor": "target mass @ prompt end",
     "outcome": "per-example dF1",
-    "rho": NaN,
-    "p": NaN,
+    "rho": 0.18670365125255384,
+    "p": 0.15318478543219274,
+    "n": 60,
     "ci": [
-      NaN,
-      NaN
+      -0.04327213867350348,
+      0.3944763423317388
     ],
-    "n": 0
+    "excludes_zero": false
   },
   {
-    "predictor": "readout entropy @8K",
+    "predictor": "readout entropy @ prompt end",
     "outcome": "per-example dF1",
-    "rho": NaN,
-    "p": NaN,
+    "rho": 0.19422111825015345,
+    "p": 0.13701921761321628,
+    "n": 60,
     "ci": [
-      NaN,
-      NaN
+      -0.03984252786240887,
+      0.3919404562201555
     ],
-    "n": 0
+    "excludes_zero": false
   }
 ]
