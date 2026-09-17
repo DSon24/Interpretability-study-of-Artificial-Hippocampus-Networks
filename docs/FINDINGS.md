@@ -1695,3 +1695,27 @@ Current GDN Table 8 results (n=60):
 All three confidence intervals include zero. `half_life` remains unavailable (`n=0`) because the joined rows contain no fitted half-life values; that is separate from the field-name mismatch.
 
 Execution task `Fix nb05 Table 8 field-name mismatch against 04b` is now closed.
+
+## BABILong 64k C1/C2 construction-robustness result — 2026-09-17
+
+Full frozen cohort: 32 deeply-evicted BABILong `qa1` examples, screened with
+support distance >32,640 tokens. Final method:
+`babilong_c1c2_pointcapture_v3`.
+
+C1 gold-answer rank:
+- L9: median 117,455; 95% CI [90,070, 130,578.5]
+- L18: median 121,581.5; 95% CI [97,081, 136,081]
+- L27: median 138,655; 95% CI [125,260, 146,559]
+- full-vocabulary chance rank: 75,968
+- no layer passes the C1 below-chance criterion.
+
+C2 baseline-corrected per-example effect:
+- L9: 0.824x; 95% CI [0.751, 0.905]
+- L18: 1.421x; 95% CI [1.128, 1.776], p=0.0029
+- L27: 0.962x; 95% CI [0.808, 1.142]
+- no layer clears the pre-registered 10x effect bar.
+
+Interpretation: the strong J-Lens retention signal does not reproduce as a
+construction-robust effect on this frozen deeply-evicted BABILong qa1 cohort.
+This does not establish that AHN contains no useful memory; it establishes that
+this J-Lens C1/C2 signal does not strongly generalize to this construction.
