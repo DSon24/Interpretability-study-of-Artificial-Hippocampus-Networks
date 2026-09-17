@@ -1,0 +1,63 @@
+{
+  "table": 7,
+  "status": "preregistered_half_life_comparison_not_estimable",
+  "analysis_type": "corrected_cross_cell_ruler_retention",
+  "primary_cohort": "RULER NIAH n=60",
+  "analysis_layer": 27,
+  "conditions": {
+    "condition": "ordered",
+    "readout": "jlens",
+    "needle_is_evicted": true
+  },
+  "source_files": {
+    "GatedDeltaNet": "/workspace/Interpretability-study-of-Artificial-Hippocampus-Networks/results/run_3b_gdn/04i_ruler_controls_rows.json",
+    "DeltaNet": "/workspace/Interpretability-study-of-Artificial-Hippocampus-Networks/results/run_3b_dn/04i_ruler_controls_rows.json",
+    "Mamba2": "/workspace/Interpretability-study-of-Artificial-Hippocampus-Networks/results/run_3b_m2/04i_ruler_controls_rows.json"
+  },
+  "eviction_distance_range": [
+    46.0,
+    7414.0
+  ],
+  "cells": {
+    "GatedDeltaNet": {
+      "n_evicted": 32,
+      "median_rank": 49775.857142857145,
+      "spearman_rho": 0.0656158357771261,
+      "permutation_p": 0.724027597240276,
+      "distance_verdict": "flat -- no distance dependence over the range measured"
+    },
+    "DeltaNet": {
+      "n_evicted": 32,
+      "median_rank": 38581.428571428565,
+      "spearman_rho": 0.024926686217008796,
+      "permutation_p": 0.8896110388961104,
+      "distance_verdict": "flat -- no distance dependence over the range measured"
+    },
+    "Mamba2": {
+      "n_evicted": 32,
+      "median_rank": 76951.21428571429,
+      "spearman_rho": 0.09934017595307917,
+      "permutation_p": 0.5846415358464153,
+      "distance_verdict": "flat -- no distance dependence over the range measured"
+    }
+  },
+  "ruler_distance_analysis": {
+    "role": "descriptive_only",
+    "reason": "RULER provides naturally varying example-specific eviction distances, not a controlled repeated distance sweep of the same targets. The rank-vs-distance result is therefore not used to redefine the pre-registered retention half-life."
+  },
+  "preregistered_half_life_test": {
+    "estimable": false,
+    "two_x_ratio_criterion_testable": false,
+    "bootstrap_ratio_ci": null,
+    "holm_adjustment": null,
+    "reason": "The validated primary RQ2 cohort is RULER NIAH n=60. The earlier homemade controlled distance sweep is excluded from primary inference because that synthetic construction repeatedly failed to generalize. Under the validated RULER design there is no defensible controlled half-life estimand for the original cross-cell Table 7 comparison."
+  },
+  "homemade_distance_sweep": {
+    "used_for_primary_table7": false,
+    "role": "supporting_or_limitations_only"
+  },
+  "fallback_inference": {
+    "performed": false,
+    "reason": "No pre-registered cross-cell inferential procedure exists for a replacement nonparametric distance statistic, so no post-hoc test is introduced."
+  }
+}
