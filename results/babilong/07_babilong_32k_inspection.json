@@ -1,0 +1,218 @@
+{
+  "summary": {
+    "dataset": "RMT-team/babilong",
+    "config": "32k",
+    "task": "qa1",
+    "n_inspected": 20,
+    "ahn_recent_window": 32640,
+    "context_tokens_min": 30104,
+    "context_tokens_median": 31021.5,
+    "context_tokens_max": 31598,
+    "support_found_n": 20,
+    "evicted_n": 0,
+    "evicted_fraction": 0.0,
+    "decision": "move_to_64k"
+  },
+  "rows": [
+    {
+      "id": 0,
+      "question": "Where is Mary? ",
+      "target": "bathroom",
+      "context_tokens": 31226,
+      "support_found": true,
+      "support": "Mary journeyed to the bathroom.",
+      "support_distance_from_end": 17288,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 1,
+      "question": "Where is Sandra? ",
+      "target": "kitchen",
+      "context_tokens": 30650,
+      "support_found": true,
+      "support": "Sandra moved to the kitchen.",
+      "support_distance_from_end": 1607,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 2,
+      "question": "Where is Mary? ",
+      "target": "kitchen",
+      "context_tokens": 30824,
+      "support_found": true,
+      "support": "\"Swing to\nthe left, so that I may have a good chance.\" \"No telling what'll come of it if you shoot.\" \"I'll simply put a few holes through that canoe.\" Mary journeyed to the kitchen.",
+      "support_distance_from_end": 2168,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 3,
+      "question": "Where is John? ",
+      "target": "kitchen",
+      "context_tokens": 31129,
+      "support_found": true,
+      "support": "John went to the kitchen.",
+      "support_distance_from_end": 4670,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 4,
+      "question": "Where is Sandra? ",
+      "target": "bedroom",
+      "context_tokens": 30104,
+      "support_found": true,
+      "support": "Sandra moved to the bedroom.",
+      "support_distance_from_end": 20021,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 5,
+      "question": "Where is John? ",
+      "target": "office",
+      "context_tokens": 30973,
+      "support_found": true,
+      "support": "John moved to the office.",
+      "support_distance_from_end": 7042,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 6,
+      "question": "Where is Mary? ",
+      "target": "garden",
+      "context_tokens": 31598,
+      "support_found": true,
+      "support": "Mary went to the garden.",
+      "support_distance_from_end": 17576,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 7,
+      "question": "Where is Sandra? ",
+      "target": "bathroom",
+      "context_tokens": 30217,
+      "support_found": true,
+      "support": "Sandra travelled to the bathroom.",
+      "support_distance_from_end": 12782,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 8,
+      "question": "Where is Mary? ",
+      "target": "kitchen",
+      "context_tokens": 31286,
+      "support_found": true,
+      "support": "Mary went back to the kitchen.",
+      "support_distance_from_end": 30401,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 9,
+      "question": "Where is John? ",
+      "target": "bedroom",
+      "context_tokens": 31070,
+      "support_found": true,
+      "support": "\"I, too, have just come in\nfrom a long parley with Crowfoot and his Chiefs.\" John journeyed to the bedroom.",
+      "support_distance_from_end": 4732,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 10,
+      "question": "Where is Daniel? ",
+      "target": "office",
+      "context_tokens": 31456,
+      "support_found": true,
+      "support": "Madame Elisabeth, her niece declares, \"replied with still\nmore contempt to their shocking questions.\" Daniel moved to the office.",
+      "support_distance_from_end": 815,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 11,
+      "question": "Where is Daniel? ",
+      "target": "office",
+      "context_tokens": 30700,
+      "support_found": true,
+      "support": "Daniel moved to the office.",
+      "support_distance_from_end": 12562,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 12,
+      "question": "Where is Mary? ",
+      "target": "bathroom",
+      "context_tokens": 31199,
+      "support_found": true,
+      "support": "Mary went to the bathroom.",
+      "support_distance_from_end": 1229,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 13,
+      "question": "Where is Sandra? ",
+      "target": "bathroom",
+      "context_tokens": 30287,
+      "support_found": true,
+      "support": "Sandra went back to the bathroom.",
+      "support_distance_from_end": 8984,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 14,
+      "question": "Where is Sandra? ",
+      "target": "bathroom",
+      "context_tokens": 30391,
+      "support_found": true,
+      "support": "Sandra travelled to the bathroom.",
+      "support_distance_from_end": 11779,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 15,
+      "question": "Where is Mary? ",
+      "target": "hallway",
+      "context_tokens": 31517,
+      "support_found": true,
+      "support": "Mary moved to the hallway.",
+      "support_distance_from_end": 8092,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 16,
+      "question": "Where is Sandra? ",
+      "target": "kitchen",
+      "context_tokens": 31304,
+      "support_found": true,
+      "support": "But go on;\nlet us hear what followed.\" Sandra went to the kitchen.",
+      "support_distance_from_end": 6194,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 17,
+      "question": "Where is Daniel? ",
+      "target": "office",
+      "context_tokens": 30651,
+      "support_found": true,
+      "support": "Daniel journeyed to the office.",
+      "support_distance_from_end": 28581,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 18,
+      "question": "Where is Sandra? ",
+      "target": "kitchen",
+      "context_tokens": 30436,
+      "support_found": true,
+      "support": "Sandra journeyed to the kitchen.",
+      "support_distance_from_end": 1281,
+      "evicted_past_32640": false
+    },
+    {
+      "id": 19,
+      "question": "Where is John? ",
+      "target": "bedroom",
+      "context_tokens": 31123,
+      "support_found": true,
+      "support": "\"I\ndaresay they're not all exhausted yet.\" \"Perhaps,\" Hilary said slowly, \"some\nplaces are like some people, the longer and\nbetter you know them, the more you keep\nfinding out in them to like.\" \"Father says,\" Pauline suggested, \"that one\nfinds, as a rule, what one is looking for.\" John went back to the bedroom.",
+      "support_distance_from_end": 645,
+      "evicted_past_32640": false
+    }
+  ]
+}

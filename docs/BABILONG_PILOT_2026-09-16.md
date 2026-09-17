@@ -42,3 +42,34 @@ For each example:
 Do not launch a full BABILong GPU benchmark yet.
 
 First establish a small valid C1 cohort, then adapt C1 scoring to BABILong answers, and only after C1 works proceed to C2.
+
+## 64k cohort freeze
+
+BABILong `32k` was rejected for the retention pilot because its contexts were only
+30,104–31,598 Qwen tokens, below the AHN recent window of 32,640 tokens. In the
+20-example inspection, 0/20 supporting facts were genuinely evicted.
+
+BABILong `64k` was then inspected.
+
+Initial 20-example check:
+- context range: 58,653–63,361 Qwen tokens
+- supporting fact found: 20/20
+- genuinely evicted: 6/20
+- evicted fraction: 0.30
+
+The complete `qa1` 64k cohort was then scanned before GPU use.
+
+Full cohort:
+- total examples: 100
+- genuinely evicted examples: 32
+- usable fraction: 0.32
+- AHN recent window: 32,640 tokens
+
+Frozen candidate IDs:
+
+`[0, 4, 6, 8, 11, 17, 21, 24, 29, 30, 31, 32, 37, 40, 41, 49, 50, 60, 66, 67, 68, 72, 73, 74, 77, 83, 84, 86, 88, 89, 90, 99]`
+
+These 32 examples form the candidate cohort for the BABILong C1 pilot.
+
+Next step: run a small C1 smoke test on 5 frozen examples before scaling to the
+full cohort.
