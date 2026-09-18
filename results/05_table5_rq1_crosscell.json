@@ -1,0 +1,47 @@
+{
+  "analysis": "RQ1 paired cross-cell comparison",
+  "status": "final",
+  "n_examples": 60,
+  "paired_examples": true,
+  "score_field": "delta_f1_fl",
+  "scoring": "first-line LongBench scoring",
+  "seed": 20260820,
+  "method": {
+    "effect": "mean paired difference in AHN-minus-NOWRITE delta F1",
+    "confidence_interval": "10000-example paired bootstrap",
+    "hypothesis_test": "10000-draw paired sign-flip permutation test",
+    "multiple_testing": "Holm correction across 3 pairwise comparisons"
+  },
+  "within_cell": {
+    "GatedDeltaNet": {
+      "delta_f1_points": -4.10
+    },
+    "DeltaNet": {
+      "delta_f1_points": 6.72
+    },
+    "Mamba2": {
+      "delta_f1_points": -0.31
+    }
+  },
+  "pairwise": {
+    "DeltaNet_vs_GatedDeltaNet": {
+      "difference_f1_points": 10.81,
+      "ci95": [3.15, 19.13],
+      "permutation_p": 0.0108,
+      "holm_p": 0.0324
+    },
+    "DeltaNet_vs_Mamba2": {
+      "difference_f1_points": 7.03,
+      "ci95": [1.24, 13.69],
+      "permutation_p": 0.0335,
+      "holm_p": 0.0670
+    },
+    "GatedDeltaNet_vs_Mamba2": {
+      "difference_f1_points": -3.79,
+      "ci95": [-13.37, 5.52],
+      "permutation_p": 0.4517,
+      "holm_p": 0.4517
+    }
+  },
+  "conclusion": "AHN behavioral effects differ by recurrent cell family. DeltaNet has a larger AHN-minus-NOWRITE delta F1 than GatedDeltaNet by 10.81 F1 points, surviving Holm correction. The DeltaNet-Mamba2 and GatedDeltaNet-Mamba2 contrasts do not survive Holm correction."
+}

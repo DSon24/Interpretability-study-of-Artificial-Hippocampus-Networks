@@ -1719,3 +1719,16 @@ Interpretation: the strong J-Lens retention signal does not reproduce as a
 construction-robust effect on this frozen deeply-evicted BABILong qa1 cohort.
 This does not establish that AHN contains no useful memory; it establishes that
 this J-Lens C1/C2 signal does not strongly generalize to this construction.
+
+### RQ1 cross-cell comparison — final
+
+Using the same 60 paired LongBench examples across GatedDeltaNet, DeltaNet, and Mamba2, Table 5 uses first-line scoring (`delta_f1_fl`).
+
+- GatedDeltaNet: ΔF1 = -4.10 pts
+- DeltaNet: ΔF1 = +6.72 pts
+- Mamba2: ΔF1 = -0.31 pts
+- DeltaNet vs GatedDeltaNet: +10.81 pts, 95% CI [3.15, 19.13], Holm-adjusted p = 0.0324
+- DeltaNet vs Mamba2: +7.03 pts, 95% CI [1.24, 13.69], Holm-adjusted p = 0.0670
+- GatedDeltaNet vs Mamba2: -3.79 pts, 95% CI [-13.37, 5.52], Holm-adjusted p = 0.4517
+
+Conclusion: AHN behavioral effects differ by recurrent cell family. The DeltaNet–GatedDeltaNet contrast survives Holm correction; the other pairwise contrasts do not.
