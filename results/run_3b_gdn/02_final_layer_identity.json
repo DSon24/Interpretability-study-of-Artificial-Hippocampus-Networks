@@ -1,0 +1,15 @@
+{
+  "backbone": "Qwen/Qwen2.5-3B-Instruct",
+  "generated": "2026-09-20",
+  "final_layer_identity": {
+    "layer": 35,
+    "kl_reference_no_lens_mean": 0.00038,
+    "kl_reference_no_lens_max": 0.00050,
+    "threshold": 0.01,
+    "passed": true,
+    "n_eval": 8,
+    "corpus": "wikitext-103-raw, skip=0 (held-out eval prompts)",
+    "jlens_j35_fitted": false,
+    "note": "jlens.fit requires source_layers < target_layer (target defaults to the final layer, 35), so J35 is not a fittable object: 'source_layers must all be < target_layer=35; got max=35'. The transport at the final layer is the identity by definition, so the check reduces to: final norm + lm_head on the layer-35 residual reproduces the model's own next-token logits. Measured by fit_layer35.py's lens=None reference path on Modal (A100, 2026-09-20; means read from the run log, per-prompt rows not saved because the script aborted at the fit step). It validates the norm+unembed path only; it says nothing about the fitted J9/J18/J27 Jacobians. Preregistered check assumed a fittable J35 -- deviation to be confirmed with Gautam."
+  }
+}
