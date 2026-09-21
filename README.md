@@ -115,6 +115,7 @@ that construction question supporting analysis, not an execution blocker.
 ahn_interp.py                 shared instrumentation — imported by every notebook
 no_ahn_floor.py               standalone GPU run: Table 1 Primary no-AHN floor — stock Qwen + forced SWA, RULER + HotpotQA n=60 (r54, run 9 Sep)
 per_layer_controls.py         CPU-only: recompute Table 4 within layer, both readout bases
+build_paper_figures.py        CPU-only: Figures 1, 2, 4-8 from committed results (Figure 3: build_fig3.py)
 extract_c2_corrected.py       CPU-only: pull Son's baseline-corrected C2 out of the notebook
 probe_construction.py         CPU-only: the NIAH construction ladder — Findings, 4–5 Sep
 probe_prompt_format.py        CPU-only: prompt-format probe behind the same findings
@@ -408,6 +409,23 @@ Every notebook's bootstrap cell walks up the tree for `ahn_interp.py`, so runnin
 4. Download the `results/<run>/*.json` files.
 5. Run `05_analysis_and_figures.ipynb` **on your laptop**. It needs no GPU and no model.
    GPU time is the scarce resource; analysis time is not.
+
+### Rebuilding the figures from a fresh clone (no GPU, no model)
+
+Every figure in the paper's artefact set can be rebuilt on a laptop from the result JSONs
+committed under `results/` — nothing needs to be downloaded from the GPU box:
+
+```bash
+pip install numpy scipy matplotlib     # not in pyproject.toml; the figure scripts need only these
+python build_paper_figures.py          # Figures 1, 2, 4, 5, 6, 7, 8  (Figure 1 is a schematic)
+python build_fig3.py                   # Figure 3, the RQ1 forest plot, all three cells
+```
+
+Output lands in `results/figures/`. All plotted values come from committed results; none
+is synthetic. `build_fig3.py` also
+rewrites each cell's `results/run_3b_<cell>/05_table5_rq1.json` from that cell's
+`03_nowrite_reproduction.json`. The RQ2/RQ3 readouts behind Figures 2 and 4–8 are stamped
+`lens_validated = False` — see [FINDINGS](docs/FINDINGS.md).
 
 Order matters: `00 → 01 → 02 → 03 → 04 → 05`. Notebook 02 must be run in a **separate
 environment** with `transformers>=5` because `jlens` conflicts with the repo's
