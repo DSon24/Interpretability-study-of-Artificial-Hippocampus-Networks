@@ -1,0 +1,228 @@
+{
+  "table": "Table 10 - compute accounting",
+  "generated": "2026-09-20T20:08:37Z",
+  "columns": [
+    "artefact",
+    "gpu",
+    "gpu_hours",
+    "peak_vram_gb",
+    "where_it_ran",
+    "status",
+    "source"
+  ],
+  "rows": [
+    {
+      "group": "jlens",
+      "artefact": "J-lens map, Qwen2.5-3B, corpus A (500 ctx, layers 9/18/27)",
+      "gpu": "not recorded",
+      "gpu_hours": 1.92,
+      "status": "measured",
+      "peak_vram_gb": null,
+      "where_it_ran": "not recorded (Table 3 JSON has no device field)",
+      "source": "results/run_3b_gdn/02_table3_jlens_validation.json:map_cost_gpu_hours",
+      "note": "Run 006. Proposal budget 15-20 GPU-h, abort >40."
+    },
+    {
+      "group": "jlens",
+      "artefact": "J-lens map, Qwen2.5-3B, corpus B (500 ctx, stability check)",
+      "gpu": "not recorded",
+      "gpu_hours": 1.2472385472721523,
+      "status": "measured",
+      "peak_vram_gb": null,
+      "where_it_ran": "not recorded",
+      "source": "results/run_3b_gdn/02_table3_jlens_validation.json:fit_b_gpu_hours",
+      "note": "Run 007."
+    },
+    {
+      "group": "jlens",
+      "artefact": "J-lens map, Qwen2.5-3B, corpus B (1000 ctx, fresh)",
+      "gpu": "H100 MIG 1g.20gb slice",
+      "gpu_hours": 5.880245396494866,
+      "status": "measured",
+      "peak_vram_gb": null,
+      "where_it_ran": "H100 MIG 1g.20gb slice, shared box jupyter-dphs-8080",
+      "source": "results/run_3b_gdn/02_table3_jlens_validation_1000ctx.json:fit_b_gpu_hours",
+      "note": "4.7x the 500-ctx cost for 2x the contexts; likely MIG contention on a shared box. Re-measure uncontended before it feeds the 7B decision."
+    },
+    {
+      "group": "jlens",
+      "artefact": "J-lens map, Qwen2.5-3B, corpus A (1000 ctx, RESUMED)",
+      "gpu": "H100 MIG 1g.20gb slice",
+      "gpu_hours": 2.1852319276995127,
+      "status": "measured",
+      "peak_vram_gb": null,
+      "where_it_ran": "H100 MIG 1g.20gb slice, shared box jupyter-dphs-8080",
+      "source": "results/run_3b_gdn/02_table3_jlens_validation_1000ctx.json:map_cost_gpu_hours",
+      "note": "Resumed from a partial checkpoint, so this UNDERSTATES a fresh fit. Do not sum it with the fresh corpus-B figure as a two-corpus cost."
+    },
+    {
+      "group": "jlens",
+      "artefact": "J-lens map, Qwen2.5-7B",
+      "gpu": null,
+      "gpu_hours": null,
+      "status": "not_run",
+      "peak_vram_gb": null,
+      "where_it_ran": null,
+      "source": "gated on Table 7",
+      "note": null
+    },
+    {
+      "group": "jlens",
+      "artefact": "Table 3 check 1 (final-layer identity) -- fit_layer35.py; jlens refused J35",
+      "gpu": "A100-40GB",
+      "gpu_hours": null,
+      "status": "todo",
+      "peak_vram_gb": null,
+      "where_it_ran": "Modal A100-40GB",
+      "source": "Modal dashboard: apps ahn-layer35 (2 stopped runs, 2026-09-20). Both aborted at the fit step (no jlens pkg, then source<target); only the reference-KL pass ran.",
+      "note": "Small (model load + 8 forward passes x2 attempts). Pull billed seconds."
+    },
+    {
+      "group": "controls",
+      "artefact": "Control battery C1-C4, GDN (nb04 04i, config 16384)",
+      "gpu": "H100 MIG",
+      "gpu_hours": 0.2,
+      "status": "estimated",
+      "peak_vram_gb": "11-14 (slice headroom)",
+      "where_it_ran": "H100 MIG 1g.20gb slice, shared box jupyter-dphs-8080",
+      "source": "tracker row 78: stdout not saved; same 60x2 cond x 3 layers as DN",
+      "note": null
+    },
+    {
+      "group": "controls",
+      "artefact": "Control battery C1-C4, DeltaNet (nb04 04i incl. C4 layer-perm)",
+      "gpu": "H100 MIG",
+      "gpu_hours": 0.193,
+      "status": "measured",
+      "peak_vram_gb": "11-14 (slice headroom)",
+      "where_it_ran": "H100 MIG 1g.20gb slice, shared box jupyter-dphs-8080",
+      "source": "run log: 11.6 min (tracker row 78)",
+      "note": null
+    },
+    {
+      "group": "controls",
+      "artefact": "Control battery C1-C4, Mamba2 (nb04 RULER path)",
+      "gpu": "A100-40GB",
+      "gpu_hours": null,
+      "status": "todo",
+      "peak_vram_gb": null,
+      "where_it_ran": "Modal A100-40GB",
+      "source": "Modal dashboard: ahn-m2 app, `run --job nb04` run",
+      "note": "Real mamba kernels, so NOT comparable to the box MIG rows."
+    },
+    {
+      "group": "eval",
+      "artefact": "RQ1 NOWRITE reproduction (nb03), GDN",
+      "gpu": "H100 MIG",
+      "gpu_hours": null,
+      "status": "todo",
+      "peak_vram_gb": null,
+      "where_it_ran": "H100 MIG 1g.20gb slice, shared box jupyter-dphs-8080",
+      "source": "not logged in the tracker; scrollback / results/run_3b_gdn/03_*.json timestamps",
+      "note": null
+    },
+    {
+      "group": "eval",
+      "artefact": "RQ1 NOWRITE reproduction (nb03), DeltaNet (LongBench-E, 60x2, <=32 tok)",
+      "gpu": "H100 MIG",
+      "gpu_hours": "0.3-0.5",
+      "status": "estimated",
+      "peak_vram_gb": "8-11 (slice headroom)",
+      "where_it_ran": "H100 MIG 1g.20gb slice, shared box jupyter-dphs-8080",
+      "source": "tracker row 78",
+      "note": null
+    },
+    {
+      "group": "eval",
+      "artefact": "RQ1 NOWRITE reproduction (nb03), Mamba2",
+      "gpu": "A100-40GB",
+      "gpu_hours": 0.175,
+      "status": "measured",
+      "peak_vram_gb": null,
+      "where_it_ran": "Modal A100-40GB",
+      "source": "run 031 stdout: 10.5 min wall (tracker row 78)",
+      "note": null
+    },
+    {
+      "group": "eval",
+      "artefact": "No-AHN floor, RULER n=60 + HotpotQA n=60 (run 032, all three cells share it)",
+      "gpu": "H100 MIG",
+      "gpu_hours": 0.116,
+      "status": "measured",
+      "peak_vram_gb": null,
+      "where_it_ran": "H100 MIG 1g.20gb slice, shared box jupyter-dphs-8080",
+      "source": "results/run_3b_floor/06_no_ahn_floor.json:wall_min (RULER 4.80 + HotpotQA 2.13 min)",
+      "note": null
+    },
+    {
+      "group": "eval",
+      "artefact": "No-AHN full-context control (RULER only, --no-window)",
+      "gpu": "H100 MIG",
+      "gpu_hours": 0.01,
+      "status": "measured",
+      "peak_vram_gb": null,
+      "where_it_ran": "H100 MIG 1g.20gb slice, shared box jupyter-dphs-8080",
+      "source": "results/run_3b_floor/06_no_ahn_floor_nowindow.json:wall_min",
+      "note": null
+    },
+    {
+      "group": "eval",
+      "artefact": "AHN-on behavioural RULER NIAH n=60 (row 70), GDN",
+      "gpu": "A100-40GB",
+      "gpu_hours": 0.149,
+      "status": "measured",
+      "peak_vram_gb": null,
+      "where_it_ran": "Modal A100-40GB",
+      "source": "results/run_3b_gdn/06_ahn_on_ruler.json:wall_min (generation only)",
+      "note": "Excludes container start, checkpoint load and the one-off CPU merge; billed Modal time is higher. Pull billed seconds from the dashboard to close."
+    },
+    {
+      "group": "eval",
+      "artefact": "AHN-on behavioural RULER NIAH n=60 (row 70), DN",
+      "gpu": "A100-40GB",
+      "gpu_hours": 0.154,
+      "status": "measured",
+      "peak_vram_gb": null,
+      "where_it_ran": "Modal A100-40GB",
+      "source": "results/run_3b_dn/06_ahn_on_ruler.json:wall_min (generation only)",
+      "note": "Excludes container start, checkpoint load and the one-off CPU merge; billed Modal time is higher. Pull billed seconds from the dashboard to close."
+    },
+    {
+      "group": "eval",
+      "artefact": "AHN-on behavioural RULER NIAH n=60 (row 70), M2",
+      "gpu": "A100-40GB",
+      "gpu_hours": 0.171,
+      "status": "measured",
+      "peak_vram_gb": null,
+      "where_it_ran": "Modal A100-40GB",
+      "source": "results/run_3b_m2/06_ahn_on_ruler.json:wall_min (generation only)",
+      "note": "Excludes container start, checkpoint load and the one-off CPU merge; billed Modal time is higher. Pull billed seconds from the dashboard to close."
+    },
+    {
+      "group": "eval",
+      "artefact": "BABILong qa1 64k C1/C2 pilot, GDN, 32 evicted examples",
+      "gpu": "not recorded",
+      "gpu_hours": 0.077,
+      "status": "measured",
+      "peak_vram_gb": 12.7,
+      "where_it_ran": "not recorded",
+      "source": "results/babilong/07c_babilong_c1c2_full.json:run_log (sum of per-example seconds)",
+      "note": "Per-example forward pass only; excludes model/lens load and the earlier 16k/32k/64k inspection passes."
+    }
+  ],
+  "totals_gpu_hours": {
+    "measured_total": 12.278,
+    "measured_by_group": {
+      "jlens": 11.233,
+      "controls": 0.193,
+      "eval": 0.852
+    },
+    "note": "Measured only; includes the resumed 1000-ctx corpus-A fit (compute really spent, but not a fresh-fit cost). Estimated rows (GDN 04i ~0.2, DN nb03 0.3-0.5) and todo rows are NOT included. Hardware is mixed (H100 MIG slices vs Modal A100-40GB, contended vs not) so GPU-hours across rows are not interchangeable."
+  },
+  "open": [
+    "Table 3 check 1 (final-layer identity) -- fit_layer35.py; jlens refused J35",
+    "Control battery C1-C4, Mamba2 (nb04 RULER path)",
+    "RQ1 NOWRITE reproduction (nb03), GDN"
+  ],
+  "peak_vram": "Not instrumented in nb03/nb04. Add torch.cuda.max_memory_allocated() prints before any further run so future rows are measured."
+}
