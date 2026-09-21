@@ -17,14 +17,7 @@ Ours is read from `notebooks/03_nowrite_reproduction.ipynb`, `configs/`, the sav
 
 ## Something to know before the table
 
-**Status of the prompt-format mismatch (updated 21 Sep).** As of the last commit, only GDN had been regenerated with the
-Qwen chat template (14 Sep, commit 16dd9c8); DeltaNet and Mamba2 were the 9 Sep raw-prompt runs, so Table 5 mixed formats.
-DN and M2 have since been re-run with the chat template in the working tree (backups saved as
-`03_nowrite_reproduction_pre_qwen_chat.json`; **uncommitted and not verified by me**). First-line ΔF1 in those files:
-GDN −4.10, DN −3.96, M2 −4.63 points, against +6.72 (DN) and −0.31 (M2) on the raw prompt. If that holds, the DN +6.7
-was a prompt-format artefact on top of the scoring artefact, and the Table 5 cross-cell contrast committed on 18 Sep
-(DN vs GDN +10.81, Holm p=0.032) does not survive matched formats. Row 4 below reflects the committed state; update it
-once the regenerated files are committed.
+**Status of the prompt-format mismatch (updated 21 Sep, closed).** Only GDN had the Qwen chat template (14 Sep, commit 16dd9c8); DeltaNet and Mamba2 were the 9 Sep raw-prompt runs, so Table 5 mixed formats. DN and M2 were re-run with the chat template on 21 Sep (commit 74aafde; raw-prompt backups kept as `03_nowrite_reproduction_pre_qwen_chat.json`). First-line ΔF1: GDN −4.10, DN −3.96, M2 −4.63 points, against +6.72 (DN) and −0.31 (M2) on the raw prompt. The DN +6.7 was a prompt-format artefact on top of the scoring artefact, and the 18 Sep cross-cell contrast (DN vs GDN +10.81, Holm p=0.032) does not survive matched formats (now +0.14, Holm p=1.0). Rows 4 and 10 below are updated to match; see the 21 Sep entry in `FINDINGS.md`.
 
 ## The table
 
@@ -33,13 +26,13 @@ once the regenerated files are committed.
 | 1 | Dataset / version | `THUDM/LongBench`, `hotpotqa_e`, test split | `eval.sh` runs LongBench v1 (`zai-org/LongBench`); `pred.py --e` uses the -E list | unknown | **differs** from `eval.sh` (E vs v1); Kashyap unknown |
 | 2 | Task list | `hotpotqa` only | `eval.sh`: dureader, hotpotqa, musique, narrativeqa, qmsum, triviaqa (v1). `pred.py --e`: 13 tasks incl. hotpotqa | unknown; is 0.4–2.3 pts a mean over several tasks? | **unknown**; a multi-task mean regresses toward zero vs one long-context task |
 | 3 | n and cohort | n=60, length-stratified 20/20/20 (short/mid/long thirds), eligible = 8,192 < tokens ≤ 32,000; realised 8,491–17,293 tokens | all examples | reportedly 60 (nb03 comment); source not verified | **unknown** — verify |
-| 4 | Prompt format | GDN: Qwen chat template. **DN, M2: raw prompt** | chat template applied when `"qwen2"` is in the model name (skipped otherwise) | unknown | GDN **match**; DN/M2 **differ in the committed results**; re-run with chat template in working tree, uncommitted |
+| 4 | Prompt format | **All three cells: Qwen chat template** (DN and M2 re-run 21 Sep, commit 74aafde; raw-prompt runs kept as `_pre_qwen_chat.json`) | chat template applied when `"qwen2"` is in the model name (skipped otherwise) | unknown | **match** with the official harness for all three cells; our internal mismatch is closed; Kashyap unknown |
 | 5 | max_new_tokens | 32 | 32 (`dataset2maxlen`: hotpotqa) | unknown | **match** (official) |
 | 6 | Decoding | greedy (`do_sample=False`) | not checked in this pass | unknown | **unknown** |
 | 7 | Truncation | none; our filter drops prompts > 32,000 tokens | keeps the last `max_length − max_gen` tokens when over `max_length` (`max_length` is a CLI arg) | unknown `max_length` | **unknown**; if his `max_length` < 17.3k some of our prompts would be cut in his harness |
 | 8 | Scorer | headline = **first-line** F1 (`ahn_interp.qa_f1_score`); full-generation stored | official `scorer_e` scores the **full generation** for hotpotqa (first-line only for trec/triviaqa/samsum/lsht) | unknown | **differs** — flips the RQ1 sign in all three cells |
 | 9 | Answer normalisation | `normalize_answer` (articles removed before punctuation) | official order differs slightly | unknown | **differs** (no effect seen on our generations) |
-| 10 | "Answer changed" | normalised EM on first line: 33.3 / 36.7 / 41.7% (GDN/DN/M2, raw-prompt data) | n/a | 38–42%; our sweep says raw first-line string equality lands in that band (40 / 40 / 45%) | **unknown** — inferred, not confirmed |
+| 10 | "Answer changed" | 30.0 / 31.7 / 30.0% (GDN/DN/M2, chat template; identical under normalised EM, raw first-line equality and raw full-generation equality; 95% CIs include the band, e.g. GDN [18.3, 41.7]). Raw-prompt data gave 33.3 / 36.7 / 41.7% normalised and 40 / 40 / 45% raw first-line | n/a | 38–42% | **unknown** — no definition reaches the band on the chat-template data, so the earlier inference that raw first-line equality explains it does not hold there; Kashyap's prompt format is unknown (row 4) |
 | 11 | Boundary JS | Jensen–Shannon (natural log, ε=1e-12) between AHN and NOWRITE softmax at the first generated position, full vocabulary, one value per example | n/a | unknown: position, log base, which logits | **unknown** |
 | 12 | F1 in ρ(JS, F1) | we log both per-example ΔF1 (ρ≈0) and F1_nowrite (ρ −0.29 to −0.36, significant) | n/a | "−0.09 to 0.00": ΔF1 or F1 level? | **unknown** — the two give different answers on our data |
 | 13 | NOWRITE | AHN-module output zeroed by a forward hook on all 36 AHN layers; sinks and window unchanged | n/a | "removing all writes": zeroed output, frozen state, or no module? | **unknown**; run 032 shows NOWRITE ≠ no-AHN (F1 ~0.34 vs 0.076) |
@@ -49,7 +42,7 @@ once the regenerated files are committed.
 | 17 | Checkpoints | `ByteDance-Seed/AHN-{GDN,DN,Mamba2}-for-Qwen-2.5-Instruct-3B`, merged into Qwen2.5-3B-Instruct | same release | unknown scale / cell | **unknown** |
 | 18 | CIs | percentile bootstrap, n_boot=4000 | n/a | unknown | **unknown** |
 
-**Tally (18 rows):** 2 match (5, 15), 3 differ (1, 8, 9), 1 split (4: GDN matches, DN/M2 differ), 12 unknown (2, 3, 6, 7, 10–14, 16–18). Rows 2, 8, 10, 11, 12 and 13 change what Table 5 and Table 8 report.
+**Tally (18 rows):** 3 match (4, 5, 15), 3 differ (1, 8, 9), 12 unknown (2, 3, 6, 7, 10–14, 16–18). Rows 2, 8, 10, 11, 12 and 13 change what Table 5 and Table 8 report.
 
 ## What to ask Gautam (in priority order)
 
