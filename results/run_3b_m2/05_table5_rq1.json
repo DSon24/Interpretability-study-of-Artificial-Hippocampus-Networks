@@ -4,95 +4,95 @@
     "first_line": [
       {
         "scale": "3B",
-        "cell": "GatedDeltaNet",
+        "cell": "Mamba2",
         "stratum": "short",
         "n": 20,
         "metric": "first_line",
         "primary": true,
-        "mean_f1": 0.39575757575757575,
+        "mean_f1": 0.3977777777777778,
         "delta_f1_vs_nowrite": [
-          -0.031313131313131314,
-          -0.08484848484848485,
-          0.0
+          -0.029292929292929294,
+          -0.17222222222222222,
+          0.08434343434343436
         ],
-        "answer_change_rate": 0.2
+        "answer_change_rate": 0.3
       },
       {
         "scale": "3B",
-        "cell": "GatedDeltaNet",
+        "cell": "Mamba2",
         "stratum": "mid",
         "n": 20,
         "metric": "first_line",
         "primary": true,
-        "mean_f1": 0.2833333333333333,
+        "mean_f1": 0.2333333333333333,
         "delta_f1_vs_nowrite": [
-          -0.05,
-          -0.15,
+          -0.1,
+          -0.25,
           0.0
         ],
         "answer_change_rate": 0.35
       },
       {
         "scale": "3B",
-        "cell": "GatedDeltaNet",
+        "cell": "Mamba2",
         "stratum": "long",
         "n": 20,
         "metric": "first_line",
         "primary": true,
-        "mean_f1": 0.32333333333333336,
+        "mean_f1": 0.34694444444444444,
         "delta_f1_vs_nowrite": [
-          -0.041666666666666664,
-          -0.11666666666666665,
+          -0.00972222222222222,
+          -0.027777777777777773,
           0.0
         ],
-        "answer_change_rate": 0.35
+        "answer_change_rate": 0.25
       }
     ],
     "full_generation": [
       {
         "scale": "3B",
-        "cell": "GatedDeltaNet",
+        "cell": "Mamba2",
         "stratum": "short",
         "n": 20,
         "metric": "full_generation",
         "primary": false,
-        "mean_f1": 0.39575757575757575,
+        "mean_f1": 0.3977777777777778,
         "delta_f1_vs_nowrite": [
-          -0.0455988455988456,
-          -0.10432900432900434,
-          0.0
+          -0.04357864357864357,
+          -0.18804473304473304,
+          0.0668831168831169
         ],
-        "answer_change_rate": 0.2
+        "answer_change_rate": 0.3
       },
       {
         "scale": "3B",
-        "cell": "GatedDeltaNet",
+        "cell": "Mamba2",
         "stratum": "mid",
         "n": 20,
         "metric": "full_generation",
         "primary": false,
-        "mean_f1": 0.2833333333333333,
+        "mean_f1": 0.2333333333333333,
         "delta_f1_vs_nowrite": [
-          -0.05,
-          -0.15,
+          -0.1,
+          -0.25,
           0.0
         ],
         "answer_change_rate": 0.35
       },
       {
         "scale": "3B",
-        "cell": "GatedDeltaNet",
+        "cell": "Mamba2",
         "stratum": "long",
         "n": 20,
         "metric": "full_generation",
         "primary": false,
-        "mean_f1": 0.32333333333333336,
+        "mean_f1": 0.34694444444444444,
         "delta_f1_vs_nowrite": [
-          -0.041666666666666664,
-          -0.11666666666666665,
+          -0.00972222222222222,
+          -0.027777777777777773,
           0.0
         ],
-        "answer_change_rate": 0.35
+        "answer_change_rate": 0.25
       }
     ]
   }

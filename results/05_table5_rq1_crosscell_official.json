@@ -2,7 +2,7 @@
   "analysis": "RQ1 paired cross-cell comparison",
   "n_examples": 60,
   "paired_examples": true,
-  "score_field": "delta_f1_fl",
+  "score_field": "delta_f1",
   "inputs": {
     "gdn": "03_nowrite_reproduction.json",
     "dn": "03_nowrite_reproduction.json",
@@ -17,13 +17,13 @@
   },
   "within_cell": {
     "GatedDeltaNet": {
-      "delta_f1_points": -4.1
+      "delta_f1_points": -4.58
     },
     "DeltaNet": {
-      "delta_f1_points": -3.96
+      "delta_f1_points": -4.44
     },
     "Mamba2": {
-      "delta_f1_points": -4.63
+      "delta_f1_points": -5.11
     }
   },
   "pairwise": {

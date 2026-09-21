@@ -4,7 +4,7 @@
     "first_line": [
       {
         "scale": "3B",
-        "cell": "GatedDeltaNet",
+        "cell": "DeltaNet",
         "stratum": "short",
         "n": 20,
         "metric": "first_line",
@@ -19,39 +19,39 @@
       },
       {
         "scale": "3B",
-        "cell": "GatedDeltaNet",
+        "cell": "DeltaNet",
         "stratum": "mid",
         "n": 20,
         "metric": "first_line",
         "primary": true,
-        "mean_f1": 0.2833333333333333,
+        "mean_f1": 0.26666666666666666,
         "delta_f1_vs_nowrite": [
-          -0.05,
-          -0.15,
-          0.0
+          -0.06666666666666668,
+          -0.2166666666666667,
+          0.06666666666666667
         ],
-        "answer_change_rate": 0.35
+        "answer_change_rate": 0.45
       },
       {
         "scale": "3B",
-        "cell": "GatedDeltaNet",
+        "cell": "DeltaNet",
         "stratum": "long",
         "n": 20,
         "metric": "first_line",
         "primary": true,
-        "mean_f1": 0.32333333333333336,
+        "mean_f1": 0.3358333333333333,
         "delta_f1_vs_nowrite": [
-          -0.041666666666666664,
-          -0.11666666666666665,
+          -0.020833333333333332,
+          -0.054166666666666655,
           0.0
         ],
-        "answer_change_rate": 0.35
+        "answer_change_rate": 0.3
       }
     ],
     "full_generation": [
       {
         "scale": "3B",
-        "cell": "GatedDeltaNet",
+        "cell": "DeltaNet",
         "stratum": "short",
         "n": 20,
         "metric": "full_generation",
@@ -66,33 +66,33 @@
       },
       {
         "scale": "3B",
-        "cell": "GatedDeltaNet",
+        "cell": "DeltaNet",
         "stratum": "mid",
         "n": 20,
         "metric": "full_generation",
         "primary": false,
-        "mean_f1": 0.2833333333333333,
+        "mean_f1": 0.26666666666666666,
         "delta_f1_vs_nowrite": [
-          -0.05,
-          -0.15,
-          0.0
+          -0.06666666666666668,
+          -0.2166666666666667,
+          0.06666666666666667
         ],
-        "answer_change_rate": 0.35
+        "answer_change_rate": 0.45
       },
       {
         "scale": "3B",
-        "cell": "GatedDeltaNet",
+        "cell": "DeltaNet",
         "stratum": "long",
         "n": 20,
         "metric": "full_generation",
         "primary": false,
-        "mean_f1": 0.32333333333333336,
+        "mean_f1": 0.3358333333333333,
         "delta_f1_vs_nowrite": [
-          -0.041666666666666664,
-          -0.11666666666666665,
+          -0.020833333333333332,
+          -0.054166666666666655,
           0.0
         ],
-        "answer_change_rate": 0.35
+        "answer_change_rate": 0.3
       }
     ]
   }

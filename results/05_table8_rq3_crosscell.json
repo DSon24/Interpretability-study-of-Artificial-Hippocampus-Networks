@@ -1,0 +1,443 @@
+{
+  "table": 8,
+  "prompt_format": "qwen_chat_template",
+  "n_boot": 10000,
+  "seed": 20260820,
+  "cells": {
+    "GatedDeltaNet": {
+      "primary_layer18": [
+        {
+          "predictor": "retention half-life",
+          "outcome": "per-example dF1",
+          "rho": null,
+          "p": null,
+          "ci": null,
+          "n": 0,
+          "note": "no per-example half-life from a single task prompt"
+        },
+        {
+          "predictor": "target rank @ prompt end",
+          "outcome": "per-example dF1",
+          "rho": -0.12126012234872906,
+          "p": 0.3560436449126766,
+          "n": 60,
+          "ci": [
+            -0.38540254819829933,
+            0.1879478199523034
+          ],
+          "excludes_zero": false,
+          "holm_p": 0.6054244047489841
+        },
+        {
+          "predictor": "target mass @ prompt end",
+          "outcome": "per-example dF1",
+          "rho": 0.13528734491488223,
+          "p": 0.30271220237449203,
+          "n": 60,
+          "ci": [
+            -0.1542714421683296,
+            0.36820417518383286
+          ],
+          "excludes_zero": false,
+          "holm_p": 0.6054244047489841
+        },
+        {
+          "predictor": "readout entropy @ prompt end",
+          "outcome": "per-example dF1",
+          "rho": 0.1839768777891329,
+          "p": 0.15938459752445283,
+          "n": 60,
+          "ci": [
+            -0.018800919272219004,
+            0.37157856040933884
+          ],
+          "excludes_zero": false,
+          "holm_p": 0.4781537925733585
+        },
+        {
+          "predictor": "boundary JS divergence",
+          "outcome": "per-example dF1",
+          "rho": -0.2378831463284819,
+          "p": 0.06721347945659772,
+          "n": 60,
+          "ci": [
+            -0.41534856268118125,
+            -0.029014821853698858
+          ],
+          "excludes_zero": true,
+          "prior_work_range": [
+            -0.09,
+            0.0
+          ]
+        }
+      ],
+      "rank_by_layer": [
+        {
+          "layer": 9,
+          "outcome": "dF1 first-line",
+          "rho": -0.006491937716566757,
+          "p": 0.9607367966710441,
+          "n": 60,
+          "ci": [
+            -0.24243499655839726,
+            0.24966072110514728
+          ],
+          "excludes_zero": false,
+          "holm_p_over_layers": 1.0
+        },
+        {
+          "layer": 9,
+          "outcome": "dF1 full-generation",
+          "rho": 0.0293000110579247,
+          "p": 0.824134599776452,
+          "n": 60,
+          "ci": [
+            -0.202734833889228,
+            0.2687833695186353
+          ],
+          "excludes_zero": false
+        },
+        {
+          "layer": 18,
+          "outcome": "dF1 first-line",
+          "rho": -0.12126012234872906,
+          "p": 0.3560436449126766,
+          "n": 60,
+          "ci": [
+            -0.38540254819829933,
+            0.1879478199523034
+          ],
+          "excludes_zero": false,
+          "holm_p_over_layers": 1.0
+        },
+        {
+          "layer": 18,
+          "outcome": "dF1 full-generation",
+          "rho": -0.10028182291045631,
+          "p": 0.4458427568128197,
+          "n": 60,
+          "ci": [
+            -0.357736170900198,
+            0.18063655287540026
+          ],
+          "excludes_zero": false
+        },
+        {
+          "layer": 27,
+          "outcome": "dF1 first-line",
+          "rho": 0.04822582303735305,
+          "p": 0.7144318415472947,
+          "n": 60,
+          "ci": [
+            -0.208546749730326,
+            0.30753655139856434
+          ],
+          "excludes_zero": false,
+          "holm_p_over_layers": 1.0
+        },
+        {
+          "layer": 27,
+          "outcome": "dF1 full-generation",
+          "rho": -0.033836442642485,
+          "p": 0.7974443623737485,
+          "n": 60,
+          "ci": [
+            -0.3032898214692647,
+            0.2532583266357645
+          ],
+          "excludes_zero": false
+        }
+      ]
+    },
+    "DeltaNet": {
+      "primary_layer18": [
+        {
+          "predictor": "retention half-life",
+          "outcome": "per-example dF1",
+          "rho": null,
+          "p": null,
+          "ci": null,
+          "n": 0,
+          "note": "no per-example half-life from a single task prompt"
+        },
+        {
+          "predictor": "target rank @ prompt end",
+          "outcome": "per-example dF1",
+          "rho": 0.0013457204328904302,
+          "p": 0.9918580262459908,
+          "n": 60,
+          "ci": [
+            -0.25478960704712306,
+            0.26935018656976945
+          ],
+          "excludes_zero": false,
+          "holm_p": 1.0
+        },
+        {
+          "predictor": "target mass @ prompt end",
+          "outcome": "per-example dF1",
+          "rho": -0.018989610553009406,
+          "p": 0.8854913285054484,
+          "n": 60,
+          "ci": [
+            -0.32326848896905047,
+            0.2771677040277673
+          ],
+          "excludes_zero": false,
+          "holm_p": 1.0
+        },
+        {
+          "predictor": "readout entropy @ prompt end",
+          "outcome": "per-example dF1",
+          "rho": 0.04136844293700212,
+          "p": 0.7536484795671664,
+          "n": 60,
+          "ci": [
+            -0.2008615505250333,
+            0.2659789030756555
+          ],
+          "excludes_zero": false,
+          "holm_p": 1.0
+        },
+        {
+          "predictor": "boundary JS divergence",
+          "outcome": "per-example dF1",
+          "rho": -0.2405350670047858,
+          "p": 0.06413144715862065,
+          "n": 60,
+          "ci": [
+            -0.4031577174489814,
+            -0.04631896734549097
+          ],
+          "excludes_zero": true,
+          "prior_work_range": [
+            -0.09,
+            0.0
+          ]
+        }
+      ],
+      "rank_by_layer": [
+        {
+          "layer": 9,
+          "outcome": "dF1 first-line",
+          "rho": -0.060607260977583816,
+          "p": 0.645509405494958,
+          "n": 60,
+          "ci": [
+            -0.30982533970187925,
+            0.20239595356097628
+          ],
+          "excludes_zero": false,
+          "holm_p_over_layers": 1.0
+        },
+        {
+          "layer": 9,
+          "outcome": "dF1 full-generation",
+          "rho": -0.041902516023306316,
+          "p": 0.7505703678024915,
+          "n": 60,
+          "ci": [
+            -0.28735315528432837,
+            0.20999985313056913
+          ],
+          "excludes_zero": false
+        },
+        {
+          "layer": 18,
+          "outcome": "dF1 first-line",
+          "rho": 0.0013457204328904302,
+          "p": 0.9918580262459908,
+          "n": 60,
+          "ci": [
+            -0.25478960704712306,
+            0.26935018656976945
+          ],
+          "excludes_zero": false,
+          "holm_p_over_layers": 1.0
+        },
+        {
+          "layer": 18,
+          "outcome": "dF1 full-generation",
+          "rho": -0.011286873002910792,
+          "p": 0.9317913148811003,
+          "n": 60,
+          "ci": [
+            -0.2564561321316243,
+            0.24617200496750327
+          ],
+          "excludes_zero": false
+        },
+        {
+          "layer": 27,
+          "outcome": "dF1 first-line",
+          "rho": -0.05851391808197647,
+          "p": 0.6569752022059088,
+          "n": 60,
+          "ci": [
+            -0.2629824354104277,
+            0.1720138760784334
+          ],
+          "excludes_zero": false,
+          "holm_p_over_layers": 1.0
+        },
+        {
+          "layer": 27,
+          "outcome": "dF1 full-generation",
+          "rho": -0.05403590450143542,
+          "p": 0.681765385637878,
+          "n": 60,
+          "ci": [
+            -0.2523319239516739,
+            0.1631475314053932
+          ],
+          "excludes_zero": false
+        }
+      ]
+    },
+    "Mamba2": {
+      "primary_layer18": [
+        {
+          "predictor": "retention half-life",
+          "outcome": "per-example dF1",
+          "rho": null,
+          "p": null,
+          "ci": null,
+          "n": 0,
+          "note": "no per-example half-life from a single task prompt"
+        },
+        {
+          "predictor": "target rank @ prompt end",
+          "outcome": "per-example dF1",
+          "rho": 0.08452055381659634,
+          "p": 0.5208266271997953,
+          "n": 60,
+          "ci": [
+            -0.18689667624095638,
+            0.3429980299922142
+          ],
+          "excludes_zero": false,
+          "holm_p": 1.0
+        },
+        {
+          "predictor": "target mass @ prompt end",
+          "outcome": "per-example dF1",
+          "rho": 0.06645940041338377,
+          "p": 0.61389495273646,
+          "n": 60,
+          "ci": [
+            -0.24762351203852329,
+            0.3635683520768745
+          ],
+          "excludes_zero": false,
+          "holm_p": 1.0
+        },
+        {
+          "predictor": "readout entropy @ prompt end",
+          "outcome": "per-example dF1",
+          "rho": -0.06180300930161802,
+          "p": 0.6389963892088664,
+          "n": 60,
+          "ci": [
+            -0.2699454125361372,
+            0.14049749399139608
+          ],
+          "excludes_zero": false,
+          "holm_p": 1.0
+        },
+        {
+          "predictor": "boundary JS divergence",
+          "outcome": "per-example dF1",
+          "rho": -0.08626082120180173,
+          "p": 0.5122482687271306,
+          "n": 60,
+          "ci": [
+            -0.35802300944992477,
+            0.2145970817515358
+          ],
+          "excludes_zero": false,
+          "prior_work_range": [
+            -0.09,
+            0.0
+          ]
+        }
+      ],
+      "rank_by_layer": [
+        {
+          "layer": 9,
+          "outcome": "dF1 first-line",
+          "rho": 0.18244586992463951,
+          "p": 0.16294564898235972,
+          "n": 60,
+          "ci": [
+            -0.05765630516125269,
+            0.39450978261689157
+          ],
+          "excludes_zero": false,
+          "holm_p_over_layers": 0.48883694694707913
+        },
+        {
+          "layer": 9,
+          "outcome": "dF1 full-generation",
+          "rho": 0.06260259161373942,
+          "p": 0.6346562534230558,
+          "n": 60,
+          "ci": [
+            -0.18796912126497214,
+            0.30330581463436496
+          ],
+          "excludes_zero": false
+        },
+        {
+          "layer": 18,
+          "outcome": "dF1 first-line",
+          "rho": 0.08452055381659634,
+          "p": 0.5208266271997953,
+          "n": 60,
+          "ci": [
+            -0.18689667624095638,
+            0.3429980299922142
+          ],
+          "excludes_zero": false,
+          "holm_p_over_layers": 1.0
+        },
+        {
+          "layer": 18,
+          "outcome": "dF1 full-generation",
+          "rho": 0.035510861508920556,
+          "p": 0.7876491232450775,
+          "n": 60,
+          "ci": [
+            -0.23896000758274008,
+            0.3073405858747929
+          ],
+          "excludes_zero": false
+        },
+        {
+          "layer": 27,
+          "outcome": "dF1 first-line",
+          "rho": 0.038050711206247326,
+          "p": 0.7728538733438484,
+          "n": 60,
+          "ci": [
+            -0.2490209276970074,
+            0.3185728049420054
+          ],
+          "excludes_zero": false,
+          "holm_p_over_layers": 1.0
+        },
+        {
+          "layer": 27,
+          "outcome": "dF1 full-generation",
+          "rho": -0.111800420936032,
+          "p": 0.3950717025501099,
+          "n": 60,
+          "ci": [
+            -0.3699972009736271,
+            0.16366701575361903
+          ],
+          "excludes_zero": false
+        }
+      ]
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "n": 60,
-  "cell": "GatedDeltaNet",
+  "cell": "Mamba2",
   "scale": "3B",
   "summary_layer": 18,
   "prompt_format": "qwen_chat_template",
@@ -8,7 +8,7 @@
   "rows": [
     {
       "id": "36b7e445832590b8ddf74995162cd5e94f7f620cdfc992dd",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 10674,
@@ -21,31 +21,31 @@
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 150924,
-      "p_mem_at_prompt_end": 6.180010659034146e-14,
-      "entropy_at_prompt_end": 1.268073558807373,
+      "rank_at_prompt_end": 99362,
+      "p_mem_at_prompt_end": 2.8027966059163134e-10,
+      "entropy_at_prompt_end": 3.450840950012207,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 10818,
-          "p_mem": 2.5435812107811727e-18,
-          "entropy": 1.3094186782836914
+          "rank": 1963,
+          "p_mem": 1.8457996020515566e-08,
+          "entropy": 2.516023635864258
         },
         "18": {
-          "rank": 150924,
-          "p_mem": 6.180010659034146e-14,
-          "entropy": 1.268073558807373
+          "rank": 99362,
+          "p_mem": 2.8027966059163134e-10,
+          "entropy": 3.450840950012207
         },
         "27": {
-          "rank": 66092,
-          "p_mem": 1.975384122943069e-07,
-          "entropy": 8.044614791870117
+          "rank": 18013,
+          "p_mem": 1.167880054708803e-05,
+          "entropy": 10.309892654418945
         }
       }
     },
     {
       "id": "0df347189016b4d86b8f6d4086388a5ea318a08c468abba3",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 10876,
@@ -58,31 +58,31 @@
       "f1_nowrite": 0.6666666666666666,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 124314,
-      "p_mem_at_prompt_end": 5.182184542595891e-11,
-      "entropy_at_prompt_end": 1.4392774105072021,
+      "rank_at_prompt_end": 131584,
+      "p_mem_at_prompt_end": 3.483788604818905e-11,
+      "entropy_at_prompt_end": 1.3781994581222534,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 16681,
-          "p_mem": 2.2098072161711256e-18,
-          "entropy": 0.12572962045669556
+          "rank": 749,
+          "p_mem": 9.533120126636874e-11,
+          "entropy": 1.0351965427398682
         },
         "18": {
-          "rank": 124314,
-          "p_mem": 5.182184542595891e-11,
-          "entropy": 1.4392774105072021
+          "rank": 131584,
+          "p_mem": 3.483788604818905e-11,
+          "entropy": 1.3781994581222534
         },
         "27": {
-          "rank": 127241,
-          "p_mem": 3.059115982750882e-08,
-          "entropy": 8.440436363220215
+          "rank": 23197,
+          "p_mem": 9.031064109876752e-06,
+          "entropy": 10.464426040649414
         }
       }
     },
     {
       "id": "5fdd140211b5a3c1c879875b2c782e573cf4df4f68c8408e",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 10637,
@@ -95,31 +95,31 @@
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 65525,
-      "p_mem_at_prompt_end": 2.0784532428486102e-10,
-      "entropy_at_prompt_end": 0.6849603652954102,
+      "rank_at_prompt_end": 97830,
+      "p_mem_at_prompt_end": 1.5588240698249933e-09,
+      "entropy_at_prompt_end": 3.3537397384643555,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 10422,
-          "p_mem": 5.4335711037207724e-17,
-          "entropy": 1.3595502376556396
+          "rank": 3722,
+          "p_mem": 3.075011889563939e-08,
+          "entropy": 3.183457136154175
         },
         "18": {
-          "rank": 65525,
-          "p_mem": 2.0784532428486102e-10,
-          "entropy": 0.6849603652954102
+          "rank": 97830,
+          "p_mem": 1.5588240698249933e-09,
+          "entropy": 3.3537397384643555
         },
         "27": {
-          "rank": 45870,
-          "p_mem": 5.30727561454114e-07,
-          "entropy": 8.31696891784668
+          "rank": 28982,
+          "p_mem": 6.14240525464993e-06,
+          "entropy": 10.45362377166748
         }
       }
     },
     {
       "id": "f0d13537c2b6b00c76660dd7af3d103fe2fb0cc747fdb677",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 11290,
@@ -132,68 +132,68 @@
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 57064,
-      "p_mem_at_prompt_end": 6.567667243384534e-11,
-      "entropy_at_prompt_end": 0.15249615907669067,
+      "rank_at_prompt_end": 48595,
+      "p_mem_at_prompt_end": 1.624706669645093e-06,
+      "entropy_at_prompt_end": 6.84304141998291,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 22839,
-          "p_mem": 1.9999125511031834e-15,
-          "entropy": 1.417952060699463
+          "rank": 119242,
+          "p_mem": 7.966548045164653e-20,
+          "entropy": 0.8930099010467529
         },
         "18": {
-          "rank": 57064,
-          "p_mem": 6.567667243384534e-11,
-          "entropy": 0.15249615907669067
+          "rank": 48595,
+          "p_mem": 1.624706669645093e-06,
+          "entropy": 6.84304141998291
         },
         "27": {
-          "rank": 117533,
-          "p_mem": 3.527015834947633e-08,
-          "entropy": 8.319452285766602
+          "rank": 53977,
+          "p_mem": 1.7681868484942243e-06,
+          "entropy": 10.189709663391113
         }
       }
     },
     {
       "id": "d72f85795be5a873d62c8694c0c043cb3311ebcb5480316c",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 9160,
       "gold": "Dallas Cowboys",
       "target_token_id": 86514,
       "target_token_text": "Dallas",
-      "delta_f1": -0.18181818181818177,
-      "delta_f1_full_generation": -0.18181818181818177,
-      "f1_ahn": 0.18181818181818182,
+      "delta_f1": 0.6363636363636365,
+      "delta_f1_full_generation": 0.6363636363636365,
+      "f1_ahn": 1.0,
       "f1_nowrite": 0.3636363636363636,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 113126,
-      "p_mem_at_prompt_end": 1.3379511040745307e-11,
-      "entropy_at_prompt_end": 0.5827522873878479,
+      "rank_at_prompt_end": 138849,
+      "p_mem_at_prompt_end": 3.5732612615330117e-12,
+      "entropy_at_prompt_end": 2.6680421829223633,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 10957,
-          "p_mem": 3.299715115085898e-17,
-          "entropy": 0.3997437357902527
+          "rank": 110723,
+          "p_mem": 4.8929547913356686e-11,
+          "entropy": 2.4700002670288086
         },
         "18": {
-          "rank": 113126,
-          "p_mem": 1.3379511040745307e-11,
-          "entropy": 0.5827522873878479
+          "rank": 138849,
+          "p_mem": 3.5732612615330117e-12,
+          "entropy": 2.6680421829223633
         },
         "27": {
-          "rank": 53537,
-          "p_mem": 2.9294184855643834e-07,
-          "entropy": 7.023377895355225
+          "rank": 60591,
+          "p_mem": 1.7632438584769261e-06,
+          "entropy": 10.342782974243164
         }
       }
     },
     {
       "id": "64bba86b667bc9dd60aaa6c30a2d7403629fd6daabf6d43e",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 11821,
@@ -206,31 +206,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 119802,
-      "p_mem_at_prompt_end": 3.010980131890051e-09,
-      "entropy_at_prompt_end": 5.771885871887207,
+      "rank_at_prompt_end": 80876,
+      "p_mem_at_prompt_end": 9.613162710309098e-09,
+      "entropy_at_prompt_end": 3.1513729095458984,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 13736,
-          "p_mem": 2.9874904989218376e-16,
-          "entropy": 1.3166308403015137
+          "rank": 1818,
+          "p_mem": 8.362637804459894e-10,
+          "entropy": 1.0831533670425415
         },
         "18": {
-          "rank": 119802,
-          "p_mem": 3.010980131890051e-09,
-          "entropy": 5.771885871887207
+          "rank": 80876,
+          "p_mem": 9.613162710309098e-09,
+          "entropy": 3.1513729095458984
         },
         "27": {
-          "rank": 67253,
-          "p_mem": 2.924170132700965e-07,
-          "entropy": 8.578656196594238
+          "rank": 56909,
+          "p_mem": 1.4868862763250945e-06,
+          "entropy": 10.140007972717285
         }
       }
     },
     {
       "id": "d3493a99d0e83a5431e4a5d829bb241692bae70fe1d3bf17",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 9335,
@@ -243,31 +243,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 124797,
-      "p_mem_at_prompt_end": 3.1618431831081928e-12,
-      "entropy_at_prompt_end": 0.8985295295715332,
+      "rank_at_prompt_end": 117145,
+      "p_mem_at_prompt_end": 1.0759575772934047e-14,
+      "entropy_at_prompt_end": 0.3627175986766815,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 143400,
-          "p_mem": 4.392825350436197e-14,
-          "entropy": 2.443052291870117
+          "rank": 9749,
+          "p_mem": 6.8081368386889755e-25,
+          "entropy": 0.0007353200926445425
         },
         "18": {
-          "rank": 124797,
-          "p_mem": 3.1618431831081928e-12,
-          "entropy": 0.8985295295715332
+          "rank": 117145,
+          "p_mem": 1.0759575772934047e-14,
+          "entropy": 0.3627175986766815
         },
         "27": {
-          "rank": 59480,
-          "p_mem": 4.847269110541674e-07,
-          "entropy": 8.782204627990723
+          "rank": 74975,
+          "p_mem": 7.951890097501746e-07,
+          "entropy": 9.900113105773926
         }
       }
     },
     {
       "id": "56d2ecd968aaef6194dcf7de6e3844c9225d8e9ec1a0a3ce",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 10247,
@@ -280,31 +280,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 124121,
-      "p_mem_at_prompt_end": 2.8256969680784394e-11,
-      "entropy_at_prompt_end": 1.2995402812957764,
+      "rank_at_prompt_end": 128062,
+      "p_mem_at_prompt_end": 1.3391995845601912e-10,
+      "entropy_at_prompt_end": 4.983878135681152,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 33482,
-          "p_mem": 6.470086396610656e-18,
-          "entropy": 1.282167673110962
+          "rank": 12555,
+          "p_mem": 9.738524570090945e-11,
+          "entropy": 1.9557656049728394
         },
         "18": {
-          "rank": 124121,
-          "p_mem": 2.8256969680784394e-11,
-          "entropy": 1.2995402812957764
+          "rank": 128062,
+          "p_mem": 1.3391995845601912e-10,
+          "entropy": 4.983878135681152
         },
         "27": {
-          "rank": 59082,
-          "p_mem": 5.27014151430194e-07,
-          "entropy": 8.675224304199219
+          "rank": 36193,
+          "p_mem": 3.2944019494607346e-06,
+          "entropy": 10.220656394958496
         }
       }
     },
     {
       "id": "524d2df4e388792739e2486b131d791c9966e797f4dd9492",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 8491,
@@ -317,31 +317,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 137265,
-      "p_mem_at_prompt_end": 1.4060025929976683e-12,
-      "entropy_at_prompt_end": 0.9741256833076477,
+      "rank_at_prompt_end": 68060,
+      "p_mem_at_prompt_end": 8.443938099844672e-07,
+      "entropy_at_prompt_end": 9.635523796081543,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 6941,
-          "p_mem": 4.5620025633649405e-15,
-          "entropy": 1.036376953125
+          "rank": 73694,
+          "p_mem": 3.395802326097248e-28,
+          "entropy": 0.0006952715921215713
         },
         "18": {
-          "rank": 137265,
-          "p_mem": 1.4060025929976683e-12,
-          "entropy": 0.9741256833076477
+          "rank": 68060,
+          "p_mem": 8.443938099844672e-07,
+          "entropy": 9.635523796081543
         },
         "27": {
-          "rank": 88954,
-          "p_mem": 2.159555805292257e-07,
-          "entropy": 8.612228393554688
+          "rank": 8587,
+          "p_mem": 2.7450469133327715e-05,
+          "entropy": 10.460664749145508
         }
       }
     },
     {
       "id": "0b6ddb583fa1df95b1b4c7961f7affcc7c6266e520826484",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 8608,
@@ -354,68 +354,68 @@
       "f1_nowrite": 0.6666666666666666,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 138140,
-      "p_mem_at_prompt_end": 5.333120555416071e-13,
-      "entropy_at_prompt_end": 0.6081334352493286,
+      "rank_at_prompt_end": 68347,
+      "p_mem_at_prompt_end": 6.652840056631248e-07,
+      "entropy_at_prompt_end": 8.920053482055664,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 120855,
-          "p_mem": 3.7643351197930944e-16,
-          "entropy": 1.8585784435272217
+          "rank": 9027,
+          "p_mem": 1.5333292632552925e-13,
+          "entropy": 1.4416950941085815
         },
         "18": {
-          "rank": 138140,
-          "p_mem": 5.333120555416071e-13,
-          "entropy": 0.6081334352493286
+          "rank": 68347,
+          "p_mem": 6.652840056631248e-07,
+          "entropy": 8.920053482055664
         },
         "27": {
-          "rank": 127317,
-          "p_mem": 8.988897093331616e-08,
-          "entropy": 9.695077896118164
+          "rank": 102211,
+          "p_mem": 6.124597007328703e-07,
+          "entropy": 10.459738731384277
         }
       }
     },
     {
       "id": "9a161f7868d7a430dfa3335ec69d84f24435498665d9fa18",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 8936,
       "gold": "Democratic",
       "target_token_id": 89899,
       "target_token_text": "Democratic",
-      "delta_f1": 0.0,
-      "delta_f1_full_generation": -0.2857142857142857,
-      "f1_ahn": 0.0,
+      "delta_f1": 0.2222222222222222,
+      "delta_f1_full_generation": -0.06349206349206349,
+      "f1_ahn": 0.2222222222222222,
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 118910,
-      "p_mem_at_prompt_end": 7.444990457461387e-11,
-      "entropy_at_prompt_end": 3.1945395469665527,
+      "rank_at_prompt_end": 116268,
+      "p_mem_at_prompt_end": 9.921249954913947e-08,
+      "entropy_at_prompt_end": 2.8979289531707764,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 22426,
-          "p_mem": 5.007923397260146e-14,
-          "entropy": 1.6284022331237793
+          "rank": 91984,
+          "p_mem": 6.530850621584705e-13,
+          "entropy": 1.3987680673599243
         },
         "18": {
-          "rank": 118910,
-          "p_mem": 7.444990457461387e-11,
-          "entropy": 3.1945395469665527
+          "rank": 116268,
+          "p_mem": 9.921249954913947e-08,
+          "entropy": 2.8979289531707764
         },
         "27": {
-          "rank": 118924,
-          "p_mem": 5.896249533066111e-08,
-          "entropy": 8.843955039978027
+          "rank": 122607,
+          "p_mem": 2.6890401727541757e-07,
+          "entropy": 10.304896354675293
         }
       }
     },
     {
       "id": "834ced6842436a1c77d203700bfcb2526641b70c04101553",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 8538,
@@ -428,31 +428,31 @@
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 125638,
-      "p_mem_at_prompt_end": 5.767162442049667e-11,
-      "entropy_at_prompt_end": 2.6931586265563965,
+      "rank_at_prompt_end": 91995,
+      "p_mem_at_prompt_end": 2.379631647980718e-12,
+      "entropy_at_prompt_end": 2.647552013397217,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 27655,
-          "p_mem": 1.711432976570516e-22,
-          "entropy": 0.4010245203971863
+          "rank": 2613,
+          "p_mem": 6.091708115718575e-08,
+          "entropy": 2.0560948848724365
         },
         "18": {
-          "rank": 125638,
-          "p_mem": 5.767162442049667e-11,
-          "entropy": 2.6931586265563965
+          "rank": 91995,
+          "p_mem": 2.379631647980718e-12,
+          "entropy": 2.647552013397217
         },
         "27": {
-          "rank": 47919,
-          "p_mem": 8.477501296511036e-07,
-          "entropy": 8.54153823852539
+          "rank": 32137,
+          "p_mem": 4.96427719554049e-06,
+          "entropy": 10.445921897888184
         }
       }
     },
     {
       "id": "780f15259479e8965d474efc011eb220ac4078da86e8dc19",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 8525,
@@ -465,68 +465,68 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 76479,
-      "p_mem_at_prompt_end": 2.477423821645175e-10,
-      "entropy_at_prompt_end": 1.3097354173660278,
+      "rank_at_prompt_end": 98881,
+      "p_mem_at_prompt_end": 1.637664936993133e-08,
+      "entropy_at_prompt_end": 5.708414077758789,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 46926,
-          "p_mem": 1.3892189217462126e-23,
-          "entropy": 0.08281286060810089
+          "rank": 99090,
+          "p_mem": 2.5183536990005272e-26,
+          "entropy": 0.004013704601675272
         },
         "18": {
-          "rank": 76479,
-          "p_mem": 2.477423821645175e-10,
-          "entropy": 1.3097354173660278
+          "rank": 98881,
+          "p_mem": 1.637664936993133e-08,
+          "entropy": 5.708414077758789
         },
         "27": {
-          "rank": 61960,
-          "p_mem": 7.352657576120691e-07,
-          "entropy": 9.37247371673584
+          "rank": 27379,
+          "p_mem": 6.9810998866159935e-06,
+          "entropy": 10.50433349609375
         }
       }
     },
     {
       "id": "8318ea1b9fd0443387e6bcd5382933a05614955578f7b95b",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 11070,
       "gold": "Ellie Kemper",
       "target_token_id": 42710,
       "target_token_text": "Ell",
-      "delta_f1": 0.0,
-      "delta_f1_full_generation": 0.0,
-      "f1_ahn": 1.0,
+      "delta_f1": -1.0,
+      "delta_f1_full_generation": -1.0,
+      "f1_ahn": 0.0,
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 49071,
-      "p_mem_at_prompt_end": 6.967826871040472e-10,
-      "entropy_at_prompt_end": 0.4115259051322937,
+      "rank_at_prompt_end": 128939,
+      "p_mem_at_prompt_end": 2.201362600236581e-13,
+      "entropy_at_prompt_end": 2.51171875,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 32798,
-          "p_mem": 1.563002331774447e-18,
-          "entropy": 0.6722763776779175
+          "rank": 20075,
+          "p_mem": 3.7554895016000955e-07,
+          "entropy": 2.509540319442749
         },
         "18": {
-          "rank": 49071,
-          "p_mem": 6.967826871040472e-10,
-          "entropy": 0.4115259051322937
+          "rank": 128939,
+          "p_mem": 2.201362600236581e-13,
+          "entropy": 2.51171875
         },
         "27": {
-          "rank": 75960,
-          "p_mem": 2.4905750706238905e-07,
-          "entropy": 8.751652717590332
+          "rank": 99454,
+          "p_mem": 5.668213702847424e-07,
+          "entropy": 10.407549858093262
         }
       }
     },
     {
       "id": "74f2fce3240dd7e91f9522b9cbb9e10f43f16fdb0c22e7fa",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 10134,
@@ -539,31 +539,31 @@
       "f1_nowrite": 0.4,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 28927,
-      "p_mem_at_prompt_end": 1.4625358062403393e-06,
-      "entropy_at_prompt_end": 7.704495906829834,
+      "rank_at_prompt_end": 89171,
+      "p_mem_at_prompt_end": 6.719852452263808e-10,
+      "entropy_at_prompt_end": 3.363248825073242,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 32944,
-          "p_mem": 2.1861711505528822e-20,
-          "entropy": 0.1870708018541336
+          "rank": 29494,
+          "p_mem": 7.527972496195888e-16,
+          "entropy": 0.8904258608818054
         },
         "18": {
-          "rank": 28927,
-          "p_mem": 1.4625358062403393e-06,
-          "entropy": 7.704495906829834
+          "rank": 89171,
+          "p_mem": 6.719852452263808e-10,
+          "entropy": 3.363248825073242
         },
         "27": {
-          "rank": 35942,
-          "p_mem": 1.8433731838740641e-06,
-          "entropy": 8.894980430603027
+          "rank": 66274,
+          "p_mem": 6.823654530307977e-07,
+          "entropy": 9.495285034179688
         }
       }
     },
     {
       "id": "612961d8f4c473a6be137dca843cdd647da01c26898aff1c",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 9653,
@@ -576,31 +576,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 134868,
-      "p_mem_at_prompt_end": 3.3182370696646646e-13,
-      "entropy_at_prompt_end": 0.10731074213981628,
+      "rank_at_prompt_end": 108069,
+      "p_mem_at_prompt_end": 2.043780509414228e-12,
+      "entropy_at_prompt_end": 0.919796884059906,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 137062,
-          "p_mem": 8.105611434373211e-23,
-          "entropy": 0.026515092700719833
+          "rank": 21362,
+          "p_mem": 2.4651440611034303e-11,
+          "entropy": 2.007108688354492
         },
         "18": {
-          "rank": 134868,
-          "p_mem": 3.3182370696646646e-13,
-          "entropy": 0.10731074213981628
+          "rank": 108069,
+          "p_mem": 2.043780509414228e-12,
+          "entropy": 0.919796884059906
         },
         "27": {
-          "rank": 25359,
-          "p_mem": 1.7194635120176827e-06,
-          "entropy": 7.510259628295898
+          "rank": 63785,
+          "p_mem": 1.5220762179524172e-06,
+          "entropy": 10.019103050231934
         }
       }
     },
     {
       "id": "a6e57d5dfcbdc68035395fe57842144769450fc962f5bbcd",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 8601,
@@ -613,31 +613,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 123940,
-      "p_mem_at_prompt_end": 4.835672140490743e-11,
-      "entropy_at_prompt_end": 3.8571689128875732,
+      "rank_at_prompt_end": 137573,
+      "p_mem_at_prompt_end": 1.704495389276417e-08,
+      "entropy_at_prompt_end": 7.727185249328613,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 38226,
-          "p_mem": 2.8144868809730783e-21,
-          "entropy": 0.5840476751327515
+          "rank": 3153,
+          "p_mem": 4.4013559886545844e-14,
+          "entropy": 0.1321512907743454
         },
         "18": {
-          "rank": 123940,
-          "p_mem": 4.835672140490743e-11,
-          "entropy": 3.8571689128875732
+          "rank": 137573,
+          "p_mem": 1.704495389276417e-08,
+          "entropy": 7.727185249328613
         },
         "27": {
-          "rank": 92763,
-          "p_mem": 2.484652554812783e-07,
-          "entropy": 9.158458709716797
+          "rank": 82022,
+          "p_mem": 1.0315610552424914e-06,
+          "entropy": 10.485749244689941
         }
       }
     },
     {
       "id": "9c0f9782d1b8ab3a3b6151ee92ab597809a63b7855b53fde",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 10679,
@@ -650,31 +650,31 @@
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 28089,
-      "p_mem_at_prompt_end": 6.271192010132154e-09,
-      "entropy_at_prompt_end": 2.6389596462249756,
+      "rank_at_prompt_end": 126097,
+      "p_mem_at_prompt_end": 2.621749117717037e-13,
+      "entropy_at_prompt_end": 2.2951560020446777,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 16145,
-          "p_mem": 2.361884507498319e-20,
-          "entropy": 0.04007532820105553
+          "rank": 53620,
+          "p_mem": 3.4022664962281426e-19,
+          "entropy": 0.5068994164466858
         },
         "18": {
-          "rank": 28089,
-          "p_mem": 6.271192010132154e-09,
-          "entropy": 2.6389596462249756
+          "rank": 126097,
+          "p_mem": 2.621749117717037e-13,
+          "entropy": 2.2951560020446777
         },
         "27": {
-          "rank": 105012,
-          "p_mem": 1.0361407021264313e-07,
-          "entropy": 8.374425888061523
+          "rank": 46894,
+          "p_mem": 2.0490701899689157e-06,
+          "entropy": 10.140677452087402
         }
       }
     },
     {
       "id": "996c58a6f7fd10715191104b726d87dd079e7aa8e6fabef9",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 11698,
@@ -687,31 +687,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 66304,
-      "p_mem_at_prompt_end": 6.76195099913457e-08,
-      "entropy_at_prompt_end": 5.812590599060059,
+      "rank_at_prompt_end": 111177,
+      "p_mem_at_prompt_end": 1.6772408115151016e-11,
+      "entropy_at_prompt_end": 2.4354305267333984,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 9436,
-          "p_mem": 4.269422917648753e-17,
-          "entropy": 0.03574630618095398
+          "rank": 6477,
+          "p_mem": 3.9343562316471875e-14,
+          "entropy": 0.7683233618736267
         },
         "18": {
-          "rank": 66304,
-          "p_mem": 6.76195099913457e-08,
-          "entropy": 5.812590599060059
+          "rank": 111177,
+          "p_mem": 1.6772408115151016e-11,
+          "entropy": 2.4354305267333984
         },
         "27": {
-          "rank": 16398,
-          "p_mem": 3.150810471197474e-06,
-          "entropy": 7.767282485961914
+          "rank": 54812,
+          "p_mem": 1.9945130134146893e-06,
+          "entropy": 10.488370895385742
         }
       }
     },
     {
       "id": "09221499868bb9e1a230f8530fa4759e812e5f2738d12942",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 10115,
@@ -724,31 +724,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 69249,
-      "p_mem_at_prompt_end": 2.5425061167538843e-08,
-      "entropy_at_prompt_end": 4.9448652267456055,
+      "rank_at_prompt_end": 30615,
+      "p_mem_at_prompt_end": 4.08417548669604e-08,
+      "entropy_at_prompt_end": 3.85469388961792,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 14247,
-          "p_mem": 2.840970460184916e-13,
-          "entropy": 1.7961153984069824
+          "rank": 81688,
+          "p_mem": 2.2198739970790554e-13,
+          "entropy": 1.515241265296936
         },
         "18": {
-          "rank": 69249,
-          "p_mem": 2.5425061167538843e-08,
-          "entropy": 4.9448652267456055
+          "rank": 30615,
+          "p_mem": 4.08417548669604e-08,
+          "entropy": 3.85469388961792
         },
         "27": {
-          "rank": 79545,
-          "p_mem": 3.7461302326846635e-07,
-          "entropy": 9.369953155517578
+          "rank": 75199,
+          "p_mem": 8.517669698449026e-07,
+          "entropy": 10.098299980163574
         }
       }
     },
     {
       "id": "19092acc2a874e7d35633f7e9e8fc128720344b066244f04",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 9899,
@@ -761,31 +761,31 @@
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 84166,
-      "p_mem_at_prompt_end": 2.270744259291746e-09,
-      "entropy_at_prompt_end": 2.8704190254211426,
+      "rank_at_prompt_end": 119503,
+      "p_mem_at_prompt_end": 4.294592681475251e-09,
+      "entropy_at_prompt_end": 5.0876078605651855,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 96511,
-          "p_mem": 1.0152769343542171e-17,
-          "entropy": 1.1388143301010132
+          "rank": 18626,
+          "p_mem": 1.3207950358418152e-12,
+          "entropy": 1.4542521238327026
         },
         "18": {
-          "rank": 84166,
-          "p_mem": 2.270744259291746e-09,
-          "entropy": 2.8704190254211426
+          "rank": 119503,
+          "p_mem": 4.294592681475251e-09,
+          "entropy": 5.0876078605651855
         },
         "27": {
-          "rank": 40234,
-          "p_mem": 1.6726717149140313e-06,
-          "entropy": 9.064652442932129
+          "rank": 112958,
+          "p_mem": 1.1668068111703178e-07,
+          "entropy": 8.847497940063477
         }
       }
     },
     {
       "id": "570727521e78a04c7d8d892fdd8bfbdce0d178f3d4bcceb4",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 9963,
@@ -798,31 +798,31 @@
       "f1_nowrite": 0.4444444444444445,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 142880,
-      "p_mem_at_prompt_end": 1.0531584285211615e-11,
-      "entropy_at_prompt_end": 3.089473247528076,
+      "rank_at_prompt_end": 12396,
+      "p_mem_at_prompt_end": 1.0612060577841476e-05,
+      "entropy_at_prompt_end": 8.5470552444458,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 45709,
-          "p_mem": 4.119402263573126e-21,
-          "entropy": 0.9684281349182129
+          "rank": 747,
+          "p_mem": 1.1375549807679519e-10,
+          "entropy": 1.1533823013305664
         },
         "18": {
-          "rank": 142880,
-          "p_mem": 1.0531584285211615e-11,
-          "entropy": 3.089473247528076
+          "rank": 12396,
+          "p_mem": 1.0612060577841476e-05,
+          "entropy": 8.5470552444458
         },
         "27": {
-          "rank": 80657,
-          "p_mem": 3.984300462889223e-07,
-          "entropy": 9.421463966369629
+          "rank": 20500,
+          "p_mem": 1.0040372217190452e-05,
+          "entropy": 10.409588813781738
         }
       }
     },
     {
       "id": "dd5ae003e007a523e056e069ad0ad058847299f004c646f9",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "short",
       "n_tokens": 10589,
@@ -835,31 +835,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 57488,
-      "p_mem_at_prompt_end": 3.5354595695480384e-08,
-      "entropy_at_prompt_end": 5.41219425201416,
+      "rank_at_prompt_end": 104614,
+      "p_mem_at_prompt_end": 2.5346834006678698e-11,
+      "entropy_at_prompt_end": 1.204473614692688,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 80792,
-          "p_mem": 9.510044627605765e-15,
-          "entropy": 1.1052522659301758
+          "rank": 124283,
+          "p_mem": 1.1203238857449005e-12,
+          "entropy": 2.6051838397979736
         },
         "18": {
-          "rank": 57488,
-          "p_mem": 3.5354595695480384e-08,
-          "entropy": 5.41219425201416
+          "rank": 104614,
+          "p_mem": 2.5346834006678698e-11,
+          "entropy": 1.204473614692688
         },
         "27": {
-          "rank": 20007,
-          "p_mem": 4.027255727123702e-06,
-          "entropy": 8.63143539428711
+          "rank": 34718,
+          "p_mem": 3.7233344301057514e-06,
+          "entropy": 10.173124313354492
         }
       }
     },
     {
       "id": "ee2647e9cf29dcab9c66ffea03e05e9ef7c44e0e61eee68c",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 11195,
@@ -872,31 +872,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 143831,
-      "p_mem_at_prompt_end": 3.158322908758393e-11,
-      "entropy_at_prompt_end": 4.987761497497559,
+      "rank_at_prompt_end": 133518,
+      "p_mem_at_prompt_end": 1.6892622647856031e-15,
+      "entropy_at_prompt_end": 0.11153538525104523,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 40688,
-          "p_mem": 5.0677811662199216e-18,
-          "entropy": 0.22182878851890564
+          "rank": 1594,
+          "p_mem": 6.367935068141151e-10,
+          "entropy": 2.0398354530334473
         },
         "18": {
-          "rank": 143831,
-          "p_mem": 3.158322908758393e-11,
-          "entropy": 4.987761497497559
+          "rank": 133518,
+          "p_mem": 1.6892622647856031e-15,
+          "entropy": 0.11153538525104523
         },
         "27": {
-          "rank": 62052,
-          "p_mem": 3.9400910623044183e-07,
-          "entropy": 8.515356063842773
+          "rank": 16966,
+          "p_mem": 1.3307301742315758e-05,
+          "entropy": 10.386650085449219
         }
       }
     },
     {
       "id": "7504ff847adb8044a6217e1cee5d4e7f5d3b80a7adb9d9fe",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 16607,
@@ -909,31 +909,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 149429,
-      "p_mem_at_prompt_end": 3.23855254679567e-13,
-      "entropy_at_prompt_end": 3.7893621921539307,
+      "rank_at_prompt_end": 141573,
+      "p_mem_at_prompt_end": 3.2948146988509563e-10,
+      "entropy_at_prompt_end": 5.101781845092773,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 20306,
-          "p_mem": 3.972778703231761e-12,
-          "entropy": 1.6120409965515137
+          "rank": 2231,
+          "p_mem": 2.1786695711401016e-13,
+          "entropy": 0.5690088272094727
         },
         "18": {
-          "rank": 149429,
-          "p_mem": 3.23855254679567e-13,
-          "entropy": 3.7893621921539307
+          "rank": 141573,
+          "p_mem": 3.2948146988509563e-10,
+          "entropy": 5.101781845092773
         },
         "27": {
-          "rank": 50853,
-          "p_mem": 1.0078704804072913e-07,
-          "entropy": 5.5768561363220215
+          "rank": 25007,
+          "p_mem": 5.110024176246952e-06,
+          "entropy": 9.718812942504883
         }
       }
     },
     {
       "id": "5ead25955ee172d556fdd54032c508a9786b300dd49e4757",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 14908,
@@ -946,68 +946,68 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 141899,
-      "p_mem_at_prompt_end": 1.1977755454140038e-09,
-      "entropy_at_prompt_end": 7.097870826721191,
+      "rank_at_prompt_end": 83586,
+      "p_mem_at_prompt_end": 2.449638714097091e-07,
+      "entropy_at_prompt_end": 8.247133255004883,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 36227,
-          "p_mem": 2.6210934935694342e-17,
-          "entropy": 1.020188570022583
+          "rank": 3361,
+          "p_mem": 1.796048444517584e-12,
+          "entropy": 0.7649577856063843
         },
         "18": {
-          "rank": 141899,
-          "p_mem": 1.1977755454140038e-09,
-          "entropy": 7.097870826721191
+          "rank": 83586,
+          "p_mem": 2.449638714097091e-07,
+          "entropy": 8.247133255004883
         },
         "27": {
-          "rank": 32562,
-          "p_mem": 1.8238711163576227e-06,
-          "entropy": 8.759186744689941
+          "rank": 30067,
+          "p_mem": 5.149483968125423e-06,
+          "entropy": 10.342270851135254
         }
       }
     },
     {
       "id": "5c5eaa11039b3bdb361961c2d4bb541e491a596c5c5d4465",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 16451,
       "gold": "1924November 22, 1993",
       "target_token_id": 16,
       "target_token_text": "1",
-      "delta_f1": -0.16666666666666663,
-      "delta_f1_full_generation": -0.16666666666666663,
+      "delta_f1": 0.0,
+      "delta_f1_full_generation": 0.0,
       "f1_ahn": 0.5,
-      "f1_nowrite": 0.6666666666666666,
+      "f1_nowrite": 0.5,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 150151,
-      "p_mem_at_prompt_end": 4.0560668193546316e-15,
-      "entropy_at_prompt_end": 0.4895210266113281,
+      "rank_at_prompt_end": 112050,
+      "p_mem_at_prompt_end": 3.373214596535945e-09,
+      "entropy_at_prompt_end": 5.635085105895996,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 19589,
-          "p_mem": 9.69917046170606e-17,
-          "entropy": 0.3303642272949219
+          "rank": 4015,
+          "p_mem": 2.5332902567804004e-16,
+          "entropy": 0.11191166937351227
         },
         "18": {
-          "rank": 150151,
-          "p_mem": 4.0560668193546316e-15,
-          "entropy": 0.4895210266113281
+          "rank": 112050,
+          "p_mem": 3.373214596535945e-09,
+          "entropy": 5.635085105895996
         },
         "27": {
-          "rank": 86042,
-          "p_mem": 2.6894099391938653e-07,
-          "entropy": 9.084794044494629
+          "rank": 45306,
+          "p_mem": 2.1645309971063398e-06,
+          "entropy": 10.112913131713867
         }
       }
     },
     {
       "id": "7cdceb45cfb9439bd41148788e5cf2f0e8a5cb99a0e09729",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 12440,
@@ -1020,31 +1020,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 49645,
-      "p_mem_at_prompt_end": 8.042925969675707e-08,
-      "entropy_at_prompt_end": 4.586678504943848,
+      "rank_at_prompt_end": 76523,
+      "p_mem_at_prompt_end": 9.002703232419487e-14,
+      "entropy_at_prompt_end": 0.14662791788578033,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 4238,
-          "p_mem": 1.0697283445333661e-13,
-          "entropy": 0.6554611921310425
+          "rank": 34683,
+          "p_mem": 1.10602588343158e-24,
+          "entropy": 0.0022733150981366634
         },
         "18": {
-          "rank": 49645,
-          "p_mem": 8.042925969675707e-08,
-          "entropy": 4.586678504943848
+          "rank": 76523,
+          "p_mem": 9.002703232419487e-14,
+          "entropy": 0.14662791788578033
         },
         "27": {
-          "rank": 124230,
-          "p_mem": 1.2961016260248925e-08,
-          "entropy": 8.043160438537598
+          "rank": 52440,
+          "p_mem": 1.872871848718205e-06,
+          "entropy": 10.288652420043945
         }
       }
     },
     {
       "id": "6c8952c7678c9c2db0a6cdaed0f8aa573898a297f1947e8d",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 15377,
@@ -1057,31 +1057,31 @@
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 148875,
-      "p_mem_at_prompt_end": 7.087847236214584e-12,
-      "entropy_at_prompt_end": 3.6349101066589355,
+      "rank_at_prompt_end": 114446,
+      "p_mem_at_prompt_end": 2.393487144591866e-11,
+      "entropy_at_prompt_end": 3.9339184761047363,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 66607,
-          "p_mem": 1.6441114233407576e-18,
-          "entropy": 1.6821238994598389
+          "rank": 2510,
+          "p_mem": 6.583324857478701e-11,
+          "entropy": 2.1237008571624756
         },
         "18": {
-          "rank": 148875,
-          "p_mem": 7.087847236214584e-12,
-          "entropy": 3.6349101066589355
+          "rank": 114446,
+          "p_mem": 2.393487144591866e-11,
+          "entropy": 3.9339184761047363
         },
         "27": {
-          "rank": 15849,
-          "p_mem": 5.7176821428583935e-06,
-          "entropy": 8.545717239379883
+          "rank": 8787,
+          "p_mem": 2.5860785171971656e-05,
+          "entropy": 10.20233154296875
         }
       }
     },
     {
       "id": "82a1a48996ef392d6abe74ea1d2b0a807c0f4d859c4026ac",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 15036,
@@ -1094,31 +1094,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 149815,
-      "p_mem_at_prompt_end": 3.34377064069042e-14,
-      "entropy_at_prompt_end": 0.6467859745025635,
+      "rank_at_prompt_end": 56632,
+      "p_mem_at_prompt_end": 9.825155302678468e-07,
+      "entropy_at_prompt_end": 9.282669067382812,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 43185,
-          "p_mem": 9.077022611278184e-18,
-          "entropy": 0.8315542340278625
+          "rank": 4049,
+          "p_mem": 7.240410104558974e-16,
+          "entropy": 0.771259069442749
         },
         "18": {
-          "rank": 149815,
-          "p_mem": 3.34377064069042e-14,
-          "entropy": 0.6467859745025635
+          "rank": 56632,
+          "p_mem": 9.825155302678468e-07,
+          "entropy": 9.282669067382812
         },
         "27": {
-          "rank": 108969,
-          "p_mem": 1.541635796797891e-08,
-          "entropy": 7.515427589416504
+          "rank": 10695,
+          "p_mem": 2.2962825823924504e-05,
+          "entropy": 10.429401397705078
         }
       }
     },
     {
       "id": "0bbd28f6cdb99eca32bfebb135b10db570568655b5924475",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 13134,
@@ -1131,31 +1131,31 @@
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 48017,
-      "p_mem_at_prompt_end": 6.054516177300684e-08,
-      "entropy_at_prompt_end": 3.765542507171631,
+      "rank_at_prompt_end": 60848,
+      "p_mem_at_prompt_end": 3.523334735078265e-09,
+      "entropy_at_prompt_end": 3.386263608932495,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 92691,
-          "p_mem": 4.1052214475053834e-21,
-          "entropy": 0.6185818314552307
+          "rank": 14300,
+          "p_mem": 4.95670345046495e-11,
+          "entropy": 0.719114363193512
         },
         "18": {
-          "rank": 48017,
-          "p_mem": 6.054516177300684e-08,
-          "entropy": 3.765542507171631
+          "rank": 60848,
+          "p_mem": 3.523334735078265e-09,
+          "entropy": 3.386263608932495
         },
         "27": {
-          "rank": 11273,
-          "p_mem": 6.684352683805628e-06,
-          "entropy": 7.839101791381836
+          "rank": 30208,
+          "p_mem": 5.683475137630012e-06,
+          "entropy": 10.483619689941406
         }
       }
     },
     {
       "id": "fd61851f598d55c56d1d32d500d54f356919668ee76a5fa0",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 16397,
@@ -1168,68 +1168,68 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 46074,
-      "p_mem_at_prompt_end": 9.57258293965424e-07,
-      "entropy_at_prompt_end": 8.237693786621094,
+      "rank_at_prompt_end": 68486,
+      "p_mem_at_prompt_end": 6.499213611732557e-09,
+      "entropy_at_prompt_end": 5.370856285095215,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 12674,
-          "p_mem": 6.084610778140905e-15,
-          "entropy": 0.45875680446624756
+          "rank": 73674,
+          "p_mem": 8.146721491852915e-11,
+          "entropy": 1.7427361011505127
         },
         "18": {
-          "rank": 46074,
-          "p_mem": 9.57258293965424e-07,
-          "entropy": 8.237693786621094
+          "rank": 68486,
+          "p_mem": 6.499213611732557e-09,
+          "entropy": 5.370856285095215
         },
         "27": {
-          "rank": 55173,
-          "p_mem": 2.811543140524009e-07,
-          "entropy": 7.845155715942383
+          "rank": 63346,
+          "p_mem": 1.229379108735884e-06,
+          "entropy": 10.322064399719238
         }
       }
     },
     {
       "id": "f8832527b9381e131ecdcb4a81278fbcdd2b5e56c6215744",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 16822,
       "gold": "Vikram",
       "target_token_id": 53,
       "target_token_text": "V",
-      "delta_f1": -0.6666666666666666,
-      "delta_f1_full_generation": -0.6666666666666666,
-      "f1_ahn": 0.0,
+      "delta_f1": -0.16666666666666663,
+      "delta_f1_full_generation": -0.16666666666666663,
+      "f1_ahn": 0.5,
       "f1_nowrite": 0.6666666666666666,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 142336,
-      "p_mem_at_prompt_end": 1.7951614153521867e-11,
-      "entropy_at_prompt_end": 2.586338996887207,
+      "rank_at_prompt_end": 96708,
+      "p_mem_at_prompt_end": 2.095720930128664e-07,
+      "entropy_at_prompt_end": 8.764423370361328,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 39013,
-          "p_mem": 3.010305331356132e-16,
-          "entropy": 0.31509244441986084
+          "rank": 15847,
+          "p_mem": 1.0234077474358116e-10,
+          "entropy": 0.8437957763671875
         },
         "18": {
-          "rank": 142336,
-          "p_mem": 1.7951614153521867e-11,
-          "entropy": 2.586338996887207
+          "rank": 96708,
+          "p_mem": 2.095720930128664e-07,
+          "entropy": 8.764423370361328
         },
         "27": {
-          "rank": 43951,
-          "p_mem": 7.902011702753953e-07,
-          "entropy": 8.276049613952637
+          "rank": 41838,
+          "p_mem": 3.390630809008144e-06,
+          "entropy": 10.456924438476562
         }
       }
     },
     {
       "id": "92be640857b6dd2e6beef9c07b7c3805d358192150971dda",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 15251,
@@ -1242,68 +1242,68 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 141052,
-      "p_mem_at_prompt_end": 6.800264778367149e-12,
-      "entropy_at_prompt_end": 2.168260097503662,
+      "rank_at_prompt_end": 88703,
+      "p_mem_at_prompt_end": 3.47794355093356e-07,
+      "entropy_at_prompt_end": 9.134866714477539,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 101231,
-          "p_mem": 4.1012628033542265e-15,
-          "entropy": 1.8372255563735962
+          "rank": 9698,
+          "p_mem": 7.109294752337474e-22,
+          "entropy": 0.6662344336509705
         },
         "18": {
-          "rank": 141052,
-          "p_mem": 6.800264778367149e-12,
-          "entropy": 2.168260097503662
+          "rank": 88703,
+          "p_mem": 3.47794355093356e-07,
+          "entropy": 9.134866714477539
         },
         "27": {
-          "rank": 37646,
-          "p_mem": 1.2650421012949664e-06,
-          "entropy": 8.725895881652832
+          "rank": 23546,
+          "p_mem": 7.964835276652593e-06,
+          "entropy": 10.337536811828613
         }
       }
     },
     {
       "id": "cf39373b78df19018180ae54b7006205fdb85ec4e708a95d",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 11929,
       "gold": "Katarina Witt",
       "target_token_id": 42,
       "target_token_text": "K",
-      "delta_f1": 0.0,
-      "delta_f1_full_generation": 0.0,
-      "f1_ahn": 1.0,
+      "delta_f1": -1.0,
+      "delta_f1_full_generation": -1.0,
+      "f1_ahn": 0.0,
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 139214,
-      "p_mem_at_prompt_end": 1.5293765602900078e-12,
-      "entropy_at_prompt_end": 1.7653573751449585,
+      "rank_at_prompt_end": 123735,
+      "p_mem_at_prompt_end": 1.977642191447384e-14,
+      "entropy_at_prompt_end": 1.7467377185821533,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 81728,
-          "p_mem": 2.1905145518723063e-17,
-          "entropy": 0.3463518023490906
+          "rank": 16698,
+          "p_mem": 1.9722051167331793e-24,
+          "entropy": 0.046937525272369385
         },
         "18": {
-          "rank": 139214,
-          "p_mem": 1.5293765602900078e-12,
-          "entropy": 1.7653573751449585
+          "rank": 123735,
+          "p_mem": 1.977642191447384e-14,
+          "entropy": 1.7467377185821533
         },
         "27": {
-          "rank": 39287,
-          "p_mem": 1.1785991773649585e-06,
-          "entropy": 8.407805442810059
+          "rank": 81799,
+          "p_mem": 8.988935178422253e-07,
+          "entropy": 10.304515838623047
         }
       }
     },
     {
       "id": "df556f7b2e1c7fd14f1a64900f8d71c6207f8a85145e4ca3",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 16345,
@@ -1316,31 +1316,31 @@
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 150542,
-      "p_mem_at_prompt_end": 1.214921067395347e-12,
-      "entropy_at_prompt_end": 4.929449558258057,
+      "rank_at_prompt_end": 10321,
+      "p_mem_at_prompt_end": 5.694053584193171e-07,
+      "entropy_at_prompt_end": 4.349631309509277,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 24970,
-          "p_mem": 2.0551473958857077e-18,
-          "entropy": 0.2737557291984558
+          "rank": 14080,
+          "p_mem": 1.0153959921141431e-15,
+          "entropy": 0.15278008580207825
         },
         "18": {
-          "rank": 150542,
-          "p_mem": 1.214921067395347e-12,
-          "entropy": 4.929449558258057
+          "rank": 10321,
+          "p_mem": 5.694053584193171e-07,
+          "entropy": 4.349631309509277
         },
         "27": {
-          "rank": 82788,
-          "p_mem": 1.7914766203830368e-07,
-          "entropy": 8.38997745513916
+          "rank": 9278,
+          "p_mem": 2.6243227694067173e-05,
+          "entropy": 10.384757041931152
         }
       }
     },
     {
       "id": "7bc9d324dd6195d9ad2395b87601f929de0c15c668e9e4cb",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 12848,
@@ -1353,31 +1353,31 @@
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 128211,
-      "p_mem_at_prompt_end": 4.5828634220868025e-09,
-      "entropy_at_prompt_end": 6.970290184020996,
+      "rank_at_prompt_end": 139814,
+      "p_mem_at_prompt_end": 1.6162429467697637e-12,
+      "entropy_at_prompt_end": 1.5067194700241089,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 122933,
-          "p_mem": 4.886443246560068e-12,
-          "entropy": 3.0776381492614746
+          "rank": 102833,
+          "p_mem": 2.4651748284688025e-18,
+          "entropy": 0.016755638644099236
         },
         "18": {
-          "rank": 128211,
-          "p_mem": 4.5828634220868025e-09,
-          "entropy": 6.970290184020996
+          "rank": 139814,
+          "p_mem": 1.6162429467697637e-12,
+          "entropy": 1.5067194700241089
         },
         "27": {
-          "rank": 30473,
-          "p_mem": 2.018987061092048e-06,
-          "entropy": 8.796582221984863
+          "rank": 35903,
+          "p_mem": 4.099207671970362e-06,
+          "entropy": 10.38197135925293
         }
       }
     },
     {
       "id": "1a16dfb39ae6cf0874aefc9d22d1cc299f3003fc6d8b19e2",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 17293,
@@ -1390,31 +1390,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 145822,
-      "p_mem_at_prompt_end": 1.8830142306525133e-11,
-      "entropy_at_prompt_end": 3.1615147590637207,
+      "rank_at_prompt_end": 123976,
+      "p_mem_at_prompt_end": 4.8932243673638354e-11,
+      "entropy_at_prompt_end": 2.649411201477051,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 34752,
-          "p_mem": 9.445293010112019e-20,
-          "entropy": 0.5202834010124207
+          "rank": 61256,
+          "p_mem": 5.309593769819692e-19,
+          "entropy": 1.0069990158081055
         },
         "18": {
-          "rank": 145822,
-          "p_mem": 1.8830142306525133e-11,
-          "entropy": 3.1615147590637207
+          "rank": 123976,
+          "p_mem": 4.8932243673638354e-11,
+          "entropy": 2.649411201477051
         },
         "27": {
-          "rank": 29360,
-          "p_mem": 1.9149335912516108e-06,
-          "entropy": 8.625587463378906
+          "rank": 39379,
+          "p_mem": 5.678713055345952e-09,
+          "entropy": 2.028477430343628
         }
       }
     },
     {
       "id": "89d46cdb218ad0444871f9b44dea057e0cdbd6c08be8d9c1",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 16441,
@@ -1427,31 +1427,31 @@
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 138320,
-      "p_mem_at_prompt_end": 5.660192106682338e-11,
-      "entropy_at_prompt_end": 3.3252296447753906,
+      "rank_at_prompt_end": 108960,
+      "p_mem_at_prompt_end": 8.809888640826102e-08,
+      "entropy_at_prompt_end": 7.898697853088379,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 27316,
-          "p_mem": 3.0052049224642404e-15,
-          "entropy": 1.5268932580947876
+          "rank": 3727,
+          "p_mem": 2.647856977081031e-13,
+          "entropy": 1.5314799547195435
         },
         "18": {
-          "rank": 138320,
-          "p_mem": 5.660192106682338e-11,
-          "entropy": 3.3252296447753906
+          "rank": 108960,
+          "p_mem": 8.809888640826102e-08,
+          "entropy": 7.898697853088379
         },
         "27": {
-          "rank": 51183,
-          "p_mem": 2.168733743701523e-07,
-          "entropy": 7.082647800445557
+          "rank": 66622,
+          "p_mem": 1.1843156926261145e-06,
+          "entropy": 10.25748062133789
         }
       }
     },
     {
       "id": "e1b6edc0310b4329374915aa013f0870213342822a728142",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 15535,
@@ -1464,31 +1464,31 @@
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 45497,
-      "p_mem_at_prompt_end": 3.001182591333418e-08,
-      "entropy_at_prompt_end": 4.27549934387207,
+      "rank_at_prompt_end": 37903,
+      "p_mem_at_prompt_end": 2.5525179125907016e-07,
+      "entropy_at_prompt_end": 6.841379165649414,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 51580,
-          "p_mem": 3.1174568135283742e-12,
-          "entropy": 0.8504452705383301
+          "rank": 42149,
+          "p_mem": 2.9899687320370465e-17,
+          "entropy": 0.8337657451629639
         },
         "18": {
-          "rank": 45497,
-          "p_mem": 3.001182591333418e-08,
-          "entropy": 4.27549934387207
+          "rank": 37903,
+          "p_mem": 2.5525179125907016e-07,
+          "entropy": 6.841379165649414
         },
         "27": {
-          "rank": 144764,
-          "p_mem": 1.746196187646376e-09,
-          "entropy": 7.69429349899292
+          "rank": 97046,
+          "p_mem": 4.063392111675057e-07,
+          "entropy": 10.015789031982422
         }
       }
     },
     {
       "id": "b382a3ff1ff044c91cba6eafbbae2a2be82e107109d35688",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 14638,
@@ -1501,31 +1501,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 122278,
-      "p_mem_at_prompt_end": 5.178982590003933e-11,
-      "entropy_at_prompt_end": 1.5697896480560303,
+      "rank_at_prompt_end": 145754,
+      "p_mem_at_prompt_end": 3.156251995872772e-11,
+      "entropy_at_prompt_end": 4.976102352142334,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 26372,
-          "p_mem": 5.221403821462078e-13,
-          "entropy": 2.2300362586975098
+          "rank": 10866,
+          "p_mem": 2.080651623215246e-11,
+          "entropy": 2.893700361251831
         },
         "18": {
-          "rank": 122278,
-          "p_mem": 5.178982590003933e-11,
-          "entropy": 1.5697896480560303
+          "rank": 145754,
+          "p_mem": 3.156251995872772e-11,
+          "entropy": 4.976102352142334
         },
         "27": {
-          "rank": 42094,
-          "p_mem": 7.240599302349437e-07,
-          "entropy": 7.771588325500488
+          "rank": 42013,
+          "p_mem": 2.521543592592934e-06,
+          "entropy": 10.242095947265625
         }
       }
     },
     {
       "id": "f3c23b4984f14199f12862795aeb344f19c97bfc9c586a8f",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 13649,
@@ -1538,31 +1538,31 @@
       "f1_nowrite": 0.6666666666666666,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 139364,
-      "p_mem_at_prompt_end": 4.726330546551971e-13,
-      "entropy_at_prompt_end": 1.358920693397522,
+      "rank_at_prompt_end": 138450,
+      "p_mem_at_prompt_end": 3.2323070001810672e-12,
+      "entropy_at_prompt_end": 2.608698844909668,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 79356,
-          "p_mem": 3.7184408894773863e-17,
-          "entropy": 0.9013533592224121
+          "rank": 5787,
+          "p_mem": 2.8856193476367586e-11,
+          "entropy": 2.232646942138672
         },
         "18": {
-          "rank": 139364,
-          "p_mem": 4.726330546551971e-13,
-          "entropy": 1.358920693397522
+          "rank": 138450,
+          "p_mem": 3.2323070001810672e-12,
+          "entropy": 2.608698844909668
         },
         "27": {
-          "rank": 39794,
-          "p_mem": 1.694715024314064e-06,
-          "entropy": 9.352993965148926
+          "rank": 65757,
+          "p_mem": 8.890194749255897e-07,
+          "entropy": 9.96297836303711
         }
       }
     },
     {
       "id": "1f9db2aff02d37612e21ae47ae43ba53ce131848900865ff",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 15381,
@@ -1575,31 +1575,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 116665,
-      "p_mem_at_prompt_end": 8.529403849877326e-09,
-      "entropy_at_prompt_end": 6.7024664878845215,
+      "rank_at_prompt_end": 98103,
+      "p_mem_at_prompt_end": 5.1485833825470895e-12,
+      "entropy_at_prompt_end": 0.7404442429542542,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 39717,
-          "p_mem": 3.653511975952302e-16,
-          "entropy": 1.1326899528503418
+          "rank": 9735,
+          "p_mem": 1.9463740138746278e-17,
+          "entropy": 0.9647908806800842
         },
         "18": {
-          "rank": 116665,
-          "p_mem": 8.529403849877326e-09,
-          "entropy": 6.7024664878845215
+          "rank": 98103,
+          "p_mem": 5.1485833825470895e-12,
+          "entropy": 0.7404442429542542
         },
         "27": {
-          "rank": 35023,
-          "p_mem": 8.824299015941506e-07,
-          "entropy": 8.152617454528809
+          "rank": 67451,
+          "p_mem": 1.3099207762934384e-06,
+          "entropy": 10.348027229309082
         }
       }
     },
     {
       "id": "6153db5292ec46160b06ceb90f401de731655879157b30d7",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 16707,
@@ -1612,31 +1612,31 @@
       "f1_nowrite": 0.6666666666666666,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 101343,
-      "p_mem_at_prompt_end": 6.75762557023063e-09,
-      "entropy_at_prompt_end": 5.36161994934082,
+      "rank_at_prompt_end": 71276,
+      "p_mem_at_prompt_end": 3.1986019166652113e-07,
+      "entropy_at_prompt_end": 8.371391296386719,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 16508,
-          "p_mem": 2.127092198681983e-20,
-          "entropy": 0.181773379445076
+          "rank": 48419,
+          "p_mem": 2.5279450156620828e-17,
+          "entropy": 0.553812563419342
         },
         "18": {
-          "rank": 101343,
-          "p_mem": 6.75762557023063e-09,
-          "entropy": 5.36161994934082
+          "rank": 71276,
+          "p_mem": 3.1986019166652113e-07,
+          "entropy": 8.371391296386719
         },
         "27": {
-          "rank": 110931,
-          "p_mem": 6.981942135553254e-08,
-          "entropy": 8.569803237915039
+          "rank": 97053,
+          "p_mem": 4.397289217195066e-07,
+          "entropy": 10.130744934082031
         }
       }
     },
     {
       "id": "0e4fac2d1da09fad0958e11c5d6d7d8cbe4143e5a105e084",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 16578,
@@ -1649,31 +1649,31 @@
       "f1_nowrite": 0.8,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 100265,
-      "p_mem_at_prompt_end": 4.191825997423848e-09,
-      "entropy_at_prompt_end": 4.606863021850586,
+      "rank_at_prompt_end": 110327,
+      "p_mem_at_prompt_end": 5.0686826263968143e-11,
+      "entropy_at_prompt_end": 2.998840093612671,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 86882,
-          "p_mem": 1.3089841168455185e-13,
-          "entropy": 1.5660161972045898
+          "rank": 58804,
+          "p_mem": 2.5121252898445827e-19,
+          "entropy": 0.12300079315900803
         },
         "18": {
-          "rank": 100265,
-          "p_mem": 4.191825997423848e-09,
-          "entropy": 4.606863021850586
+          "rank": 110327,
+          "p_mem": 5.0686826263968143e-11,
+          "entropy": 2.998840093612671
         },
         "27": {
-          "rank": 76434,
-          "p_mem": 3.110475859102735e-07,
-          "entropy": 8.929218292236328
+          "rank": 71461,
+          "p_mem": 9.820258810577798e-07,
+          "entropy": 10.11219310760498
         }
       }
     },
     {
       "id": "8149fb371e91a3c4e6776957a8591519d55910bb5029e267",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 16969,
@@ -1686,31 +1686,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 53776,
-      "p_mem_at_prompt_end": 1.0668100713928652e-07,
-      "entropy_at_prompt_end": 5.628836631774902,
+      "rank_at_prompt_end": 7332,
+      "p_mem_at_prompt_end": 3.839782891645882e-07,
+      "entropy_at_prompt_end": 2.49804425239563,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 132747,
-          "p_mem": 8.401886739202776e-21,
-          "entropy": 0.5576038360595703
+          "rank": 70476,
+          "p_mem": 1.1909283633957931e-26,
+          "entropy": 0.10599520802497864
         },
         "18": {
-          "rank": 53776,
-          "p_mem": 1.0668100713928652e-07,
-          "entropy": 5.628836631774902
+          "rank": 7332,
+          "p_mem": 3.839782891645882e-07,
+          "entropy": 2.49804425239563
         },
         "27": {
-          "rank": 78302,
-          "p_mem": 1.3895022732413054e-07,
-          "entropy": 8.226231575012207
+          "rank": 97661,
+          "p_mem": 6.447867235692684e-07,
+          "entropy": 10.508352279663086
         }
       }
     },
     {
       "id": "adde6fd9958589ef78af9e192aeffd8e48dfbd8d35014f4f",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 16751,
@@ -1723,31 +1723,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 141967,
-      "p_mem_at_prompt_end": 1.6802692050232881e-12,
-      "entropy_at_prompt_end": 0.9795079231262207,
+      "rank_at_prompt_end": 97536,
+      "p_mem_at_prompt_end": 4.6483705773425754e-07,
+      "entropy_at_prompt_end": 9.541768074035645,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 42889,
-          "p_mem": 2.9945599199941635e-22,
-          "entropy": 0.5894994139671326
+          "rank": 40257,
+          "p_mem": 5.59648495091843e-20,
+          "entropy": 0.15821877121925354
         },
         "18": {
-          "rank": 141967,
-          "p_mem": 1.6802692050232881e-12,
-          "entropy": 0.9795079231262207
+          "rank": 97536,
+          "p_mem": 4.6483705773425754e-07,
+          "entropy": 9.541768074035645
         },
         "27": {
-          "rank": 71803,
-          "p_mem": 3.590380686091521e-07,
-          "entropy": 8.753037452697754
+          "rank": 65373,
+          "p_mem": 9.110823953051295e-07,
+          "entropy": 9.944463729858398
         }
       }
     },
     {
       "id": "a6cda30d0950f2d8b0e5c1ee89466cbc43b37be7daedcb8b",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 16952,
@@ -1760,31 +1760,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 97254,
-      "p_mem_at_prompt_end": 5.983844530987881e-09,
-      "entropy_at_prompt_end": 4.883059501647949,
+      "rank_at_prompt_end": 119371,
+      "p_mem_at_prompt_end": 3.880584387161434e-08,
+      "entropy_at_prompt_end": 7.435659408569336,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 14216,
-          "p_mem": 1.3008244112953926e-13,
-          "entropy": 1.4499855041503906
+          "rank": 7827,
+          "p_mem": 1.0255623462448852e-16,
+          "entropy": 1.1019511222839355
         },
         "18": {
-          "rank": 97254,
-          "p_mem": 5.983844530987881e-09,
-          "entropy": 4.883059501647949
+          "rank": 119371,
+          "p_mem": 3.880584387161434e-08,
+          "entropy": 7.435659408569336
         },
         "27": {
-          "rank": 68762,
-          "p_mem": 1.5798781305420562e-07,
-          "entropy": 7.878474712371826
+          "rank": 77613,
+          "p_mem": 7.636569989699638e-07,
+          "entropy": 10.175559997558594
         }
       }
     },
     {
       "id": "1ae026dfc12f5b58aeaf3bb8631d67f416a8d4e22a47d1de",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 15320,
@@ -1797,31 +1797,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 45083,
-      "p_mem_at_prompt_end": 5.470589536926695e-10,
-      "entropy_at_prompt_end": 0.5500533580780029,
+      "rank_at_prompt_end": 22728,
+      "p_mem_at_prompt_end": 2.721448413844918e-11,
+      "entropy_at_prompt_end": 0.34957611560821533,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 30030,
-          "p_mem": 1.1484733520097934e-12,
-          "entropy": 1.9930857419967651
+          "rank": 60028,
+          "p_mem": 1.3126087738217645e-23,
+          "entropy": 0.001696713618002832
         },
         "18": {
-          "rank": 45083,
-          "p_mem": 5.470589536926695e-10,
-          "entropy": 0.5500533580780029
+          "rank": 22728,
+          "p_mem": 2.721448413844918e-11,
+          "entropy": 0.34957611560821533
         },
         "27": {
-          "rank": 23057,
-          "p_mem": 2.6557734145171707e-06,
-          "entropy": 8.250595092773438
+          "rank": 32064,
+          "p_mem": 2.838706620877929e-07,
+          "entropy": 6.516059398651123
         }
       }
     },
     {
       "id": "566cf1595f78c029378e6220cf960d0b791084225f60ccda",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 12570,
@@ -1834,31 +1834,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 141080,
-      "p_mem_at_prompt_end": 1.7476034508412397e-10,
-      "entropy_at_prompt_end": 4.478852272033691,
+      "rank_at_prompt_end": 12913,
+      "p_mem_at_prompt_end": 2.586327148539763e-13,
+      "entropy_at_prompt_end": 0.6322126984596252,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 45225,
-          "p_mem": 1.5212505056648104e-14,
-          "entropy": 1.0801777839660645
+          "rank": 47167,
+          "p_mem": 1.0811161743617959e-08,
+          "entropy": 1.1059085130691528
         },
         "18": {
-          "rank": 141080,
-          "p_mem": 1.7476034508412397e-10,
-          "entropy": 4.478852272033691
+          "rank": 12913,
+          "p_mem": 2.586327148539763e-13,
+          "entropy": 0.6322126984596252
         },
         "27": {
-          "rank": 62867,
-          "p_mem": 8.759652558865128e-08,
-          "entropy": 6.96066951751709
+          "rank": 114965,
+          "p_mem": 3.610972854062311e-08,
+          "entropy": 6.666872501373291
         }
       }
     },
     {
       "id": "7caf887e7c7af6c1dbe41d09aa5138aa6147234257b15c42",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 16158,
@@ -1871,31 +1871,31 @@
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 141830,
-      "p_mem_at_prompt_end": 1.6556866988537422e-10,
-      "entropy_at_prompt_end": 4.94096565246582,
+      "rank_at_prompt_end": 122024,
+      "p_mem_at_prompt_end": 7.287635772623702e-11,
+      "entropy_at_prompt_end": 4.281391620635986,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 46847,
-          "p_mem": 9.080544746326435e-19,
-          "entropy": 0.06151668354868889
+          "rank": 8350,
+          "p_mem": 9.701630827720038e-18,
+          "entropy": 0.7603263258934021
         },
         "18": {
-          "rank": 141830,
-          "p_mem": 1.6556866988537422e-10,
-          "entropy": 4.94096565246582
+          "rank": 122024,
+          "p_mem": 7.287635772623702e-11,
+          "entropy": 4.281391620635986
         },
         "27": {
-          "rank": 67408,
-          "p_mem": 3.657207514606853e-07,
-          "entropy": 8.664889335632324
+          "rank": 101793,
+          "p_mem": 5.415136570263712e-07,
+          "entropy": 10.324665069580078
         }
       }
     },
     {
       "id": "27fa190091460428cd374c49583b9721fbd4a742e0e5e66e",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 13056,
@@ -1908,31 +1908,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 87782,
-      "p_mem_at_prompt_end": 8.594696065955532e-10,
-      "entropy_at_prompt_end": 2.2696752548217773,
+      "rank_at_prompt_end": 60838,
+      "p_mem_at_prompt_end": 5.120681101367097e-10,
+      "entropy_at_prompt_end": 1.8877307176589966,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 69040,
-          "p_mem": 1.2282633663563715e-20,
-          "entropy": 0.27273476123809814
+          "rank": 22466,
+          "p_mem": 6.5876877859542306e-15,
+          "entropy": 1.3185429573059082
         },
         "18": {
-          "rank": 87782,
-          "p_mem": 8.594696065955532e-10,
-          "entropy": 2.2696752548217773
+          "rank": 60838,
+          "p_mem": 5.120681101367097e-10,
+          "entropy": 1.8877307176589966
         },
         "27": {
-          "rank": 97349,
-          "p_mem": 7.416277725269538e-08,
-          "entropy": 7.924839019775391
+          "rank": 54317,
+          "p_mem": 1.6900585251278244e-06,
+          "entropy": 10.33225154876709
         }
       }
     },
     {
       "id": "88e3bc9e0eee130cd7cd23ebed32a425fd76a7bc566a64bd",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 15663,
@@ -1945,31 +1945,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 138391,
-      "p_mem_at_prompt_end": 1.3998797780689909e-12,
-      "entropy_at_prompt_end": 1.664330005645752,
+      "rank_at_prompt_end": 30263,
+      "p_mem_at_prompt_end": 1.0179038945068442e-08,
+      "entropy_at_prompt_end": 1.163346290588379,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 141051,
-          "p_mem": 1.6582590655885277e-17,
-          "entropy": 0.6947925686836243
+          "rank": 37598,
+          "p_mem": 6.068653163796834e-18,
+          "entropy": 0.47767168283462524
         },
         "18": {
-          "rank": 138391,
-          "p_mem": 1.3998797780689909e-12,
-          "entropy": 1.664330005645752
+          "rank": 30263,
+          "p_mem": 1.0179038945068442e-08,
+          "entropy": 1.163346290588379
         },
         "27": {
-          "rank": 37678,
-          "p_mem": 2.669581135705812e-06,
-          "entropy": 9.632111549377441
+          "rank": 38533,
+          "p_mem": 3.853363068628823e-06,
+          "entropy": 10.49994945526123
         }
       }
     },
     {
       "id": "5dea8866ddd6e6bd76e82c8d8cea1dbfc441e58ec31724d6",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 16503,
@@ -1982,31 +1982,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 79721,
-      "p_mem_at_prompt_end": 6.306756006324576e-08,
-      "entropy_at_prompt_end": 5.122608184814453,
+      "rank_at_prompt_end": 105895,
+      "p_mem_at_prompt_end": 1.2126616377727828e-10,
+      "entropy_at_prompt_end": 4.466126441955566,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 25039,
-          "p_mem": 2.612102013841203e-15,
-          "entropy": 1.5846571922302246
+          "rank": 129667,
+          "p_mem": 3.2816200066887815e-20,
+          "entropy": 0.5024139881134033
         },
         "18": {
-          "rank": 79721,
-          "p_mem": 6.306756006324576e-08,
-          "entropy": 5.122608184814453
+          "rank": 105895,
+          "p_mem": 1.2126616377727828e-10,
+          "entropy": 4.466126441955566
         },
         "27": {
-          "rank": 45775,
-          "p_mem": 2.6351281690040196e-07,
-          "entropy": 7.119740962982178
+          "rank": 110743,
+          "p_mem": 3.3306091040685715e-07,
+          "entropy": 10.048774719238281
         }
       }
     },
     {
       "id": "6d83121d4b9d36d10b3eeaeabe37ca728dcdbcea9541b57b",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 15928,
@@ -2019,31 +2019,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 108372,
-      "p_mem_at_prompt_end": 8.849020960433052e-10,
-      "entropy_at_prompt_end": 3.8549559116363525,
+      "rank_at_prompt_end": 114223,
+      "p_mem_at_prompt_end": 3.4217249034185215e-09,
+      "entropy_at_prompt_end": 5.287318229675293,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 23943,
-          "p_mem": 2.5564215871286216e-19,
-          "entropy": 0.11871948838233948
+          "rank": 4509,
+          "p_mem": 2.7506351417492386e-14,
+          "entropy": 0.3395185172557831
         },
         "18": {
-          "rank": 108372,
-          "p_mem": 8.849020960433052e-10,
-          "entropy": 3.8549559116363525
+          "rank": 114223,
+          "p_mem": 3.4217249034185215e-09,
+          "entropy": 5.287318229675293
         },
         "27": {
-          "rank": 72999,
-          "p_mem": 2.783246770832193e-07,
-          "entropy": 8.628935813903809
+          "rank": 61599,
+          "p_mem": 1.428768086952914e-06,
+          "entropy": 10.354469299316406
         }
       }
     },
     {
       "id": "7681a4ae6d92c179c938738ad170b6626534556d9ea993b6",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 13688,
@@ -2056,31 +2056,31 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 149997,
-      "p_mem_at_prompt_end": 9.571487211753466e-14,
-      "entropy_at_prompt_end": 2.9100818634033203,
+      "rank_at_prompt_end": 39803,
+      "p_mem_at_prompt_end": 4.475772877321482e-11,
+      "entropy_at_prompt_end": 2.2160696983337402,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 28236,
-          "p_mem": 2.799971592201602e-15,
-          "entropy": 1.8955981731414795
+          "rank": 43543,
+          "p_mem": 6.029859646359816e-23,
+          "entropy": 0.22511357069015503
         },
         "18": {
-          "rank": 149997,
-          "p_mem": 9.571487211753466e-14,
-          "entropy": 2.9100818634033203
+          "rank": 39803,
+          "p_mem": 4.475772877321482e-11,
+          "entropy": 2.2160696983337402
         },
         "27": {
-          "rank": 61780,
-          "p_mem": 4.3720123699131364e-07,
-          "entropy": 8.641082763671875
+          "rank": 39610,
+          "p_mem": 2.6483662622922566e-06,
+          "entropy": 10.077396392822266
         }
       }
     },
     {
       "id": "e71fd79076da6ff2259a596d154b78301488419a5736ac21",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 12663,
@@ -2093,31 +2093,31 @@
       "f1_nowrite": 1.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 94381,
-      "p_mem_at_prompt_end": 3.598384701319901e-09,
-      "entropy_at_prompt_end": 4.49888801574707,
+      "rank_at_prompt_end": 136171,
+      "p_mem_at_prompt_end": 7.672679765841073e-13,
+      "entropy_at_prompt_end": 0.21473994851112366,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 12340,
-          "p_mem": 6.62959346943624e-20,
-          "entropy": 1.0676497220993042
+          "rank": 2576,
+          "p_mem": 5.88746829066622e-09,
+          "entropy": 0.22423626482486725
         },
         "18": {
-          "rank": 94381,
-          "p_mem": 3.598384701319901e-09,
-          "entropy": 4.49888801574707
+          "rank": 136171,
+          "p_mem": 7.672679765841073e-13,
+          "entropy": 0.21473994851112366
         },
         "27": {
-          "rank": 32189,
-          "p_mem": 5.307978767632449e-07,
-          "entropy": 6.827079772949219
+          "rank": 32841,
+          "p_mem": 3.5281611872051144e-06,
+          "entropy": 9.981520652770996
         }
       }
     },
     {
       "id": "1bfa4cb5fc609ed2f83787800d112fa7fcb5cdcbef7756fa",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "mid",
       "n_tokens": 14978,
@@ -2130,68 +2130,68 @@
       "f1_nowrite": 0.0,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 123857,
-      "p_mem_at_prompt_end": 1.7609632502191275e-11,
-      "entropy_at_prompt_end": 1.6286375522613525,
+      "rank_at_prompt_end": 142535,
+      "p_mem_at_prompt_end": 1.4881190724125304e-10,
+      "entropy_at_prompt_end": 1.9975993633270264,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 15637,
-          "p_mem": 2.5733344838243988e-18,
-          "entropy": 0.875576913356781
+          "rank": 2740,
+          "p_mem": 3.0547955251524275e-14,
+          "entropy": 0.7907175421714783
         },
         "18": {
-          "rank": 123857,
-          "p_mem": 1.7609632502191275e-11,
-          "entropy": 1.6286375522613525
+          "rank": 142535,
+          "p_mem": 1.4881190724125304e-10,
+          "entropy": 1.9975993633270264
         },
         "27": {
-          "rank": 53422,
-          "p_mem": 9.088810770663258e-07,
-          "entropy": 8.989323616027832
+          "rank": 81269,
+          "p_mem": 7.54433585825609e-07,
+          "entropy": 10.310405731201172
         }
       }
     },
     {
       "id": "52159c74eaf34175bef4c0c07531f5908ba3eb1d390ca97d",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 16099,
       "gold": "Tharangambadi",
       "target_token_id": 1001,
       "target_token_text": "Th",
-      "delta_f1": 0.0,
-      "delta_f1_full_generation": 0.0,
-      "f1_ahn": 0.25,
+      "delta_f1": -0.02777777777777779,
+      "delta_f1_full_generation": -0.02777777777777779,
+      "f1_ahn": 0.2222222222222222,
       "f1_nowrite": 0.25,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 102393,
-      "p_mem_at_prompt_end": 5.747892384277975e-09,
-      "entropy_at_prompt_end": 5.270285129547119,
+      "rank_at_prompt_end": 129174,
+      "p_mem_at_prompt_end": 4.695923554523529e-13,
+      "entropy_at_prompt_end": 2.878119468688965,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 22788,
-          "p_mem": 9.056654115874678e-18,
-          "entropy": 1.3719725608825684
+          "rank": 14340,
+          "p_mem": 1.000986892963996e-17,
+          "entropy": 0.8629743456840515
         },
         "18": {
-          "rank": 102393,
-          "p_mem": 5.747892384277975e-09,
-          "entropy": 5.270285129547119
+          "rank": 129174,
+          "p_mem": 4.695923554523529e-13,
+          "entropy": 2.878119468688965
         },
         "27": {
-          "rank": 67296,
-          "p_mem": 1.7572619981365278e-07,
-          "entropy": 7.38458776473999
+          "rank": 87658,
+          "p_mem": 7.716511731814535e-07,
+          "entropy": 10.31949234008789
         }
       }
     },
     {
       "id": "ef6033d606cd6e5c9cc6ab85b75e68cdb4cc7578a3dc573f",
-      "cell": "GatedDeltaNet",
+      "cell": "Mamba2",
       "scale": "3B",
       "stratum": "long",
       "n_tokens": 16450,
@@ -2204,25 +2204,25 @@
       "f1_nowrite": 0.25,
       "readout": "jlens",
       "summary_layer": 18,
-      "rank_at_prompt_end": 129718,
-      "p_mem_at_prompt_end": 5.453883455963648e-10,
-      "entropy_at_prompt_end": 4.884697437286377,
+      "rank_at_prompt_end": 77201,
+      "p_mem_at_prompt_end": 1.2505780411231626e-08,
+      "entropy_at_prompt_end": 4.536145210266113,
       "half_life": null,
       "layers": {
         "9": {
-          "rank": 42752,
-          "p_mem": 5.504845418986425e-16,
-          "entropy": 2.0351340770721436
+          "rank": 1060,
+          "p_mem": 4.849347035040807e-10,
+          "entropy": 0.28604358434677124
         },
         "18": {
-          "rank": 129718,
-          "p_mem": 5.453883455963648e-10,
-          "entropy": 4.884697437286377
+          "rank": 77201,
+          "p_mem": 1.2505780411231626e-08,
+          "entropy": 4.536145210266113
         },
         "27": {
-          "rank": 26399,
-          "p_mem": 6.74215243634535e-07,
-          "entropy": 6.735140800476074
+          "rank": 20804,
+          "p_mem": 9.565148502588272e-06,
+          "entropy": 10.388415336608887
         }
       }
     }

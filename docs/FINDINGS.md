@@ -1732,3 +1732,97 @@ Using the same 60 paired LongBench examples across GatedDeltaNet, DeltaNet, and 
 - GatedDeltaNet vs Mamba2: -3.79 pts, 95% CI [-13.37, 5.52], Holm-adjusted p = 0.4517
 
 Conclusion: AHN behavioral effects differ by recurrent cell family. The DeltaNet–GatedDeltaNet contrast survives Holm correction; the other pairwise contrasts do not.
+
+
+## RQ1/RQ3 rerun with the Qwen chat template on all three cells — 2026-09-21 — WITHDRAWS the cross-cell conclusion above
+
+**Withdrawn.** The "RQ1 cross-cell comparison — final" entry (2026-09-17/18) concluded that
+"AHN behavioral effects differ by recurrent cell family", with DeltaNet–GatedDeltaNet
+surviving Holm correction (+10.81 pts, Holm p = 0.0324). That conclusion is withdrawn. It
+compared cells run under different prompt formats: GDN had been regenerated with the Qwen
+chat template on 14 Sep (commit 16dd9c8), while DeltaNet and Mamba2 were still the 9 Sep
+raw-prompt runs (tracker row 58, flagged in `docs/PROTOCOL_ALIGNMENT_2026-09-20.md`).
+
+**Run.** `notebooks/03_nowrite_reproduction.ipynb` (chat template applied, unchanged) re-run
+for DeltaNet and Mamba2 on Modal A100 (`modal_nb03.py`; real Mamba kernels for M2). Same 60
+LongBench-E HotpotQA examples, window 8064, 128 sinks, seed 20260820. The raw-prompt
+artefacts are kept as `results/run_3b_{dn,m2}/03_nowrite_reproduction_pre_qwen_chat.json`.
+
+**Result — Table 5, first-line ΔF1 (AHN − NOWRITE), n = 60 paired.**
+`results/05_table5_rq1_crosscell.json`, built by `build_table5_crosscell.py`. Method as in
+the 18 Sep artefact: 10,000-example paired bootstrap, 10,000-draw sign-flip permutation
+test, Holm over three contrasts. The script reproduces the 18 Sep numbers when pointed at
+the raw-prompt backups.
+
+| Cell | 17–18 Sep (mixed formats) | Now (all chat template) |
+|---|---:|---:|
+| GatedDeltaNet | −4.10 | −4.10 |
+| DeltaNet | +6.72 | −3.96 [−9.49, +0.94] |
+| Mamba2 | −0.31 | −4.63 [−11.44, +0.90] |
+
+| Contrast | 17–18 Sep, diff (Holm p) | Now, diff [95% CI] (Holm p) |
+|---|---:|---:|
+| DeltaNet vs GDN | +10.81 (0.032) | +0.14 [−4.44, +4.31] (1.0) |
+| DeltaNet vs Mamba2 | +7.03 (0.067) | +0.67 [−3.84, +5.93] (1.0) |
+| GDN vs Mamba2 | −3.79 (0.45) | +0.53 [−4.76, +6.46] (1.0) |
+
+Answer-change rate (normalised first-line EM): GDN 30.0%, DeltaNet 31.7%, Mamba2 30.0%.
+DeltaNet moved from 36.7% and Mamba2 from 41.7% on the raw prompt.
+
+**Reading.** All three cells show the same-sign shift of about −4 points, and no pairwise
+contrast is distinguishable from zero. Only GDN's pooled CI excludes zero ([−8.75, −0.58]);
+DeltaNet's and Mamba2's include it. The 9 Sep finding that DeltaNet's +6.7 was one example
+deep is consistent with this: the effect was not robust to the prompt format. The RQ1
+statement the data support is that AHN lowers first-line F1 by roughly 4 points relative
+to NOWRITE at 3B in each of the three cells, with no evidence that the cell family
+matters. Figure 3 (`results/figures/fig3_rq1_forest.png`, `build_fig3.py`) now plots all
+three cells by length stratum; the GDN `05_table5_rq1.json`, which was stale, is rebuilt.
+
+**Scoring convention no longer changes the verdict.** With chat-template answers, first-line
+and full-generation scores of every AHN output are identical; the two conventions differ
+only through one shared NOWRITE example, a constant −0.48 pt shift in all three cells
+(`results/05_table5_rq1_crosscell_official.json`, identical pairwise statistics). The 9 Sep
+reconciliation entry's sign flips between conventions belonged to the raw-prompt data and
+do not apply to the chat-template runs. That entry stands as a record of the raw-prompt
+result.
+
+**Two smaller observations.** (1) The chat-template change rates, 30.0–31.7%, are below the
+published 38–42% band; the earlier "inside the band" reproduction check was made on
+raw-prompt data. (2) NOWRITE answers differ between cells on 2 of 60 examples (DeltaNet and
+Mamba2 versus GDN), although NOWRITE removes the cell-specific module. This is most likely
+kernel or numerical nondeterminism and does not affect any conclusion here, but it has not
+been investigated.
+
+**RQ3 (Table 8) redone on the same basis.** The existing GDN join
+(`04b_joined_retention_task.json`, 20 Aug) was stale in two ways: its ΔF1 was the old
+raw-prompt value, and notebook `0.4b.ipynb` fed the retention readout the raw prompt with
+no chat template. `modal_04b.py` reproduces cell 19 of that notebook with one change, the
+chat template on the readout prompt, and joins each cell's own chat-template ΔF1. Corpus-A
+J-lens (`lens_validated=False`), layers 9/18/27, summary layer 18, first gold-answer token
+as target. The old GDN file is kept as `_pre_qwen_chat.json`. `build_table8.py` rebuilds
+Table 8 and refuses a 04b file that is not stamped as the chat-template run.
+
+| Spearman ρ vs per-example ΔF1 (L18, n = 60) | GDN | DeltaNet | Mamba2 |
+|---|---:|---:|---:|
+| target rank @ prompt end | −0.12 (p 0.36) | +0.00 (p 0.99) | +0.09 (p 0.52) |
+| target mass @ prompt end | +0.14 (p 0.30) | −0.02 (p 0.89) | +0.07 (p 0.61) |
+| readout entropy @ prompt end | +0.18 (p 0.16) | +0.04 (p 0.75) | −0.06 (p 0.64) |
+| boundary JS | −0.24 (p 0.067) | −0.24 (p 0.064) | −0.09 (p 0.51) |
+
+Every rank, mass and entropy CI spans zero; Holm p over the three predictors is at least
+0.48. Per-layer rank at L9/L18/L27 is also null (Holm p ≥ 0.49). The GDN values are close
+to the 16 Sep raw-prompt Table 8 (−0.10, +0.19, +0.19), so that result was not an artefact
+of the prompt format. Boundary JS is borderline in GDN and DeltaNet (percentile-bootstrap
+CI excludes zero at about [−0.41, −0.03], but p is 0.064–0.067, uncorrected), and is not a
+retention measure. Half-life is still unavailable.
+
+**Power caveat.** ΔF1 is nonzero on only 5 (GDN), 7 (DeltaNet) and 8 (Mamba2) of the 60
+examples, so Spearman has little to work with on this outcome. The null reflects both the
+RQ2 finding of no recoverable retention (median L18 gold-token rank 123,898, 80,145 and
+101,988 against a chance rank of 75,968) and low power on a sparse outcome. It does not
+show that retention could not predict task differences in a setting where ΔF1 varies more.
+
+**Still open.** Table 8 half-life; the README RQ1 line (still +3.34); the
+protocol-alignment draft (row 88), whose row 4 (prompt format) and row 10 (change rate) are now
+out of date; whether the 2/60 NOWRITE
+mismatches are nondeterminism.
