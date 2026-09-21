@@ -1,0 +1,262 @@
+{
+  "method": "Spearman, paired percentile bootstrap n_boot=10000, seed 20260820",
+  "prompt_format": "qwen_chat_template",
+  "prior_work": {
+    "changed": [
+      0.34,
+      0.41
+    ],
+    "F1": [
+      -0.09,
+      0.0
+    ]
+  },
+  "cells": {
+    "GatedDeltaNet": [
+      {
+        "quantity": "rho(JS, answer changed) - first-line normalised EM (headline)",
+        "field": "answer_changed_fl",
+        "prior_work_band": [
+          0.34,
+          0.41
+        ],
+        "rho": 0.5817261288158768,
+        "p": 1.0904944108979064e-06,
+        "n": 60,
+        "ci": [
+          0.40297581818245876,
+          0.727340979542022
+        ],
+        "excludes_zero": true
+      },
+      {
+        "quantity": "rho(JS, answer changed) - full-generation",
+        "field": "answer_changed",
+        "prior_work_band": [
+          0.34,
+          0.41
+        ],
+        "rho": 0.5817261288158768,
+        "p": 1.0904944108979064e-06,
+        "n": 60,
+        "ci": [
+          0.40297581818245876,
+          0.727340979542022
+        ],
+        "excludes_zero": true
+      },
+      {
+        "quantity": "rho(JS, dF1)  [AHN - NOWRITE, first-line]",
+        "field": "delta_f1_fl",
+        "prior_work_band": [
+          -0.09,
+          0.0
+        ],
+        "rho": -0.2378831463284819,
+        "p": 0.06721347945659772,
+        "n": 60,
+        "ci": [
+          -0.41632446697400144,
+          -0.033846125453989656
+        ],
+        "excludes_zero": true
+      },
+      {
+        "quantity": "rho(JS, F1 under NOWRITE, first-line)",
+        "field": "f1_nowrite_fl",
+        "prior_work_band": [
+          -0.09,
+          0.0
+        ],
+        "rho": -0.3903664175156806,
+        "p": 0.002045819316455723,
+        "n": 60,
+        "ci": [
+          -0.5922312991728843,
+          -0.14491710023578958
+        ],
+        "excludes_zero": true
+      },
+      {
+        "quantity": "rho(JS, F1 under AHN, first-line)",
+        "field": "f1_ahn_fl",
+        "prior_work_band": [
+          -0.09,
+          0.0
+        ],
+        "rho": -0.43228763289231387,
+        "p": 0.0005622106591813033,
+        "n": 60,
+        "ci": [
+          -0.6276523610057991,
+          -0.19186899411417618
+        ],
+        "excludes_zero": true
+      }
+    ],
+    "DeltaNet": [
+      {
+        "quantity": "rho(JS, answer changed) - first-line normalised EM (headline)",
+        "field": "answer_changed_fl",
+        "prior_work_band": [
+          0.34,
+          0.41
+        ],
+        "rho": 0.5099738349506757,
+        "p": 3.1523570787911324e-05,
+        "n": 60,
+        "ci": [
+          0.30575032117010564,
+          0.6758812790440787
+        ],
+        "excludes_zero": true
+      },
+      {
+        "quantity": "rho(JS, answer changed) - full-generation",
+        "field": "answer_changed",
+        "prior_work_band": [
+          0.34,
+          0.41
+        ],
+        "rho": 0.5099738349506757,
+        "p": 3.1523570787911324e-05,
+        "n": 60,
+        "ci": [
+          0.30575032117010564,
+          0.6758812790440787
+        ],
+        "excludes_zero": true
+      },
+      {
+        "quantity": "rho(JS, dF1)  [AHN - NOWRITE, first-line]",
+        "field": "delta_f1_fl",
+        "prior_work_band": [
+          -0.09,
+          0.0
+        ],
+        "rho": -0.2405350670047858,
+        "p": 0.06413144715862065,
+        "n": 60,
+        "ci": [
+          -0.4035300855399969,
+          -0.04614887870314742
+        ],
+        "excludes_zero": true
+      },
+      {
+        "quantity": "rho(JS, F1 under NOWRITE, first-line)",
+        "field": "f1_nowrite_fl",
+        "prior_work_band": [
+          -0.09,
+          0.0
+        ],
+        "rho": -0.35166259335056416,
+        "p": 0.005864381854412763,
+        "n": 60,
+        "ci": [
+          -0.5722718376121239,
+          -0.09987869545872644
+        ],
+        "excludes_zero": true
+      },
+      {
+        "quantity": "rho(JS, F1 under AHN, first-line)",
+        "field": "f1_ahn_fl",
+        "prior_work_band": [
+          -0.09,
+          0.0
+        ],
+        "rho": -0.4583502536601987,
+        "p": 0.000230682445701415,
+        "n": 60,
+        "ci": [
+          -0.6532660857603612,
+          -0.2184590444836705
+        ],
+        "excludes_zero": true
+      }
+    ],
+    "Mamba2": [
+      {
+        "quantity": "rho(JS, answer changed) - first-line normalised EM (headline)",
+        "field": "answer_changed_fl",
+        "prior_work_band": [
+          0.34,
+          0.41
+        ],
+        "rho": 0.5712256571766011,
+        "p": 1.875987335513956e-06,
+        "n": 60,
+        "ci": [
+          0.3686334085515449,
+          0.7286646178893269
+        ],
+        "excludes_zero": true
+      },
+      {
+        "quantity": "rho(JS, answer changed) - full-generation",
+        "field": "answer_changed",
+        "prior_work_band": [
+          0.34,
+          0.41
+        ],
+        "rho": 0.5712256571766011,
+        "p": 1.875987335513956e-06,
+        "n": 60,
+        "ci": [
+          0.3686334085515449,
+          0.7286646178893269
+        ],
+        "excludes_zero": true
+      },
+      {
+        "quantity": "rho(JS, dF1)  [AHN - NOWRITE, first-line]",
+        "field": "delta_f1_fl",
+        "prior_work_band": [
+          -0.09,
+          0.0
+        ],
+        "rho": -0.08626082120180173,
+        "p": 0.5122482687271306,
+        "n": 60,
+        "ci": [
+          -0.3532813557559535,
+          0.20872176073873702
+        ],
+        "excludes_zero": false
+      },
+      {
+        "quantity": "rho(JS, F1 under NOWRITE, first-line)",
+        "field": "f1_nowrite_fl",
+        "prior_work_band": [
+          -0.09,
+          0.0
+        ],
+        "rho": -0.3333821200869186,
+        "p": 0.009241951649174868,
+        "n": 60,
+        "ci": [
+          -0.5609724768421098,
+          -0.06843872240864958
+        ],
+        "excludes_zero": true
+      },
+      {
+        "quantity": "rho(JS, F1 under AHN, first-line)",
+        "field": "f1_ahn_fl",
+        "prior_work_band": [
+          -0.09,
+          0.0
+        ],
+        "rho": -0.441600992875661,
+        "p": 0.00041227013625642726,
+        "n": 60,
+        "ci": [
+          -0.6414248846062801,
+          -0.20585535250028558
+        ],
+        "excludes_zero": true
+      }
+    ]
+  }
+}

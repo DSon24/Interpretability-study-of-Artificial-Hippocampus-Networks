@@ -57,5 +57,5 @@ Ours is read from `notebooks/03_nowrite_reproduction.ipynb`, `configs/`, the sav
 ## Our own to-dos this exposes
 
 - ~~Re-run DN and M2 nb03 with the chat template (row 58), then regenerate Tables 5 and 8.~~ **Done 21 Sep** (commits 74aafde, 6e82f34): DN and M2 nb03 re-run, Table 5 and Figure 3 regenerated, and 04b re-run for all three cells so Table 8 is rebuilt on the chat template.
-- Save the ρ(JS, changed) / ρ(JS, F1) check to a results JSON on the chat-format data (row 80). *Partly covered:* Table 8 now saves ρ(boundary JS, ΔF1) on chat-template data (`results/05_table8_rq3_crosscell.json`); ρ(JS, answer changed) and ρ(JS, F1 level) are still not saved.
+- ~~Save the ρ(JS, changed) / ρ(JS, F1) check to a results JSON on the chat-format data (row 80).~~ **Done 21 Sep** (`results/05_rq3_js_gautam_check.json`, `build_js_check.py`). ρ(JS, answer changed) = +0.58 / +0.51 / +0.57 (GDN/DN/M2), above the published 0.34–0.41 with CIs overlapping its upper end. ρ(JS, F1) depends on which F1: against ΔF1 it is −0.24 / −0.24 / −0.09, against the F1 level −0.33 to −0.46 (significant, far outside −0.09 to 0.00). Row 12 (which F1) is therefore the question that decides whether we match; send to Gautam before drawing a conclusion.
 - If we report first-line anywhere, state that it is not the official convention (row 91).
