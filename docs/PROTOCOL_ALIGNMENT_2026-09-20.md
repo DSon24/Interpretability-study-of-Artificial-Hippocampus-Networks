@@ -30,7 +30,7 @@ Ours is read from `notebooks/03_nowrite_reproduction.ipynb`, `configs/`, the sav
 | 5 | max_new_tokens | 32 | 32 (`dataset2maxlen`: hotpotqa) | unknown | **match** (official) |
 | 6 | Decoding | greedy (`do_sample=False`) | not checked in this pass | unknown | **unknown** |
 | 7 | Truncation | none; our filter drops prompts > 32,000 tokens | keeps the last `max_length − max_gen` tokens when over `max_length` (`max_length` is a CLI arg) | unknown `max_length` | **unknown**; if his `max_length` < 17.3k some of our prompts would be cut in his harness |
-| 8 | Scorer | headline = **first-line** F1 (`ahn_interp.qa_f1_score`); full-generation stored | official `scorer_e` scores the **full generation** for hotpotqa (first-line only for trec/triviaqa/samsum/lsht) | unknown | **differs** — flips the RQ1 sign in all three cells |
+| 8 | Scorer | headline = **first-line** F1 (`ahn_interp.qa_f1_score`); full-generation stored | official `scorer_e` scores the **full generation** for hotpotqa (first-line only for trec/triviaqa/samsum/lsht) | unknown | **differs** — but on the chat-template data it no longer changes the RQ1 verdict: full-generation ΔF1 is a constant 0.48 pt lower in all three cells (one shared NOWRITE example), so no sign flips and the pairwise contrasts are identical (`results/05_table5_rq1_crosscell_official.json`). The raw-prompt runs did flip the sign in all three cells |
 | 9 | Answer normalisation | `normalize_answer` (articles removed before punctuation) | official order differs slightly | unknown | **differs** (no effect seen on our generations) |
 | 10 | "Answer changed" | 30.0 / 31.7 / 30.0% (GDN/DN/M2, chat template; identical under normalised EM, raw first-line equality and raw full-generation equality; 95% CIs include the band, e.g. GDN [18.3, 41.7]). Raw-prompt data gave 33.3 / 36.7 / 41.7% normalised and 40 / 40 / 45% raw first-line | n/a | 38–42% | **unknown** — no definition reaches the band on the chat-template data, so the earlier inference that raw first-line equality explains it does not hold there; Kashyap's prompt format is unknown (row 4) |
 | 11 | Boundary JS | Jensen–Shannon (natural log, ε=1e-12) between AHN and NOWRITE softmax at the first generated position, full vocabulary, one value per example | n/a | unknown: position, log base, which logits | **unknown** |
@@ -42,7 +42,7 @@ Ours is read from `notebooks/03_nowrite_reproduction.ipynb`, `configs/`, the sav
 | 17 | Checkpoints | `ByteDance-Seed/AHN-{GDN,DN,Mamba2}-for-Qwen-2.5-Instruct-3B`, merged into Qwen2.5-3B-Instruct | same release | unknown scale / cell | **unknown** |
 | 18 | CIs | percentile bootstrap, n_boot=4000 | n/a | unknown | **unknown** |
 
-**Tally (18 rows):** 3 match (4, 5, 15), 3 differ (1, 8, 9), 12 unknown (2, 3, 6, 7, 10–14, 16–18). Rows 2, 8, 10, 11, 12 and 13 change what Table 5 and Table 8 report.
+**Tally (18 rows):** 3 match (4, 5, 15), 3 differ (1, 8, 9), 12 unknown (2, 3, 6, 7, 10–14, 16–18). Rows 2, 10, 11, 12 and 13 change what Table 5 and Table 8 report; row 8 no longer does on the chat-template data.
 
 ## What to ask Gautam (in priority order)
 
@@ -56,6 +56,6 @@ Ours is read from `notebooks/03_nowrite_reproduction.ipynb`, `configs/`, the sav
 
 ## Our own to-dos this exposes
 
-- Re-run DN and M2 nb03 with the chat template (row 58), then regenerate Tables 5 and 8.
-- Save the ρ(JS, changed) / ρ(JS, F1) check to a results JSON on the chat-format data (row 80).
+- ~~Re-run DN and M2 nb03 with the chat template (row 58), then regenerate Tables 5 and 8.~~ **Done 21 Sep** (commits 74aafde, 6e82f34): DN and M2 nb03 re-run, Table 5 and Figure 3 regenerated, and 04b re-run for all three cells so Table 8 is rebuilt on the chat template.
+- Save the ρ(JS, changed) / ρ(JS, F1) check to a results JSON on the chat-format data (row 80). *Partly covered:* Table 8 now saves ρ(boundary JS, ΔF1) on chat-template data (`results/05_table8_rq3_crosscell.json`); ρ(JS, answer changed) and ρ(JS, F1 level) are still not saved.
 - If we report first-line anywhere, state that it is not the official convention (row 91).
