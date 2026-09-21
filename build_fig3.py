@@ -1,22 +1,20 @@
-"""CPU-only: build Figure 3 (RQ1 forest plot) straight from the Table 5 artefact.
+"""CPU-only: build Figure 3 (RQ1 forest plot) for all three cells from the nb03 artefacts.
 
-PROPOSAL.md lists Figure 3 as "RQ1 forest plot", owned by `05_analysis_and_figures.ipynb`.
-That notebook rebuilds Table 5 from `03_nowrite_reproduction.json` and then plots it; this
-script skips the rebuild and reads the frozen Table 5 JSON, whose `delta_f1_vs_nowrite`
-rows are already `[point, lo, hi]` percentile-bootstrap intervals.
+Rebuilds each cell's `05_table5_rq1.json` (same schema notebook 05 writes: first-line
+primary, full-generation robustness, percentile-bootstrap CI per length stratum) from
+`results/run_3b_<cell>/03_nowrite_reproduction.json`, then plots the three cells together.
+Pooled paired cross-cell contrasts live in `build_table5_crosscell.py`.
 
-    python build_fig3.py [results/run_3b_gdn]
+    python build_fig3.py
 
-Input:
-    <run>/05_table5_rq1.json          (from notebook 05)
 Output:
+    results/run_3b_{gdn,dn,m2}/05_table5_rq1.json
     results/figures/fig3_rq1_forest.png
 """
 from __future__ import annotations
 
 import json
 import os
-import sys
 
 import numpy as np
 import matplotlib
@@ -24,88 +22,74 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-RUN = sys.argv[1] if len(sys.argv) > 1 else "results/run_3b_gdn"
-SRC = os.path.join(RUN, "05_table5_rq1.json")
-OUTDIR = "results/figures"
-OUT = os.path.join(OUTDIR, "fig3_rq1_forest.png")
-
-STRATA = ["short", "mid", "long"]
-# (metric key in the artefact, label, colour, marker, filled?)
-SERIES = [
-    ("first_line", "first-line  (primary)", "crimson", "o", True),
-    ("full_generation", "full generation  (robustness)", "#888", "s", False),
-]
+CELLS = [("GatedDeltaNet", "gdn", "#c0392b", "o"),
+         ("DeltaNet", "dn", "#2471a3", "s"),
+         ("Mamba2", "m2", "#239b56", "^")]
+STRATA = ["short", "mid", "long", "all"]
+METRICS = [("first_line", "_fl", True), ("full_generation", "", False)]
+N_BOOT, SEED = 4000, 20260820
+OUT = "results/figures/fig3_rq1_forest.png"
 
 
-def main() -> None:
-    with open(SRC) as fh:
-        doc = json.load(fh)
+def boot_ci(x):
+    x = np.asarray(x, float)
+    rng = np.random.default_rng(SEED)
+    m = x[rng.integers(0, len(x), (N_BOOT, len(x)))].mean(1)
+    return [float(x.mean()), float(np.percentile(m, 2.5)), float(np.percentile(m, 97.5))]
 
-    tables = doc["tables"]
-    primary_metric = doc.get("primary_metric", "first_line")
-    any_row = next(r for t in tables.values() for r in t)
-    cell, scale = any_row["cell"], any_row["scale"]
 
-    # y position per stratum; series are nudged off the shared row so CIs don't overlap.
-    y_of = {s: i for i, s in enumerate(reversed(STRATA))}  # long at bottom
-    nudge = 0.16
+def build_table5(per, cell_name, suffix, name, primary):
+    rows = []
+    for s in ("short", "mid", "long"):
+        rs = [r for r in per if r["stratum"] == s]
+        rows.append({
+            "scale": "3B", "cell": cell_name, "stratum": s, "n": len(rs),
+            "metric": name, "primary": primary,
+            "mean_f1": float(np.mean([r[f"f1_ahn{suffix}"] for r in rs])),
+            "delta_f1_vs_nowrite": boot_ci([r[f"delta_f1{suffix}"] for r in rs]),
+            "answer_change_rate": float(np.mean([r[f"answer_changed{suffix}"] for r in rs])),
+        })
+    return rows
 
-    fig, ax = plt.subplots(figsize=(9.6, 3.8))
-    seen_any = False
-    txt_lines = {s: [] for s in STRATA}  # right-margin numeric column
 
-    for si, (mkey, label, colour, marker, filled) in enumerate(SERIES):
-        rows = tables.get(mkey)
-        if not rows:
-            continue
-        seen_any = True
-        off = (si - (len(SERIES) - 1) / 2) * nudge
-        by_stratum = {r["stratum"]: r for r in rows}
-        ys, pts, los, his = [], [], [], []
-        for s in STRATA:
-            r = by_stratum.get(s)
-            if r is None:
-                continue
-            p, lo, hi = r["delta_f1_vs_nowrite"]
-            ys.append(y_of[s] + off)
-            pts.append(p)
-            los.append(p - lo)
-            his.append(hi - p)
-            crosses = "" if lo <= 0 <= hi else "  *"
-            txt_lines[s].append((colour, f"{label.split('  ')[0]:>16}: "
-                                         f"{p:+.3f}  [{lo:+.3f}, {hi:+.3f}]{crosses}"))
-        ax.errorbar(
-            pts, ys, xerr=[los, his], fmt=marker, capsize=4,
-            color=colour, markerfacecolor=colour if filled else "white",
-            markeredgecolor=colour, label=label, lw=1.5, zorder=3,
-        )
+def main():
+    tables = {}
+    for cell_name, key, *_ in CELLS:
+        per = json.load(open(f"results/run_3b_{key}/03_nowrite_reproduction.json"))["per_example"]
+        assert len(per) == 60
+        tabs = {n: build_table5(per, cell_name, sfx, n, p) for n, sfx, p in METRICS}
+        json.dump({"primary_metric": "first_line", "tables": tabs},
+                  open(f"results/run_3b_{key}/05_table5_rq1.json", "w"), indent=2)
+        pooled = {n: boot_ci([r[f"delta_f1{sfx}"] for r in per]) for n, sfx, _ in METRICS}
+        tables[cell_name] = (tabs, pooled, len(per))
 
-    if not seen_any:
-        raise SystemExit(f"no usable rows in {SRC}")
-
+    fig, ax = plt.subplots(figsize=(9.4, 4.6))
+    y_of = {s: i for i, s in enumerate(reversed(STRATA))}
+    nudge = 0.2
+    for ci_, (cell_name, key, colour, marker) in enumerate(CELLS):
+        tabs, pooled, n_all = tables[cell_name]
+        off = (ci_ - 1) * nudge
+        pts = {r["stratum"]: r["delta_f1_vs_nowrite"] for r in tabs["first_line"]}
+        pts["all"] = pooled["first_line"]
+        ys = [y_of[s] + off for s in STRATA]
+        p = [pts[s][0] for s in STRATA]
+        ax.errorbar(p, ys, xerr=[[pts[s][0] - pts[s][1] for s in STRATA],
+                                 [pts[s][2] - pts[s][0] for s in STRATA]],
+                    fmt=marker, capsize=3, color=colour, lw=1.4, label=cell_name, zorder=3)
     ax.axvline(0, c="k", lw=1, zorder=1)
     ax.set_yticks([y_of[s] for s in STRATA])
-    ax.set_yticklabels([f"{s}\n(n={tables[primary_metric][STRATA.index(s)]['n']})"
-                        for s in STRATA])
+    ax.set_yticklabels([f"{s}\n(n={60 if s == 'all' else 20})" for s in STRATA])
     ax.set_ylim(-0.6, len(STRATA) - 0.4)
-    ax.set_xlim(-0.28, 0.28)
-    ax.set_xlabel(r"$\Delta$F1  (AHN $-$ NOWRITE)     ( * = 95% CI excludes 0 )")
-    ax.set_title(f"Figure 3 — RQ1 effect sizes  ·  AHN-{cell} {scale}\n"
-                 f"length-stratified, {primary_metric.replace('_', ' ')} scoring is primary")
+    ax.set_xlabel(r"$\Delta$F1  (AHN $-$ NOWRITE),  95% percentile-bootstrap CI")
+    ax.set_title("Figure 3 — RQ1 effect sizes by recurrent cell · 3B, Qwen chat template\n"
+                 "first-line scoring (full-generation differs by a constant 0.5 pt, one NOWRITE example)")
     ax.grid(alpha=.3, axis="x")
     ax.legend(fontsize=8, loc="lower left", framealpha=.9)
-
-    # numeric column to the right of the axes
-    for s in STRATA:
-        base = y_of[s]
-        for j, (colour, line) in enumerate(txt_lines[s]):
-            ax.text(1.02, base + 0.18 - j * 0.30, line, transform=ax.get_yaxis_transform(),
-                    va="center", ha="left", fontsize=7.5, family="monospace", color=colour)
-
-    os.makedirs(OUTDIR, exist_ok=True)
-    fig.subplots_adjust(right=0.62)
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
     fig.savefig(OUT, dpi=150, bbox_inches="tight")
     plt.close(fig)
+    for c, (tabs, pooled, _) in tables.items():
+        print(c, {k: [round(100 * v, 2) for v in val] for k, val in pooled.items()})
     print("saved", OUT)
 
 
