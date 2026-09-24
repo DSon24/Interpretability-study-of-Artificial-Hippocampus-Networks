@@ -1826,3 +1826,32 @@ show that retention could not predict task differences in a setting where ΔF1 v
 protocol-alignment draft (row 88), whose row 4 (prompt format) and row 10 (change rate) are now
 out of date; whether the 2/60 NOWRITE
 mismatches are nondeterminism.
+
+
+---
+
+## Progress update — 24 Sep 2026: execution tracker rows 76 and 82 closed
+
+**Row 76 — J-Lens norm convention: DONE.** The installed Anthropic
+`jacobian-lens` reference implementation was checked directly. Its
+`JacobianLens.transport()` maps residuals with `residual @ J_bar.T`;
+`JacobianLens.apply()` then calls `model.unembed()`, and
+`HFLensModel.unembed()` applies the model's final norm before the LM head.
+Our `ahn_interp.py` follows the same convention:
+`vec @ J.T -> model.model.norm(...) -> lm_head`. The suspected
+double-normalization / norm-convention mismatch is therefore ruled out.
+This does **not** change the existing Table 3 failures; it rules out norm
+convention as their cause.
+
+**Row 82 — floor-with-sinks decision: DONE.** We will **not** run an additional
+stock-Qwen floor-with-sinks experiment. The original no-AHN floor uses
+`num_attn_sinks=0`, while the AHN/NOWRITE configuration uses 128 sinks, so
+direct no-AHN-vs-NOWRITE comparisons (especially HotpotQA) retain that
+configuration mismatch as a limitation. The later GLOBAL NOWRITE validation
+already supplies the cleaner within-checkpoint, sink-matched causal control:
+the merged AHN-GDN checkpoint, sliding window, and 128 sinks are held fixed
+while all 36 AHN outputs are zeroed. On the frozen RULER evicted cohort,
+AHN ON and GLOBAL NOWRITE both retrieve 0/32 answers; on the 28 in-window
+controls both retrieve 28/28 by substring match. The no-AHN result is therefore
+kept as a separate architectural floor rather than treated as an equivalent
+intervention. No additional GPU run is required for this tracker item.
