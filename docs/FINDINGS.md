@@ -1826,3 +1826,78 @@ show that retention could not predict task differences in a setting where ΔF1 v
 protocol-alignment draft (row 88), whose row 4 (prompt format) and row 10 (change rate) are now
 out of date; whether the 2/60 NOWRITE
 mismatches are nondeterminism.
+
+
+## Boundary-JS correlations on the chat-format data: tracker row 80 — 2026-09-21
+
+**What this is.** The consistency check against the concurrent write-attrition study
+(Kashyap 2026), which reports ρ(JS, changed answers) of 0.34–0.41 and ρ(JS, F1) of −0.09 to
+0.00. Row 80 asked for both correlations per cell on the chat-template nb03 runs, saved to a
+results file, with the rule that any surviving difference is reported to Gautam first and not
+tuned toward his numbers. `build_js_check.py` → `results/05_rq3_js_gautam_check.json`.
+CPU-only, from `results/run_3b_{gdn,dn,m2}/03_nowrite_reproduction.json` (Qwen chat template,
+n = 60, one `boundary_js` per example). Spearman ρ with a paired percentile bootstrap CI
+(10,000 draws, seed 20260820), the same statistics as `build_table8.py`. This is a
+reproduction check, not a new hypothesis test, so no multiplicity correction is applied.
+
+**Which "F1" is unconfirmed, so all three readings are reported** (protocol-alignment row 12).
+The saved per-example fields let us correlate JS with ΔF1 (AHN − NOWRITE), with the F1 level
+under NOWRITE, and with the F1 level under AHN.
+
+| ρ(JS, ·), first-line, n = 60 | GatedDeltaNet | DeltaNet | Mamba2 | Kashyap 2026 |
+|---|---:|---:|---:|---:|
+| answer changed | **+0.58** [+0.40, +0.73] | **+0.51** [+0.31, +0.68] | **+0.57** [+0.37, +0.73] | 0.34 to 0.41 |
+| ΔF1 | −0.24 [−0.42, −0.03], p 0.067 | −0.24 [−0.40, −0.05], p 0.064 | −0.09 [−0.35, +0.21], p 0.51 | −0.09 to 0.00 |
+| F1 under NOWRITE | −0.39 [−0.59, −0.15], p 0.002 | −0.35 [−0.57, −0.10], p 0.006 | −0.33 [−0.56, −0.07], p 0.009 | −0.09 to 0.00 |
+| F1 under AHN | −0.43 [−0.63, −0.19], p 0.0006 | −0.46 [−0.65, −0.22], p 0.0002 | −0.44 [−0.64, −0.21], p 0.0004 | −0.09 to 0.00 |
+
+The three "answer changed" p-values are all below 4 × 10⁻⁵.
+
+**1. ρ(JS, changed answers) is higher than reported, in every cell.** All three point estimates
+(+0.58, +0.51, +0.57) sit above the 0.34–0.41 band. The intervals overlap the band's upper end,
+narrowly for GDN (lower bound +0.40) and more clearly for DeltaNet (+0.31), so at n = 60 this
+is not a clean contradiction. It is a consistent one-sided gap. First-line normalised EM and
+raw full-generation inequality give identical values here, because chat-template answers are
+short (the answer-change rate is 30.0 / 31.7 / 30.0% under every definition tried).
+
+**2. ρ(JS, F1) depends entirely on which F1.**
+- *Against ΔF1* it is −0.24, −0.24 and −0.09. Mamba2 is inside his band; GDN and DeltaNet are
+  more negative, and their bootstrap CIs exclude zero while p is 0.064–0.067 (the same
+  borderline pattern reported in the Table 8 entry above).
+- *Against the F1 level*, under either NOWRITE or AHN, it is −0.33 to −0.46 and significant in
+  all three cells. That is far outside −0.09 to 0.00.
+
+So if Kashyap's "F1" is the F1 level we do not reproduce his roughly-zero result, and the
+tension is large. If it is ΔF1 we come close, and only Mamba2 lands inside the band. The
+ΔF1 reading is the only one consistent with his numbers. That is an inference from agreement,
+not a confirmation, and it should not be used to pick the definition.
+
+**3. The 10 Sep raw-prompt check does not carry over.** The tracker note for this row quotes
+an ad-hoc check on raw-prompt data that was never saved to the repository: ρ(JS, changed)
++.47 / +.45 / +.36, ρ(JS, ΔF1) +.13 / +.15 / −.01, ρ(JS, F1_nowrite) −.33 / −.29 / −.36. On
+the chat format ρ(JS, changed) is higher in GDN (+.58 against +.47) and DeltaNet (+.51 against
++.45) and Mamba2 (+.57 against +.36), and ρ(JS, ΔF1) has moved from about zero to negative in
+GDN and DeltaNet. ρ(JS, F1_nowrite) is stable (−.33 to −.39 against −.29 to −.36). Those raw
+values are quoted from the tracker and were not recomputed from committed files, so they are
+context, not evidence.
+
+**Caveats.**
+- ΔF1 is nonzero on only 5 (GDN), 7 (DeltaNet) and 8 (Mamba2) of the 60 examples, so the
+  ΔF1 correlations rest on very few informative points. The F1-level and answer-changed
+  correlations do not have that limitation.
+- "Answer changed" is a binary variable, so its Spearman ρ is a correlation between a
+  continuous score and a two-valued one, with many tied ranks. Whether Kashyap's figure is
+  the same statistic (Spearman, Pearson or point-biserial) is not known.
+- The boundary-JS definition itself is unconfirmed on his side (position, log base, which
+  logits; protocol-alignment row 11), and his prompt format and F1 definition are not known.
+  A gap in ρ may come from any of them, not from AHN behaviour.
+- One checkpoint per cell, one scale (3B), one dataset, one seed for the cohort draw.
+
+**Reading.** Nothing here is a failure to reproduce and nothing is a clean reproduction. The
+answer-change association is stronger than his and the F1 association is either close to his
+(ΔF1) or much stronger (F1 level). Under row 80's rule this goes to Gautam before any
+conclusion is drawn, with two questions: which F1 he correlates, and which prompt format his
+runs used. No definition has been changed to move toward his numbers.
+
+**Still open.** The two questions for Gautam above (protocol-alignment rows 4, 11 and 12);
+Table 8 row 2 stays only partly filled until the F1 definition is known.
