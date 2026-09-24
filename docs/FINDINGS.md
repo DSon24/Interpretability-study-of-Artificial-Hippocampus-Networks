@@ -1855,3 +1855,93 @@ AHN ON and GLOBAL NOWRITE both retrieve 0/32 answers; on the 28 in-window
 controls both retrieve 28/28 by substring match. The no-AHN result is therefore
 kept as a separate architectural floor rather than treated as an equivalent
 intervention. No additional GPU run is required for this tracker item.
+
+
+---
+
+## Findings from the 24 Sep long-context RULER retention extension (tracker row 87)
+
+`results/validation/row87_ruler_32768_rows.json`,
+`results/validation/row87_ruler_65536_rows.json`,
+`results/validation/row87_ruler_long_context_retention.json`;
+GPU runner `eval/ruler/row87_long_ruler.py`;
+CPU analysis `eval/ruler/row87_analyze_long_retention.py`.
+
+Tracker row 87 asked whether the corrected Run-026 RULER retention result remains flat
+beyond the short range available in RULER-16384. The original corrected cohort only
+reached 7,414 tokens past the 8,064-token attention-window boundary. The new 32k and 64k
+runs extend the measured range to 56,640 tokens past the boundary.
+
+**1. Long-context cohort provenance was checked before GPU execution.**
+The existing primary cohort is `simonjegou/ruler`, config `16384`, test split,
+`niah_single_1`. A candidate mirror (`albertgong1/ruler`) was rejected after matching
+0/60 examples. The LightEval Qwen2.5-Instruct RULER collection was accepted only after
+its 16k `niah_single_1` split reproduced the existing cohort exactly: **60/60 prompts
+and 60/60 answers matched**. The long runs therefore use
+`lighteval/RULER-32768-Qwen2.5-Instruct` and
+`lighteval/RULER-65536-Qwen2.5-Instruct`.
+
+No homemade or LLM-generated evaluation dataset is used in this experiment.
+
+**2. The long-context runs materially extend the eviction range.**
+With the configuration of record (`sliding_window=8064`, `num_attn_sinks=128`):
+
+| cohort | evicted examples | median eviction distance | maximum eviction distance |
+|---|---:|---:|---:|
+| 16k / Run 026 | 32/60 | 4,066 | 7,414 |
+| 32k | 52/60 | 14,496 | 23,996 |
+| 64k | 51/60 | 24,266 | 56,640 |
+
+Both long runs completed with 180 ordered-condition rows each
+(60 examples x layers 9/18/27).
+
+**3. The optimized long-context runner was validated against the original Run-026
+measurement before scaling.**
+The optimized runner captures only the seven answer-scoring residual positions and
+vectorizes the J-Lens digit readout, while preserving the same AHN-ON versus partial
+NOWRITE residual difference used by Run 026. On an evicted 32k example, the optimized
+and original implementations agreed exactly at layers 9, 18 and 27:
+residual maximum absolute difference = 0, digit ranks identical, and answer-logprob
+difference = 0. The custom AHN inference path requires `use_cache=True`, which is retained.
+
+**4. There is no detectable retention decay over the extended range.**
+Analysis uses only genuinely evicted examples, ordered context, corrected Run-026
+digit-sequence scoring, and the J-Lens readout. Because 16k, 32k and 64k are separate
+length cohorts, the primary slope analysis includes context-length fixed effects and the
+permutation test shuffles ranks within each cohort.
+
+| layer | n | adjusted slope / 10k tokens | 95% bootstrap CI | stratified perm p | reading |
+|---:|---:|---:|---:|---:|---|
+| 9 | 135 | -384.4 | [-2476.1, +1770.2] | .7379 | no significant distance dependence |
+| 18 | 135 | -968.5 | [-2017.3, +60.4] | .0712 | no significant distance dependence |
+| 27 | 135 | **-140.7** | **[-2927.5, +2596.7]** | **.9177** | **no significant distance dependence** |
+
+Layer-27 median mean-digit rank is 49,775.9 at 16k, 55,113.8 at 32k, and 46,750.1
+at 64k. The sequence does not worsen monotonically with increasing context length.
+
+The layer-27 result is the relevant retention result because Run 026's C3-lens control
+showed that layers 9 and 18 are not clean memory readouts. In particular, layer 18's low
+ranks must not be interpreted as stronger retention even though they remain low at long
+distance.
+
+**5. Interpretation.**
+The corrected 9 Sep result previously supported only the statement that no retention
+decay was detectable from 46 to 7,414 tokens beyond the compression boundary. This run
+extends that statement to **46–56,640 tokens**. Within the resolution of this cohort and
+readout, there is still no evidence that the layer-27 memory-specific signal weakens as
+eviction distance increases.
+
+This is evidence for *no detectable distance dependence over the measured range*, not
+proof of perfectly flat or infinite retention. A non-significant slope does not establish
+that the true slope is exactly zero.
+
+**6. Instrument and scope caveats.**
+The run uses the Qwen2.5-3B-Instruct + GatedDeltaNet checkpoint, one RULER task
+(`niah_single_1`), an 8,064-token local window, 128 attention sinks, and probe layers
+9/18/27. Long-context runs use the ordered condition only because tracker row 87 is a
+retention-vs-distance extension, not a rerun of the full Run-026 control battery.
+
+The J-Lens is `jlens_qwen25_3b_1000ctx.pt`, fitted on 1,000 public
+`Salesforce/wikitext` (`wikitext-103-raw-v1`) passages, not on the evaluation cohort and
+not on the homemade dataset. Its metadata reports `n_prompts=1000`. Table 3 remains only
+partially passed, so the existing J-Lens validation caveat still travels with this result.

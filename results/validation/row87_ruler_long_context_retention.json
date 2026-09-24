@@ -1,0 +1,160 @@
+{
+  "task": "Tracker row 87 \u2014 extended RULER retention range",
+  "sources": {
+    "16k": "results/run_3b_gdn/04i_ruler_controls_rows.json",
+    "32k": "results/validation/row87_ruler_32768_rows.json",
+    "64k": "results/validation/row87_ruler_65536_rows.json"
+  },
+  "analysis": "Evicted examples only; ordered context; corrected Run-026 digit-sequence J-Lens readout. Linear distance effect estimated with context-length fixed effects; permutation shuffles ranks within 16k/32k/64k cohorts.",
+  "n_perm": 10000,
+  "n_boot": 10000,
+  "layers": {
+    "9": {
+      "n": 135,
+      "full_distance_range": [
+        46,
+        56640
+      ],
+      "pooled_spearman_rho": -0.05245836071894534,
+      "pooled_spearman_p": 0.5456711038923552,
+      "fixed_effect_slope_rank_per_token": -0.03843611282890724,
+      "fixed_effect_slope_rank_per_10k_tokens": -384.36112828907244,
+      "bootstrap_ci95_slope_per_token": [
+        -0.24760761029017292,
+        0.17701739864854274
+      ],
+      "stratified_permutation_p": 0.7379262073792621,
+      "verdict": "no significant distance dependence over the extended range",
+      "by_cohort": {
+        "16k": {
+          "n": 32,
+          "distance_range": [
+            46,
+            7414
+          ],
+          "median_distance": 4066.0,
+          "median_rank": 87258.71428571429,
+          "mean_rank": 82104.65178571429
+        },
+        "32k": {
+          "n": 52,
+          "distance_range": [
+            2040,
+            23996
+          ],
+          "median_distance": 14496.0,
+          "median_rank": 68602.21484375,
+          "mean_rank": 67770.24752103366
+        },
+        "64k": {
+          "n": 51,
+          "distance_range": [
+            194,
+            56640
+          ],
+          "median_distance": 24266.0,
+          "median_rank": 80195.0,
+          "mean_rank": 80675.11856617648
+        }
+      }
+    },
+    "18": {
+      "n": 135,
+      "full_distance_range": [
+        46,
+        56640
+      ],
+      "pooled_spearman_rho": -0.13416024553741993,
+      "pooled_spearman_p": 0.12082312723752196,
+      "fixed_effect_slope_rank_per_token": -0.09684859178144828,
+      "fixed_effect_slope_rank_per_10k_tokens": -968.4859178144828,
+      "bootstrap_ci95_slope_per_token": [
+        -0.20173466985338215,
+        0.0060442318688841545
+      ],
+      "stratified_permutation_p": 0.07119288071192881,
+      "verdict": "no significant distance dependence over the extended range",
+      "by_cohort": {
+        "16k": {
+          "n": 32,
+          "distance_range": [
+            46,
+            7414
+          ],
+          "median_distance": 4066.0,
+          "median_rank": 6254.285714285714,
+          "mean_rank": 8629.959821428572
+        },
+        "32k": {
+          "n": 52,
+          "distance_range": [
+            2040,
+            23996
+          ],
+          "median_distance": 14496.0,
+          "median_rank": 10109.2861328125,
+          "mean_rank": 10773.885061410758
+        },
+        "64k": {
+          "n": 51,
+          "distance_range": [
+            194,
+            56640
+          ],
+          "median_distance": 24266.0,
+          "median_rank": 7321.14306640625,
+          "mean_rank": 9331.986433440563
+        }
+      }
+    },
+    "27": {
+      "n": 135,
+      "full_distance_range": [
+        46,
+        56640
+      ],
+      "pooled_spearman_rho": 0.02888014447390752,
+      "pooled_spearman_p": 0.7395072064682302,
+      "fixed_effect_slope_rank_per_token": -0.014071930817272503,
+      "fixed_effect_slope_rank_per_10k_tokens": -140.71930817272502,
+      "bootstrap_ci95_slope_per_token": [
+        -0.292745128418945,
+        0.2596747668086097
+      ],
+      "stratified_permutation_p": 0.9177082291770823,
+      "verdict": "no significant distance dependence over the extended range",
+      "by_cohort": {
+        "16k": {
+          "n": 32,
+          "distance_range": [
+            46,
+            7414
+          ],
+          "median_distance": 4066.0,
+          "median_rank": 49775.857142857145,
+          "mean_rank": 51899.236607142855
+        },
+        "32k": {
+          "n": 52,
+          "distance_range": [
+            2040,
+            23996
+          ],
+          "median_distance": 14496.0,
+          "median_rank": 55113.787109375,
+          "mean_rank": 54914.91721754808
+        },
+        "64k": {
+          "n": 51,
+          "distance_range": [
+            194,
+            56640
+          ],
+          "median_distance": 24266.0,
+          "median_rank": 46750.14453125,
+          "mean_rank": 50257.564568014706
+        }
+      }
+    }
+  }
+}
