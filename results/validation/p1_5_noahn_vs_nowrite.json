@@ -1,0 +1,293 @@
+{
+  "experiment": "P1-5 no-AHN versus GLOBAL NOWRITE validation",
+  "status": "completed",
+  "timestamp_utc": "2026-09-24T16:54:49Z",
+  "provenance": {
+    "git_branch": "validation",
+    "git_commit": "0f236a487154e42bd632d27e61e35473ceed90bf",
+    "no_ahn_path": "results/run_3b_floor/06_no_ahn_floor.json",
+    "no_ahn_sha256": "5baf74afee935ad01d66fa883b81e80532b4bbdd99bd0fd4012766bf801af02c",
+    "global_nowrite_path": "results/validation/p0_4_global_behavior.json",
+    "global_nowrite_sha256": "379f9b99a37175e5b022c292cfb4e8b9e765c12ce65b20c84c26d41196194f5d",
+    "ahn_on_path": "results/run_3b_gdn/06_ahn_on_ruler.json",
+    "ahn_on_sha256": "bdc9a053c7e49323849973802d27787a9c10b6261f6ed8573d422c1c778cd7ca",
+    "seed": 20260924,
+    "bootstrap_replicates": 20000
+  },
+  "cohort_validation": {
+    "exact_row_alignment": true,
+    "n_examples": 60,
+    "n_evicted": 32,
+    "n_in_window": 28,
+    "compared_fields": [
+      "idx",
+      "task",
+      "n_tokens",
+      "needle_pos",
+      "compression_boundary",
+      "eviction_distance",
+      "needle_is_evicted",
+      "gold"
+    ],
+    "mismatches": []
+  },
+  "configuration_comparison": {
+    "same_seed": true,
+    "same_sliding_window": true,
+    "same_checkpoint": false,
+    "same_model_cell": false,
+    "same_attention_sink_count": false,
+    "no_ahn": {
+      "model_path": "Qwen/Qwen2.5-3B-Instruct",
+      "cell": "none",
+      "num_attn_sinks": 0,
+      "sliding_window": 8064
+    },
+    "global_nowrite": {
+      "model_path": "/vol/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
+      "cell": "GatedDeltaNet",
+      "num_attn_sinks": 128,
+      "sliding_window": 8064,
+      "ahn_outputs_zeroed": 36
+    }
+  },
+  "condition_summaries": {
+    "no_ahn": {
+      "all": {
+        "n": 60,
+        "substring_match": 0.18333333333333332,
+        "exact_match": 0.0,
+        "f1": 0.006231577470612557,
+        "f1_first_line": 0.07060631903833658
+      },
+      "evicted": {
+        "n": 32,
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      "in_window": {
+        "n": 28,
+        "substring_match": 0.39285714285714285,
+        "exact_match": 0.0,
+        "f1": 0.013353380294169766,
+        "f1_first_line": 0.15129925508214984
+      }
+    },
+    "global_nowrite": {
+      "all": {
+        "n": 60,
+        "substring_match": 0.4666666666666667,
+        "exact_match": 0.45,
+        "f1": 0.4533333333333333,
+        "f1_first_line": 0.4533333333333333
+      },
+      "evicted": {
+        "n": 32,
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      "in_window": {
+        "n": 28,
+        "substring_match": 1.0,
+        "exact_match": 0.9642857142857143,
+        "f1": 0.9714285714285714,
+        "f1_first_line": 0.9714285714285714
+      }
+    },
+    "ahn_on": {
+      "all": {
+        "n": 60,
+        "substring_match": 0.4666666666666667,
+        "exact_match": 0.43333333333333335,
+        "f1": 0.4343710089399745,
+        "f1_first_line": 0.45476190476190476
+      },
+      "evicted": {
+        "n": 32,
+        "substring_match": 0.0,
+        "exact_match": 0.0,
+        "f1": 0.0,
+        "f1_first_line": 0.0
+      },
+      "in_window": {
+        "n": 28,
+        "substring_match": 1.0,
+        "exact_match": 0.9285714285714286,
+        "f1": 0.9307950191570882,
+        "f1_first_line": 0.9744897959183673
+      }
+    }
+  },
+  "paired_global_nowrite_vs_no_ahn": {
+    "all": {
+      "n": 60,
+      "metrics": {
+        "substring_match": {
+          "global_nowrite_mean": 0.4666666666666667,
+          "no_ahn_mean": 0.18333333333333332,
+          "global_minus_no_ahn": 0.2833333333333333,
+          "paired_bootstrap_95_ci": [
+            0.16666666666666666,
+            0.4
+          ],
+          "mcnemar": {
+            "left_better": 17,
+            "right_better": 0,
+            "discordant": 17,
+            "two_sided_exact_p": 1.52587890625e-05
+          }
+        },
+        "exact_match": {
+          "global_nowrite_mean": 0.45,
+          "no_ahn_mean": 0.0,
+          "global_minus_no_ahn": 0.45,
+          "paired_bootstrap_95_ci": [
+            0.31666666666666665,
+            0.5666666666666667
+          ],
+          "mcnemar": {
+            "left_better": 27,
+            "right_better": 0,
+            "discordant": 27,
+            "two_sided_exact_p": 1.4901161193847656e-08
+          }
+        },
+        "f1": {
+          "global_nowrite_mean": 0.4533333333333333,
+          "no_ahn_mean": 0.006231577470612557,
+          "global_minus_no_ahn": 0.4471017558627207,
+          "paired_bootstrap_95_ci": [
+            0.325228405214425,
+            0.5675312010824617
+          ]
+        },
+        "f1_first_line": {
+          "global_nowrite_mean": 0.4533333333333333,
+          "no_ahn_mean": 0.07060631903833658,
+          "global_minus_no_ahn": 0.3827270142949967,
+          "paired_bootstrap_95_ci": [
+            0.2632763564002599,
+            0.5045292093079918
+          ]
+        }
+      }
+    },
+    "evicted": {
+      "n": 32,
+      "metrics": {
+        "substring_match": {
+          "global_nowrite_mean": 0.0,
+          "no_ahn_mean": 0.0,
+          "global_minus_no_ahn": 0.0,
+          "paired_bootstrap_95_ci": [
+            0.0,
+            0.0
+          ],
+          "mcnemar": {
+            "left_better": 0,
+            "right_better": 0,
+            "discordant": 0,
+            "two_sided_exact_p": 1.0
+          }
+        },
+        "exact_match": {
+          "global_nowrite_mean": 0.0,
+          "no_ahn_mean": 0.0,
+          "global_minus_no_ahn": 0.0,
+          "paired_bootstrap_95_ci": [
+            0.0,
+            0.0
+          ],
+          "mcnemar": {
+            "left_better": 0,
+            "right_better": 0,
+            "discordant": 0,
+            "two_sided_exact_p": 1.0
+          }
+        },
+        "f1": {
+          "global_nowrite_mean": 0.0,
+          "no_ahn_mean": 0.0,
+          "global_minus_no_ahn": 0.0,
+          "paired_bootstrap_95_ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "f1_first_line": {
+          "global_nowrite_mean": 0.0,
+          "no_ahn_mean": 0.0,
+          "global_minus_no_ahn": 0.0,
+          "paired_bootstrap_95_ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "in_window": {
+      "n": 28,
+      "metrics": {
+        "substring_match": {
+          "global_nowrite_mean": 1.0,
+          "no_ahn_mean": 0.39285714285714285,
+          "global_minus_no_ahn": 0.6071428571428571,
+          "paired_bootstrap_95_ci": [
+            0.42857142857142855,
+            0.7857142857142857
+          ],
+          "mcnemar": {
+            "left_better": 17,
+            "right_better": 0,
+            "discordant": 17,
+            "two_sided_exact_p": 1.52587890625e-05
+          }
+        },
+        "exact_match": {
+          "global_nowrite_mean": 0.9642857142857143,
+          "no_ahn_mean": 0.0,
+          "global_minus_no_ahn": 0.9642857142857143,
+          "paired_bootstrap_95_ci": [
+            0.8928571428571429,
+            1.0
+          ],
+          "mcnemar": {
+            "left_better": 27,
+            "right_better": 0,
+            "discordant": 27,
+            "two_sided_exact_p": 1.4901161193847656e-08
+          }
+        },
+        "f1": {
+          "global_nowrite_mean": 0.9714285714285714,
+          "no_ahn_mean": 0.013353380294169766,
+          "global_minus_no_ahn": 0.9580751911344015,
+          "paired_bootstrap_95_ci": [
+            0.8988036438159791,
+            0.9905501660559226
+          ]
+        },
+        "f1_first_line": {
+          "global_nowrite_mean": 0.9714285714285714,
+          "no_ahn_mean": 0.15129925508214984,
+          "global_minus_no_ahn": 0.8201293163464216,
+          "paired_bootstrap_95_ci": [
+            0.675862170617516,
+            0.9517995835944023
+          ]
+        }
+      }
+    }
+  },
+  "interpretation": {
+    "controls_equivalent": false,
+    "global_nowrite_estimand": "Acute intervention within the trained AHN-GDN checkpoint: retain the checkpoint and attention configuration while zeroing all 36 AHN outputs.",
+    "no_ahn_estimand": "Between-model reference using stock Qwen with no AHN modules and no attention sinks.",
+    "evicted_retrieval_floor_agrees": true,
+    "primary_conclusion": "No-AHN and GLOBAL NOWRITE agree that evicted answer retrieval is at floor, but they differ substantially on in-window behavior. They answer different causal questions and must not be used interchangeably."
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "experiment": "P2-1 checkpoint identity and provenance validation",
+  "status": "completed_with_provenance_caveat",
+  "timestamp_utc": "2026-09-24T17:14:00Z",
+  "git": {
+    "branch": "validation",
+    "commit": "3bd6a1d4aa2dafeb74f983759f9c5840f387fa33"
+  },
+  "checkpoint": {
+    "path": "/workspace/Interpretability-study-of-Artificial-Hippocampus-Networks/merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN",
+    "weight_shard_sha256": {
+      "model-00001-of-00002.safetensors": "639de2c369ed0b383d1b8f4f61db26a371f31be06ebc545d80a2af22e2abba57",
+      "model-00002-of-00002.safetensors": "0406ceb594144db43fc6826dc285cdaab973c76c00487f32c99eb208dd090dd2"
+    },
+    "small_file_sha256": {
+      "config.json": "8efe03ba3c20d735f76ab86db546a21d9fb339e124d642d0993145932f38d4d5",
+      "generation_config.json": "24216e06e770ea4f6ce9f88ab782043391d886c0cf8fae9e775bcf0148febb6e",
+      "tokenizer.json": "9c5ae00e602b8860cbd784ba82a8aa14e8feecec692e7076590d014d7b7fdafa",
+      "tokenizer_config.json": "57fea41fa99fce34f91450643e48b3bfbb078c32c6831a3c06834f122c200510",
+      "special_tokens_map.json": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+      "model.safetensors.index.json": "126936e1140edc31c9c58a0a7d0946cd53902b1ab6ff0875627d16d9e4a645fb"
+    },
+    "tensor_index_entries": 722,
+    "referenced_weight_shards": [
+      "model-00001-of-00002.safetensors",
+      "model-00002-of-00002.safetensors"
+    ]
+  },
+  "embedded_checkpoint_config": {
+    "ahn_implementation": "GatedDeltaNet",
+    "num_hidden_layers": 36,
+    "sliding_window": 256,
+    "use_sliding_window": false,
+    "max_window_layers": 70,
+    "use_ahn_router": false,
+    "ahn_position": "random",
+    "sliding_window_type": "random",
+    "_name_or_path": null,
+    "_commit_hash": null,
+    "transformers_version": "4.51.0"
+  },
+  "experiment_runtime_config": {
+    "model_path": null,
+    "cell": "GatedDeltaNet",
+    "sliding_window": 8064,
+    "num_attn_sinks": 128,
+    "attn_impl": "flash_attention_2",
+    "dtype": "bfloat16"
+  },
+  "runtime_observation": {
+    "ahn_implementation": "GatedDeltaNet",
+    "n_layers": 36,
+    "n_ahn_layers": 36,
+    "sliding_window": 8064,
+    "use_sliding_window": true,
+    "num_attn_sinks": 128,
+    "dtype": "torch.bfloat16"
+  },
+  "validation": {
+    "exact_weight_hash_match": true,
+    "two_weight_shards": true,
+    "index_matches_weight_files": true,
+    "36_transformer_layers": true,
+    "36_runtime_ahn_layers": true,
+    "gated_delta_net_matches": true,
+    "runtime_window_matches_run_config": true,
+    "runtime_sinks_match_run_config": true,
+    "runtime_sliding_window_enabled": true
+  },
+  "provenance_assessment": {
+    "local_checkpoint_identity_fully_frozen": true,
+    "runtime_override_required": true,
+    "upstream_revision_recorded_in_config": false,
+    "complete_upstream_merge_provenance": false
+  },
+  "interpretation": {
+    "primary": "The local merged AHN-GDN checkpoint is uniquely identified by matching weight, index, configuration and tokenizer hashes.",
+    "runtime_caveat": "The checkpoint config does not itself encode the 8064-token experimental window. Reproduction must apply configs/run_3b_gdn.json, which enables sliding window attention at 8064 with 128 attention sinks.",
+    "upstream_caveat": "Local identity is complete, but the original upstream base/merge revision is only complete if both an origin and commit hash are embedded in config.json."
+  }
+}
