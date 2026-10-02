@@ -1,0 +1,17 @@
+{
+  "run_name": "run_7b_dn",
+  "ckpt_name": "Qwen-2.5-Instruct-7B-AHN-DN",
+  "cell": "DeltaNet",
+  "scale": "7B",
+  "sliding_window": 8064,
+  "num_attn_sinks": 128,
+  "attn_impl": "flash_attention_2",
+  "dtype": "bfloat16",
+  "layers": [
+    7,
+    14,
+    21
+  ],
+  "seed": 20260820,
+  "notes": "7B arm. Same config of record as 3B (window 8064, sinks 128, seed 20260820). DEVIATION: Qwen2.5-7B has 28 layers (3B has 36), so the sampled layers are [7,14,21] = same 1/4,1/2,3/4 depths as 3B [9,18,27]. Needs Gautam sign-off before any result is reported."
+}
