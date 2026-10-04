@@ -12,7 +12,7 @@ Expected_Tables section 1 and the 3 Sep correction. `o_t` (row key `rank`) is re
 alongside it because the withdrawn "layer 27 is a working instrument" claim came from
 reading `o_t` alone. Both are printed; d_resid is primary.
 
-    python ruler_cohort_stats.py
+    python scripts/ruler_cohort_stats.py
 """
 
 from __future__ import annotations

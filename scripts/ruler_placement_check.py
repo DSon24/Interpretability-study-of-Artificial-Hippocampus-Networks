@@ -17,7 +17,7 @@ Two views:
 `occurrences` (answer string appearing more than once, so the first hit may not be the
 needle) is joined in from the old 04h per-example records, which already computed it.
 
-    python ruler_placement_check.py
+    python scripts/ruler_placement_check.py
 
 Output: results/run_3b_gdn/04q_ruler_placement_check.json
 """
@@ -28,6 +28,10 @@ import os
 
 import numpy as np
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # repo root, for ahn_interp
 import ahn_interp as ai
 
 RESULTS_DIR = os.path.join("results", "run_3b_gdn")

@@ -5,8 +5,8 @@ CPU-only. Reads results/run_3b_{gdn,dn,m2}/<input>. Method matches the 18 Sep ar
 AHN-minus-NOWRITE delta F1, 10000-example paired bootstrap CI, 10000-draw paired
 sign-flip permutation test, Holm across the 3 pairwise contrasts, seed 20260820.
 
-    python build_table5_crosscell.py --score delta_f1_fl --out results/05_table5_rq1_crosscell.json
-    python build_table5_crosscell.py --score delta_f1 --out results/05_table5_rq1_crosscell_official.json
+    python scripts/build_table5_crosscell.py --score delta_f1_fl --out results/05_table5_rq1_crosscell.json
+    python scripts/build_table5_crosscell.py --score delta_f1 --out results/05_table5_rq1_crosscell_official.json
 """
 import argparse, json
 import numpy as np

@@ -5,7 +5,7 @@ primary, full-generation robustness, percentile-bootstrap CI per length stratum)
 `results/run_3b_<cell>/03_nowrite_reproduction.json`, then plots the three cells together.
 Pooled paired cross-cell contrasts live in `build_table5_crosscell.py`.
 
-    python build_fig3.py
+    python scripts/build_fig3.py
 
 Output:
     results/run_3b_{gdn,dn,m2}/05_table5_rq1.json

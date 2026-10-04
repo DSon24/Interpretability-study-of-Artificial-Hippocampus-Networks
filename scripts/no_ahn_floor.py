@@ -17,7 +17,7 @@ Two cohorts, both behavioural (generation + task metric, not a lens readout):
   * LongBench-E HotpotQA  n=60  -- length-stratified, same cohort construction as
     notebook 03. Floor number is mean first-line F1 with no memory pathway at all.
 
-Unattended:  CUDA_VISIBLE_DEVICES=MIG-xxxx python no_ahn_floor.py
+Unattended:  CUDA_VISIBLE_DEVICES=MIG-xxxx python scripts/no_ahn_floor.py
 Output:      results/run_3b_floor/06_no_ahn_floor.json
 """
 from __future__ import annotations
@@ -30,6 +30,10 @@ import time
 import numpy as np
 import torch
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # repo root, for ahn_interp
 import ahn_interp as ai
 
 

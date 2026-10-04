@@ -5,7 +5,7 @@ modal_04b.py) and the cell's 03_nowrite_reproduction.json (boundary JS). Same st
 as `ahn_interp.spearman` (Spearman rho, paired percentile bootstrap CI, n_boot=10000,
 seed 20260820) plus a Holm correction over the three pre-registered predictors.
 
-    python build_table8.py
+    python scripts/build_table8.py
 
 Writes results/run_3b_<cell>/05_table8_rq3.json (same row schema as before, plus holm_p)
 and results/05_table8_rq3_crosscell.json (all cells, plus layer-wise and full-generation

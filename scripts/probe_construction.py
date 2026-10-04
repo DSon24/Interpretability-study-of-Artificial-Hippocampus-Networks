@@ -80,7 +80,7 @@ compressive memory and read through o_t rather than the full residual stream.
 UNTESTED as written -- it has not been run on a GPU. Treat the first execution as a
 debugging pass, exactly like every other notebook in this repo.
 
-    python probe_construction.py --model-path ./merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN
+    python scripts/probe_construction.py --model-path ./merged_ckpt/Qwen-2.5-Instruct-3B-AHN-GDN
 """
 
 import argparse
@@ -89,6 +89,10 @@ import os
 
 import torch
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # repo root, for ahn_interp
 import ahn_interp as ai
 
 LAYERS = [9, 18, 27]

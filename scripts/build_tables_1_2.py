@@ -6,7 +6,7 @@ from data, but the *status* column of each row (has this condition been run? doe
 cohort's artefact exist?) is derived from the filesystem here so the tables regenerate
 instead of going stale by hand.
 
-    python build_tables_1_2.py
+    python scripts/build_tables_1_2.py
 
 Outputs:
     results/05_table1_ablation_grid.json
@@ -18,6 +18,10 @@ import json
 import os
 import time
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # repo root, for ahn_interp
 import ahn_interp as ai
 
 RESULTS = "results"

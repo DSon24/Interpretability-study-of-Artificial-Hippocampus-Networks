@@ -52,9 +52,9 @@ answer_logprob_permuted_layers (notebook 04 writes it when lens_perm is availabl
 Every statistic is restricted to placement == "evicted" by default: the claim is about
 what survives compression, and 28 of 60 RULER needles sit inside the local window.
 
-    python ruler_controls.py --run-config run_3b_gdn
-    python ruler_controls.py --run-config run_3b_dn
-    python ruler_controls.py --run-config run_3b_m2
+    python scripts/ruler_controls.py --run-config run_3b_gdn
+    python scripts/ruler_controls.py --run-config run_3b_dn
+    python scripts/ruler_controls.py --run-config run_3b_m2
 """
 
 from __future__ import annotations
@@ -68,7 +68,7 @@ import statistics as st
 from pathlib import Path
 from typing import Dict, List, Sequence, Tuple
 
-REPO_ROOT = Path(__file__).resolve().parent
+REPO_ROOT = Path(__file__).resolve().parents[1]
 CONFIGS_DIR = REPO_ROOT / "configs"
 DEFAULT_RUN_CONFIG = "run_3b_gdn"
 ROWS_NAME = "04i_ruler_controls_rows.json"

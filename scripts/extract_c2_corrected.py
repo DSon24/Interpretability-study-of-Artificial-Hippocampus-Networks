@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Extract the baseline-corrected C2 results from notebooks/04-C2-debug.ipynb into JSON.
+Extract the baseline-corrected C2 results from notebooks/04_c2_investigation.ipynb into JSON.
 
 WHY THIS EXISTS
 ---------------
@@ -9,7 +9,7 @@ per layer. This script parses the SUMMARY tables (robustness / scrambled / raw) 
 the saved cell output so Tables 4 and 8 are not transcribed by hand.
 
 The row-level frame is NO LONGER notebook-only. As of the 4-5 Sep C1-rank work,
-04-C2-debug.ipynb cell 42 persists the full 1008-row sweep (df_bias) to
+04_c2_investigation.ipynb (formerly 04-C2-debug.ipynb) cell 42 persists the full 1008-row sweep (df_bias) to
 results/run_3b_gdn/04c1_rank_baseline.json with p_needle / p_distractor /
 rank_needle / rank_distractor per (stored_needle, tested_needle, distractor, layer,
 distance, filler). The C3 ordered/shuffled matched pairs live in
@@ -20,14 +20,14 @@ already-computed summary stats into JSON.
 
 It does NOT recompute anything.
 
-    python extract_c2_corrected.py
+    python scripts/extract_c2_corrected.py
 """
 
 import json
 import re
 import subprocess
 
-NB = "notebooks/04-C2-debug.ipynb"
+NB = "notebooks/04_c2_investigation.ipynb"
 OUT = "results/run_3b_gdn/04d_c2_baseline_corrected.json"
 
 
@@ -120,7 +120,7 @@ def main():
 
     json.dump({
         "note": "Baseline-corrected C2, per layer. EXTRACTED from notebook cell outputs, "
-                "not recomputed. Regenerating needs the GPU sweep in 04-C2-debug.ipynb "
+                "not recomputed. Regenerating needs the GPU sweep in 04_c2_investigation.ipynb "
                 "cells 40-52 (2 x 84 forward passes on the merged 3B checkpoint).",
         "source_notebook": NB,
         "extracted_at_commit": sha,

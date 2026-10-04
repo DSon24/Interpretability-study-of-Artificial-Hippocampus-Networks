@@ -11,7 +11,7 @@ needle sat, and ask whether the digit rank degrades with distance (decay) or is 
 
 No GPU: everything needed is in 04i. Regenerate with
 
-    python ruler_retention_curve.py
+    python scripts/ruler_retention_curve.py
 
 Output: results/run_3b_gdn/04p_ruler_retention_curve.json
 """
@@ -22,6 +22,10 @@ import os
 
 import numpy as np
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # repo root, for ahn_interp
 import ahn_interp as ai
 
 RESULTS_DIR = os.path.join("results", "run_3b_gdn")

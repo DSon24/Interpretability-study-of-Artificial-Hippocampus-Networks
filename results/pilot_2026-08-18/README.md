@@ -1,6 +1,6 @@
 # Pilot results — 18 Aug 2026 (SUPERSEDED)
 
-Produced by `notebooks/pilot/son_pilot_*_2026-08-18.ipynb`. Kept for provenance only.
+Produced by `notebooks/archive/pilot/son_pilot_*_2026-08-18.ipynb`. Kept for provenance only.
 **Do not cite, plot, or carry these numbers forward.**
 
 Three reasons, all documented in the root README under "Findings from the 18 Aug pilot":

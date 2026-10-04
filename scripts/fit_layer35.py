@@ -16,8 +16,8 @@ Rather than refit the 3-layer lens with a 4th layer (~0.6 GPU-h/layer, and a mid
 box shutdown loses everything), this fits layer 35 ALONE on a small wikitext corpus,
 runs the check, and appends J35 into the existing .pt maps so it is not lost.
 
-    CUDA_VISIBLE_DEVICES=MIG-xxxx python fit_layer35.py                # n=300, ~15 min
-    CUDA_VISIBLE_DEVICES=MIG-xxxx python fit_layer35.py --n-prompts 500 --merge-into \\
+    CUDA_VISIBLE_DEVICES=MIG-xxxx python scripts/fit_layer35.py                # n=300, ~15 min
+    CUDA_VISIBLE_DEVICES=MIG-xxxx python scripts/fit_layer35.py --n-prompts 500 --merge-into \\
         results/run_3b_gdn/jlens_qwen25_3b.pt results/run_3b_gdn/jlens_qwen25_3b_1000ctx.pt
 
 Output: results/run_3b_gdn/02_final_layer_identity.json  (+ updates the
@@ -34,6 +34,10 @@ import time
 import numpy as np
 import torch
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # repo root, for ahn_interp
 import ahn_interp as ai
 
 BACKBONE = "Qwen/Qwen2.5-3B-Instruct"

@@ -35,7 +35,7 @@ Multiple comparisons are corrected here rather than left to the reader: 30 cells
 real structure -- but only five survive correction, and reporting the uncorrected nine
 would overstate it.
 
-    python content_swap_stats.py
+    python scripts/content_swap_stats.py
 """
 
 from __future__ import annotations
@@ -59,7 +59,7 @@ DISTANCES = [64, 512, 2048, 4096, 8192]
 LAYERS = [9, 18, 27]
 CONTENTS = ["word", "digit"]
 
-# Son's homemade multi-control result, for the replication check (04-C2-debug cells 105-110)
+# Son's homemade multi-control result, for the replication check (04_c2_investigation cells 105-110)
 SON_LAYER27_POOLED = {"fold": 0.863, "p": 0.016, "n_needles": 4}
 
 

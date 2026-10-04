@@ -10,7 +10,7 @@ changed" is reported under the headline first-line normalised-EM definition and 
 raw full-generation string inequality. Prior work (Kashyap 2026, via the proposal):
 rho(JS, changed) 0.34-0.41, rho(JS, F1) -0.09 to 0.00. No tuning toward those numbers.
 
-    python build_js_check.py    ->  results/05_rq3_js_gautam_check.json
+    python scripts/build_js_check.py    ->  results/05_rq3_js_gautam_check.json
 """
 import json
 

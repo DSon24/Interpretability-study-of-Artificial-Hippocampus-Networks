@@ -6,7 +6,7 @@ Numbers that a saved result JSON records (`wall_min`, `map_cost_gpu_hours`, ...)
 that JSON so the table regenerates; numbers that only exist in a run log / notebook stdout are
 carried here with a `status` and a `source` so nobody mistakes an estimate for a measurement.
 
-    python build_table10.py
+    python scripts/build_table10.py
 
 Output: results/05_table10_compute.json
 

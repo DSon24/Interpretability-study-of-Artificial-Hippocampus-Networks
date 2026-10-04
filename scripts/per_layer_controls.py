@@ -19,7 +19,7 @@ this script reported only `rank` (the o_t basis) and concluded that layer 27 was
 chance. In the pre-registered basis it is not: 109,793 against a chance rank of 75,968.
 Both bases are reported below; `d_resid` is primary.
 
-    python per_layer_controls.py
+    python scripts/per_layer_controls.py
 """
 
 import json

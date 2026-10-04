@@ -19,7 +19,7 @@ it survives on the evicted subset, candidate (b) stands.
 
 No GPU: tokenizer only.
 
-    python ruler_needle_position.py
+    python scripts/ruler_needle_position.py
 """
 
 from __future__ import annotations
@@ -29,6 +29,10 @@ import os
 import statistics as st
 from typing import Dict, List
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # repo root, for ahn_interp
 import ahn_interp as ai
 
 RESULTS_DIR = os.path.join("results", "run_3b_gdn")

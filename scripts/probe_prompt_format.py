@@ -24,7 +24,7 @@ and the C1/C2/C3 failures are explained without reference to AHN at all.
 
 Runs on MPS or CPU. Prompts are kept short so no sliding window is involved.
 
-    python probe_prompt_format.py
+    python scripts/probe_prompt_format.py
 """
 
 import json

@@ -3,7 +3,7 @@
 Figure 3 (RQ1 forest) is built by build_fig3.py. Every figure here is drawn from
 committed result JSONs; none uses synthetic data. Sources are printed per figure.
 
-    python build_paper_figures.py
+    python scripts/build_paper_figures.py
 
 Output: results/figures/fig{1,2,4,5,6,7,8}_*.png
 """

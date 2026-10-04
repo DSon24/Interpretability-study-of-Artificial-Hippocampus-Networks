@@ -19,7 +19,7 @@ It also jackknifes the DeltaNet dF1, whose CI [+0.2, +13.7] barely excludes zero
 n=60, to test whether the one result that genuinely breaks his band survives dropping
 a handful of examples.
 
-    python kashyap_reconciliation.py
+    python scripts/kashyap_reconciliation.py
 
 Output:
     results/05_kashyap_reconciliation.json
@@ -35,6 +35,10 @@ from typing import Callable, Sequence
 
 import numpy as np
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # repo root, for ahn_interp
 import ahn_interp as ai
 
 RUNS = [("GatedDeltaNet", "results/run_3b_gdn"),
