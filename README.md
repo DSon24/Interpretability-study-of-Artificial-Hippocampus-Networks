@@ -454,51 +454,7 @@ Keep `merged_ckpt/` out of git (it already is).
 | Statistics | paired bootstrap, length-stratified resampling, Holm for the three pairwise half-life tests | |
 | Seed | 20260820 | `ai.set_seed()` |
 
-## Next steps
-
-Steps 1–6 are resolved or complete. On 8 Sep Gautam explicitly approved the RULER re-scope,
-kept n=60, and unblocked DeltaNet/Mamba2. Full reasoning lives in
-[docs/FINDINGS.md](docs/FINDINGS.md); the operative decision is in the
-[8 Sep decision record](docs/DECISION_RECORD_2026-09-08.md).
-
-| Step | Status |
-|---|---|
-| 1. `01_instrumentation_gate.ipynb` | done, all gates pass — [19–20 Aug Finding 1](docs/FINDINGS.md#findings-from-the-1920-aug-run) |
-| 2. `03_nowrite_reproduction.ipynb` | done, metric-corrected — [19–20 Aug Finding 5](docs/FINDINGS.md#findings-from-the-1920-aug-run) |
-| 3. `02_jlens_fit_and_validate.ipynb` | done, 1.92 GPU-h; Table 3 checks 2/3 fail, check 4 (map stability) passes — [19–20 Aug Findings 2–4](docs/FINDINGS.md#findings-from-the-1920-aug-run), [map-stability check](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
-| 4. `04_niah_retention.ipynb` on GDN 3B | done — **C1, C2, C3 fail** on the homemade cohort — [20 Aug NIAH retention run](docs/FINDINGS.md#findings-from-the-20-aug-niah-retention-run) |
-| 5. **Diagnose the C1 disagreement** | **resolved for execution 8 Sep.** RULER is primary; length/content are ruled out, construction is a supporting/limitations question, and the original 4-needle result is non-generalizing — [decision record](docs/DECISION_RECORD_2026-09-08.md) |
-| 6. `04b` — the RQ3 join | done, by Sơn — no significant correlation, provisional — [map-stability + RQ3 join](docs/FINDINGS.md#findings-from-the-map-stability-check-and-the-rq3-join) |
-| 7. Add the boundary-JS column | done — logged per example in nb03 for all three cells (commit bc2a61f + reruns) |
-| 8. DN + Mamba2 3B merges and RULER runs | **done 8–9 Sep** — DN merged 8 Sep, M2 merged 9 Sep and run on Modal with real mamba kernels; full C1–C4 battery for all three, results under `results/run_3b_dn/` and `results/run_3b_m2/` |
-| 9. No-AHN floor (Table 1 Primary) | **done 9 Sep** — RULER NIAH evicted substring acc 0.000 (n=32), in-window 0.393; HotpotQA first-line F1 0.076; `--no-window` control 1.000. Every evicted-needle retention result is now measured against a base-model floor of zero; NOWRITE-proxy (~0.34 F1) is confirmed *not* equivalent to module removal — [no-AHN floor run](docs/FINDINGS.md#findings-from-the-no-ahn-floor-run-r54-9-sep) |
-| 10. Table 7 — cross-cell half-life ratios | blocked only on the Table 10 compute-accounting file (step 9 cleared 9 Sep); RULER retention is flat vs distance, so expect the pre-registered non-parametric fallback |
-| 11. 7B checkpoints | **blocked only on the three-cell/Table 7 result**; make this call after steps 9–10 |
-
-The two asks in the 7 Sep diagnosis packet are now closed: Decision 1 = Option A and
-Decision 2 = Option A. Gautam also provided four public dataset resources; their intended
-roles and the requirement for a new amendment before any added compute are in the
-[dataset register](docs/DATASET_REGISTER_2026-09-08.md).
-
-## Citation
-
-The system under study:
-
-```bibtex
-@article{fang2025artificial,
-  title={Artificial hippocampus networks for efficient long-context modeling},
-  author={Fang, Yunhao and Yu, Weihao and Zhong, Shu and Ye, Qinghao and Xiong, Xuehan and Wei, Lai},
-  journal={arXiv preprint arXiv:2510.07318},
-  year={2025}
-}
-```
-
-The readout method: *Verbalizable Representations Form a Global Workspace in Language
-Models* (Anthropic, 2026), transformer-circuits.pub/2026/workspace ·
-github.com/anthropics/jacobian-lens
-
-Evaluation: RULER (Hsieh et al., 2024), LongBench (Bai et al., 2024), LV-Eval (Yuan
-et al., 2024). Cells: Gated Delta Networks (Yang et al., 2024), Mamba2 (Dao & Gu, 2024).
+## License
 
 Upstream code is Apache-2.0; see [`LICENSE`](LICENSE). Our additions are released under
 the same terms.
